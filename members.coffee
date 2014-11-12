@@ -55,4 +55,22 @@ module.exports = [
       url: 'https://pomotodo.com'
   sns:
     github: 'faceair'
+,
+  name:
+    display: 'Dacer'
+    ascii: 'dacer'
+  avatar: '792f861ce396b616180675ee90c3755e'
+  blog: 'http://blog.dacer.im'
+  profile:
+    company:
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+    location: '江苏苏州'
+  skill:
+    java: 1
+    ruby: 0.2
+    javascript: 0.1
+    linux: 0.1
+  sns:
+    github: 'dacer'
 ]
