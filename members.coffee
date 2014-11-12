@@ -80,7 +80,9 @@ module.exports = [
     ascii: 'lsiyue'
   email: 'liamhuang0205@gmail.com'
   avatar: 'http://collect.liam0205.me/images/avatar/ALICE_539.png'
-  blog: 'https://liam0205.me'
+  blog: 'http://liam0205.me'
+  profile:
+    birthday: new Date '1992'
   skill:
     latex: 1
     python: 0.6
