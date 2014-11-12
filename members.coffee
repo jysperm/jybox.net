@@ -45,16 +45,16 @@ module.exports = [
     bitcoin: '13v2BTCMZMHg5v87susgg86HFZqXERuwUd'
 ,
   name:
-    display: 'faceair'
-    ascii: 'faceair'
+    display: 'JopOu'
+    ascii: 'JopOu'
   avatar: 'fc48b91aac45ae3b32ac495d57daf1cd'
-  blog: 'http://faceair.me'
+  blog: 'http://ojp2008520.us1.rpvhost.net/'
   profile:
     company:
-      name: '番茄土豆'
-      url: 'https://pomotodo.com'
+      name: '华工信息'
+      url: 'www.hgsoft.com.cn'
   sns:
-    github: 'faceair'
+    github: 'JopOu'
 ,
   name:
     display: 'Dacer'
@@ -74,3 +74,15 @@ module.exports = [
   sns:
     github: 'dacer'
 ]
+,
+  name:
+    display: 'faceair'
+    ascii: 'faceair'
+  avatar: 'fc48b91aac45ae3b32ac495d57daf1cd'
+  blog: 'http://faceair.me'
+  profile:
+    company:
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+  sns:
+    github: 'faceair'
