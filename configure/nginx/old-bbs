@@ -1,0 +1,15 @@
+server {
+    listen 443 ssl;
+    server_name old-bbs.jybox.net;
+
+    keepalive_timeout 70;
+
+    ssl_certificate /home/nodeapp/jybox.net/jybox.net.crt;
+    ssl_certificate_key /home/nodeapp/keys/jybox.net.key;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+
+    root /home/nodeapp/old-bbs;
+    index index.html;
+    autoindex on;
+}

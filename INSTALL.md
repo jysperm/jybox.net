@@ -14,41 +14,6 @@
 
     rm /etc/nginx/sites-enabled/default
 
-    vi /etc/nginx/sites-enabled/jybox.net
-
-        server {
-            listen 80 default_server;
-            listen [::]:80 default_server ipv6only=on;
-            rewrite ^/(.*)$ https://jybox.net/#redirect permanent;
-        }
-
-        server {
-           listen 80;
-           server_name jybox.net;
-           return 301 https://$server_name$request_uri;
-        }
-
-        server {
-            listen 443 ssl;
-            server_name jybox.net;
-
-            keepalive_timeout 70;
-
-            ssl_certificate /home/nodeapp/jybox.net/jybox.net.crt;
-            ssl_certificate_key /home/nodeapp/keys/jybox.net.key;
-            ssl_session_cache shared:SSL:10m;
-            ssl_session_timeout 10m;
-
-            location ~ /\.git {
-              deny all;
-            }
-
-            location / {
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_pass http://127.0.0.1:15624;
-            }
-        }
-
     useradd -m nodeapp
     usermod -G nodeapp -a www-data
 
@@ -61,12 +26,10 @@
 
     exit
 
-    vi /etc/supervisor/conf.d/jybox.net.conf
-
-        [program:jybox.net]
-        command=coffee /home/nodeapp/jybox.net/app.coffee
-        autorestart=true
-        user=nodeapp
+    ln -s /home/nodeapp/jybox.net/configure/nginx/default /etc/nginx/sites-enabled/default
+    ln -s /home/nodeapp/jybox.net/configure/nginx/jybox.net /etc/nginx/sites-enabled/jybox.net
+    ln -s /home/nodeapp/jybox.net/configure/nginx/old-bbs /etc/nginx/sites-enabled/old-bbs
+    ln -s /home/nodeapp/jybox.net/configure/supervisor/jybox.net.conf /etc/supervisor/conf.d/jybox.net.conf
 
     service nginx restart
     service supervisor restart

@@ -1,0 +1,11 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+    rewrite ^/(.*)$ https://jybox.net/#redirect permanent;
+}
+
+server {
+   listen 80;
+   server_name jybox.net old-bbs.jybox.net;
+   return 301 https://$server_name$request_uri;
+}
