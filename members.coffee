@@ -45,16 +45,27 @@ module.exports = [
     bitcoin: '13v2BTCMZMHg5v87susgg86HFZqXERuwUd'
 ,
   name:
-    display: 'faceair'
+    nickname: 'faceair'
     ascii: 'faceair'
-  avatar: 'fc48b91aac45ae3b32ac495d57daf1cd'
-  blog: 'http://faceair.me'
+  email: 'faceair.zh@gmail.com'
+  avatar: 'faceair.zh@gmail.com'
+  blog: 'https://lucy.faceair.me'
   profile:
     company:
       name: '番茄土豆'
       url: 'https://pomotodo.com'
+    location: '湖北武汉'
+    birthday: new Date '1993-8-28'
+  skill:
+    'node.js': 1
+    php: 1
+    coffeescript: 1
+    javascript: 0.6
+    linux: 0.6
   sns:
     github: 'faceair'
+    qq: '1067099789'
+    v2ex: 'faceair',
 ,
   name:
     display: 'Dacer'
