@@ -76,7 +76,6 @@ module.exports = [
 ,
   name:
     display: 'LSiYue'
-    full: 'Liam Huang'
     ascii: 'lsiyue'
   email: 'liamhuang0205@gmail.com'
   avatar: 'http://collect.liam0205.me/images/avatar/ALICE_539.png'
