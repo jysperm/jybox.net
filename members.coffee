@@ -93,3 +93,22 @@ module.exports = [
     github: 'liamhuang0205'
     qq: '29422355'
 ]
+,
+  name:
+    display:'JopOu'
+    full:'Jingpeng Ou'
+    ascii:'JopOu'
+  email:'348238635@qq..com'
+  avatar:'https://avatars2.githubusercontent.com/u/6096079?v=3&s=460'
+  blog:'ojp2008520.us1.rpvhost.net'
+  profile:
+    company:
+      name: '华工信息'
+      url: 'www.hgsoft.com.cn'
+  skill:
+    java: 1
+    c sharp:0.8
+    javascript: 0.2
+    linux: 0.1
+  sns:
+    github: 'JopOu'
