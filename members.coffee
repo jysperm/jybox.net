@@ -14,7 +14,7 @@ module.exports = [
     name: 'GreenShadow'
     url: 'http://greenshadow.net'
   ,
-    name: 'jybox.net'
+    name: '精子粉丝团'
     url: 'https://jybox.net'
   ,
     name: 'CommitCal'

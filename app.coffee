@@ -53,12 +53,19 @@ members = _.map require('./members'), (member) ->
       return skill_array.sort (a, b) ->
         return b.value - a.value
 
-app.get '/', (req, res) ->
-  res.render 'index',
+app.use (req, res, next) ->
+  _.extend res.locals,
     members: members
+    package: require './package'
+  next()
+
+app.get '/', (req, res) ->
+  res.render 'index'
 
 app.get '/members', (req, res) ->
-  res.render 'members',
-    members: members
+  res.render 'members'
+
+app.get '/history', (req, res) ->
+  res.render 'history'
 
 app.listen 15624
