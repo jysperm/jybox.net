@@ -1,0 +1,83 @@
+extends layout
+
+block header
+  title 脸熟成员 | jybox.net
+  link(rel='stylesheet', href='/style/members.css')
+
+block body
+  for member in members
+    .row.row-member.clearfix
+      .col-md-4
+        img(src='#{member.avatar_url}?s=256')
+      .col-md-8
+        h2
+          = member.name.display
+          for name in member.other_names
+            small= name
+        .row
+          .col-md-3
+            ul
+              if member.age
+                li(title='年龄')
+                  span.glyphicon.glyphicon-user
+                  span(title=member.profile.birthday)= member.age
+                  = value
+              if member.profile
+                each value, key in member.profile
+                  if key == 'company'
+                    li(title='公司')
+                      span.glyphicon.glyphicon-briefcase
+                      if value.url
+                        a(href=value.url)= value.name
+                      else
+                        = value.name
+                  else if key == 'location'
+                    li(title='位置')
+                      span.glyphicon.glyphicon-home
+                      = value
+          .col-md-5
+            ul
+              if member.sns
+                each value, key in member.sns
+                  if key == 'github'
+                    li
+                      | Github
+                      span.glyphicon.glyphicon-chevron-right
+                      a(href='https://github.com/#{value}')= value
+                  else if key == 'qq'
+                    li
+                      | QQ
+                      span.glyphicon.glyphicon-chevron-right
+                      span= value
+                  else if key == 'v2ex'
+                    li
+                      | Github
+                      span.glyphicon.glyphicon-chevron-right
+                      a(href='https://www.v2ex.com/member/#{value}')= value
+                  else if key == 'zhihu'
+                    li
+                      | Zhihu
+                      span.glyphicon.glyphicon-chevron-right
+                      a(href='http://www.zhihu.com/people/#{value}')= value
+                  else if key == 'segmentfault'
+                    li
+                      | SegmentFault
+                      span.glyphicon.glyphicon-chevron-right
+                      a(href='http://segmentfault.com/u/#{value}')= value
+                  else if key == 'twitter'
+                    li
+                      | Github
+                      span.glyphicon.glyphicon-chevron-right
+                      a(href='https://twitter.com/#{value}')= value
+                  else if key == 'bitcoin'
+                    li
+                      span.glyphicon.glyphicon-chevron-right
+                      a(href='https://blockchain.info/address/#{value}') Bitcoin Address
+
+          .col-md-4
+            ul
+              if member.websites
+                for website in member.websites
+                  li
+                    span.glyphicon.glyphicon-send
+                    a(href=website.url)= website.name
