@@ -55,4 +55,22 @@ module.exports = [
       url: 'https://pomotodo.com'
   sns:
     github: 'faceair'
+,
+  name:
+    display: 'LSiYue'
+    nickname: 'L'
+    full: 'Liam Huang'
+    ascii: 'LSiYue'
+  email: 'liamhuang0205@gmail.com'
+  avatar: 'http://collect.liam0205.me/images/avatar/ALICE_539.png'
+  blog: 'https://liam0205.me'
+  skill:
+    LaTeX: 1
+    Python: 0.6
+    C: 0.5
+    'C++': 0.5
+    Java: 0.2
+  sns:
+    github: 'liamhuang0205'
+    qq: '29422355'
 ]
