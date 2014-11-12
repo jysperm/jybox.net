@@ -14,6 +14,14 @@ block body
           = member.name.display
           for name in member.other_names
             small= name
+        if member.email
+          span.inline
+            span.glyphicon.glyphicon-envelope
+            = member.email
+        if member.blog
+          span.inline
+            span.glyphicon.glyphicon-bookmark
+            a(href=member.blog)= member.blog_domain
         .row
           .col-md-3
             ul
@@ -81,3 +89,15 @@ block body
                   li
                     span.glyphicon.glyphicon-send
                     a(href=website.url)= website.name
+
+        .row
+          if member.skill
+            table.table-condensed
+              tbody
+                for skill in member.skill_array
+                  tr
+                    td= skill.name
+                    td
+                      .progress
+                        .progress-bar.progress-bar-success(aria-valuenow=skill.per, aria-valuemin='0', aria-valuemax='100' style='width: #{skill.per}%;')
+                          span= skill.value

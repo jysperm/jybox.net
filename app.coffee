@@ -34,8 +34,24 @@ members = _.map require('./members'), (member) ->
       else
         return undefined
 
+    blog_domain: member.blog?.match(/https?:\/\/([^/]+)/)[1]
+
     other_names: _.filter member.name, (name) ->
       return name != member.name.display
+
+    skill_array: do ->
+      return unless member.skill
+
+      skill_array = []
+
+      for k, v of member.skill
+        skill_array.push
+          name: k
+          value: v
+          per: (v * 100).toFixed()
+
+      return skill_array.sort (a, b) ->
+        return b.value - a.value
 
 app.get '/', (req, res) ->
   res.render 'index',
