@@ -6,7 +6,7 @@ module.exports = [
     ascii: 'jysperm'
   email: 'jysperm@gmail.com'
   avatar: 'jysperm@gmail.com'
-  blog: 'https://jysperm.net'
+  blog: 'https://jysperm.me'
   websites: [
     name: 'RP 主机'
     url: 'http://rpvhost.net'
