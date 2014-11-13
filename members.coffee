@@ -68,6 +68,18 @@ module.exports = [
     v2ex: 'faceair'
 ,
   name:
+    display: 'Atina'
+    full: '胡雨佳'
+    ascii: 'atina'
+  avatar: 'https://jysperm.me/wp-content/uploads/2014/11/@7_WG@QA1Z4IV2D@2_LQ.jpg'
+  profile:
+    girl: true
+    location: '辽宁锦州'
+    birthday: new Date '1995-9-17'
+  sns:
+    qq: '1349971535'
+,
+  name:
     display: 'Dacer'
     ascii: 'dacer'
   avatar: '792f861ce396b616180675ee90c3755e'
