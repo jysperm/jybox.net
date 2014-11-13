@@ -116,6 +116,16 @@ module.exports = [
     qq: '29422355'
 ,
   name:
+    display: '冯小雪'
+  avatar: 'https://jysperm.me/wp-content/uploads/2014/11/fengxiaoxue.jpg'
+  profile:
+    girl: true
+    location: '甘肃金昌'
+    birthday: new Date '1997-2-11'
+  sns:
+    qq: '2402604022'
+,
+  name:
     display: 'JopOu'
     ascii: 'jopou'
   email: '348238635@qq.com'
