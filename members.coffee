@@ -98,6 +98,25 @@ module.exports = [
     github: 'dacer'
 ,
   name:
+    display: '绯村月'
+  email: 'liyudong1992@gmail.com'
+  avatar: 'liyudong1992@gmail.com'
+  profile:
+    company:
+      name: '百度'
+      url: 'http://www.baidu.com'
+    location: '北京'
+    birthday: new Date '1990-12-25'
+  skill:
+    coffeescript: 1
+    javascript: 1
+    'node.js': 1
+    linux: 1
+    'c++': 1
+    php: 1
+    c: 1
+,
+  name:
     display: 'LSiYue'
     ascii: 'lsiyue'
   email: 'liamhuang0205@gmail.com'
