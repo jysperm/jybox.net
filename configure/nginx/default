@@ -6,6 +6,6 @@ server {
 
 server {
    listen 80;
-   server_name jybox.net old-bbs.jybox.net;
+   server_name jybox.net old-bbs.jybox.net git.jybox.net;
    return 301 https://$server_name$request_uri;
 }
