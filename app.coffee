@@ -2,6 +2,7 @@ express = require 'express'
 crypto = require 'crypto'
 path = require 'path'
 harp = require 'harp'
+fs = require 'fs'
 _ = require 'underscore'
 
 app = express()
@@ -53,9 +54,44 @@ members = _.map require('./members'), (member) ->
       return skill_array.sort (a, b) ->
         return b.value - a.value
 
+chatlog = do ->
+  file_content = fs.readFileSync('./import/61137226.txt').toString()
+  lines = file_content.replace(/^.*\r\n=+\r\n/, '').split '\r\n\r\n'
+
+  return _.map lines, (line) ->
+    regex = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s+(.*)\r\n([\s\S]+)/
+    [__, time, name, message] = line.match regex
+
+    if name.match /(.+)\((\d+)\)/
+      [__, name, qq] = name.match /(.+)\((\d+)\)/
+    else
+      qq = '184300584'
+
+    avatar_url = do ->
+      matched_member = _.find members, (member) ->
+        return member.sns?.qq == qq
+
+      unless matched_member
+        matched_member = _.find members, (member) ->
+          return name == member.name.display or name in member.other_names
+
+      if matched_member
+        return matched_member.avatar_url
+      else
+        return "//cdn.v2ex.com/gravatar"
+
+    return {
+      time: time
+      name: name
+      qq: qq
+      message: message
+      avatar_url: avatar_url
+    }
+
 app.use (req, res, next) ->
   _.extend res.locals,
     members: members
+    chatlog: chatlog
     package: require './package'
   next()
 
@@ -67,5 +103,8 @@ app.get '/members', (req, res) ->
 
 app.get '/history', (req, res) ->
   res.render 'history'
+
+app.get '/chatlog', (req, res) ->
+  res.render 'chatlog'
 
 app.listen 15624

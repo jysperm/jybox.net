@@ -1,0 +1,16 @@
+extends layout
+
+block header
+  title 聊天记录 | 精子粉丝团
+
+block body
+  ul.media-list
+    for message in chatlog
+      li.media
+        a.media-left.pull-left
+          img(src=message.avatar_url, style='width: 30px; height: 30px;')
+        .media-body
+          h4.media-heading
+            = message.name
+            small= message.time
+          = message.message
