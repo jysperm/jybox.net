@@ -16,6 +16,7 @@
 
     useradd -m nodeapp
     usermod -G nodeapp -a www-data
+    usermod -G gitlab-www -a www-data
 
     su nodeapp
 
