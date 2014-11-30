@@ -68,4 +68,7 @@ app.get '/members', (req, res) ->
 app.get '/history', (req, res) ->
   res.render 'history'
 
+app.get '/qun', (req, res) ->
+  res.render 'qun'
+
 app.listen 15624
