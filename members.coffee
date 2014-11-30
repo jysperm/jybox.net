@@ -178,4 +178,30 @@ module.exports = [
     linux: 0.1
   sns:
     github: 'JopOu'
+,
+  name:
+    display: 'Madimo'
+  email: 'MadimoZhang@gmail.com'
+  avatar: 'MadimoZhang@gmail.com'
+  blog: 'http://www.madimo.me'
+  profile:
+    company:
+      name: 'Mycolorway Design'
+      url: 'https://tower.im'
+    location: '天津'
+    birthday: new Date '1994-03-10'
+  skill:
+    objective-c: 1
+    swift: 1
+    python: 0.6
+    linux: 0.5
+    c: 0.5
+    'c++': 0.4
+    javascript: 0.3
+  sns:
+    github: 'Madimo'
+    qq: '53161779'
+    v2ex: 'Madimo'
+    zhihu: 'MadimoZhang'
+    twitter: 'MadimoZhang'
 ]
