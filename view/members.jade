@@ -39,6 +39,10 @@ block body
                         a(href=value.url)= value.name
                       else
                         = value.name
+                  else if key == 'school'
+                    li(title=' 学校')
+                      span.glyphicon.glyphicon-book
+                      = value
                   else if key == 'location'
                     li(title='位置')
                       span.glyphicon.glyphicon-home

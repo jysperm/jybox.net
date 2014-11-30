@@ -68,6 +68,21 @@ module.exports = [
     v2ex: 'faceair'
 ,
   name:
+    display: 'cry'
+    nickname: '萌哭'
+  blog: 'http://infinnie.github.io/'
+  avatar: 'https://avatars3.githubusercontent.com/u/8168391?v=3'
+  profile:
+    girl: true
+    school: '武汉大学'
+    location: '湖北武汉'
+    birthday: new Date '1994'
+  skill:
+    javascript: 1
+  sns:
+    github: 'infinnie'
+,
+  name:
     display: 'Atina'
     full: '胡雨佳'
     ascii: 'atina'
@@ -78,24 +93,6 @@ module.exports = [
     birthday: new Date '1995-9-17'
   sns:
     qq: '1349971535'
-,
-  name:
-    display: 'Dacer'
-    ascii: 'dacer'
-  avatar: '792f861ce396b616180675ee90c3755e'
-  blog: 'http://blog.dacer.im'
-  profile:
-    company:
-      name: '番茄土豆'
-      url: 'https://pomotodo.com'
-    location: '江苏苏州'
-  skill:
-    java: 1
-    ruby: 0.2
-    javascript: 0.1
-    linux: 0.1
-  sns:
-    github: 'dacer'
 ,
   name:
     display: '绯村月'
@@ -115,6 +112,26 @@ module.exports = [
     'c++': 1
     php: 1
     c: 1
+  sns:
+    github: 'lyd600lty'
+,
+  name:
+    display: 'Dacer'
+    ascii: 'dacer'
+  avatar: '792f861ce396b616180675ee90c3755e'
+  blog: 'http://blog.dacer.im'
+  profile:
+    company:
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+    location: '江苏苏州'
+  skill:
+    java: 1
+    ruby: 0.2
+    javascript: 0.1
+    linux: 0.1
+  sns:
+    github: 'dacer'
 ,
   name:
     display: 'LSiYue'
