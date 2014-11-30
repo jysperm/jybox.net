@@ -6,7 +6,7 @@ block header
 
 block body
   for member in members
-    .row.row-member.clearfix
+    .row.row-member.clearfix(id=member.name.ascii)
       .col-md-4
         img(src='#{member.avatar_url}?s=256')
       .col-md-8

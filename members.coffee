@@ -70,6 +70,7 @@ module.exports = [
   name:
     display: 'cry'
     nickname: '萌哭'
+    ascii: 'cry'
   blog: 'http://infinnie.github.io/'
   avatar: 'https://avatars3.githubusercontent.com/u/8168391?v=3'
   profile:
@@ -96,6 +97,7 @@ module.exports = [
 ,
   name:
     display: '绯村月'
+    ascii: 'yudong'
   email: 'liyudong1992@gmail.com'
   avatar: 'liyudong1992@gmail.com'
   profile:
@@ -116,22 +118,49 @@ module.exports = [
     github: 'lyd600lty'
 ,
   name:
-    display: 'Dacer'
-    ascii: 'dacer'
-  avatar: '792f861ce396b616180675ee90c3755e'
-  blog: 'http://blog.dacer.im'
+    display: 'Madimo'
+  email: 'madimozhang@gmail.com'
+  avatar: 'madimozhang@gmail.com'
   profile:
     company:
-      name: '番茄土豆'
-      url: 'https://pomotodo.com'
-    location: '江苏苏州'
+      name: '彩程设计'
+      url: 'https://tower.im'
+    location: '天津'
+    birthday: new Date '1994-03-10'
   skill:
-    java: 1
-    ruby: 0.2
-    javascript: 0.1
-    linux: 0.1
+    'obj-c': 1
+    swift: 1
+    python: 0.6
+    linux: 0.5
+    c: 0.5
+    'c++': 0.4
+    javascript: 0.3
   sns:
-    github: 'dacer'
+    github: 'Madimo'
+    qq: '53161779'
+    v2ex: 'Madimo'
+    zhihu: 'MadimoZhang'
+    twitter: 'MadimoZhang'
+,
+  name:
+    display: '陈晓源'
+    ascii: 'oyiadin'
+  avatar: 'https://avatars1.githubusercontent.com/u/4920922?v=3'
+  blog: 'http://oyiadin.com'
+  profile:
+    birthday: new Date '1999-03-20'
+  sns:
+    github: 'oyiadin'
+,
+  name:
+    display: '冯小雪'
+  avatar: 'https://jysperm.me/wp-content/uploads/2014/11/fengxiaoxue.jpg'
+  profile:
+    girl: true
+    location: '甘肃金昌'
+    birthday: new Date '1997-2-11'
+  sns:
+    qq: '2402604022'
 ,
   name:
     display: 'LSiYue'
@@ -152,14 +181,22 @@ module.exports = [
     qq: '29422355'
 ,
   name:
-    display: '冯小雪'
-  avatar: 'https://jysperm.me/wp-content/uploads/2014/11/fengxiaoxue.jpg'
+    display: 'Dacer'
+    ascii: 'dacer'
+  avatar: '792f861ce396b616180675ee90c3755e'
+  blog: 'http://blog.dacer.im'
   profile:
-    girl: true
-    location: '甘肃金昌'
-    birthday: new Date '1997-2-11'
+    company:
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+    location: '江苏苏州'
+  skill:
+    java: 1
+    ruby: 0.2
+    javascript: 0.1
+    linux: 0.1
   sns:
-    qq: '2402604022'
+    github: 'dacer'
 ,
   name:
     display: 'JopOu'
@@ -178,30 +215,4 @@ module.exports = [
     linux: 0.1
   sns:
     github: 'JopOu'
-,
-  name:
-    display: 'Madimo'
-  email: 'MadimoZhang@gmail.com'
-  avatar: 'MadimoZhang@gmail.com'
-  blog: 'http://www.madimo.me'
-  profile:
-    company:
-      name: 'Mycolorway Design'
-      url: 'https://tower.im'
-    location: '天津'
-    birthday: new Date '1994-03-10'
-  skill:
-    objective-c: 1
-    swift: 1
-    python: 0.6
-    linux: 0.5
-    c: 0.5
-    'c++': 0.4
-    javascript: 0.3
-  sns:
-    github: 'Madimo'
-    qq: '53161779'
-    v2ex: 'Madimo'
-    zhihu: 'MadimoZhang'
-    twitter: 'MadimoZhang'
 ]
