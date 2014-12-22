@@ -1,0 +1,11 @@
+server {
+    listen 443 ssl;
+    server_name old-bbs.jybox.net;
+
+    ssl_certificate /root/certs/jybox.net;
+    ssl_certificate_key /root/keys/jybox.net.key;
+
+    root /home/jybox/old-bbs;
+    index index.html;
+    autoindex on;
+}

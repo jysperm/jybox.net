@@ -10,28 +10,42 @@
 
     apt-get install python g++ make nodejs git nginx redis-server ntp supervisor postfix
 
-    npm install coffee-script -g
+    npm install coffee-script harp bower -g
 
     rm /etc/nginx/sites-enabled/default
 
-    useradd -m nodeapp
-    usermod -G nodeapp -a www-data
+    cd /etc/nginx/sites-enabled
+
+    ln -s /home/jybox/jybox.net/configure/nginx/default
+    ln -s /home/jybox/jybox.net/configure/nginx/jybox
+    ln -s /home/jybox/jybox.net/configure/nginx/bbs
+    ln -s /home/jybox/jybox.net/configure/nginx/git
+    ln -s /home/jybox/jybox.net/configure/nginx/newsbee
+
+    cd /etc/supervisor/conf.d
+
+    ln -s /home/jybox/jybox.net/configure/supervisor/jybox.conf
+    ln -s /home/jybox/jybox.net/configure/supervisor/newsbee.conf
+
+    useradd -m jybox
+    useradd -m newsbee
+    usermod -G jybox -a www-data
+    usermod -G newsbee -a www-data
     usermod -G gitlab-www -a www-data
 
-    su nodeapp
+    service nginx restart
+    service supervisor restart
+
+## Jybox
 
     git clone https://github.com/jysperm/jybox.net.git
-    cd jybox.net
 
-    npm install
+## Newsbee
 
-    exit
+    git clone https://github.com/HackPlan/github-commit-ical.git
+    git clone https://github.com/HackPlan/random.git
 
-    ln -s /home/nodeapp/jybox.net/configure/nginx/default /etc/nginx/sites-enabled/default
-    ln -s /home/nodeapp/jybox.net/configure/nginx/jybox.net /etc/nginx/sites-enabled/jybox.net
-    ln -s /home/nodeapp/jybox.net/configure/nginx/old-bbs /etc/nginx/sites-enabled/old-bbs
-    ln -s /home/nodeapp/jybox.net/configure/nginx/git /etc/nginx/sites-enabled/git
-    ln -s /home/nodeapp/jybox.net/configure/supervisor/jybox.net.conf /etc/supervisor/conf.d/jybox.net.conf
+## Gitlab
 
     wget https://downloads-packages.s3.amazonaws.com/ubuntu-14.04/gitlab_7.4.3-omnibus.5.1.0.ci-1_amd64.deb
     dpkg -i gitlab_7.4.3-omnibus.5.1.0.ci-1_amd64.deb
@@ -42,6 +56,3 @@
         gitlab_rails['signup_enabled'] = true
 
     gitlab-ctl reconfigure
-
-    service nginx restart
-    service supervisor restart

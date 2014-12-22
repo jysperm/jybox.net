@@ -1,4 +1,4 @@
 ## jybox.net
 
-    rsync -rpz --progress --exclude-from .gitignore . nodeapp@jybox.rpvhost.net:~/jybox.net
-    ssh nodeapp@jybox.rpvhost.net 'fuser -k -n tcp 15624'
+    rsync -rpz --exclude .git --exclude-from .gitignore . jybox@jybox.net:~/jybox.net
+    ssh jybox@jybox.net 'fuser -k -n tcp 15624'

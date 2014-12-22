@@ -9,6 +9,7 @@ app = express()
 app.set 'views', path.join(__dirname, 'view')
 app.set 'view engine', 'jade'
 
+app.use '/bower_components', express.static './bower_components'
 app.use harp.mount './static'
 
 md5 = (message) ->

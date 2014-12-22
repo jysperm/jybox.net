@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    link(rel='stylesheet', href='https://dn-jybox-net.qbox.me/static:bootstrap.min.css')
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/style/layout.css')
     block header
   body
@@ -52,8 +52,11 @@ html
               :markdown
                 ## 其他站点
 
+                * [精子的博客](https://jysperm.me)
                 * [RP 主机](http://rpvhost.net)
                 * [GreenShadow](http://greenshadow.net)
+                * [CommitCal](https://commitcal.newsbee.io)
+                * [Random](http://random.newsbee.io)
 
             .row
               h2 jybox.net
@@ -69,7 +72,7 @@ html
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-49193300-6', 'auto');
       ga('send', 'pageview');
-    script(src='https://dn-jybox-net.qbox.me/static:jquery.min.js')
-    script(src='https://dn-jybox-net.qbox.me/static:bootstrap.min.js')
+    script(src='/bower_components/jquery/dist/jquery.min.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
     script(src='/script/layout.js')
     block footer

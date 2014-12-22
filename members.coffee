@@ -19,6 +19,9 @@ module.exports = [
   ,
     name: 'CommitCal'
     url: 'https://commitcal.newsbee.io'
+  ,
+    name: 'Random'
+    url: 'http://random.newsbee.io'
   ]
   profile:
     company:
