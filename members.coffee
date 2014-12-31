@@ -215,4 +215,22 @@ module.exports = [
     linux: 0.1
   sns:
     github: 'JopOu'
+,
+  name:
+    display: '张子怿'
+    ascii: 'Mason Zhang'
+  email: 'zzy228961125@gmail.com'
+  avatar: 'zzy228961125@gmail.com'
+  blog: 'http://brightsaul.me'
+  profile:
+    location: '江苏苏州'
+    birthday: new Date '1996-11-25'
+  skill:
+    'C'  : 1
+    'C++': 1
+    'JavaScript': 0.8
+    'Python': 0.1
+  sns:
+    'Twitter': 'mason961125'
+    'Github': 'mason96112569'
 ]
