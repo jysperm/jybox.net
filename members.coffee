@@ -236,4 +236,41 @@ module.exports = [
     linux: 0.1
   sns:
     github: 'JopOu'
+,
+  name:
+    display: 'Parthas'
+    nickname: '熊猫'
+    full: 'Parthas Menethil'
+    ascii: 'Parthas'
+  email: 'xywhpanda@gmail.com'
+  avatar: 'xywhpanda@gmail.com'
+  blog: 'https://blog.xparthas.com'
+  websites: [
+    name: 'ParWeb'
+    url: 'http://xparthas.com'
+  ,
+    name: '@Taggie'
+    url: 'http://ataggie.com'
+  ]
+  profile:
+    company:
+      name: 'Loris Technologies Inc.'
+      url: 'http://www.loristech.com/'
+    location: 'Toronto, Ontario'
+    birthday: new Date '1993-09-20'
+  skill:
+    'C#': 1
+    'visual basic': 1
+    php: 0.8
+    java: 0.7
+    'c++': 0.6
+    linux: 0.5
+    golang: 0.2
+    asm: 0.1
+  sns:
+    github: 'Parthas-Menethil'
+    qq: '497242884'
+    v2ex: 'parthas'
+    zhihu: 'parthas'
+    twitter: 'xparthas'
 ]
