@@ -108,7 +108,7 @@ module.exports = [
   ]
   profile:
     company:
-      name: 'Loris Technologies'
+      name: '萝莉科技'
       url: 'http://www.loristech.com'
     location: 'Toronto'
     birthday: new Date '1993-09-20'
@@ -179,6 +179,69 @@ module.exports = [
     twitter: 'MadimoZhang'
 ,
   name:
+    display: 'starriv'
+    ascii: 'starriv'
+  avatar: 'https://avatars1.githubusercontent.com/u/7098001'
+  blog: 'http://starriv.com'
+  profile:
+    location: '上海'
+  sns:
+    github: 'starriv'
+,
+  name:
+    display: 'Oran'
+    ascii: 'oran'
+  avatar: 'https://avatars2.githubusercontent.com/u/1382065'
+  blog: 'http://oran.pw'
+  profile:
+    location: '湖北武汉'
+    birthday: new Date '1997'
+  sns:
+    github: 'oranzhang'
+,
+  name:
+    display: 'JmPotato'
+    full: '耿海直'
+    ascii: 'jmpotato'
+  avatar: 'https://avatars1.githubusercontent.com/u/1446531'
+  blog: 'http://ipotato.me'
+  websites: [
+    name: 'College'
+    url: 'http://kaolizhi.com'
+  ]
+  profile:
+    birthday: new Date '1999-7-1'
+  sns:
+    github: 'JmPotato'
+    twitter: 'Jm_Potato'
+,
+  name:
+    display: '孙亮'
+    full: '孙亮'
+    ascii: 'untsop'
+  avatar: 'https://avatars2.githubusercontent.com/u/978810'
+  websites: [
+    name: '一览'
+    url: 'http://one.hackplan.com'
+  ]
+  profile:
+    company:
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+    location: '江苏苏州'
+  sns:
+    github: 'untsop'
+    twitter: 'untsop'
+    v2ex: 'unstop'
+,
+  name:
+    display: 'Nocti'
+    ascii: 'nocti'
+  avatar: 'https://avatars1.githubusercontent.com/u/6418374'
+  sns:
+    github: 'noctiomg'
+,
+  name:
     display: '绯村月'
     ascii: 'yudong'
   email: 'liyudong1992@gmail.com'
@@ -198,14 +261,56 @@ module.exports = [
     github: 'lyd600lty'
 ,
   name:
+    display: '谦谦'
+    ascii: 'xqq'
+  avatar: 'https://avatars1.githubusercontent.com/u/4645762'
+  blog: 'http://xqq.0ginr.com'
+  profile:
+    location: '江苏'
+  sns:
+    github: 'xqq'
+    twitter: 'jyzhengqian'
+,
+  name:
+    display: 'Librazy'
+    ascii: 'librazy'
+  avatar: 'https://avatars0.githubusercontent.com/u/2211542'
+  blog: 'http://im.librazy.org'
+  profile:
+    location: '福建'
+  sns:
+    github: 'Librazy'
+,
+  name:
+    display: '刘雨培'
+    full: '刘雨培'
+    ascii: 'lyp'
+  avatar: 'https://avatars1.githubusercontent.com/u/5786586'
+  profile:
+    location: '湖北武汉'
+  sns:
+    github: 'LYP951018'
+    twitter: 'liuyupei951018'
+,
+  name:
     display: '陈晓源'
     ascii: 'oyiadin'
-  avatar: 'https://avatars1.githubusercontent.com/u/4920922?v=3'
+  avatar: 'https://avatars1.githubusercontent.com/u/4920922'
   blog: 'http://oyiadin.com'
   profile:
     birthday: new Date '1999-03-20'
   sns:
     github: 'oyiadin'
+,
+  name:
+    display: 'Abreto'
+    ascii: 'abreto'
+  avatar: 'https://avatars3.githubusercontent.com/u/1196941'
+  blog: 'http://blog.abreto.net'
+  profile:
+    location: '四川成都'
+  sns:
+    github: 'Abreto'
 ,
   name:
     display: 'LSiYue'

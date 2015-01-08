@@ -56,3 +56,8 @@
         gitlab_rails['signup_enabled'] = true
 
     gitlab-ctl reconfigure
+
+## Deploy to remote
+
+    rsync -rpz --exclude .git --exclude-from .gitignore . jybox@jybox.net:~/jybox.net
+    ssh jybox@jybox.net 'fuser -k -n tcp 15624'
