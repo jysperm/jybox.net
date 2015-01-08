@@ -30,13 +30,10 @@ module.exports = [
     location: '江苏苏州'
     birthday: new Date '1995-11-25'
   skill:
-    coffeescript: 1
-    javascript: 0.8
-    'node.js': 1
-    golang: 0.2
-    linux: 0.6
-    'c++': 0.5
     php: 1
+    javascript: 0.9
+    golang: 0.2
+    'c++': 0.5
     c: 0.5
   sns:
     github: 'jysperm'
@@ -46,6 +43,7 @@ module.exports = [
     segmentfault: 'jysperm'
     twitter: 'jysperm'
     bitcoin: '13v2BTCMZMHg5v87susgg86HFZqXERuwUd'
+    keybase: 'jysperm'
 ,
   name:
     display: 'faceair'
@@ -60,11 +58,8 @@ module.exports = [
     location: '湖北武汉'
     birthday: new Date '1993-8-28'
   skill:
-    'node.js': 1
     php: 1
-    coffeescript: 1
     javascript: 0.6
-    linux: 0.6
   sns:
     github: 'faceair'
     qq: '1067099789'
@@ -132,6 +127,16 @@ module.exports = [
     twitter: 'xparthas'
 ,
   name:
+    display: '冯小雪'
+  avatar: 'https://jysperm.me/wp-content/uploads/2014/11/fengxiaoxue.jpg'
+  profile:
+    girl: true
+    location: '甘肃金昌'
+    birthday: new Date '1997-2-11'
+  sns:
+    qq: '2402604022'
+,
+  name:
     display: '张子怿'
     ascii: 'mason'
   email: 'zzy228961125@gmail.com'
@@ -150,28 +155,6 @@ module.exports = [
     'github': 'mason96112569'
 ,
   name:
-    display: '绯村月'
-    ascii: 'yudong'
-  email: 'liyudong1992@gmail.com'
-  avatar: 'liyudong1992@gmail.com'
-  profile:
-    company:
-      name: '百度'
-      url: 'http://www.baidu.com'
-    location: '北京'
-    birthday: new Date '1990-12-25'
-  skill:
-    coffeescript: 1
-    javascript: 1
-    'node.js': 1
-    linux: 1
-    'c++': 1
-    php: 1
-    c: 1
-  sns:
-    github: 'lyd600lty'
-,
-  name:
     display: 'Madimo'
   email: 'madimozhang@gmail.com'
   avatar: 'madimozhang@gmail.com'
@@ -185,7 +168,6 @@ module.exports = [
     'obj-c': 1
     swift: 1
     python: 0.6
-    linux: 0.5
     c: 0.5
     'c++': 0.4
     javascript: 0.3
@@ -195,6 +177,25 @@ module.exports = [
     v2ex: 'Madimo'
     zhihu: 'MadimoZhang'
     twitter: 'MadimoZhang'
+,
+  name:
+    display: '绯村月'
+    ascii: 'yudong'
+  email: 'liyudong1992@gmail.com'
+  avatar: 'liyudong1992@gmail.com'
+  profile:
+    company:
+      name: '百度'
+      url: 'http://www.baidu.com'
+    location: '北京'
+    birthday: new Date '1990-12-25'
+  skill:
+    javascript: 1
+    'c++': 1
+    php: 1
+    c: 1
+  sns:
+    github: 'lyd600lty'
 ,
   name:
     display: '陈晓源'
@@ -207,20 +208,10 @@ module.exports = [
     github: 'oyiadin'
 ,
   name:
-    display: '冯小雪'
-  avatar: 'https://jysperm.me/wp-content/uploads/2014/11/fengxiaoxue.jpg'
-  profile:
-    girl: true
-    location: '甘肃金昌'
-    birthday: new Date '1997-2-11'
-  sns:
-    qq: '2402604022'
-,
-  name:
     display: 'LSiYue'
     ascii: 'lsiyue'
   email: 'liamhuang0205@gmail.com'
-  avatar: 'http://collect.liam0205.me/images/avatar/ALICE_539.png'
+  avatar: 'https://avatars1.githubusercontent.com/u/3899492'
   blog: 'http://liam0205.me'
   profile:
     birthday: new Date '1992'
@@ -248,7 +239,6 @@ module.exports = [
     java: 1
     ruby: 0.2
     javascript: 0.1
-    linux: 0.1
   sns:
     github: 'dacer'
 ,
@@ -261,12 +251,10 @@ module.exports = [
   profile:
     company:
       name: '华工信息'
-      url: 'http://www.hgsoft.com.cn'
   skill:
     java: 1
     'c#': 0.8
     javascript: 0.2
-    linux: 0.1
   sns:
     github: 'JopOu'
 ]

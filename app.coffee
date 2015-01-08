@@ -58,6 +58,7 @@ app.use (req, res, next) ->
   _.extend res.locals,
     members: members
     package: require './package'
+
   next()
 
 app.get '/', (req, res) ->

@@ -1,7 +1,7 @@
 extends layout
 
 block header
-  title 脸熟成员 | 精子粉丝团
+  title 粉丝成员 | 精子粉丝团
   link(rel='stylesheet', href='/style/members.css')
 
 block body
@@ -57,37 +57,39 @@ block body
                 each value, key in member.sns
                   if key == 'github'
                     li
-                      | Github
-                      span.glyphicon.glyphicon-chevron-right
                       a(href='https://github.com/#{value}')= value
+                      | &nbsp; @ Github
                   else if key == 'qq'
                     li
-                      | QQ
-                      span.glyphicon.glyphicon-chevron-right
+                      | QQ &nbsp;
                       span= value
                   else if key == 'v2ex'
                     li
-                      | V2EX
-                      span.glyphicon.glyphicon-chevron-right
                       a(href='https://www.v2ex.com/member/#{value}')= value
+                      | &nbsp; @ V2EX
                   else if key == 'zhihu'
                     li
-                      | Zhihu
-                      span.glyphicon.glyphicon-chevron-right
                       a(href='http://www.zhihu.com/people/#{value}')= value
+                      | &nbsp; 在知乎
+                  else if key == 'douban'
+                    li
+                      a(href='http://www.douban.com/people/#{value}')= value
+                      | &nbsp; 在豆瓣
                   else if key == 'segmentfault'
                     li
-                      | SegmentFault
-                      span.glyphicon.glyphicon-chevron-right
                       a(href='http://segmentfault.com/u/#{value}')= value
+                      | &nbsp; @ SegmentFault
                   else if key == 'twitter'
                     li
-                      | Twitter
-                      span.glyphicon.glyphicon-chevron-right
                       a(href='https://twitter.com/#{value}')= value
+                      | &nbsp; @ Twitter
+                  else if key == 'keybase'
+                    li
+                      a(href='https://keybase.io/#{value}')= value
+                      | &nbsp; @ Keybase
                   else if key == 'bitcoin'
                     li
-                      a(href='https://blockchain.info/address/#{value}') Bitcoin Address
+                      a(href='https://blockchain.info/address/#{value}', title=value) Bitcoin Address
 
           .col-md-4
             ul
@@ -108,3 +110,9 @@ block body
                       .progress
                         .progress-bar.progress-bar-success(aria-valuenow=skill.per, aria-valuemin='0', aria-valuemax='100' style='width: #{skill.per}%;')
                           span= skill.value
+
+prepend sidebar
+  .row(style='font-size: 95%;')
+    :markdown
+      ## 如何提交信息？
+      请 fork 本站位于 [Github](https://github.com/jysperm/jybox.net) 的源代码，将自己的信息写入 `members.coffee`, 然后发起 Pull Request 即可。
