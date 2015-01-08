@@ -99,6 +99,24 @@ module.exports = [
     qq: '1349971535'
 ,
   name:
+    display: '张子怿'
+    ascii: 'mason'
+  email: 'zzy228961125@gmail.com'
+  avatar: 'zzy228961125@gmail.com'
+  blog: 'http://brightsaul.me'
+  profile:
+    location: '江苏苏州'
+    birthday: new Date '1996-11-25'
+  skill:
+    'c': 1
+    'c++': 1
+    'javascript': 0.8
+    'python': 0.1
+  sns:
+    'twitter': 'mason961125'
+    'github': 'mason96112569'
+,
+  name:
     display: '绯村月'
     ascii: 'yudong'
   email: 'liyudong1992@gmail.com'
