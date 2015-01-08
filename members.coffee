@@ -99,6 +99,39 @@ module.exports = [
     qq: '1349971535'
 ,
   name:
+    display: 'Parthas'
+    ascii: 'parthas'
+  email: 'xywhpanda@gmail.com'
+  avatar: 'xywhpanda@gmail.com'
+  blog: 'http://blog.xparthas.com'
+  websites: [
+    name: 'ParWeb'
+    url: 'http://xparthas.com'
+  ,
+    name: '@Taggie'
+    url: 'http://ataggie.com'
+  ]
+  profile:
+    company:
+      name: 'Loris Technologies'
+      url: 'http://www.loristech.com'
+    location: 'Toronto'
+    birthday: new Date '1993-09-20'
+  skill:
+    'c#': 1
+    'visual basic': 1
+    php: 0.8
+    java: 0.7
+    'c++': 0.6
+    golang: 0.2
+  sns:
+    github: 'Parthas-Menethil'
+    qq: '497242884'
+    v2ex: 'parthas'
+    zhihu: 'parthas'
+    twitter: 'xparthas'
+,
+  name:
     display: '张子怿'
     ascii: 'mason'
   email: 'zzy228961125@gmail.com'
