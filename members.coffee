@@ -330,6 +330,30 @@ module.exports = [
     qq: '29422355'
 ,
   name:
+    display: '郭俊燊'
+    nickname: 'Kuro'
+    full: '郭俊燊'
+    ascii: 'kuro'
+  email: '413298956@qq.com'
+  avatar: 'https://avatars2.githubusercontent.com/u/8684548'
+  websites: [
+    name: 'iro'
+    url: 'http://iro.im'
+  ]
+  profile:
+    location: '广西桂林'
+    birthday: new Date '1993-06-11'
+  skill:
+    'javascript': 1
+    '.net': 0.7
+    'c++': 0.5
+    c: 0.5
+  sns:
+    github: 'KuroGuo'
+    qq: '413298956'
+    v2ex: 'Kuro'
+,
+  name:
     display: 'Dacer'
     ascii: 'dacer'
   avatar: '792f861ce396b616180675ee90c3755e'
