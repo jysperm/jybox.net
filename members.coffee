@@ -113,8 +113,7 @@ module.exports = [
     location: 'Toronto'
     birthday: new Date '1993-09-20'
   skill:
-    'c#': 1
-    'visual basic': 1
+    '.net': 1
     php: 0.8
     java: 0.7
     'c++': 0.6
