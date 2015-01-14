@@ -424,4 +424,22 @@ module.exports = [
     javascript: 0.2
   sns:
     github: 'JopOu'
+,
+  name:
+    display: 'iYUYUE'
+    ascii: 'iYUYUE'
+  email: 'admin@iyuyue.com'
+  avatar: 'admin@iyuyue.com'
+  blog: 'http://blog.iyuyue.com/'
+  websites: [
+    name: 'IP.tool'
+    url: 'https://ip.tl/'
+  ,
+  	name: 'iYUYUE.net'
+    url: 'https://www.iyuyue.net/' 
+  ]
+  sns:
+    github: 'iYUYUE'
+    v2ex: 'iyuyue'
+    twitter: 'iyuyue66'
 ]
