@@ -59,26 +59,10 @@ block body
                     li
                       a(href='https://github.com/#{value}')= value
                       | &nbsp; @ Github
-                  else if key == 'qq'
-                    li
-                      | QQ &nbsp;
-                      span= value
                   else if key == 'v2ex'
                     li
                       a(href='https://www.v2ex.com/member/#{value}')= value
                       | &nbsp; @ V2EX
-                  else if key == 'zhihu'
-                    li
-                      a(href='http://www.zhihu.com/people/#{value}')= value
-                      | &nbsp; 在知乎
-                  else if key == 'douban'
-                    li
-                      a(href='http://www.douban.com/people/#{value}')= value
-                      | &nbsp; 在豆瓣
-                  else if key == 'segmentfault'
-                    li
-                      a(href='http://segmentfault.com/u/#{value}')= value
-                      | &nbsp; @ SegmentFault
                   else if key == 'twitter'
                     li
                       a(href='https://twitter.com/#{value}')= value
@@ -87,6 +71,26 @@ block body
                     li
                       a(href='https://keybase.io/#{value}')= value
                       | &nbsp; @ Keybase
+                  else if key == 'segmentfault'
+                    li
+                      a(href='http://segmentfault.com/u/#{value}')= value
+                      | &nbsp; @ SegmentFault
+                  else if key == 'qq'
+                    li
+                      | QQ &nbsp;
+                      span= value
+                  else if key == 'zhihu'
+                    li
+                      a(href='http://www.zhihu.com/people/#{value}')= value
+                      | &nbsp; 在知乎
+                  else if key == 'douban'
+                    li
+                      a(href='http://www.douban.com/people/#{value}')= value
+                      | &nbsp; 在豆瓣
+                  else if key == 'guokr'
+                    li
+                      a(href='http://www.guokr.com/i/#{value.id}/')= value.name
+                      | &nbsp; 在果壳
                   else if key == 'bitcoin'
                     li
                       a(href='https://blockchain.info/address/#{value}', title=value) Bitcoin Address
