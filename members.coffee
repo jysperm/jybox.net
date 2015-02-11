@@ -163,7 +163,7 @@ module.exports = [
     display: 'Atina'
     full: '胡雨佳'
     ascii: 'atina'
-  avatar: 'https://jysperm.me/wp-content/uploads/2014/11/@7_WG@QA1Z4IV2D@2_LQ.jpg'
+  avatar: 'https://cloud.githubusercontent.com/assets/1191561/5892587/cc15d5cc-a4ff-11e4-96c0-48c3ee2f7686.jpg'
   profile:
     girl: true
     location: '辽宁锦州'
@@ -173,7 +173,7 @@ module.exports = [
 ,
   name:
     display: '冯小雪'
-  avatar: 'https://jysperm.me/wp-content/uploads/2014/11/fengxiaoxue.jpg'
+  avatar: 'https://cloud.githubusercontent.com/assets/1191561/5892592/1327a602-a500-11e4-8bbe-9a9d9e81dbcd.jpg'
   profile:
     girl: true
     location: '甘肃金昌'
