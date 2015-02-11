@@ -363,6 +363,24 @@ module.exports = [
     github: 'dacer'
 ,
   name:
+    display: 'iYUYUE'
+    ascii: 'iyuyue'
+  email: 'admin@iyuyue.com'
+  avatar: 'admin@iyuyue.com'
+  blog: 'http://blog.iyuyue.com/'
+  websites: [
+    name: 'IP.tool'
+    url: 'https://ip.tl/'
+  ,
+    name: 'iYUYUE.net'
+    url: 'https://www.iyuyue.net/'
+  ]
+  sns:
+    github: 'iYUYUE'
+    v2ex: 'iyuyue'
+    twitter: 'iyuyue66'
+,
+  name:
     display: 'starriv'
     ascii: 'starriv'
   avatar: 'https://avatars1.githubusercontent.com/u/7098001'
