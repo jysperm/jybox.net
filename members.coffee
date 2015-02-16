@@ -476,4 +476,38 @@ module.exports = [
     javascript: 0.2
   sns:
     github: 'JopOu'
+
+name:
+  display: '喵呜'
+  nickname: 'zt'
+  full: '张展通'
+  ascii: 'zhantongz'
+email: 'zhang@zhantong.org'
+avatar: 'zhang@zhantong.org'
+blog: 'https://ztong.me/blog'
+websites: [
+  name: 'Zhan Tong\'s Homepage'
+  url: 'https://ztong.me'
+,
+  name: 'Tong @ uAlberta'
+  url: 'https://ualberta.ca/~ztzhang'
+]
+profile:
+  school:
+    name: '阿尔伯塔大学'
+    url: 'https://ualberta.ca/'
+  location: '加拿大埃德蒙顿'
+  birthday: new Date '1999-04-05'
+skill:
+  latex: 1
+  java: 0.6
+  javascript: 0.5
+  'c++': 0.3
+sns:
+  github: 'zhantongz'
+  qq: '1211347978'
+  zhihu: 'zhang-zhan-tong'
+  twitter: 'zhantongz'
+  keybase: 'zhantongz'
+
 ]
