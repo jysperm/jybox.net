@@ -442,7 +442,6 @@ module.exports = [
     javascript: 0.2
   sns:
     github: 'JopOu'
-]
 
 name:
   display: '喵呜'
@@ -476,3 +475,5 @@ sns:
   zhihu: 'zhang-zhan-tong'
   twitter: 'zhantongz'
   keybase: 'zhantongz'
+
+]
