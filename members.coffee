@@ -330,6 +330,13 @@ module.exports = [
     keybase: 'zhantongz'
 ,
   name:
+    display: '朱小朱'
+  avatar: 'https://cloud.githubusercontent.com/assets/1191561/6209405/969fc90e-b600-11e4-9c45-5afcc33b1d26.jpg'
+  profile:
+    school: '武汉大学'
+    girl: true
+,
+  name:
     display: 'Oran'
     ascii: 'oran'
   avatar: 'https://avatars2.githubusercontent.com/u/1382065'
