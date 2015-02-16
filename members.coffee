@@ -303,6 +303,33 @@ module.exports = [
     github: 'AngryPowman'
 ,
   name:
+    display: '喵呜'
+    full: '张展通'
+    ascii: 'zhantongz'
+  email: 'zhang@zhantong.org'
+  avatar: 'zhang@zhantong.org'
+  blog: 'https://ztong.me/blog'
+  websites: [
+    name: 'Tong @ uAlberta'
+    url: 'https://ualberta.ca/~ztzhang'
+  ]
+  profile:
+    school: '阿尔伯塔'
+    location: '埃德蒙顿'
+    birthday: new Date '1999-04-05'
+  skill:
+    latex: 1
+    java: 0.6
+    javascript: 0.5
+    'c++': 0.3
+  sns:
+    github: 'zhantongz'
+    qq: '1211347978'
+    zhihu: 'zhang-zhan-tong'
+    twitter: 'zhantongz'
+    keybase: 'zhantongz'
+,
+  name:
     display: 'Oran'
     ascii: 'oran'
   avatar: 'https://avatars2.githubusercontent.com/u/1382065'
