@@ -8,7 +8,7 @@
     vi /etc/hostname
     vi /etc/hosts
 
-    apt-get install python g++ make nodejs git nginx redis-server ntp supervisor postfix
+    apt-get install python g++ make nodejs git nginx redis-server ntp supervisor postfix mariadb-server postgresql postgresql-contrib
 
     npm install coffee-script harp bower -g
 
@@ -21,17 +21,13 @@
     ln -s /home/jybox/jybox.net/configure/nginx/bbs
     ln -s /home/jybox/jybox.net/configure/nginx/git
     ln -s /home/jybox/jybox.net/configure/nginx/newsbee
+    ln -s /home/jybox/jybox.net/configure/nginx/sentry
 
     cd /etc/supervisor/conf.d
 
     ln -s /home/jybox/jybox.net/configure/supervisor/jybox.conf
     ln -s /home/jybox/jybox.net/configure/supervisor/newsbee.conf
-
-    useradd -m jybox
-    useradd -m newsbee
-    usermod -G jybox -a www-data
-    usermod -G newsbee -a www-data
-    usermod -G gitlab-www -a www-data
+    ln -s /home/jybox/jybox.net/configure/supervisor/sentry.conf
 
     service nginx restart
     service supervisor restart
@@ -40,15 +36,37 @@
 
     git clone https://github.com/jysperm/jybox.net.git
 
+    useradd -m jybox
+    usermod -G jybox -a www-data
+
 ## Newsbee
 
     git clone https://github.com/HackPlan/github-commit-ical.git
     git clone https://github.com/HackPlan/random.git
 
+    useradd -m newsbee
+    usermod -G newsbee -a www-data
+
+## Sentry
+
+    apt-get install python-pip python-dev libxslt1-dev libxml2-dev libz-dev libffi-dev libssl-dev libpq-dev
+    pip install -U virtualenv
+
+    useradd -m sentry
+    usermod -G sentry -a www-data
+
+    virtualenv sentry
+    source sentry/bin/activate
+
+    pip install -U sentry
+    pip install -U sentry[postgres]
+
 ## Gitlab
 
     wget https://downloads-packages.s3.amazonaws.com/ubuntu-14.04/gitlab_7.4.3-omnibus.5.1.0.ci-1_amd64.deb
     dpkg -i gitlab_7.4.3-omnibus.5.1.0.ci-1_amd64.deb
+
+    usermod -G gitlab-www -a www-data
 
     vi /etc/gitlab/gitlab.rb
 

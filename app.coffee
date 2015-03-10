@@ -73,7 +73,4 @@ app.get '/history', (req, res) ->
 app.get '/qun', (req, res) ->
   res.render 'qun'
 
-app.get '/board', (req, res) ->
-  res.render 'board'
-
 app.listen 15624
