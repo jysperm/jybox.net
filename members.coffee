@@ -485,7 +485,7 @@ module.exports = [
   avatar: 'luotao0124@gmail.com'
   websites: [
     name: 'wall2flower\'s personal page'
-    url: 'https://wall2flower.me'
+    url: 'http://wall2flower.me'
   ]
   profile: 
     company:
