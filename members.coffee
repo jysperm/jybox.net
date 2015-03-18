@@ -476,4 +476,29 @@ module.exports = [
     javascript: 0.2
   sns:
     github: 'JopOu'
+,
+  name:
+    display: 'wall2flower'
+    nickname: 'wall2flower'
+    full: '罗韬'
+  email: 'luotao0124@gmail.com'
+  avatar: 'luotao0124@gmail.com'
+  websites: [
+    name: 'wall2flower\'s personal page'
+    url: 'https://wall2flower.me'
+  ]
+  profile: 
+    company:
+      name: 'OriginateChina'
+    location: '浙江杭州'
+    birthday: new Date '1995-01-24'
+  skill:
+    ruby: 1
+    javascript: 0.5
+  sns:
+    github: 'wall2flower'
+    qq: '179575559'
+    v2ex: 'wall2flower'
+    segmentfault: 'wall2flower'
+    twitter: 'wall2flower'
 ]
