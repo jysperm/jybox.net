@@ -260,12 +260,16 @@ module.exports = [
     ascii: 'kuro'
   email: '413298956@qq.com'
   avatar: 'https://avatars2.githubusercontent.com/u/8684548'
+  blog: 'http://kuro.im/'
   websites: [
     name: 'iro'
-    url: 'http://iro.im'
+    url: 'http://iro.im/'
+  ,
+    name: 'iro-x',
+    url: 'http://x.iro.im/'
   ]
   profile:
-    location: '广西桂林'
+    location: '广州'
     birthday: new Date '1993-06-11'
   skill:
     'javascript': 1
