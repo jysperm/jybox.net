@@ -476,4 +476,20 @@ module.exports = [
     javascript: 0.2
   sns:
     github: 'JopOu'
+,
+  name:
+    display: '春风'
+    ascii: 'cloudtrends'
+  avatar: 'https://avatars0.githubusercontent.com/u/2282880'
+  blog: 'http://blog.csdn.net/accesine960'
+  skill:
+    python: 1
+    java: 1
+    scala: 0.2
+  sns:
+    github: 'cloudtrends'
+  websites: [
+    name: 'CloudStack BBS'
+    url: 'http://cloud.domolo.com'
+  ]
 ]
