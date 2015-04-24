@@ -19,7 +19,6 @@
     ln -s /home/jybox/jybox.net/configure/nginx/default
     ln -s /home/jybox/jybox.net/configure/nginx/jybox
     ln -s /home/jybox/jybox.net/configure/nginx/bbs
-    ln -s /home/jybox/jybox.net/configure/nginx/git
     ln -s /home/jybox/jybox.net/configure/nginx/newsbee
     ln -s /home/jybox/jybox.net/configure/nginx/sentry
 
@@ -60,20 +59,6 @@
 
     pip install -U sentry
     pip install -U sentry[postgres]
-
-## Gitlab
-
-    wget https://downloads-packages.s3.amazonaws.com/ubuntu-14.04/gitlab_7.4.3-omnibus.5.1.0.ci-1_amd64.deb
-    dpkg -i gitlab_7.4.3-omnibus.5.1.0.ci-1_amd64.deb
-
-    usermod -G gitlab-www -a www-data
-
-    vi /etc/gitlab/gitlab.rb
-
-        external_url 'https://git.jybox.net'
-        gitlab_rails['signup_enabled'] = true
-
-    gitlab-ctl reconfigure
 
 ## Deploy to remote
 
