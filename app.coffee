@@ -1,21 +1,19 @@
 express = require 'express'
 crypto = require 'crypto'
 path = require 'path'
-harp = require 'harp'
-_ = require 'underscore'
+_ = require 'lodash'
 
 app = express()
 
 app.set 'views', path.join(__dirname, 'view')
 app.set 'view engine', 'jade'
 
-app.use '/bower_components', express.static './bower_components'
-app.use harp.mount './static'
+app.use '/public', express.static './public'
 
 md5 = (message) ->
   return crypto.createHash('md5').update(message).digest('hex')
 
-members = _.map require('./members'), (member) ->
+members = require('./members').map (member) ->
   return _.extend member,
     avatar_url: do ->
       if member.avatar?.match /^http/
@@ -27,7 +25,7 @@ members = _.map require('./members'), (member) ->
       else if member.email
         return "//cdn.v2ex.com/gravatar/#{md5(member.email)}"
       else
-        return "//cdn.v2ex.com/gravatar"
+        return '//cdn.v2ex.com/gravatar'
 
     age: do ->
       if member.profile?.birthday

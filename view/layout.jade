@@ -2,8 +2,8 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/style/layout.css')
+    link(rel='stylesheet', href='/public/vendor/vendor.css')
+    link(rel='stylesheet', href='/public/styles.css')
     block header
   body
     header.navbar-fixed-top
@@ -71,8 +71,9 @@ html
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-49193300-6', 'auto');
       ga('send', 'pageview');
-    script(src='/bower_components/jquery/dist/jquery.min.js')
-    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
-    script(src='/script/layout.js')
+    script.
+      window.duoshuoQuery = {short_name: 'jybox'};
+    script(src='/public/vendor/vendor.js')
+    script(src='/public/scripts.js')
     script(src='https://static.duoshuo.com/embed.js')
     block footer

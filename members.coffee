@@ -17,8 +17,8 @@ module.exports = [
     name: '精子粉丝团'
     url: 'https://jybox.net'
   ,
-    name: 'CommitCal'
-    url: 'https://commitcal.newsbee.io'
+    name: 'Atom 中文社区'
+    url: 'http://atom-china.org'
   ,
     name: 'Random'
     url: 'http://random.newsbee.io'
@@ -50,7 +50,7 @@ module.exports = [
     nickname: '萌哭'
     ascii: 'cry'
   blog: 'http://infinnie.github.io/'
-  avatar: 'https://avatars3.githubusercontent.com/u/8168391?v=3'
+  avatar: 'https://avatars3.githubusercontent.com/u/8168391'
   profile:
     girl: true
     school: '武汉大学'
