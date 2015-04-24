@@ -57,7 +57,7 @@ members = _.map require('./members'), (member) ->
 app.use (req, res, next) ->
   _.extend res.locals,
     members: members
-    package: require './package'
+    pkg: require './package'
 
   next()
 
