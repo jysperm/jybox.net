@@ -18,7 +18,6 @@
 
     ln -s /home/jybox/jybox.net/configure/nginx/default
     ln -s /home/jybox/jybox.net/configure/nginx/jybox
-    ln -s /home/jybox/jybox.net/configure/nginx/bbs
     ln -s /home/jybox/jybox.net/configure/nginx/newsbee
     ln -s /home/jybox/jybox.net/configure/nginx/sentry
 
@@ -34,17 +33,11 @@
 ## Jybox
 
     git clone https://github.com/jysperm/jybox.net.git
-
-    useradd -m jybox
-    usermod -G jybox -a www-data
-
-## Newsbee
-
     git clone https://github.com/HackPlan/github-commit-ical.git
     git clone https://github.com/HackPlan/random.git
 
-    useradd -m newsbee
-    usermod -G newsbee -a www-data
+    useradd -m jybox
+    usermod -G jybox -a www-data
 
 ## Sentry
 
@@ -59,8 +52,3 @@
 
     pip install -U sentry
     pip install -U sentry[postgres]
-
-## Deploy to remote
-
-    rsync -rpz --exclude .git --exclude-from .gitignore . jybox@jybox.net:~/jybox.net
-    ssh jybox@jybox.net 'fuser -k -n tcp 15624'
