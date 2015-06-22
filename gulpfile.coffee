@@ -55,6 +55,10 @@ gulp.task 'build:scripts', ->
 
 gulp.task 'build', ['build:vendor', 'build:styles', 'build:scripts']
 
+gulp.task 'watch', ->
+  gulp.watch 'static/**/*.less', ['build:styles']
+  gulp.watch 'static/**/*.coffee', ['build:scripts']
+
 gulp.task 'deploy:upload', ['build'], ->
   gulp.src ['**', '!node_modules/**', '!bower_components/**']
   .pipe rsync

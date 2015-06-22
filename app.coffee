@@ -62,6 +62,9 @@ app.use (req, res, next) ->
 app.get '/', (req, res) ->
   res.render 'index'
 
+app.get '/websites', (req, res) ->
+  res.render 'websites'
+
 app.get '/members', (req, res) ->
   res.render 'members'
 
