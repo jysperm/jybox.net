@@ -518,4 +518,22 @@ module.exports = [
     v2ex: 'wall2flower'
     segmentfault: 'wall2flower'
     twitter: 'wall2flower'
+,
+  name:
+    display: 'Sune Bear'
+    ascii: 'sunebear'
+  email: 'hi@sunebear.com'
+  avatar: 'hi@sunebear.com'
+  blog: 'http://sunebear.com'
+  profile:
+    company:
+      name: 'Teambition'
+    location: '上海'
+    birthday: new Date '1994-11-10'
+  skill:
+    JavaScript: 1
+  sns:
+    github: 'SuneBear'
+    zhihu: 'SuneBear'
+    twitter: 'hisunebear'
 ]
