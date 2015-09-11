@@ -536,4 +536,22 @@ module.exports = [
     v2ex: 'rdmclin2'
     segmentfault: 'rdmclin2'
     stackoverflow: 'coco_'
+,
+  name:
+    display: 'Sune Bear'
+    ascii: 'sunebear'
+  email: 'hi@sunebear.com'
+  avatar: 'hi@sunebear.com'
+  blog: 'http://sunebear.com'
+  profile:
+    company:
+      name: 'Teambition'
+    location: '上海'
+    birthday: new Date '1994-11-10'
+  skill:
+    javascript: 1
+  sns:
+    github: 'SuneBear'
+    zhihu: 'SuneBear'
+    twitter: 'hisunebear'
 ]
