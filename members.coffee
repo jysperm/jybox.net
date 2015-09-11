@@ -518,4 +518,22 @@ module.exports = [
     v2ex: 'wall2flower'
     segmentfault: 'wall2flower'
     twitter: 'wall2flower'
+,
+  name:
+    display: '林晨'
+    ascii: 'linchen'
+  email: 'rdmclin2@gmail.com'
+  avatar: 'https://avatars0.githubusercontent.com/u/4705237'
+  blog: 'http://mclspace.com'
+  profile:
+    location: '江苏南京'
+  skill:
+    java: 1
+    c: 1
+    javascript: 0.2
+  sns:
+    github: 'rdmclin2'
+    v2ex: 'rdmclin2'
+    segmentfault: 'rdmclin2'
+    stackoverflow: 'coco_'
 ]
