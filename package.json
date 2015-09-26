@@ -1,6 +1,6 @@
 {
   "name": "jybox-net",
-  "version": "0.3.0-20150424",
+  "version": "0.4.0-20150926",
   "description": "Source code of jybox.net",
   "homepage": "https://jybox.net",
   "license": "MIT",
@@ -16,29 +16,42 @@
     }
   ],
   "scripts": {
-    "start": "./node_modules/.bin/coffee app.coffee",
-    "deploy": "./node_modules/.bin/gulp deploy"
+    "start": "coffee app.coffee",
+    "deploy": "gulp deploy"
+  },
+  "hexo": {
+    "version": "3.1.1"
   },
   "dependencies": {
-    "coffee-script": "^1.7.1",
-    "express": "^4.9.1",
-    "jade": "^1.9.2",
-    "lodash": "^3.7.0",
-    "markdown": "^0.5.0"
+    "coffee-script": "1.7.1",
+    "express": "4.9.1",
+    "jade": "1.9.2",
+    "lodash": "3.7.0",
+    "markdown": "0.5.0",
+    "hexo": "3.1.1",
+    "hexo-generator-archive": "^0.1.2",
+    "hexo-generator-category": "^0.1.2",
+    "hexo-generator-index": "^0.1.2",
+    "hexo-generator-tag": "^0.1.1",
+    "hexo-renderer-ejs": "^0.1.0",
+    "hexo-renderer-stylus": "^0.3.0",
+    "hexo-renderer-marked": "^0.2.4",
+    "hexo-server": "^0.1.2",
+    "hexo-deployer-rsync": "0.0.2"
   },
   "devDependencies": {
-    "del": "^1.1.1",
-    "gulp": "^3.8.11",
-    "gulp-coffee": "^2.3.1",
-    "gulp-concat": "^2.5.2",
-    "gulp-filter": "^2.0.2",
-    "gulp-less": "^3.0.3",
-    "gulp-minify-css": "^1.1.0",
-    "gulp-order": "^1.1.1",
-    "gulp-rsync": "^0.0.5",
-    "gulp-ssh": "^0.3.3",
-    "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.4",
-    "main-bower-files": "^2.7.0"
+    "del": "1.1.1",
+    "gulp": "3.8.11",
+    "gulp-coffee": "2.3.1",
+    "gulp-concat": "2.5.2",
+    "gulp-filter": "2.0.2",
+    "gulp-less": "3.0.3",
+    "gulp-minify-css": "1.1.0",
+    "gulp-order": "1.1.1",
+    "gulp-rsync": "0.0.5",
+    "gulp-ssh": "0.3.3",
+    "gulp-uglify": "1.2.0",
+    "gulp-util": "3.0.4",
+    "main-bower-files": "2.7.0"
   }
 }

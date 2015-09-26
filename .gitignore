@@ -1,8 +1,10 @@
-/node_modules
-/bower_components
-/npm-debug.log
-/public
+node_modules/
+public/
+bower_components/
+.idea/
 
-/.idea
+npm-debug.log
 *~
 .DS_Store
+Thumbs.db
+db.json
