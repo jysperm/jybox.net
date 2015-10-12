@@ -1,0 +1,62 @@
+@media (min-width: 34em) {
+  .masthead {
+    text-align: left;
+  }
+}
+
+.masthead {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background-color: #4078c0;
+}
+
+@media (min-width: 34em) {
+  .masthead .masthead-logo {
+    float: left;
+  }
+}
+
+.masthead .masthead-logo {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.masthead a {
+  color: rgba(255,255,255,0.5);
+}
+
+.masthead a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.masthead-nav .active {
+  color: #fff;
+  font-weight: 500;
+}
+
+@media (min-width: 34em) {
+  .masthead-nav {
+    float: right;
+    margin-top: 0.5rem;
+  }
+}
+
+.masthead-nav {
+  font-size: 1rem;
+}
+
+.masthead-nav a:not(:last-child) {
+  margin-right: 1.25rem;
+}
+
+.masthead-nav a {
+  display: inline-block;
+}
+
+.masthead a {
+  color: rgba(255,255,255,0.5);
+}

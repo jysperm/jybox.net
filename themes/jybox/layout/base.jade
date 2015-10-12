@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='icon', href='https://jysperm.me/avatars/v5.png')
+    link(rel='stylesheet', href='/styles.css')
+    if page.title
+      title #{page.title} | #{config.title}
+    else
+      title= config.title
+  body
+    header.masthead
+      .container
+        a.masthead-logo(href='/') 精子粉丝团
+        nav.masthead-nav
+          a(href='/members/') 粉丝成员
+          a(href='/history/') 黑历史
+          a(href='/qun/') 群规
+
+    .container
+      .columns
+        .block-body.column.three-fourths
+          article
+            .markdown-body!= page.content
+
+        .block-sidebar.column.one-fourth
+          .widget
+            :markdown
+              [![Join the chat at https://gitter.im/jysperm/jybox.net](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jysperm/jybox.net?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+          .widget
+            p
+              | 本站源代码托管于 &nbsp;
+              a(href='https://github.com/jysperm/jybox.net', target='_blank') GitHub, &nbsp;
+              | 页面最后生成于 #{date(Date.now(), 'YYYY-MM-DD')}.
+
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-49193300-6', 'auto');
+      ga('send', 'pageview');
+      
+    script.
+      Array.prototype.forEach.call(document.querySelectorAll('.masthead-nav a'), function(element) {
+        if (element.getAttribute('href') === location.pathname) {
+          element.classList.add('active');
+        }
+      });

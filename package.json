@@ -29,15 +29,17 @@
     "lodash": "3.7.0",
     "markdown": "0.5.0",
     "hexo": "3.1.1",
-    "hexo-generator-archive": "^0.1.2",
-    "hexo-generator-category": "^0.1.2",
-    "hexo-generator-index": "^0.1.2",
-    "hexo-generator-tag": "^0.1.1",
-    "hexo-renderer-ejs": "^0.1.0",
-    "hexo-renderer-stylus": "^0.3.0",
-    "hexo-renderer-marked": "^0.2.4",
-    "hexo-server": "^0.1.2",
-    "hexo-deployer-rsync": "0.0.2"
+    "primer-css": "2.3.3",
+    "primer-markdown": "https://github.com/primer/markdown.git#v2.1.9",
+    "hexo-generator-archive": "0.1.2",
+    "hexo-generator-category": "0.1.2",
+    "hexo-generator-index": "0.1.2",
+    "hexo-generator-tag": "0.1.1",
+    "hexo-renderer-marked": "0.2.4",
+    "hexo-server": "0.1.2",
+    "hexo-deployer-rsync": "0.0.2",
+    "hexo-renderer-jade": "0.1.0",
+    "hexo-renderer-sass": "0.2.0"
   },
   "devDependencies": {
     "del": "1.1.1",
@@ -51,7 +53,6 @@
     "gulp-rsync": "0.0.5",
     "gulp-ssh": "0.3.3",
     "gulp-uglify": "1.2.0",
-    "gulp-util": "3.0.4",
-    "main-bower-files": "2.7.0"
+    "gulp-util": "3.0.4"
   }
 }
