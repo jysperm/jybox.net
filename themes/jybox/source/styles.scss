@@ -1,5 +1,112 @@
 @import 'primer';
 @import 'markdown';
 
-@import 'navigation';
 @import 'layout';
+@import 'navigation';
+
+.sidebar {
+  h2 {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .card {
+    padding: 10px 15px;
+  }
+}
+
+.boxed-group {
+  position: relative;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+
+.boxed-group>h3 {
+  background-color: #f5f5f5;
+  margin: 0;
+  border-radius: 3px 3px 0 0;
+  border: 1px solid #d8d8d8;
+  border-bottom: 0;
+  padding: 9px 10px 10px;
+  font-size: 14px;
+  line-height: 17px;
+  display: block;
+}
+
+.boxed-group-inner {
+  padding: 1px 10px;
+  background: #fff;
+  border: 1px solid #d8d8d8;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #666;
+  font-size: 13px;
+}
+
+.mini-repo-list {
+  list-style: none;
+}
+
+.mini-repo-list>li:first-child .mini-repo-list-item, .mini-repo-list>li:first-child.mini-repo-list-item {
+  border-top: 0;
+}
+
+.mini-repo-list-item {
+  position: relative;
+  display: block;
+  padding: 10px 6px;
+  font-size: 14px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.blogs {
+
+}
+
+.tweets {
+
+}
+
+.timeline-comment-wrapper .avatar {
+  float: left;
+  margin-left: -64px;
+  border-radius: 3px;
+}
+
+.timeline-comment {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.timeline-comment-header {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #767676;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #eee;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.timeline-comment-wrapper {
+  padding-left: 64px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  clear: both;
+}
+
+.timeline-comment-header-text {
+  max-width: 78%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.comment-body {
+  width: 100%;
+  padding: 15px;
+  overflow: visible;
+  font-size: 14px;
+}
