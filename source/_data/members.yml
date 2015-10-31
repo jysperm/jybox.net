@@ -26,12 +26,10 @@
   profile:
     location: "江苏苏州"
     birthday: "1995-11-25"
-  skill:
-    php: 1
-    javascript: 0.9
-    golang: 0.2
-    c++: 0.5
-    c: 0.5
+  tags:
+    - Node.js
+    - Atom
+    - 退学党
   sns:
     github: "jysperm"
     qq: "184300584"
@@ -53,8 +51,9 @@
     school: "武汉大学"
     location: "湖北武汉"
     birthday: "1994"
-  skill:
-    javascript: 1
+  tags:
+    - 生物学
+    - Web
   sns:
     github: "infinnie"
     guokr:
@@ -80,12 +79,9 @@
       url: "http://www.loristech.com"
     location: "Toronto"
     birthday: "1993-09-20"
-  skill:
-    .net: 1
-    php: 0.8
-    java: 0.7
-    c++: 0.6
-    golang: 0.2
+  tags:
+    - .Net
+    - 时差党
   sns:
     github: "Parthas-Menethil"
     qq: "497242884"
@@ -103,13 +99,9 @@
       url: "https://tower.im"
     location: "天津"
     birthday: "1994-03-10"
-  skill:
-    obj-c: 1
-    swift: 1
-    python: 0.6
-    c: 0.5
-    c++: 0.4
-    javascript: 0.3
+  tags:
+    - Objective-C
+    - ACG
   sns:
     github: "Madimo"
     qq: "53161779"
@@ -131,6 +123,8 @@
       name: "番茄土豆"
       url: "https://pomotodo.com"
     location: "江苏苏州"
+  tags:
+    - 退学党
   sns:
     github: "untsop"
     twitter: "untsop"
@@ -148,9 +142,6 @@
       url: "https://pomotodo.com"
     location: "湖北武汉"
     birthday: "1993-8-28"
-  skill:
-    php: 1
-    javascript: 0.6
   sns:
     github: "faceair"
     qq: "1067099789"
@@ -187,11 +178,8 @@
   profile:
     location: "江苏苏州"
     birthday: "1996-11-25"
-  skill:
-    c: 1
-    c++: 1
-    javascript: 0.8
-    python: 0.1
+  tags:
+    - 复读中
   sns:
     twitter: "mason961125"
     github: "mason96112569"
@@ -207,11 +195,8 @@
       url: "http://www.baidu.com"
     location: "北京"
     birthday: "1990-12-25"
-  skill:
-    javascript: 1
-    c++: 1
-    php: 1
-    c: 1
+  tags:
+    - BAT
   sns:
     github: "lyd600lty"
 -
@@ -224,11 +209,9 @@
       name: "番茄土豆"
       url: "https://pomotodo.com"
     location: "浙江杭州"
-  skill:
-    javascript: 1
-    css: 0.8
-    ruby: 0.5
-    python: 0.3
+  tags:
+    - Web
+    - ACG
   sns:
     github: "bolasblack"
 -
@@ -240,12 +223,6 @@
   blog: "http://liam0205.me"
   profile:
     birthday: "1992"
-  skill:
-    latex: 1
-    python: 0.6
-    c: 0.5
-    c++: 0.5
-    java: 0.2
   sns:
     github: "liamhuang0205"
     qq: "29422355"
@@ -268,11 +245,6 @@
   profile:
     location: "广州"
     birthday: "1993-06-11"
-  skill:
-    javascript: 1
-    .net: 0.7
-    c++: 0.5
-    c: 0.5
   sns:
     github: "KuroGuo"
     qq: "413298956"
@@ -390,10 +362,6 @@
       name: "番茄土豆"
       url: "https://pomotodo.com"
     location: "江苏苏州"
-  skill:
-    java: 1
-    ruby: 0.2
-    javascript: 0.1
   sns:
     github: "dacer"
 -
@@ -420,6 +388,8 @@
     ascii: "starriv"
   avatar: "https://avatars1.githubusercontent.com/u/7098001"
   blog: "http://starriv.com"
+  tags:
+    - 退学党
   profile:
     location: "上海"
   sns:
@@ -442,6 +412,8 @@
   blog: "http://blog.abreto.net"
   profile:
     location: "四川成都"
+  tags:
+    - 复读中
   sns:
     github: "Abreto"
 -
@@ -471,10 +443,6 @@
   profile:
     company:
       name: "华工信息"
-  skill:
-    java: 1
-    c#: 0.8
-    javascript: 0.2
   sns:
     github: "JopOu"
 -
@@ -483,10 +451,6 @@
     ascii: "cloudtrends"
   avatar: "https://avatars0.githubusercontent.com/u/2282880"
   blog: "http://blog.csdn.net/accesine960"
-  skill:
-    python: 1
-    java: 1
-    scala: 0.2
   sns:
     github: "cloudtrends"
   websites:
@@ -506,9 +470,6 @@
       name: "Originate"
     location: "浙江杭州"
     birthday: "1995-01-24"
-  skill:
-    ruby: 1
-    javascript: 0.5
   sns:
     github: "wall2flower"
     qq: "179575559"
@@ -524,10 +485,6 @@
   blog: "http://mclspace.com"
   profile:
     location: "江苏南京"
-  skill:
-    java: 1
-    c: 1
-    javascript: 0.2
   sns:
     github: "rdmclin2"
     v2ex: "rdmclin2"
@@ -545,9 +502,11 @@
       name: "Teambition"
     location: "上海"
     birthday: "1994-11-10"
-  skill:
-    javascript: 1
   sns:
     github: "SuneBear"
     zhihu: "SuneBear"
     twitter: "hisunebear"
+-
+  name:
+    display: 'ray'
+  avatar: "https://pbs.twimg.com/profile_images/505004462100852736/YBkK_pQW_400x400.jpeg"
