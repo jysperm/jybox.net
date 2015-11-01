@@ -1,5 +1,5 @@
 ---
 title: '粉丝成员'
-permalink: members/
+permalink: members
 layout: members
 ---

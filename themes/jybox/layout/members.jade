@@ -1,1 +1,64 @@
-p members
+extends base
+
+block container
+  .columns
+    for member in site.data.members
+      .column.one-half.member-card
+        .right-icons
+          if member.girl
+            span.fa.fa-venus.fa-2x
+          else
+            span.fa.fa-mars.fa-2x
+        img.avatar.left(src="#{avatarUrl(member, 180)}", height='180', width='180')
+        div
+          h3= member.name.display
+          ul
+            if ageOfMember(member)
+              li 
+                span.fa.fa-user.fa-lg
+                | #{ageOfMember(member)} 岁
+            if member.blog
+              li
+                span.fa.fa-rss.fa-lg
+                a(href=member.blog)= domainOfUrl(member.blog)
+            if member.profile && member.profile.company
+              li
+                span.fa.fa-briefcase.fa-lg
+                if member.profile.company.url
+                  a(href=member.profile.company.url)= member.profile.company.name
+                else
+                  = member.profile.company.name
+            if member.profile && member.profile.location
+              li 
+                span.fa.fa-home.fa-lg
+                = member.profile.location
+            if member.profile && member.profile.school
+              li 
+                span.fa.fa-graduation-cap.fa-lg
+                = member.profile.school
+            if member.tags
+              for tag in member.tags
+                li
+                  span.fa.fa-tag.fa-lg
+                  = tag
+            if member.sns && member.sns.github
+              li
+                span.fa.fa-github.fa-lg
+                a(href='https://github.com/#{member.sns.github}')= member.sns.github
+            if member.sns && member.sns.twitter
+              li
+                span.fa.fa-twitter.fa-lg
+                a(href='https://twitter.com/#{member.sns.twitter}')= member.sns.twitter
+            if member.sns && member.sns.qq
+              li
+                span.fa.fa-qq.fa-lg
+                = member.sns.qq
+            if member.sns && member.sns.bitcoin
+              li
+                span.fa.fa-bitcoin.fa-lg
+                a(href='https://blockchain.info/address/#{member.sns.bitcoin}', title=member.sns.bitcoin)= member.sns.bitcoin.slice(-10)
+            if member.websites
+              for website in member.websites
+                li
+                  span.fa.fa-link.fa-lg
+                  a(target='_blank', href=website.url)= website.name

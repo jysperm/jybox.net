@@ -1,0 +1,36 @@
+.member-card {
+  margin-bottom: 20px;
+
+  .right-icons {
+    float: right;
+    margin-top: 10px;
+  }
+
+  .avatar {
+    margin-right: 12px;
+    border-radius: 10px;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin-left: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      float: left;
+      margin: 3px 2px;
+      padding: 3px 4px;
+      background-color: #efefef;
+      color: #3a3a3a;
+      border-radius: 4px;
+
+      span {
+        margin-right: 2px;
+      }
+    }
+  }
+}
