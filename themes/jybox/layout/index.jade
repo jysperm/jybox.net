@@ -4,13 +4,13 @@ block container
   .columns
     .sidebar.column.one-fourth
       img.avatar(src='https://jysperm.me/avatars/v5.png', height='230', width='230')
-      .card
+      .card.about
         h2 关于精子
         ul
           li 精子生于 1995 年
           li 精子现居江苏苏州
           li 精子目前工作于 LeanCloud
-      .card
+      .card.follow
         h2 关注精子
         ul
           li 
@@ -60,31 +60,11 @@ block container
 
       .columns
         .column.single-column
-          div.timeline-comment-wrapper
-            img.avatar(src='https://pbs.twimg.com/profile_images/505004462100852736/YBkK_pQW_400x400.jpeg', height='48', width='48')
-            .timeline-comment
-              div.timeline-comment-header
-                .timeline-comment-header-text ray
-              div.comment-content  
-                .comment-body 我得知了王子亭距离高考前3个月毅然决然的放弃了高考，我为他感到无比惋惜，不过，他在我心中就像是风一样的男子，他勇于追求自己的梦想、理想！青春照耀着他走在成功的大道上！
-          div.timeline-comment-wrapper
-            img.avatar(src='https://cloud.githubusercontent.com/assets/1191561/6209405/969fc90e-b600-11e4-9c45-5afcc33b1d26.jpg?s=256', height='48', width='48')
-            .timeline-comment
-              div.timeline-comment-header
-                .timeline-comment-header-text 小朱姐姐
-              div.comment-content  
-                .comment-body 精子，虽然少年成名是好事，但是刀子磨的太锋利，使起来顺手，但是容易折断哦！
-          div.timeline-comment-wrapper
-            img.avatar(src='https://cloud.githubusercontent.com/assets/1191561/5892592/1327a602-a500-11e4-8bbe-9a9d9e81dbcd.jpg?s=256', height='48', width='48')
-            .timeline-comment
-              div.timeline-comment-header
-                .timeline-comment-header-text 冯小雪
-              div.comment-content  
-                .comment-body 一根筋，显然精子是我行我素不听劝的，有些人际处事精子其实并不懂，有时候觉得精子只能在网络上打字交流，真正面对面说话可能精子并不知道说什么，最后只能说精子情商为零 
-          div.timeline-comment-wrapper
-            img.avatar(src='https://avatars3.githubusercontent.com/u/8168391?s=256', height='48', width='48')
-            .timeline-comment
-              div.timeline-comment-header
-                .timeline-comment-header-text cry 姐姐
-              div.comment-content  
-                .comment-body 土豪精！
+          for comment in site.data.comments
+            div.timeline-comment-wrapper
+              img.avatar(src=avatarUrlOfMember(comment.by), height='48', width='48')
+              .timeline-comment
+                div.timeline-comment-header
+                  .timeline-comment-header-text= comment.by
+                div.comment-content  
+                  .comment-body= comment.comment

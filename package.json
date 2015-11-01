@@ -19,22 +19,18 @@
     "version": "3.1.1"
   },
   "dependencies": {
-    "coffee-script": "1.7.1",
-    "express": "4.9.1",
+    "font-awesome": "4.4.0",
+    "hexo": "3.1.1",
+    "hexo-deployer-rsync": "0.0.2",
+    "hexo-generator-index": "0.1.2",
+    "hexo-renderer-jade": "0.1.0",
+    "hexo-renderer-marked": "0.2.4",
+    "hexo-renderer-sass": "0.2.0",
+    "hexo-server": "0.1.2",
     "jade": "1.9.2",
     "lodash": "3.7.0",
     "markdown": "0.5.0",
-    "hexo": "3.1.1",
     "primer-css": "2.3.3",
-    "primer-markdown": "https://github.com/primer/markdown.git#v2.1.9",
-    "hexo-generator-archive": "0.1.2",
-    "hexo-generator-category": "0.1.2",
-    "hexo-generator-index": "0.1.2",
-    "hexo-generator-tag": "0.1.1",
-    "hexo-renderer-marked": "0.2.4",
-    "hexo-server": "0.1.2",
-    "hexo-deployer-rsync": "0.0.2",
-    "hexo-renderer-jade": "0.1.0",
-    "hexo-renderer-sass": "0.2.0"
+    "primer-markdown": "https://github.com/primer/markdown.git#v2.1.9"
   }
 }
