@@ -1,6 +1,6 @@
 ---
 title: '群规'
-permalink: qun/
+permalink: qun
 ---
 
 ## 目录

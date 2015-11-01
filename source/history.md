@@ -1,6 +1,6 @@
 ---
 title: '黑历史'
-permalink: history/
+permalink: history
 ---
 
 ## 2009
