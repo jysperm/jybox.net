@@ -2,7 +2,7 @@ extends base
 
 block container
   .columns
-    for member in site.data.members
+    for member in sortMembers(site.data.members)
       .column.one-half.member-card
         .right-icons
           if member.girl

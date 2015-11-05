@@ -13,18 +13,19 @@ hexo.extend.helper.register('avatarUrlOfMember', function(name) {
   return avatarUrl(member);
 });
 
-hexo.extend.helper.register('ageOfMember', function(member) {
-  if (member.profile && member.profile.birthday)
-    return Math.floor((Date.now() - new Date(member.profile.birthday).getTime()) / (365 * 24 * 3600 * 1000));
-  else
-    return null;
-});
+hexo.extend.helper.register('ageOfMember', ageOfMember);
 
 hexo.extend.helper.register('domainOfUrl', function(url) {
   return url.match(/https?:\/\/([^/]+)/)[1];
 });
 
 hexo.extend.helper.register('avatarUrl', avatarUrl);
+
+hexo.extend.helper.register('sortMembers', function(members) {
+  return members.sort(function(a, b) {
+    return countTagsOfMember(b) - countTagsOfMember(a);
+  });
+});
 
 function avatarUrl(member, size) {
   if (size)
@@ -46,6 +47,29 @@ function avatarUrl(member, size) {
     return '//cdn.v2ex.com/gravatar/' + md5(member.email) + size;
   else
     return '//cdn.v2ex.com/gravatar';
+}
+
+function countTagsOfMember(member) {
+  return [
+    ageOfMember(member),
+    member.blog,
+    member.profile && member.profile.company,
+    member.profile && member.profile.location,
+    member.profile && member.profile.school,
+    member.tags,
+    member.websites,
+    member.sns && member.sns.github,
+    member.sns && member.sns.twitter,
+    member.sns && member.sns.qq,
+    member.sns && member.sns.bitcoin
+  ].filter(function(x) {return x;}).length;
+}
+
+function ageOfMember(member) {
+  if (member.profile && member.profile.birthday)
+    return Math.floor((Date.now() - new Date(member.profile.birthday).getTime()) / (365 * 24 * 3600 * 1000));
+  else
+    return null;
 }
 
 function md5(message) {
