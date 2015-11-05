@@ -30,33 +30,17 @@ block container
           .boxed-group
             h3 日志
             ul.boxed-group-inner.mini-repo-list
-              li
-                a(href='https://jysperm.me/2015/09/leaving-hackplan/').mini-repo-list-item 离开 HackPlan
-              li
-                a(href='https://jysperm.me/2015/08/standardized-world/').mini-repo-list-item 标准化商品构成的世界
-              li
-                a(href='https://jysperm.me/2015/07/hexo-theme-simpleblock/').mini-repo-list-item 与精子同款的博客主题 Simple Block 现已发布！
-              li
-                a(href='https://jysperm.me/2015/06/mabolo-mongodb-orm/').mini-repo-list-item Mabolo: 轻量级的 MongoDB ORM
-              li
-                a(href='https://jysperm.me/2015/05/stand-by-me-doraemon/').mini-repo-list-item 哆啦 A 梦：伴我同行
-              li
-                a(href='https://jysperm.me/2015/05/cichorium-routing-framework/').mini-repo-list-item Cichorium: 基于 Promise 的中间件路由框架
-              li
-                a(href='https://jysperm.me/2015/05/rpvhost-will-be-free/').mini-repo-list-item RP 主机免费计划
+              for blog in site.blogs
+                li
+                  a(target='_blank', href=blog.url).mini-repo-list-item= blog.title
         .tweets.column.one-half
           .boxed-group
             h3 碎语
             ul.boxed-group-inner.mini-repo-list
-              li.mini-repo-list-item 
-                a(href='https://twitter.com/jysperm/status/635823754573152256') 8月24日
-                span 今天为 simpleblock 发布了一个新版本，包含了我上个月对顶部导航条在移动设备上的样式修改，然后安装方式改成了通过 npm 来安装，要方便了不少。话说今天在 Google 上搜了一下，竟然还真的有几个人在用我的这个主题。
-              li.mini-repo-list-item 
-                a(href='https://twitter.com/jysperm/status/628608205086593024') 8月4日
-                span 「标准化商品构成的世界」如果我有接近无限的钱可供使用的话，我要在我生活可及的地方，创建一个由标准化商品构成的世界，并尽可能地向其他人推销我的观念。
-              li.mini-repo-list-item 
-                a(href='https://twitter.com/jysperm/status/625530743884611584') 7月27日
-                span 我感觉传统的论坛很难产生高质量的内容，因为传统的论坛给了每个人大致均等大发言机会，但不得不承认优质的内容是由少数人创造的，所以引入合适的筛选机制就很重要。我觉得知乎的模式（当然其实是 Quora）就很好，知乎提供了两个维度的内容筛选：投票筛选回答、关注数筛选用户。
+              for tweet in site.tweets.slice(0, 3)
+                li.mini-repo-list-item
+                  a(href=tweet.twitter)= moment(tweet.createdAt).fromNow()
+                  span= tweet.content
 
       .columns
         .column.single-column
@@ -65,6 +49,8 @@ block container
               img.avatar(src=avatarUrlOfMember(comment.by), height='48', width='48')
               .timeline-comment
                 div.timeline-comment-header
-                  .timeline-comment-header-text= comment.by
+                  .timeline-comment-header-text
+                    strong= comment.by
+                    = comment.title
                 div.comment-content  
                   .comment-body= comment.comment

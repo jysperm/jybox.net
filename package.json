@@ -19,6 +19,7 @@
     "version": "3.1.1"
   },
   "dependencies": {
+    "bluebird": "3.0.5",
     "font-awesome": "4.4.0",
     "hexo": "3.1.1",
     "hexo-deployer-rsync": "0.0.2",
@@ -31,6 +32,7 @@
     "lodash": "3.7.0",
     "markdown": "0.5.0",
     "primer-css": "2.3.3",
-    "primer-markdown": "https://github.com/primer/markdown.git#v2.1.9"
+    "primer-markdown": "https://github.com/primer/markdown.git#v2.1.9",
+    "request": "2.65.0"
   }
 }

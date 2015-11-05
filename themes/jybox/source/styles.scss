@@ -59,6 +59,10 @@
   padding: 10px 6px;
   font-size: 14px;
   border-top: 1px solid #e5e5e5;
+
+  a {
+    margin-right: 10px;
+  }
 }
 
 .blogs {
@@ -104,6 +108,10 @@
   max-width: 78%;
   padding-top: 10px;
   padding-bottom: 10px;
+
+  strong {
+    margin-right: 10px;
+  }
 }
 
 .comment-body {
