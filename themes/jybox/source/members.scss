@@ -9,6 +9,14 @@
   .avatar {
     margin-right: 12px;
     border-radius: 10px;
+
+    &.fa {
+      width: 180px;
+      text-align: center;
+      line-height: 180px;
+      font-size: 160px;
+      float: left;
+    }
   }
 
   h3 {

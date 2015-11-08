@@ -1,6 +1,7 @@
 ---
 title: 'FAQ'
 permalink: faq
+layout: faq
 ---
 
 * 该如何称呼你？

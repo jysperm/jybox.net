@@ -15,9 +15,9 @@ html
         a.masthead-logo(href='/') 精子粉丝团
         nav.masthead-nav
           a(href='/members') 粉丝成员
-          a(href='/history') 黑历史
-          a(href='/qun') 群规
           a(href='/faq') FAQ
+          a(href='/qun') QQ 群
+          a(href='/history') 黑历史
 
     .container
       block container
@@ -26,14 +26,16 @@ html
             article
               .markdown-body!= page.content
               
-            #disqus_thread
+            if page.comments
+              #disqus_thread
 
           .block-sidebar.column.one-fourth
-            .widget
-              p
-                | 本站源代码托管于 &nbsp;
-                a(href='https://github.com/jysperm/jybox.net', target='_blank') GitHub, &nbsp;
-                | 页面最后生成于 #{date(Date.now(), 'YYYY-MM-DD')}.
+            block sidebar
+              .widget
+                p
+                  | 本站源代码托管于 &nbsp;
+                  a(href='https://github.com/jysperm/jybox.net', target='_blank') GitHub
+                  | ,&nbsp; 页面最后生成于 #{date(Date.now(), 'YYYY-MM-DD')}.
 
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -42,15 +44,15 @@ html
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-49193300-6', 'auto');
       ga('send', 'pageview');
-      
-    script.
-      var disqus_shortname = 'jybox';
-      (function() {
+
+    if page.comments
+      script.
+        (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = '//jybox.disqus.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-      
+        })();
+
     script.
       Array.prototype.forEach.call(document.querySelectorAll('.masthead-nav a'), function(element) {
         if (element.getAttribute('href') === location.pathname) {

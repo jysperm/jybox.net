@@ -23,8 +23,17 @@ block container
             a(href='https://twitter.com/jysperm') Twitter
           li
             a(href='http://segmentfault.com/u/jysperm') SegmentFault
+      .card
+        p
+          | 本站源代码托管于 &nbsp;
+          a(href='https://github.com/jysperm/jybox.net', target='_blank') GitHub
+          | ,&nbsp; 页面最后生成于 #{date(Date.now(), 'YYYY-MM-DD')}.
 
     .column.three-fourths
+      .columns
+        .column.single-column
+          h2 精子的近期动态
+          
       .columns
         .blogs.column.one-half
           .boxed-group
@@ -44,6 +53,9 @@ block container
 
       .columns
         .column.single-column
+          a(href='/contributing').right.small 如何提交我的印象？
+          h2 来自粉丝们的印象
+          
           for comment in site.data.comments
             div.timeline-comment-wrapper
               img.avatar(src=avatarUrlOfMember(comment.by), height='48', width='48')

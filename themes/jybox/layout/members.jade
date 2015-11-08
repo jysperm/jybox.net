@@ -2,6 +2,33 @@ extends base
 
 block container
   .columns
+    .column.one-half.member-card
+      .right-icons
+        span.fa.fa-venus-mars.fa-2x
+      .avatar.fa.fa-user-plus
+      div
+        h3
+          a(href='/contributing') 加入粉丝团
+        ul
+          li
+            span.fa.fa-user.fa-lg
+            | 90 后？
+          li
+            span.fa.fa-code.fa-lg
+            | 工程师？
+          li
+            span.fa.fa-graduation-cap.fa-lg
+            | 学生？
+          li
+            span.fa.fa-forward.fa-lg
+            | 退学？
+          li
+            span.fa.fa-rss.fa-lg
+            | 独立博客作者？
+          li
+            span.fa.fa-twitter.fa-lg
+            | 社交网络达人？
+    
     for member in sortMembers(site.data.members)
       .column.one-half.member-card
         .right-icons
