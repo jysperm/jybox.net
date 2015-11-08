@@ -441,3 +441,16 @@
   avatar: 'https://pbs.twimg.com/profile_images/505004462100852736/YBkK_pQW_400x400.jpeg'
   sns:
     twitter: 'RayTely'
+-
+  name:
+    display: 'tcdw'
+    ascii: 'tcdw'
+  avatar: 'admin@tcdw.net'
+  blog: 'https://www.tcdw.net'
+  profile:
+    location: '呼和浩特'
+    birthday: '1998'
+  sns:
+    github: 'tcdw'
+    v2ex: 'tcdw'
+    segmentfault: 'tcdw'
