@@ -18,7 +18,7 @@
   tags:
     - Node.js
     - Atom
-    - 退学党
+    - 退学
   sns:
     github: 'jysperm'
     qq: '184300584'
@@ -99,7 +99,7 @@
       url: 'https://pomotodo.com'
     location: '江苏苏州'
   tags:
-    - 退学党
+    - 退学
   sns:
     github: 'untsop'
     twitter: 'untsop'
@@ -277,7 +277,7 @@
   avatar: 'https://avatars1.githubusercontent.com/u/7098001'
   blog: 'http://starriv.com'
   tags:
-    - 退学党
+    - 退学
   profile:
     location: '上海'
   sns:
@@ -363,11 +363,13 @@
 -
   name:
     display: '冯小雪'
-  avatar: 'https://cloud.githubusercontent.com/assets/1191561/5892592/1327a602-a500-11e4-8bbe-9a9d9e81dbcd.jpg'
+  avatar: 'https://cloud.githubusercontent.com/assets/1191561/11021119/0ec61120-8673-11e5-9126-fa6f5ac8a0bc.jpg'
   girl: true
   profile:
     location: '甘肃金昌'
     birthday: '1997-2-11'
+  tags:
+    - 退学
   sns:
     qq: '2402604022'
 -
@@ -464,3 +466,25 @@
     twitter: 'scusjs'
     v2ex: 'scusjs'
 -
+  name:
+    display: '豆腐'
+    ascii: 'doufu'
+  avatar: 'https://avatars0.githubusercontent.com/u/15712921'
+  blog: 'http://doufu.cat'
+  profile:
+    location: '江苏苏州'
+    birthday: '2015'
+  sns:
+    github: 'cat-doufu'
+-
+  name:
+    display: '皮蛋'
+    ascii: 'pidan'
+  avatar: 'https://avatars3.githubusercontent.com/u/15712992'
+  blog: 'http://pidan.cat'
+  girl: true
+  profile:
+    location: '江苏苏州'
+    birthday: '2015'
+  sns:
+    github: 'cat-pidan'
