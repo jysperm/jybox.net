@@ -454,3 +454,29 @@
     github: 'tcdw'
     v2ex: 'tcdw'
     segmentfault: 'tcdw'
+name:
+  display: 'lirau'
+  nickname: 'lirau'
+  ascii: 'lirau'
+avatar: 'ray007great@gmail.com'
+blog: 'http://lirui.in'
+websites:
+  -
+    name: '流水账'
+    url: 'http://lirui.in'
+profile:
+  company:
+    name: 'Hdu'
+  # 目前居住地
+  location: '杭州'
+tags:
+  - Java
+  - Android
+  - spring boot
+# 各个社交网络的账号
+sns:
+  github: 'ray007great'
+  qq: '441748146'
+  v2ex: 'lirau'
+  zhihu: '李锐'
+  stackoverflow: 'lirui'
