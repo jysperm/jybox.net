@@ -1,7 +1,6 @@
 ---
 title: '提交内容'
 permalink: contributing
-comments: false
 ---
 
 精子粉丝团主页大部分文本内容使用 Markdown 编写，结构化数据使用 YAML 编写，由 [Hexo](https://hexo.io) 生成静态站点，源代码托管于 [Github](https://github.com/jysperm/jybox.net).

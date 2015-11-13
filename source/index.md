@@ -1,3 +1,4 @@
 ---
 layout: index
+comments: false
 ---
