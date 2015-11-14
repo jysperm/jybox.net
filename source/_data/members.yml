@@ -488,3 +488,21 @@
     birthday: '2015'
   sns:
     github: 'cat-pidan'
+-
+  name:
+    display: 'taevas'
+    ascii: 'taevas'
+  avatar: 'http://www.gravatar.com/avatar/903323f637feca2cb576ace191b7bd52'
+  blog: 'https://taevas.space'
+  profile:
+    company:
+      name: 'upyun'
+      url: 'https://www.upyun.com/'
+    location: '浙江杭州'
+    birthday: '1992-12'
+  tags:
+    - Node.js
+    - 学生
+  sns:
+    github: 'zyvas'
+    qq: '372269470'
