@@ -19,4 +19,28 @@ article {
       margin-bottom: 0.4em;
     }
   }
+
+  .toc {
+    ol {
+      list-style-type: disc;
+    }
+
+    li {
+      line-height: 1.8em;
+    }
+
+    .toc-number {
+      display: none;
+    }
+
+    .toc-item {
+      &.toc-level-2 {
+        margin-left: 20px;
+      }
+
+      &.toc-level-3 {
+        margin-left: 30px;
+      }
+    }
+  }
 }
