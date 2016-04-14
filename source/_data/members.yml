@@ -504,3 +504,25 @@
   sns:
     github: 'zyvas'
     qq: '372269470'
+-
+  name:
+    display: '傅小黑'
+    nickname: '傅小黑'
+    ascii: 'fuxiaohei'
+  avatar: 'https://avatars0.githubusercontent.com/u/2142787'
+  blog: 'http://fuxiaohei.me'
+  websites:
+    -
+      name: 'PuGo - 静态站点工具'
+      url: 'http://pugo.io'
+  profile:
+    location: '福建厦门'
+    birthday: '1990-12-10'
+  tags:
+    - Gopher
+  sns:
+    github: 'fuxiaohei'
+    qq: '772881987'
+    v2ex: 'fuxiaohei'
+    zhihu: 'fuxiaohei'
+    twitter: 'fuxiaohei'
