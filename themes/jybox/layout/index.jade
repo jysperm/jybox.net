@@ -13,7 +13,7 @@ block container
       .card.follow
         h2 关注精子
         ul
-          li 
+          li
             a(href='https://jysperm.me') 博客
           li
             a(href='http://www.zhihu.com/people/jysperm') 知乎
@@ -22,7 +22,17 @@ block container
           li
             a(href='https://twitter.com/jysperm') Twitter
           li
-            a(href='http://segmentfault.com/u/jysperm') SegmentFault
+            a(href='https://keybase.io/jysperm') Keybase
+      .card.maillist
+        h2 订阅动态
+        #mc_embed_signup
+          form#mc-embedded-subscribe-form.validate(action='//jybox.us13.list-manage.com/subscribe/post?u=f4c7c26ec1a5dc400a7a7373e&id=e2136d8929', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='')
+            #mc_embed_signup_scroll.input-group
+              input#mce-EMAIL.form-control(type='email', value='', name='EMAIL', placeholder='email address', required='')
+              input(type='hidden', name='b_f4c7c26ec1a5dc400a7a7373e_e2136d8929', value='')
+              span.input-group-button
+                .form-actions
+                  button#mc-embedded-subscribe.btn(type='submit', value='Subscribe', name='subscribe') 订阅
       .card
         p
           | 本站源代码托管于 &nbsp;
@@ -33,7 +43,7 @@ block container
       .columns
         .column.single-column
           h2 精子的近期动态
-          
+
       .columns
         .blogs.column.one-half
           .boxed-group
@@ -55,7 +65,7 @@ block container
         .column.single-column
           a(href='/contributing').right.small 如何提交我的印象？
           h2 来自粉丝们的印象
-          
+
           for comment in site.data.comments
             div.timeline-comment-wrapper
               img.avatar(src=avatarUrlOfMember(comment.by), height='48', width='48')
@@ -64,5 +74,5 @@ block container
                   .timeline-comment-header-text
                     strong= comment.by
                     = comment.title
-                div.comment-content  
+                div.comment-content
                   .comment-body= comment.comment
