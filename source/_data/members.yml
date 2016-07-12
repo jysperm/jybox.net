@@ -526,3 +526,22 @@
     v2ex: 'fuxiaohei'
     zhihu: 'fuxiaohei'
     twitter: 'fuxiaohei'
+-
+  name:
+    display: 'CRH380A-2722'
+    ascii: 'cirno380a'
+  avatar: 'admin@zengs.moe'
+  blog: 'https://www.cirno380a.moe'
+  profile:
+    location: '广东清远'
+    birthday: '1997-11-05'
+  tags:
+    - 火车迷
+    - PHP初学者
+    - Plus Ultra!!
+  sns:
+    github: 'Zs-QyBuser'
+    qq: '609657831'
+    weibo: 'zsQyBus'
+    twitter: 'cirno380a'
+  
