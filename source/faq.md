@@ -74,4 +74,4 @@ layout: faq
 
 * 精子玩什么游戏？
 
-    风暴英雄、星际争霸II、Stream 上一些独立游戏。
+    守望先锋、风暴英雄、星际争霸II、[Steam](https://steamcommunity.com/id/jysperm) 上一些独立游戏。
