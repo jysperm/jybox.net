@@ -8,7 +8,7 @@ block container
         h2 关于精子
         ul
           li 精子生于 1995 年
-          li 精子现居江苏苏州
+          li 精子现居北京
           li 精子目前工作于 LeanCloud
       .card.follow
         h2 关注精子
@@ -30,15 +30,11 @@ block container
           li
             a(href='https://telegram.me/joinchat/BI0PVAgBAljyKM_4MRRGuw') Telegram Group
           li 微信群（联系精子）
-          li iMessage（联系精子）
           li
             a(href='https://github.com/jybox') GitHub
             |（联系精子）
           li
             a(href='https://jybox.slack.com') Slack
-            |（联系精子）
-          li
-            a(href='https://jybox.quip.com') Quip
             |（联系精子）
       .card.maillist
         h2 订阅推送
@@ -63,22 +59,14 @@ block container
           h2 精子的近期动态
 
       .columns
-        .blogs.column.one-half
+        .single-column
           .boxed-group
             h3 日志
             ul.boxed-group-inner.mini-repo-list
               for blog in site.blogs
                 li
                   a(target='_blank', href=blog.url).mini-repo-list-item= blog.title
-        .tweets.column.one-half
-          .boxed-group
-            h3 碎语
-            ul.boxed-group-inner.mini-repo-list
-              for tweet in site.tweets.slice(0, 3)
-                li.mini-repo-list-item
-                  a(href=tweet.twitter)= moment(tweet.createdAt).fromNow()
-                  span= tweet.content
-
+                  
       .columns
         .column.single-column
           a(href='/contributing').right.small 如何提交我的印象？

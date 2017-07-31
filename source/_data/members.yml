@@ -13,7 +13,7 @@
     company:
       name: 'LeanCloud'
       url: 'https://leancloud.cn'
-    location: '江苏苏州'
+    location: '北京'
     birthday: '1995-11-25'
   tags:
     - Node.js
@@ -555,3 +555,14 @@
     weibo: '瘦子如何变型男'
     segmentfault: 'rustic_z'
     twitter: 'rustic_z'
+-
+  name:
+    display: '黄蕾'
+    ascii: 'yellowbud'
+  girl: true
+  avatar: 'https://avatars0.githubusercontent.com/u/28706976'
+  profile:
+    location: '北京'
+    birthday: '1994'
+  tags:
+    - 鸡胸肉少女
