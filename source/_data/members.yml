@@ -566,3 +566,13 @@
     birthday: '1994'
   tags:
     - 鸡胸肉少女
+-
+  name:
+    display: '小百科'
+    full: '梁志荣'
+    ascii: 'zeawinl'
+  avatar: '17450856@qq.com'
+  blog: 'http://zeawinl.top'
+  birthday: '1999'
+  sns:
+    qq: '17450856'
