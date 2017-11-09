@@ -1,0 +1,92 @@
+extends base
+
+block container
+  .columns
+    .block-body.column.three-fourths
+      article
+        .markdown-body
+          p 现面向粉丝和朋友圈提供小额人民币（一万以下）与 BTC/ETH/LTC 互兑服务。
+          p 请在 Telegram 或 Twitter 与我确认后，#[strong 由你先进行打款或转币]，在无极端意外的情况下，将使用下列的汇率和地址进行交易。
+          h2 时价
+          ul#price
+            li 正在从 coinmarketcap.com 加载价格 ...
+          p 此价格在客户端自动抓取计算生成，仅供参考。在程序出错等情况下，保留不按此价格结算的可能。
+          h2 地址
+          ul
+            li #[strong BTC] 13buegao8ZrLcaKF2635ugkoyV4KF8t9K1 （需 1 个确认）
+            li #[strong ETH] 0x8d4c362bd64e4c0a547430b8d9066491627259c8 （需 20 个确认）
+            li #[strong LTC] LQwZXvjbDxWMGbs91Nnmy1ze46w39YFGSn （需 4 个确认）
+          h2 联系我
+          ul
+            li Twitter #[a(href='https://twitter.com/jysperm') @jysperm]
+            li Telegram #[a(href='https://telegram.me/jysperm') @jysperm]
+          h2 FAQ
+          ul
+            li #[strong 为什么买卖存在差价？] 这里提供了快速、稳定的兑换服务，让你不必等待对手出现即可完成交易，同时承担了币价剧烈波动时的风险，我们却只收取 1% 左右的交易费。
+            li #[strong 交易费是如何确定的？] 我们为每种币设置了默认的交易费，同时随当前市场走势方向而波动。
+            li #[strong 以哪一时刻的价格为准？] 在事先得到我们的口头确认后，以你的人民币转账或转币的第一次确认时间为准。你也可以先行转账，这种情况下以我们知晓你的转账的时间为准（除凌晨外最多一小时）。
+  
+  script.
+    const coinOptions = {
+      BTC: {
+        baseFee: 0.005,
+        trendFee1h: 0.002,
+        trendFee24h: 0.002,
+        fixedFee: 50,
+        toFixed: 0
+      },
+      ETH: {
+        baseFee: 0.007,
+        trendFee1h: 0.002,
+        trendFee24h: 0.002,
+        fixedFee: 4,
+        toFixed: 1
+      },
+      LTC: {
+        baseFee: 0.006,
+        trendFee1h: 0.003,
+        trendFee24h: 0.003,
+        fixedFee: 2,
+        toFixed: 2
+      }
+    };
+  
+    fetch('https://api.coinmarketcap.com/v1/ticker/?convert=CNY&limit=10&cors=true').then( res => {
+      return res.json();
+    }).then( result => {
+      const coinInfos = result.filter( coinInfo => {
+        return Object.keys(coinOptions).includes(coinInfo.symbol);
+      }).map( coinInfo => {
+        coinOption = coinOptions[coinInfo.symbol];
+        
+        const price = parseFloat(coinInfo.price_cny);
+        
+        const fee = price * coinOption.baseFee + coinOption.fixedFee;
+        let askFee = parseFloat(coinInfo.percent_change_1h) > 0 ? price * coinOption.trendFee1h : 0;
+        askFee += parseFloat(coinInfo.percent_change_24h) > 0 ? price * coinOption.trendFee24h : 0;
+        let bidFee = parseFloat(coinInfo.percent_change_1h) < 0 ? price * coinOption.trendFee1h : 0;
+        bidFee += parseFloat(coinInfo.percent_change_24h) < 0 ? price * coinOption.trendFee24h : 0;
+                        
+        coinInfo.ask = price + fee + askFee;
+        coinInfo.askFee = (fee + askFee) / price;
+        
+        coinInfo.bid = price - fee - bidFee;
+        coinInfo.bidFee = (fee + bidFee) / price;
+        
+        return coinInfo;
+      });
+      
+      document.getElementById('price').innerHTML = coinInfos.map( ({symbol, ask, askFee, bid, bidFee}) => {
+        const coinOption = coinOptions[symbol];
+        
+        return `
+          <li>
+            <strong>${symbol}</strong>
+            你的买入价格为 <strong>${ask.toFixed(coinOption.toFixed)}</strong>（含 ${(askFee * 100).toFixed(2)}% 交易费）
+            你的卖出价格为 <strong>${bid.toFixed(coinOption.toFixed)}</strong>（含 ${(bidFee * 100).toFixed(2)}% 交易费）
+          </li>
+        `;
+      }).join('');
+      
+      console.log(coinInfos)
+    });
