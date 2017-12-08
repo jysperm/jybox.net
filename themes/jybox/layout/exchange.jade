@@ -22,32 +22,39 @@ block container
             li Telegram #[a(href='https://telegram.me/jysperm') @jysperm]
           h2 FAQ
           ul
-            li #[strong 为什么买卖存在差价？] 这里提供了快速、稳定的兑换服务，让你不必等待对手出现即可完成交易，同时承担了币价剧烈波动时的风险，我们却只收取 1% 左右的交易费。
-            li #[strong 交易费是如何确定的？] 我们为每种币设置了默认的交易费，同时随当前市场走势方向而波动。
-            li #[strong 以哪一时刻的价格为准？] 在事先得到我们的口头确认后，以你的人民币转账或转币的第一次确认时间为准。你也可以先行转账，这种情况下以我们知晓你的转账的时间为准（除凌晨外最多一小时）。
+            li #[strong 为什么买卖存在差价？] 这里提供了快速、稳定的兑换服务，让你不必等待对手出现即可完成交易，同时承担了币价剧烈波动时的风险，我们却只收取 2% 左右的交易费。
+            li #[strong 交易费是如何确定的？] 我们为每种币设置了默认的交易费，同时随当前市场走势方向而波动，我们也保留随时调价的可能。
+            li #[strong 为什么购买交易费更高？] 在你购买密码货币时，我们向你转账时需要支付区块链网络的转账费用，我们收取的费用中已包括了区块链网络的转账费。
+            li #[strong 以哪一时刻的价格为准？] 在事先得到我们的口头确认后，以你的人民币转账或转币的第一次确认时间为准。你也可以先行转账，这种情况下以我们知晓你的转账的时间为准（除凌晨外最多两小时）。
+            li #[strong 为什么要先进行打款或转币？如何提供担保？] 我们确实没有任何担保，全凭你的信任，你可以先进行小额的兑换。  
+            li #[strong 最多和最少接受多少价值的兑换？] 每次最少兑换 200 人民币，每天最多兑换 10000 人民币。
+            li #[strong 能不能帮我代持密码货币？] 不可以，你购买的密码货币必须转入你的钱包。
   
   script.
     const coinOptions = {
       BTC: {
-        baseFee: 0.005,
-        trendFee1h: 0.002,
-        trendFee24h: 0.002,
-        fixedFee: 50,
-        toFixed: 0
+        trendFee1h: 0.01,
+        trendFee24h: 0.01,
+        fixedFee: 500,
+        toFixed: 0,
+        askFee: 0.04,
+        bidFee: 0.005
       },
       ETH: {
-        baseFee: 0.007,
-        trendFee1h: 0.002,
-        trendFee24h: 0.002,
-        fixedFee: 4,
-        toFixed: 1
+        trendFee1h: 0.01,
+        trendFee24h: 0.005,
+        fixedFee: 20,
+        toFixed: 1,
+        askFee: 0.04,
+        bidFee: 0.005
       },
       LTC: {
-        baseFee: 0.006,
-        trendFee1h: 0.003,
-        trendFee24h: 0.003,
-        fixedFee: 2,
-        toFixed: 2
+        trendFee1h: 0.01,
+        trendFee24h: 0.005,
+        fixedFee: 4,
+        toFixed: 2,
+        askFee: 0.04,
+        bidFee: 0.005
       }
     };
   
@@ -61,17 +68,19 @@ block container
         
         const price = parseFloat(coinInfo.price_cny);
         
-        const fee = price * coinOption.baseFee + coinOption.fixedFee;
-        let askFee = parseFloat(coinInfo.percent_change_1h) > 0 ? price * coinOption.trendFee1h : 0;
+        let askFee = coinOption.askFee * price + (parseFloat(coinInfo.percent_change_1h) > 0 ? price * coinOption.trendFee1h : 0);
         askFee += parseFloat(coinInfo.percent_change_24h) > 0 ? price * coinOption.trendFee24h : 0;
-        let bidFee = parseFloat(coinInfo.percent_change_1h) < 0 ? price * coinOption.trendFee1h : 0;
-        bidFee += parseFloat(coinInfo.percent_change_24h) < 0 ? price * coinOption.trendFee24h : 0;
-                        
-        coinInfo.ask = price + fee + askFee;
-        coinInfo.askFee = (fee + askFee) / price;
+        askFee += coinOption.fixedFee;
         
-        coinInfo.bid = price - fee - bidFee;
-        coinInfo.bidFee = (fee + bidFee) / price;
+        let bidFee = coinOption.bidFee * price + (parseFloat(coinInfo.percent_change_1h) < 0 ? price * coinOption.trendFee1h : 0);
+        bidFee += parseFloat(coinInfo.percent_change_24h) < 0 ? price * coinOption.trendFee24h : 0;
+        bidFee += coinOption.fixedFee;
+                        
+        coinInfo.ask = price + askFee;
+        coinInfo.askFee = askFee / price;
+        
+        coinInfo.bid = price - bidFee;
+        coinInfo.bidFee = bidFee / price;
         
         return coinInfo;
       });
