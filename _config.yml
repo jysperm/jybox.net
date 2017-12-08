@@ -60,6 +60,6 @@ theme: jybox
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: rsync
-  host: spawn.rpvhost.net
-  user: docker
-  root: /home/docker/sites/jybox.net
+  host: ap-home
+  user: www-data
+  root: /home/www-data/jybox.net
