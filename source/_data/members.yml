@@ -576,3 +576,16 @@
   birthday: '1999'
   sns:
     qq: '17450856'
+-
+  name:
+    display: 'er567'
+    ascii: '静夜'
+  avatar: 'https://avatars1.githubusercontent.com/u/20676204'
+  blog: 'https://er567.cn'
+  profile:
+    location: '长沙'
+    birthday: '1996'
+  sns:
+    github: 'er567'
+    v2ex: 'er567'
+    zhihu: '静夜'
