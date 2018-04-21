@@ -32,7 +32,7 @@
     "jade": "^1.11.0",
     "lodash": "3.7.0",
     "markdown": "0.5.0",
-    "primer-css": "2.3.3",
+    "primer-css": "2.7.0",
     "primer-markdown": "https://github.com/primer/markdown.git#v2.1.9",
     "request": "^2.83.0"
   }
