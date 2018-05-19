@@ -1,6 +1,6 @@
 {
   "name": "jybox-net",
-  "version": "0.4.0-201511208",
+  "private": true,
   "description": "Source code of jybox.net",
   "homepage": "https://jybox.net",
   "license": "MIT",
@@ -8,15 +8,8 @@
     "type": "git",
     "url": "https://github.com/jysperm/jybox.net.git"
   },
-  "contributors": [
-    {
-      "name": "jysperm",
-      "email": "jysperm@gmail.com",
-      "url": "https://jysperm.me"
-    }
-  ],
   "hexo": {
-    "version": "3.4.3"
+    "version": "3.7.1"
   },
   "dependencies": {
     "bluebird": "^3.5.1",

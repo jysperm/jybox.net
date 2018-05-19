@@ -5,31 +5,34 @@ block container
     .block-body.column.three-fourths
       article
         .markdown-body
-          p 现面向粉丝和朋友圈提供小额人民币（一万以下）与 BTC/ETH/LTC 互兑服务。
-          p 请在 Telegram 或 Twitter 与我确认后，#[strong 由你先进行打款或转币]，在无极端意外的情况下，将使用下列的汇率和地址进行交易。
+          p 现面向朋友圈寻找小额人民币（一万以下）与 BTC/ETH/LTC 的场外交易机会。
+          p 请在 Telegram 或 Twitter 与我确认后，#[strong 由你先进行打款或转币]，然后告诉我你的地址或帐号。
           h2 时价
           ul#price
             li 正在从 coinmarketcap.com 加载价格 ...
-          p 此价格在客户端自动抓取计算生成，仅供参考。在程序出错等情况下，保留不按此价格结算的可能。
-          h2 地址
+          p 此价格在客户端自动抓取计算生成，仅供参考，保留不按此价格结算的可能。
+          h2 收币地址
           ul
-            li #[strong BTC] 13buegao8ZrLcaKF2635ugkoyV4KF8t9K1 （需 1 个确认）
-            li #[strong ETH] 0x8d4c362bd64e4c0a547430b8d9066491627259c8 （需 20 个确认）
-            li #[strong LTC] LQwZXvjbDxWMGbs91Nnmy1ze46w39YFGSn （需 4 个确认）
+            li #[strong BTC] 13buegao8ZrLcaKF2635ugkoyV4KF8t9K1 （需 2 个确认）
+            li #[strong ETH] 0x8d4c362bd64e4c0a547430b8d9066491627259c8 （需 12 个确认）
+            li #[strong LTC] LMGV2kYP61rZP4JFfLAhzR5Ptj3FwMQY62 （需 4 个确认）
           h2 联系我
           ul
             li Twitter #[a(href='https://twitter.com/jysperm') @jysperm]
             li Telegram #[a(href='https://telegram.me/jysperm') @jysperm]
           h2 FAQ
           ul
-            li #[strong 为什么买卖存在差价？] 这里提供了快速、稳定的兑换服务，让你不必等待对手出现即可完成交易，同时承担了币价剧烈波动时的风险，我们却只收取 2% 左右的交易费。
-            li #[strong 交易费是如何确定的？] 我们为每种币设置了默认的交易费，同时随当前市场走势方向而波动，我们也保留随时调价的可能。
-            li #[strong 为什么购买交易费更高？] 在你购买密码货币时，我们向你转账时需要支付区块链网络的转账费用，我们收取的费用中已包括了区块链网络的转账费。
-            li #[strong 以哪一时刻的价格为准？] 在事先得到我们的口头确认后，以你的人民币转账或转币的第一次确认时间为准。你也可以先行转账，这种情况下以我们知晓你的转账的时间为准（除凌晨外最多两小时）。
-            li #[strong 为什么要先进行打款或转币？如何提供担保？] 我们确实没有任何担保，全凭你的信任，你可以先进行小额的兑换。  
-            li #[strong 最多和最少接受多少价值的兑换？] 每次最少兑换 200 人民币，每天最多兑换 10000 人民币。
+            li #[strong 通过什么渠道转账人民币？] 可以使用支付宝或微信转账人民币，请私下向我询问帐号。
+            li #[strong 为什么买卖存在差价？] 你可以快速、稳定地与我进行交易，不必等待对手的出现，同时我承担了币价剧烈波动时的风险，却只收取 2% 左右的溢价。
+            li #[strong 交易价格是如何确定的？] 我为每种币设置了默认的溢价，同时随当前市场走势方向而波动，同时也保留随时调价的可能。
+            li #[strong 为什么购买溢价更高？] 在你购买密码货币时，我向你转账时需要支付区块链网络的转账费用，我收取的溢价中已包括了区块链网络的转账费。
+            li #[strong 以哪一时刻的价格为准？] 在事先得到我的口头确认后，以你的人民币转账或转币的第一次确认时间为准。你也可以先行转账，这种情况下以我知晓你的转账的时间为准（除凌晨外最多两小时）。
+            li #[strong 为什么要先进行打款或转币？如何提供担保？] 因为原则上仅面向朋友圈，所以我确实没有任何担保，全凭你的信任，你可以先进行小额的、分批的兑换。  
+            li #[strong 我希望交易除 BTC/ETH/LTC 之外的其他币种怎么办？] 建议先通过币币交易所兑换为这三种密码货币，再与我兑换人民币。
+            li #[strong 最多和最少接受多少价值的兑换？] 考虑到转账费用，建议每次兑换 2000 以上；每人每周最多兑换 10000 人民币。
+            li #[strong 我不了解密码货币怎么办？] 建议你先了解足够多的关于密码货币的知识之后，再兑换密码货币。
             li #[strong 能不能帮我代持密码货币？] 不可以，你购买的密码货币必须转入你的钱包。
-  
+
   script.
     const coinOptions = {
       BTC: {
@@ -37,24 +40,27 @@ block container
         trendFee24h: 0.01,
         fixedFee: 500,
         toFixed: 0,
-        askFee: 0.04,
-        bidFee: 0.005
+        askFee: 0.055,
+        bidFee: 0.001,
+        min: 2000
       },
       ETH: {
         trendFee1h: 0.01,
         trendFee24h: 0.005,
         fixedFee: 20,
         toFixed: 1,
-        askFee: 0.04,
-        bidFee: 0.005
+        askFee: 0.045,
+        bidFee: 0.005,
+        min: 200
       },
       LTC: {
         trendFee1h: 0.01,
         trendFee24h: 0.005,
         fixedFee: 4,
         toFixed: 2,
-        askFee: 0.04,
-        bidFee: 0.005
+        askFee: 0.05,
+        bidFee: 0.01,
+        min: 200
       }
     };
   
@@ -85,14 +91,14 @@ block container
         return coinInfo;
       });
       
-      document.getElementById('price').innerHTML = coinInfos.map( ({symbol, ask, askFee, bid, bidFee}) => {
+      document.getElementById('price').innerHTML = coinInfos.map( ({symbol, ask, askFee, bid, bidFee, min}) => {
         const coinOption = coinOptions[symbol];
         
         return `
           <li>
             <strong>${symbol}</strong>
-            你的买入价格为 <strong>${ask.toFixed(coinOption.toFixed)}</strong>（含 ${(askFee * 100).toFixed(2)}% 交易费）
-            你的卖出价格为 <strong>${bid.toFixed(coinOption.toFixed)}</strong>（含 ${(bidFee * 100).toFixed(2)}% 交易费）
+            你的买入价格为 <strong>${ask.toFixed(coinOption.toFixed)}</strong>（含 ${(askFee * 100).toFixed(2)}% 溢价，每笔至少 ${coinOption.min} 元）
+            你的卖出价格为 <strong>${bid.toFixed(coinOption.toFixed)}</strong>（含 ${(bidFee * 100).toFixed(2)}% 溢价）
           </li>
         `;
       }).join('');
