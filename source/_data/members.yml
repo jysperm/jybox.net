@@ -589,3 +589,22 @@
     github: 'er567'
     v2ex: 'er567'
     zhihu: '静夜'
+-
+  name:
+    display: '小淏'
+    ascii: 'siegrain'
+  avatar: 'https://avatars2.githubusercontent.com/u/11625599'
+  blog: 'https://siegrain.wang'
+  profile:
+    company:
+      name: 'iHerb'
+      url: 'https://cn.iherb.com/'
+    location: '上海'
+    birthday: '1995-03-03'
+  tags:
+    - .NET Core
+    - 退学
+  sns:
+    github: 'siegrainwong'
+    qq: '330876814'
+    zhihu: 'sean-zhihu'
