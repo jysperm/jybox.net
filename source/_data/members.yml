@@ -1,561 +1,610 @@
-- name:
-    display: "王子亭"
-    nickname: "精子"
-    ascii: "jysperm"
-  avatar: "jysperm@gmail.com"
-  blog: "https://jysperm.me"
+-
+  name:
+    display: '王子亭'
+    nickname: '精子'
+    ascii: 'jysperm'
+  avatar: 'jysperm@gmail.com'
+  blog: 'https://jysperm.me'
   websites:
-    - name: "Atom 中文社区"
-      url: "http://atom-china.org"
+    -
+      name: 'Atom 中文社区'
+      url: 'http://atom-china.org'
   profile:
     company:
-      name: "LeanCloud"
-      url: "https://leancloud.cn"
-    location: "北京"
-    birthday: "1995-11-25"
+      name: 'LeanCloud'
+      url: 'https://leancloud.cn'
+    location: '北京'
+    birthday: '1995-11-25'
   tags:
     - Node.js
     - 退学
   sns:
-    github: "jysperm"
-    qq: "184300584"
-    v2ex: "jybox"
-    zhihu: "jysperm"
-    segmentfault: "jysperm"
-    twitter: "jysperm"
-    bitcoin: "13v2BTCMZMHg5v87susgg86HFZqXERuwUd"
-    keybase: "jysperm"
-- name:
-    display: "Parthas"
-    ascii: "parthas"
-  avatar: "xywhpanda@gmail.com"
-  blog: "http://blog.xparthas.com"
+    github: 'jysperm'
+    qq: '184300584'
+    v2ex: 'jybox'
+    zhihu: 'jysperm'
+    segmentfault: 'jysperm'
+    twitter: 'jysperm'
+    bitcoin: '13v2BTCMZMHg5v87susgg86HFZqXERuwUd'
+    keybase: 'jysperm'
+-
+  name:
+    display: 'Parthas'
+    ascii: 'parthas'
+  avatar: 'xywhpanda@gmail.com'
+  blog: 'http://blog.xparthas.com'
   profile:
     company:
-      name: "萝莉科技"
-      url: "http://www.loristech.com"
-    location: "Toronto"
-    birthday: "1993-09-20"
+      name: '萝莉科技'
+      url: 'http://www.loristech.com'
+    location: 'Toronto'
+    birthday: '1993-09-20'
   tags:
     - .Net
     - 时差党
   sns:
-    github: "Parthas-Menethil"
-    qq: "497242884"
-    v2ex: "parthas"
-    zhihu: "parthas"
-    twitter: "xparthas"
-- name:
-    display: "喵呜"
-    full: "张展通"
-    ascii: "zhantongz"
-  avatar: "zhang@zhantong.org"
+    github: 'Parthas-Menethil'
+    qq: '497242884'
+    v2ex: 'parthas'
+    zhihu: 'parthas'
+    twitter: 'xparthas'
+-
+  name:
+    display: '喵呜'
+    full: '张展通'
+    ascii: 'zhantongz'
+  avatar: 'zhang@zhantong.org'
   profile:
-    school: "阿尔伯塔"
-    location: "埃德蒙顿"
-    birthday: "1999-04-05"
+    school: '阿尔伯塔'
+    location: '埃德蒙顿'
+    birthday: '1999-04-05'
   tags:
     - 时差党
   sns:
-    github: "zhantongz"
-    qq: "1211347978"
-    zhihu: "zhang-zhan-tong"
-    twitter: "zhantongz"
-    keybase: "zhantongz"
-- name:
-    display: "Madimo"
-  avatar: "madimozhang@gmail.com"
+    github: 'zhantongz'
+    qq: '1211347978'
+    zhihu: 'zhang-zhan-tong'
+    twitter: 'zhantongz'
+    keybase: 'zhantongz'
+-
+  name:
+    display: 'Madimo'
+  avatar: 'madimozhang@gmail.com'
   profile:
-    location: "天津"
-    birthday: "1994-03-10"
+    location: '天津'
+    birthday: '1994-03-10'
   tags:
     - Objective-C
     - ACG
   sns:
-    github: "Madimo"
-    qq: "53161779"
-    v2ex: "Madimo"
-    zhihu: "MadimoZhang"
-    twitter: "MadimoZhang"
-- name:
-    display: "孙亮"
-    full: "孙亮"
-    ascii: "untsop"
-  avatar: "https://avatars2.githubusercontent.com/u/978810"
+    github: 'Madimo'
+    qq: '53161779'
+    v2ex: 'Madimo'
+    zhihu: 'MadimoZhang'
+    twitter: 'MadimoZhang'
+-
+  name:
+    display: '孙亮'
+    full: '孙亮'
+    ascii: 'untsop'
+  avatar: 'https://avatars2.githubusercontent.com/u/978810'
   websites:
-    - name: "一览"
-      url: "http://one.hackplan.com"
+    -
+      name: '一览'
+      url: 'http://one.hackplan.com'
   profile:
     company:
-      name: "番茄土豆"
-      url: "https://pomotodo.com"
-    location: "江苏苏州"
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+    location: '江苏苏州'
   tags:
     - 退学
   sns:
-    github: "untsop"
-    twitter: "untsop"
-    v2ex: "unstop"
-- name:
-    display: "faceair"
-  avatar: "faceair.zh@gmail.com"
-  blog: "http://lucy.faceair.me"
+    github: 'untsop'
+    twitter: 'untsop'
+    v2ex: 'unstop'
+-
+  name:
+    display: 'faceair'
+  avatar: 'faceair.zh@gmail.com'
+  blog: 'http://lucy.faceair.me'
   profile:
     company:
-      name: "番茄土豆"
-      url: "https://pomotodo.com"
-    location: "湖北武汉"
-    birthday: "1993-8-28"
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+    location: '湖北武汉'
+    birthday: '1993-8-28'
   sns:
-    github: "faceair"
-    qq: "1067099789"
-    v2ex: "faceair"
-- name:
-    display: "Sune Bear"
-    ascii: "sunebear"
-  avatar: "hi@sunebear.com"
-  blog: "http://sunebear.com"
+    github: 'faceair'
+    qq: '1067099789'
+    v2ex: 'faceair'
+-
+  name:
+    display: 'Sune Bear'
+    ascii: 'sunebear'
+  avatar: 'hi@sunebear.com'
+  blog: 'http://sunebear.com'
   profile:
     company:
-      name: "Teambition"
-    location: "上海"
-    birthday: "1994-11-10"
+      name: 'Teambition'
+    location: '上海'
+    birthday: '1994-11-10'
   sns:
-    github: "SuneBear"
-    zhihu: "SuneBear"
-    twitter: "hisunebear"
-- name:
-    display: "张子怿"
-    ascii: "mason"
-  avatar: "zzy228961125@gmail.com"
-  blog: "http://brightsaul.me"
+    github: 'SuneBear'
+    zhihu: 'SuneBear'
+    twitter: 'hisunebear'
+-
+  name:
+    display: '张子怿'
+    ascii: 'mason'
+  avatar: 'zzy228961125@gmail.com'
+  blog: 'http://brightsaul.me'
   profile:
-    location: "江苏苏州"
-    birthday: "1996-11-25"
+    location: '江苏苏州'
+    birthday: '1996-11-25'
   tags:
     - 复读中
   sns:
-    twitter: "mason961125"
-    github: "mason96112569"
-- name:
-    display: "cry"
-    nickname: "萌哭"
-  blog: "http://infinnie.github.io/"
-  avatar: "https://avatars3.githubusercontent.com/u/8168391"
+    twitter: 'mason961125'
+    github: 'mason96112569'
+-
+  name:
+    display: 'cry'
+    nickname: '萌哭'
+  blog: 'http://infinnie.github.io/'
+  avatar: 'https://avatars3.githubusercontent.com/u/8168391'
   girl: true
   profile:
-    school: "武汉大学"
-    location: "湖北武汉"
-    birthday: "1994"
+    school: '武汉大学'
+    location: '湖北武汉'
+    birthday: '1994'
   tags:
     - 生物学
     - Web
   sns:
-    github: "infinnie"
+    github: 'infinnie'
     guokr:
-      id: "1872381934"
-      name: "we_cry"
-- name:
-    display: "wall2flower"
-    full: "罗韬"
-  avatar: "luotao0124@gmail.com"
+      id: '1872381934'
+      name: 'we_cry'
+-
+  name:
+    display: 'wall2flower'
+    full: '罗韬'
+  avatar: 'luotao0124@gmail.com'
   profile:
-    location: "浙江杭州"
-    birthday: "1995-01-24"
+    location: '浙江杭州'
+    birthday: '1995-01-24'
   sns:
-    github: "wall2flower"
-    qq: "179575559"
-    v2ex: "wall2flower"
-    segmentfault: "wall2flower"
-    twitter: "wall2flower"
-- name:
-    display: "绯村月"
-    full: "李昱东"
-    ascii: "yudong"
-  avatar: "liyudong1992@gmail.com"
+    github: 'wall2flower'
+    qq: '179575559'
+    v2ex: 'wall2flower'
+    segmentfault: 'wall2flower'
+    twitter: 'wall2flower'
+-
+  name:
+    display: '绯村月'
+    full: '李昱东'
+    ascii: 'yudong'
+  avatar: 'liyudong1992@gmail.com'
   profile:
     company:
-      name: "阿里巴巴"
-    location: "北京"
-    birthday: "1990-12-25"
+      name: '阿里巴巴'
+    location: '北京'
+    birthday: '1990-12-25'
   tags:
     - BAT
   sns:
-    github: "lyd600lty"
-- name:
-    display: "郭俊燊"
-    nickname: "Kuro"
-    ascii: "kuro"
-  avatar: "https://avatars2.githubusercontent.com/u/8684548"
-  blog: "http://kuro.im/"
+    github: 'lyd600lty'
+-
+  name:
+    display: '郭俊燊'
+    nickname: 'Kuro'
+    ascii: 'kuro'
+  avatar: 'https://avatars2.githubusercontent.com/u/8684548'
+  blog: 'http://kuro.im/'
   profile:
-    location: "广州"
-    birthday: "1993-06-11"
+    location: '广州'
+    birthday: '1993-06-11'
   sns:
-    github: "KuroGuo"
-    qq: "413298956"
-    v2ex: "Kuro"
-- name:
-    display: "JmPotato"
-    full: "耿海直"
-    ascii: "jmpotato"
-  avatar: "https://avatars1.githubusercontent.com/u/1446531"
-  blog: "http://ipotato.me"
+    github: 'KuroGuo'
+    qq: '413298956'
+    v2ex: 'Kuro'
+-
+  name:
+    display: 'JmPotato'
+    full: '耿海直'
+    ascii: 'jmpotato'
+  avatar: 'https://avatars1.githubusercontent.com/u/1446531'
+  blog: 'http://ipotato.me'
   profile:
-    birthday: "1999-7-1"
+    birthday: '1999-7-1'
   sns:
-    github: "JmPotato"
-    twitter: "Jm_Potato"
-- name:
-    display: "IntPtr"
-  blog: "https://www.intptr.im"
-  avatar: "79890e1699630b51b529e12baf3f2071"
+    github: 'JmPotato'
+    twitter: 'Jm_Potato'
+-
+  name:
+    display: 'IntPtr'
+  blog: 'https://www.intptr.im'
+  avatar: '79890e1699630b51b529e12baf3f2071'
   profile:
-    location: "北京"
-    birthday: "1998"
+    location: '北京'
+    birthday: '1998'
   sns:
-    github: "lixiaoyan"
-- name:
-    display: "逸川"
-    ascii: "c4605"
-  avatar: "https://avatars1.githubusercontent.com/u/382011"
+    github: 'lixiaoyan'
+-
+  name:
+    display: '逸川'
+    ascii: 'c4605'
+  avatar: 'https://avatars1.githubusercontent.com/u/382011'
   profile:
     company:
-      name: "番茄土豆"
-      url: "https://pomotodo.com"
-    location: "上海"
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+    location: '上海'
   tags:
     - Web
     - ACG
   sns:
-    github: "bolasblack"
-- name:
-    display: "Dacer"
-    ascii: "dacer"
-  avatar: "792f861ce396b616180675ee90c3755e"
-  blog: "http://blog.dacer.im"
+    github: 'bolasblack'
+-
+  name:
+    display: 'Dacer'
+    ascii: 'dacer'
+  avatar: '792f861ce396b616180675ee90c3755e'
+  blog: 'http://blog.dacer.im'
   profile:
     company:
-      name: "番茄土豆"
-      url: "https://pomotodo.com"
-    location: "上海"
+      name: '番茄土豆'
+      url: 'https://pomotodo.com'
+    location: '上海'
   sns:
-    github: "dacer"
-- name:
-    display: "starriv"
-  avatar: "https://avatars1.githubusercontent.com/u/7098001"
-  blog: "http://starriv.com"
+    github: 'dacer'
+-
+  name:
+    display: 'starriv'
+  avatar: 'https://avatars1.githubusercontent.com/u/7098001'
+  blog: 'http://starriv.com'
   tags:
     - 退学
   profile:
-    location: "上海"
+    location: '上海'
   sns:
-    github: "starriv"
-- name:
-    display: "Abreto"
-    ascii: "abreto"
-  avatar: "https://avatars3.githubusercontent.com/u/1196941"
-  blog: "http://blog.abreto.net"
+    github: 'starriv'
+-
+  name:
+    display: 'Abreto'
+    ascii: 'abreto'
+  avatar: 'https://avatars3.githubusercontent.com/u/1196941'
+  blog: 'http://blog.abreto.net'
   profile:
-    location: "四川成都"
+    location: '四川成都'
   tags:
     - 复读中
   sns:
-    github: "Abreto"
-- name:
-    display: "谦谦"
-    ascii: "xqq"
-  avatar: "https://avatars1.githubusercontent.com/u/4645762"
-  blog: "http://xqq.0ginr.com"
+    github: 'Abreto'
+-
+  name:
+    display: '谦谦'
+    ascii: 'xqq'
+  avatar: 'https://avatars1.githubusercontent.com/u/4645762'
+  blog: 'http://xqq.0ginr.com'
   profile:
-    location: "江苏"
+    location: '江苏'
   sns:
-    github: "xqq"
-    twitter: "jyzhengqian"
-- name:
-    display: "Oran"
-    ascii: "oran"
-  avatar: "https://avatars2.githubusercontent.com/u/1382065"
+    github: 'xqq'
+    twitter: 'jyzhengqian'
+-
+  name:
+    display: 'Oran'
+    ascii: 'oran'
+  avatar: 'https://avatars2.githubusercontent.com/u/1382065'
   profile:
-    location: "湖北武汉"
-    birthday: "1997"
+    location: '湖北武汉'
+    birthday: '1997'
   sns:
-    github: "oranzhang"
-- name:
-    display: "iYUYUE"
-    ascii: "iyuyue"
-  avatar: "admin@iyuyue.com"
-  blog: "http://blog.iyuyue.com"
+    github: 'oranzhang'
+-
+  name:
+    display: 'iYUYUE'
+    ascii: 'iyuyue'
+  avatar: 'admin@iyuyue.com'
+  blog: 'http://blog.iyuyue.com'
   sns:
-    github: "iYUYUE"
-    v2ex: "iyuyue"
-    twitter: "iyuyue66"
-- name:
-    display: "Atina"
-    full: "胡雨佳"
-    ascii: "atina"
-  avatar: "https://cloud.githubusercontent.com/assets/1191561/5892587/cc15d5cc-a4ff-11e4-96c0-48c3ee2f7686.jpg"
+    github: 'iYUYUE'
+    v2ex: 'iyuyue'
+    twitter: 'iyuyue66'
+-
+  name:
+    display: 'Atina'
+    full: '胡雨佳'
+    ascii: 'atina'
+  avatar: 'https://cloud.githubusercontent.com/assets/1191561/5892587/cc15d5cc-a4ff-11e4-96c0-48c3ee2f7686.jpg'
   girl: true
   profile:
-    location: "辽宁锦州"
-    birthday: "1995-9-17"
+    location: '辽宁锦州'
+    birthday: '1995-9-17'
   sns:
-    qq: "1349971535"
-- name:
-    display: "林晨"
-    ascii: "linchen"
-  avatar: "https://avatars0.githubusercontent.com/u/4705237"
-  blog: "http://mclspace.com"
+    qq: '1349971535'
+-
+  name:
+    display: '林晨'
+    ascii: 'linchen'
+  avatar: 'https://avatars0.githubusercontent.com/u/4705237'
+  blog: 'http://mclspace.com'
   profile:
-    location: "江苏南京"
+    location: '江苏南京'
   sns:
-    github: "rdmclin2"
-    v2ex: "rdmclin2"
-    segmentfault: "rdmclin2"
-    stackoverflow: "coco_"
-- name:
-    display: "Librazy"
-    ascii: "librazy"
-  avatar: "https://avatars0.githubusercontent.com/u/2211542"
-  blog: "http://im.librazy.org"
+    github: 'rdmclin2'
+    v2ex: 'rdmclin2'
+    segmentfault: 'rdmclin2'
+    stackoverflow: 'coco_'
+-
+  name:
+    display: 'Librazy'
+    ascii: 'librazy'
+  avatar: 'https://avatars0.githubusercontent.com/u/2211542'
+  blog: 'http://im.librazy.org'
   profile:
-    location: "福建"
+    location: '福建'
   sns:
-    github: "Librazy"
-- name:
-    display: "冯小雪"
-  avatar: "https://cloud.githubusercontent.com/assets/1191561/11021119/0ec61120-8673-11e5-9126-fa6f5ac8a0bc.jpg"
+    github: 'Librazy'
+-
+  name:
+    display: '冯小雪'
+  avatar: 'https://cloud.githubusercontent.com/assets/1191561/11021119/0ec61120-8673-11e5-9126-fa6f5ac8a0bc.jpg'
   girl: true
   profile:
-    location: "甘肃金昌"
-    birthday: "1997-2-11"
+    location: '甘肃金昌'
+    birthday: '1997-2-11'
   tags:
     - 退学
   sns:
-    qq: "2402604022"
-- name:
-    display: "刘雨培"
-    ascii: "lyp"
-  avatar: "https://avatars1.githubusercontent.com/u/5786586"
+    qq: '2402604022'
+-
+  name:
+    display: '刘雨培'
+    ascii: 'lyp'
+  avatar: 'https://avatars1.githubusercontent.com/u/5786586'
   profile:
-    location: "湖北武汉"
+    location: '湖北武汉'
   sns:
-    github: "LYP951018"
-    twitter: "liuyupei951018"
-- name:
-    display: "春风"
-    ascii: "cloudtrends"
-  avatar: "https://avatars0.githubusercontent.com/u/2282880"
-  blog: "http://blog.csdn.net/accesine960"
+    github: 'LYP951018'
+    twitter: 'liuyupei951018'
+-
+  name:
+    display: '春风'
+    ascii: 'cloudtrends'
+  avatar: 'https://avatars0.githubusercontent.com/u/2282880'
+  blog: 'http://blog.csdn.net/accesine960'
   sns:
-    github: "cloudtrends"
-- name:
-    display: "Chenyao"
-    ascii: "chenyao"
-  avatar: "https://avatars1.githubusercontent.com/u/8429651"
+    github: 'cloudtrends'
+-
+  name:
+    display: 'Chenyao'
+    ascii: 'chenyao'
+  avatar: 'https://avatars1.githubusercontent.com/u/8429651'
   profile:
-    location: "河南郑州"
+    location: '河南郑州'
   sns:
-    qq: "841144792"
-- name:
-    display: "陈晓源"
-    ascii: "oyiadin"
-  avatar: "https://avatars1.githubusercontent.com/u/4920922"
+    qq: '841144792'
+-
+  name:
+    display: '陈晓源'
+    ascii: 'oyiadin'
+  avatar: 'https://avatars1.githubusercontent.com/u/4920922'
   profile:
-    birthday: "1999-03-20"
+    birthday: '1999-03-20'
   sns:
-    github: "oyiadin"
-- name:
-    display: "泡面"
-    nickname: "AngryPowman"
-    ascii: "angrypowman"
-  avatar: "https://avatars1.githubusercontent.com/u/1910783"
+    github: 'oyiadin'
+-
+  name:
+    display: '泡面'
+    nickname: 'AngryPowman'
+    ascii: 'angrypowman'
+  avatar: 'https://avatars1.githubusercontent.com/u/1910783'
   sns:
-    github: "AngryPowman"
-- name:
-    display: "朱小朱"
-  avatar: "https://cloud.githubusercontent.com/assets/1191561/6209405/969fc90e-b600-11e4-9c45-5afcc33b1d26.jpg"
+    github: 'AngryPowman'
+-
+  name:
+    display: '朱小朱'
+  avatar: 'https://cloud.githubusercontent.com/assets/1191561/6209405/969fc90e-b600-11e4-9c45-5afcc33b1d26.jpg'
   girl: true
   profile:
-    school: "武汉大学"
-- name:
-    display: "Nocti"
-    ascii: "nocti"
-  avatar: "https://avatars1.githubusercontent.com/u/6418374"
+    school: '武汉大学'
+-
+  name:
+    display: 'Nocti'
+    ascii: 'nocti'
+  avatar: 'https://avatars1.githubusercontent.com/u/6418374'
   sns:
-    github: "noctiomg"
-- name:
-    display: "JopOu"
-    ascii: "jopou"
-  avatar: "https://avatars2.githubusercontent.com/u/6096079"
+    github: 'noctiomg'
+-
+  name:
+    display: 'JopOu'
+    ascii: 'jopou'
+  avatar: 'https://avatars2.githubusercontent.com/u/6096079'
   sns:
-    github: "JopOu"
-- name:
-    display: "ray"
-  avatar: "https://pbs.twimg.com/profile_images/505004462100852736/YBkK_pQW_400x400.jpeg"
+    github: 'JopOu'
+-
+  name:
+    display: 'ray'
+  avatar: 'https://pbs.twimg.com/profile_images/505004462100852736/YBkK_pQW_400x400.jpeg'
   sns:
-    twitter: "RayTely"
-- name:
-    display: "tcdw"
-    ascii: "tcdw"
-  avatar: "admin@tcdw.net"
-  blog: "https://www.tcdw.net"
+    twitter: 'RayTely'
+-
+  name:
+    display: 'tcdw'
+    ascii: 'tcdw'
+  avatar: 'admin@tcdw.net'
+  blog: 'https://www.tcdw.net'
   profile:
-    location: "呼和浩特"
-    birthday: "1998"
+    location: '呼和浩特'
+    birthday: '1998'
   sns:
-    github: "tcdw"
-    v2ex: "tcdw"
-    segmentfault: "tcdw"
-- name:
-    display: "scusjs"
-  avatar: "https://avatars2.githubusercontent.com/u/3920158"
+    github: 'tcdw'
+    v2ex: 'tcdw'
+    segmentfault: 'tcdw'
+-
+  name:
+    display: 'scusjs'
+  avatar: 'https://avatars2.githubusercontent.com/u/3920158'
   profile:
-    location: "北京"
+    location: '北京'
   sns:
-    twitter: "scusjs"
-    v2ex: "scusjs"
-- name:
-    display: "豆腐"
-    ascii: "doufu"
-  avatar: "https://avatars0.githubusercontent.com/u/15712921"
-  blog: "http://doufu.cat"
+    twitter: 'scusjs'
+    v2ex: 'scusjs'
+-
+  name:
+    display: '豆腐'
+    ascii: 'doufu'
+  avatar: 'https://avatars0.githubusercontent.com/u/15712921'
+  blog: 'http://doufu.cat'
   profile:
-    location: "江苏苏州"
-    birthday: "2015"
+    location: '江苏苏州'
+    birthday: '2015'
   sns:
-    github: "cat-doufu"
-- name:
-    display: "皮蛋"
-    ascii: "pidan"
-  avatar: "https://avatars3.githubusercontent.com/u/15712992"
-  blog: "http://pidan.cat"
+    github: 'cat-doufu'
+-
+  name:
+    display: '皮蛋'
+    ascii: 'pidan'
+  avatar: 'https://avatars3.githubusercontent.com/u/15712992'
+  blog: 'http://pidan.cat'
   girl: true
   profile:
-    location: "江苏苏州"
-    birthday: "2015"
+    location: '江苏苏州'
+    birthday: '2015'
   sns:
-    github: "cat-pidan"
-- name:
-    display: "taevas"
-  avatar: "903323f637feca2cb576ace191b7bd52"
-  blog: "http://taevas.space"
+    github: 'cat-pidan'
+-
+  name:
+    display: 'taevas'
+  avatar: '903323f637feca2cb576ace191b7bd52'
+  blog: 'http://taevas.space'
   profile:
     company:
-      name: "upyun"
-      url: "https://www.upyun.com"
-    location: "浙江杭州"
-    birthday: "1992-12"
+      name: 'upyun'
+      url: 'https://www.upyun.com'
+    location: '浙江杭州'
+    birthday: '1992-12'
   tags:
     - Node.js
     - 学生
   sns:
-    github: "zyvas"
-    qq: "372269470"
-- name:
-    display: "傅小黑"
-    nickname: "傅小黑"
-    ascii: "fuxiaohei"
-  avatar: "https://avatars0.githubusercontent.com/u/2142787"
-  blog: "http://fuxiaohei.me"
+    github: 'zyvas'
+    qq: '372269470'
+-
+  name:
+    display: '傅小黑'
+    nickname: '傅小黑'
+    ascii: 'fuxiaohei'
+  avatar: 'https://avatars0.githubusercontent.com/u/2142787'
+  blog: 'http://fuxiaohei.me'
   websites:
-    - name: "PuGo"
-      url: "http://pugo.io"
+    -
+      name: 'PuGo'
+      url: 'http://pugo.io'
   profile:
-    location: "福建厦门"
-    birthday: "1990-12-10"
+    location: '福建厦门'
+    birthday: '1990-12-10'
   tags:
     - Gopher
   sns:
-    github: "fuxiaohei"
-    qq: "772881987"
-    v2ex: "fuxiaohei"
-    zhihu: "fuxiaohei"
-    twitter: "fuxiaohei"
-- name:
-    display: "CRH380A-2722"
-    ascii: "cirno380a"
-  avatar: "609657831@qq.com"
-  blog: "https://www.cirno380a.moe"
+    github: 'fuxiaohei'
+    qq: '772881987'
+    v2ex: 'fuxiaohei'
+    zhihu: 'fuxiaohei'
+    twitter: 'fuxiaohei'
+-
+  name:
+    display: 'CRH380A-2722'
+    ascii: 'cirno380a'
+  avatar: '609657831@qq.com'
+  blog: 'https://www.cirno380a.moe'
   profile:
-    location: "广东清远"
-    school: "华南农业大学"
-    birthday: "1997-11-05"
+    location: '广东清远'
+    school: '华南农业大学'
+    birthday: '1997-11-05'
   tags:
     - 巴士迷
     - 火车迷
     - PHPer
     - 中二病
   sns:
-    github: "CRH380A-2722"
-    qq: "609657831"
-- name:
-    display: "rustic_z"
-    nickname: "rustic_z"
-  avatar: "https://avatars0.githubusercontent.com/u/13452230"
-  blog: "https://rustic-z.github.io"
+    github: 'CRH380A-2722'
+    qq: '609657831'
+-
+  name:
+    display: 'rustic_z'
+    nickname: 'rustic_z'
+  avatar: 'https://avatars0.githubusercontent.com/u/13452230'
+  blog: 'https://rustic-z.github.io'
   profile:
     company:
-      name: "alltuu"
-      url: "http://www.alltuu.com"
-    location: "浙江杭州"
-    birthday: "1993-09-18"
-    school: "江西理工大学"
+      name: 'alltuu'
+      url: 'http://www.alltuu.com'
+    location: '浙江杭州'
+    birthday: '1993-09-18'
+    school: '江西理工大学'
   tags:
     - Java
     - 硬件爱好者
   sns:
-    github: "rustic-z"
-    qq: "719208263"
-    weibo: "瘦子如何变型男"
-    segmentfault: "rustic_z"
-    twitter: "rustic_z"
-- name:
-    display: "Yellow Bud"
-    ascii: "yellowbud"
+    github: 'rustic-z'
+    qq: '719208263'
+    weibo: '瘦子如何变型男'
+    segmentfault: 'rustic_z'
+    twitter: 'rustic_z'
+-
+  name:
+    display: 'Yellow Bud'
+    ascii: 'yellowbud'
   girl: true
-  avatar: "https://avatars0.githubusercontent.com/u/28706976"
+  avatar: 'https://avatars0.githubusercontent.com/u/28706976'
   profile:
-    location: "北京"
-    birthday: "1994"
+    location: '北京'
+    birthday: '1994'
   tags:
     - 鸡胸肉少女
-- name:
-    display: "小百科"
-    full: "梁志荣"
-    ascii: "zeawinl"
-  avatar: "17450856@qq.com"
-  blog: "http://zeawinl.top"
-  birthday: "1999"
+-
+  name:
+    display: '小百科'
+    full: '梁志荣'
+    ascii: 'zeawinl'
+  avatar: '17450856@qq.com'
+  blog: 'http://zeawinl.top'
+  birthday: '1999'
   sns:
-    qq: "17450856"
-- name:
-    display: "静夜"
-    ascii: "er567"
-  avatar: "https://avatars1.githubusercontent.com/u/20676204"
-  blog: "http://er567.cn"
+    qq: '17450856'
+-
+  name:
+    display: '静夜'
+    ascii: 'er567'
+  avatar: 'https://avatars1.githubusercontent.com/u/20676204'
+  blog: 'http://er567.cn'
   profile:
-    location: "长沙"
-    birthday: "1996"
+    location: '长沙'
+    birthday: '1996'
   sns:
-    github: "er567"
-    v2ex: "er567"
-    zhihu: "静夜"
-- name:
-    display: "小淏"
-    ascii: "siegrain"
-  avatar: "https://avatars2.githubusercontent.com/u/11625599"
-  blog: "https://siegrain.wang"
+    github: 'er567'
+    v2ex: 'er567'
+    zhihu: '静夜'
+-
+  name:
+    display: '小淏'
+    ascii: 'siegrain'
+  avatar: 'https://avatars2.githubusercontent.com/u/11625599'
+  blog: 'https://siegrain.wang'
   profile:
     company:
-      name: "iHerb"
-      url: "https://cn.iherb.com/"
-    location: "上海"
-    birthday: "1995-03-03"
+      name: 'iHerb'
+      url: 'https://cn.iherb.com/'
+    location: '上海'
+    birthday: '1995-03-03'
   tags:
     - .NET Core
     - 退学
   sns:
-    github: "siegrainwong"
-    qq: "330876814"
-    zhihu: "sean-zhihu"
+    github: 'siegrainwong'
+    qq: '330876814'
+    zhihu: 'sean-zhihu'
