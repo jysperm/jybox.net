@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Win7全屏修复工具-源码分析和解答贴|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  软件介绍和下载地址：http://jybox.net/soft/win7full/ 有任何关于源代码和开发的疑问可以在这里提问关于本手册的错误，欢迎指出  该手册版本：2011.7.31第一版对应程序版本2011.7.26第一版  该程序是 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,Win7全屏修复工具-源码分析和解答贴,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t23.html">Win7全屏修复工具-源码分析和解答贴</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-07-31 20:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>Win7全屏修复工具-源码分析和解答贴</h1>
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">软件介绍和下载地址：http://jybox.net/soft/win7full/ <br>有任何关于源代码和开发的疑问可以在这里提问</div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;">关于本手册的错误，欢迎指出</div></blockquote><br> <br> <br><blockquote class="blockquote3"><div class="text" style="padding:15px;">该手册版本：2011.7.31第一版&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对应程序版本2011.7.26第一版</div></blockquote><br> <br> <br>该程序是通过修改注册表的方式来修复全屏的，具体思路来自网络上流传的方法，确实已经找不到最早的作者了，原文摘录如下<br> <br> <br> <br><blockquote class="blockquote3"><div class="text" style="padding:15px;">一、Windows7下游戏全屏问题通用解决方法（推荐使用）：<br><br><br>Win键+R键，打开运行窗口，输入regedit 回车，这样就打开了注册表编辑器，然后，定位到以下位置：<br><br><br>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\GraphicsDrivers\Configuration\<br><br><br>在Configuration这上面右键，选择查找，输入Scaling，在右框找到scaling，右键scaling修改<br>将数值改为3即可（原值是4），这种方法基本通杀所有Windows7下游戏的全屏问题。<br><br><br>例如，有的用户找到了：<br><br><br>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\GraphicsDrivers\Configuration\ BNQ7820G5904027026_14_07D9_0D^982BE6B19D3412E0FED7CFC9082CBA39\00\00\Scaling<br><br><br>把此处的Scaling数值改为3即可，在这个例子中，BNQ7820G5904027026_14_07D9_0D^982BE6B19D3412E0FED7CFC9082CBA39<br>注意，这段数值由于显示设备的不同而改变，以大家自己搜索到的键值为准！！</div></blockquote><br> <br> <br> <br>从这个思路来看，只要能够正确读写注册表即可。但其中还有一个难点，就是其中的一项的值是不固定的。<br> <br> <br>该程序使用Qt Creator 2.0.1的QT GUI程序向导构建，基于QWidget<br>有很多向导自动生成的代码，在此不做说明！<br> <br> <br>先来看UI布局：<br>也是使用Qt Creator的工具制作的：<br>[attachment=1]<br> <br>可以看出，布局是相当简单的，只有一个QLabel和两个按钮<br> <br> <br>然后是部分核心代码：<br>注，我写的并不完美，欢迎大家提供更好的方法<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>//widget.cpp<br>/*<br>by精英王子<br>2011.7.26<br>*/<br>#include &quot;widget.h&quot;<br>#include &quot;ui_widget.h&quot;<br>#include &lt;QSettings&gt;<br>#include &lt;QMessageBox&gt;<br>#include &lt;QStringList&gt;<br>#include &lt;QTextCodec&gt;<br>#include &lt;QDesktopWidget&gt;<br>Widget::Widget(QWidget *parent) :QWidget(parent),ui(new Ui::Widget)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ui-&gt;setupUi(this);<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;QTextCodec::setCodecForTr(QTextCodec::codecForName(&quot;utf8&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;setWindowTitle(tr(&quot;Win7全屏去黑条&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;QDesktopWidget* desktop = QApplication::desktop();<br>&nbsp;&nbsp;&nbsp;&nbsp;move((desktop-&gt;width() - this-&gt;width())/2, (desktop-&gt;height() - this-&gt;height())/2);<br>}<br>Widget::~Widget()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;delete ui;<br>}<br>void Widget::on_pushButton_clicked()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;try{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QSettings *reg = new QSettings(&quot;HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\GraphicsDrivers\\Configuration&quot;,QSettings::NativeFormat);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QStringList keys = reg-&gt;allKeys(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QString s,a;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(keys.size()==0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw keys;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s=keys[1];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a=s.left(s.indexOf(&quot;/&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete reg;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reg = new QSettings(&quot;HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\GraphicsDrivers\\Configuration\\&quot;+a+&quot;\\00\\00&quot;,QSettings::NativeFormat);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reg-&gt;setValue(&quot;Scaling&quot;,3);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(reg-&gt;value(&quot;Scaling&quot;).toInt()==3)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QMessageBox::information(0,0,tr(&quot;修改成功&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw reg;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete reg;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;catch(...)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QMessageBox::information(0,0,tr(&quot;出现了一个错误，请确认您正在使用的是Win7系统，同时已经以管理员权限运行本程序！&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br>void Widget::on_pushButton_2_clicked()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;system(&quot;start http://jybox.net&quot;);<br>}</li></ol></div><br> <br>下面是对于源码的解析：(解释在源码之后)<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>Widget::Widget(QWidget *parent) :QWidget(parent),ui(new Ui::Widget)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ui-&gt;setupUi(this);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;QTextCodec::setCodecForTr(QTextCodec::codecForName(&quot;utf8&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;setWindowTitle(tr(&quot;Win7全屏去黑条&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;QDesktopWidget* desktop = QApplication::desktop();<br>&nbsp;&nbsp;&nbsp;&nbsp;move((desktop-&gt;width() - this-&gt;width())/2, (desktop-&gt;height() - this-&gt;height())/2);<br>}</li></ol></div><br> <br>在构造函数中，先是第3行初始化界面，当然，这是向导自动生成的。<br>然后第5行设置默认字符集，我习惯于对于所有涉及编码的东西都使用utf8.当然，具体设置成什么要取决于你的文件的编码<br>第6行设置窗口标题<br>第8-9行设置窗口默认居中<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code3'));">复制代码</a></div><div class="blockquote2" id="code3"><ol><li>Widget::~Widget()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp; delete ui;<br>}</li></ol></div>析构函数，不解释<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code4'));">复制代码</a></div><div class="blockquote2" id="code4"><ol><li>void Widget::on_pushButton_clicked()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;try{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//.........<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;catch(...)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QMessageBox::information(0,0,tr(&quot;出现了一个错误，请确认您正在使用的是Win7系统，同时已经以管理员权限运行本程序！&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</li></ol></div><br>然后是“一键消除黑条”的按钮的事件。为了捕捉错误，这里使用了try-catch,catch(...)可以捕捉所有类型的错误。<br> <hr /><br>如上面的思路，我们先要得到那个随机的键名<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code5'));">复制代码</a></div><div class="blockquote2" id="code5"><ol><li>QSettings *reg = new QSettings(&quot;HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\GraphicsDrivers\\Configuration&quot;,QSettings::NativeFormat);<br>QStringList keys = reg-&gt;allKeys(); <br>QString s,a;<br>if(keys.size()==0)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw keys;<br>}</li></ol></div>第1行创建了一个QSetting对象，该类用于操作系统无关的持久性的数据储存，在Win下，对应的就是注册表<br>首先定位到包含这个不确定键的父项<br>然后第2行声明一个<font size="2"><font face="Simsun ">QStringList对象，其实按我理解</font></font><font size="2"><font face="Simsun ">QStringList就是一个字符串数组，然后取得reg的所有子健(包括非间接子</font></font><font size="2"><font face="Simsun ">键</font></font><font size="2"><font face="Simsun ">)，赋给keys</font></font><br><font face="Simsun "><font size="2">第4-7行检查是否获得了子键(如果用xp系统的话就得不到子键)，如果没有得到，则抛出异常<br></font></font><br><font face="Simsun "><font size="2">第3行声明了两个QString,s用于保存其中一个子键，a用于保存那个不确定键的名字<br></font></font><br><font face="Simsun "><font size="2"></font></font><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code6'));">复制代码</a></div><div class="blockquote2" id="code6"><ol><li>s=keys[1];<br>a=s.left(s.indexOf(&quot;/&quot;));</li></ol></div>经过我的实际测试，这个不确定键的父项所包含的非间接子键都是属于这个不确定键的。<br>所以只要获得其中一个子键的前面部分即可得到这个不确定键的名字<br>上面的两行代码正是实现了这个功能，结果被保存在a中<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code7'));">复制代码</a></div><div class="blockquote2" id="code7"><ol><li>delete reg;<br>reg = new QSettings(&quot;HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\GraphicsDrivers\\Configuration\\&quot;+a+&quot;\\00\\00&quot;,QSettings::NativeFormat);<br>reg-&gt;setValue(&quot;Scaling&quot;,3);</li></ol></div>第1行先销毁reg，因为它已经没用了，而且它是个指针<br>第2行重新构造QSetting对象，这次就直接得到了要修改的<font size="2"><font face="Simsun ">Scaling的父键了。</font></font><br><font face="Simsun "><font size="2">第3行把</font></font><font size="2"><font face="Simsun ">Scaling的值设置为我们需要的3</font></font><br><font face="Simsun "><font size="2"></font></font><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code8'));">复制代码</a></div><div class="blockquote2" id="code8"><ol><li>[color=#008ef1]if(reg-&gt;value(&quot;Scaling&quot;).toInt()==3)[/color]<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp; QMessageBox::information(0,0,tr(&quot;修改成功&quot;));<br>}<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp; throw reg;<br>}</li></ol></div>这几行代码判断了<font size="2"><font face="Simsun ">Scaling是否已经被修改成了我们需要的3.如果成功则提示用户，不成功(没以管理员权限运行的时候会失败)则抛出异常</font></font><br><font face="Simsun "><font size="2"></font></font><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code9'));">复制代码</a></div><div class="blockquote2" id="code9"><ol><li>delete reg;</li></ol></div><font face="Simsun "><font size="2">最后销毁reg<br></font></font><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code10'));">复制代码</a></div><div class="blockquote2" id="code10"><ol><li>void Widget::on_pushButton_2_clicked()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;system(&quot;start http://jybox.net&quot;);<br>}</li></ol></div><br><font face="Simsun "><font size="2">这是&quot;访问我们的网站&quot;按钮的相应事件<br>直接使用system函数来打开网址，这个函数不是QT的，是标准库提供的</font></font><br><font face="Simsun "><font size="2"></font></font> <hr /><font face="Simsun "><font size="2">好了，到这里源码分析就结束了，关于源码的任何问题可以直接跟帖提问<br>过于复杂的问题也可以单独开帖</font></font><br><font face="Simsun "><font size="2">对于非开发人员的使用问题，请来这个贴询问：</font></font><a href="http://jybox.net/bbs/read.php?tid-22.html" target="_blank" >http://jybox.net/bbs/read.php?tid-22.html</a><br><font face="Simsun "><font size="2">(对于不同的人群，说话的深度也不一样嘛！)</font></font><br> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-07-31 22:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+前排围观</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-01 00:03</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+技术区不能灌水</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-08-01 03:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+不是灌水</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.046757 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

@@ -1,0 +1,471 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>我来痛批一下VB6的种种|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  当然，非开源，无法跨平台就免了，这样就太无趣了，毕竟是微软的东西下面批的是VB6应当改进的部分，何以证明它们应该改进呢？因为下面的大多问题在VB.Net都得到了修改之一：内置类库不 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,我来痛批一下VB6的种种,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t794.html">我来痛批一下VB6的种种</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-13 15:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>我来痛批一下VB6的种种</h1>
+当然，非开源，无法跨平台就免了，这样就太无趣了，毕竟是微软的东西<br>下面批的是VB6应当改进的部分，何以证明它们应该改进呢？因为下面的大多问题在VB.Net都得到了修改<br><br>之一：内置类库不全<br>6M运行库，从这个体积大概就能看出来了。内置函数仅有最最基本的一些函数。<br>就算算上微软的其他控件，也只是多了些UI元素，根本没有算法库、数据结构<br><br>之二：没有面向对象<br>VB说是属于面向对象编程语言，但事实上仅仅是基于对象。我记得貌似只能创建类和进行访问控制，至于继承什么的统统没有。<br><br>之三：与窗口UI绑定严重<br>窗口说实在只是一个类而已，但是VB却将他特化了....ps.这是因为其他类不能继承，但是窗口类必须要能够继承才行...<br>导致很难讲窗口作为一个一般化的对象来使用，也很难脱离窗口（例如写成控制台程序）<br><br>之四：调用Win32API很困难<br>函数声明要自己写，常量要自己定义，见过哪个语言这么坑爹的......<br><br>之五：缺乏有效的代码重用机制<br>前面已经说过了，面向对象不完整，只是基于对象而已。但是即使作为一个函数式编程语言，依然坑爹<br>没有编译时替换的功能#define，没有编译时包含的功能....一个消息处理函数无法绑定多个事件等等<br><br>之六：缺乏作用域机制<br>（我好像记得）变量在所有层次都不能重名......也只能勉强通过访问修饰符来控制作用域...<br><br>之七：语法不够统一化<br>把函数和过程分开论，甚至调用方式都不一样（一个需要括号，一个不需要），变量声明可以使用符号来声明(dim a$)<br><br>之九：半动态类型半静态类型<br>这个我也说不太清，反正就是有的时候明明可以在编译时报错，但却非要等到运行时（类型不匹配错误）<br><br>之十：源文件中出现二进制文件<br>比如frx、res文件什么的，这样很难从这些文件中提取资源的源文件，也很难通过版本控制系统进行版本控制<br><br>之九：它亲娘已经不要它了<br>没见过（除了微软）哪个语言的支持这么短的<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2012-01-13 15:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+1.你敢说它的类库不够用吗？基本可以了！<br>2.我不了解继承。<br>3.错。我们这些tv3d开发的都是利用模块来开发的，根本是无视窗口，仅仅作为一个调用。<br>4.的确。烦死了。<br>5.这个也是。。。 [s:177] [s:177] [s:177] [s:177] [s:177] <br>10.好吧我败了。[s:185] </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2012-01-13 15:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+= =这玩意这么差？phpwind.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>kiro</b></td>
+<td align="right" class="smalltxt">2012-01-13 15:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+吓我一跳，我还以为你说Vitual box……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-13 16:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xttyctl9" target="_blank">xttyctl9</a><span style="color:gray ">:</span>1.你敢说它的类库不够用吗？基本可以了！<br>2.我不了解继承。<br>3.错。我们这些tv3d开发的都是利用模块来开发的，根本是无视窗口，仅仅作为一个调用。<br>4.的确。烦死了。<br>5.这个也是。。。[表情] <br>.... ..<span style="color:gray "> (2012-01-13 15:54) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3811" target="_blank" ></a><br></div></blockquote><br>内置类库很全？继承没必要？<br>能实现list、map、array么？<br><br>内置类库中连md5都没有，还说神马.....<br>第三个我说的是困难，没说不可以，你们tv3d这玩意已经不算常规开发了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2012-01-13 16:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>内置类库很全？继承没必要？<br>能实现list、map、array么？<br>内置类库中连md5都没有，还说神马.....<br>.......<span style="color:gray "> (2012-01-13 16:15) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3816" target="_blank" ></a><br></div></blockquote><br>- -<br><br>提示<br>文章内容少于 5 个字节。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-13 17:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+没有面向对象的语言多了 <br>除了第二条都赞同</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-13 20:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>没有面向对象的语言多了[表情] <br>像erlang、scala、lisp这类的<br>但你不能否认他们的强大[表情] <br>除了第二条都赞同<span style="color:gray "> (2012-01-13 17:37) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3818" target="_blank" ></a><br></div></blockquote><br>但就VB来说，不面向对象是很坑爹的，上面的很多问题都是因为没有面向对象造成的<br>而且微软也在vb.net中把vb改为了完全面向对象。说明我的判断是正确的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-14 01:29</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+下面是littlepig和tdb的回复：<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">对于那篇文章的回复：&nbsp;&nbsp;<br>0.去汝妹的VB.NET。我个人认为VB.NET已经不再是vb了，所以我觉得这个比较是毫无意义的。&nbsp;&nbsp;<br>1.你可以去找第三方库来弥补呀。度娘一下……谷哥一下……&nbsp;&nbsp;<br>2.我的确不知道怎么用vb6实现继承。假期好好学习一下～&nbsp;&nbsp;<br>3.谁说vb不能脱离窗口了？你让ActiveX DLL情何以堪呀。当然vb也可以写控制台程序……只不过貌似需要调用API……？&nbsp;&nbsp;<br>4.无力吐槽。vb自带的api浏览器内牛满面……&nbsp;&nbsp;<br>5.谁说没有编译替换了？很明显你不太了解“#if”、 “#endif”、 “#elseif”、 “#const”。编译时包含？你可以直接把（类）模块文件添加进工程嘛！后面那个说明你不会变通。定义函数时把传人参数类型定义为变体，然后使用“IsXXX”这类的函数判断一下变体内的数据类型就可以了。&nbsp;&nbsp;<br>6.“dim”、“private”、“static”、“friend”全部HLL地被无视了……&nbsp;&nbsp;<br>7.函数、过程分开论有问题么？调用方式有很多种的谢谢……自行度娘或MSDN。至于符号问题……你要是把符号定义删了，小心部分老程序员骂死你。&nbsp;&nbsp;<br>7.您老数学不错……&nbsp;&nbsp;<br>9.请举例说明。&nbsp;&nbsp;<br>10.前半句我没看出不足之处。后面的……lp说他想杀了你……“尼玛你以为劳资上次给你看的那么大一坨const是干嘛吃的？！那他喵的就是为了多语言做准备的。”（你的“版本控制”我俩全没懂，当做多语言处理。）&nbsp;&nbsp;<br>Φ.数学很好……&nbsp;&nbsp;<br>9.lp说他已经懒得理你这句话了。耳朵都磨出茧子了。&nbsp;&nbsp; <br>综合lp以及我的意见，我们得出如下结论（不代表论坛官方意见）：<br>这是一篇由一个不特别了解windows而且对于vb6一知半解却把vb6与和它根本没有可比性的VB.NET做比较最终得出各种无语结论的伤不起的孩纸。嗯，鉴定完毕。&nbsp;&nbsp;<br>1.你数学不错。 <br>2.你不了解vb6创作背景。把两个年代不同、创作初衷不同的软件作比较并且对较旧的那款软件表现出不满情绪的这种行为永远是荒唐可笑的。 <br>3.你还没有了解vb6全部的功能。建议你去下载一个配合Visual Studio6的完整版MSDN。没有找lp给你。他有正版的vb6企业版以及MSDN。 4.以上所有内容只针对你写的那个文章，并不针对任何人。如果我这篇回复给你或者其他人造成了困扰，那么我只能说sorry。 </div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"> 以上，完毕。&nbsp;&nbsp;LittlePig与TeddyBear14 写于2012-1-14凌晨</div></blockquote><br>其实我真的不想再吐槽了，感觉跟你们两个这水平的实在讲不清楚。不过鉴于还算朋友，而且今天比较有空，我还是接着吐槽一下<br> <br>首先，我指的内置库、内置函数缺乏是指数据结构方面的，比如动态数组、堆栈、集合、键值对应、链表什么的<br>“<span style="background-color:#f7f7f7 ">我的确不知道怎么用vb6实现继承</span>”居然也出来吐槽.......无语了，vb6根本没继承，你说能实现那纯属抬杠<br>“<span style="background-color:#f7f7f7 ">谁说vb不能脱离窗口了？</span><span style="background-color:#f7f7f7 ">当然vb也可以写控制台程序……只不过貌似需要调用API……</span> ”，我说的是很难，vb6没提供自带的命令行支持。能不能用api来写控制台这都不确定还出来吐槽........我可以很负责任的告诉你用api神马都能做，所以讨论内置类库的时候不要比api<br>“<span style="background-color:#f7f7f7 ">谁说没有编译替换了</span><span style="background-color:#f7f7f7 ">#if”、 “#endif”、 “#elseif”、 “#const</span>”，好吧，其实我知道的.......忘记了...<br>“<span style="background-color:#f7f7f7 ">“dim”、“private”、“static”、“friend”全部HLL地被无视了……</span><span style="background-color:#f7f7f7 "> </span>”表示从未见过firend，莫非是友元？<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>const int i=1;<br><br>namespace {<br>const int i=5<br>}<br><br>int mian()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp; int i=2;<br>&nbsp;&nbsp;&nbsp;&nbsp; if(1+1==2)<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=3;;)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while(1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i=4;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>}</li></ol></div>很负责任的告诉你上面所有每个i都是不一样的，但vb6不是这样<br> <br> <br>“<span style="background-color:#f7f7f7 ">您老数学不错</span>”过奖了，我做出了一个艰难的决定，这段吐槽不加序号了<br>“<span style="background-color:#f7f7f7 ">前半句我没看出不足之处。后面的……lp说他想杀了你……“尼玛你以为劳资上次给你看的那么大一坨const是干嘛吃的？！那他喵的就是为了多语言做准备的。”（你的“版本控制”我俩全没懂，当做多语言处理。）</span><span style="background-color:#f7f7f7 "> </span>”<br>表示前半句不知所云，后半句：<span style="color:#ff0000 ">你不知道版本控制是神马还来杀了我.........</span><br>“<span style="background-color:#f7f7f7 ">数学很好</span>”这个其实不用说很多次的<br> “<span style="background-color:#f7f7f7 ">.你数学不错。</span>”介个我知道啦.....<br>“<span style="background-color:#f7f7f7 ">你不了解vb6创作背景。把两个年代不同、创作初衷不同的软件作比较并且对较旧的那款软件表现出不满情绪的这种行为永远是荒唐可笑的</span>”<br>基本市面上大部分主流语言的诞生都早于vb6，而且我提到的所有编程思想早在N年前就得到应用了<br>“<span style="background-color:#f7f7f7 ">你还没有了解vb6全部的功能</span>”表示vb6用过一年半，.net用过半年。而且我写的代码量显然比你们俩多<br><br>首先你们没写过代码量多的项目.....这是显而易见的，你们不知道代码重用的重要性，不知道版本控制（连听说都没听说过？我太震惊了）....<br>其次你直接把我所有观点都否了，这本身就有问题..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>void_shura_x</b></td>
+<td align="right" class="smalltxt">2012-01-14 02:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+在微博看到了你们的争论帖子，作为一个超过了5年的VB6爱好者来说（尽管现在已经不再用），我很难忍受这样的评论帖。只是很多人都说语言只是工具，合适用的工具才是好工具，而且对于任何不同工具上的优劣争论也是毫无意义的，只是大家的信仰不同。不过既然大家展开了自己的一些看法，那么我也来说一下自己的观点：<br><br>VB6和现在的很多高级语言不一样，首先是因为它的诞生日期比较早，自然有很多遗留下来的问题，这是个不可否认的事实！<br><br>“内置类库不全”<br>不知道楼主的这个结论是如何得出来的，因为从来就没有人规定某种语言必须要有“算法库”，“数据结构”，而你提出的这两个造成了“内置类库不全”的功能库也实在过于苍白，我们知道VB6在可视化开发上下了很大功夫，而并不把重心放在程序逻辑方面，因为应该做的东西都很大程度上为你包装好了。至于所谓的算法库，实在可有可无！<br><br>“没有面向对象”<br>楼主说VB6没有面向对象，因此我猜你对VB6肯定了解不多！VB6面向的就是COM对象，也完全可以自定义对象，而且也有着对象最基本的特征：属性和方法。而且楼主说的“继承什么的统统没有”，不知道你表达的“什么的，统统”还包括哪些特性，我承认VB6中要实现继承，重载是一件很艰难的事，但VB6完全可以实现多态。不过鉴于它的特质，极少人会用到这样的表现形式，但绝对不能说VB6做不到这点！<br><br>“与窗口UI绑定严重”<br>VB6最大的优势就是提供了可视化的窗口开发环境，要知道人机间最友好的就是图形界面。我实在不知道楼主把这一点也列为缺点的用意在哪里。至于VB6不能实现控制台程序，也纯属是没有深入理解win32应用程序。除了三行API声明意外，VB6最多只需要5行代码即可实现一个控制台程序，多出来的两行一行是sub main(), 一行是end sub，而中间是三个函数，分别是：AllocConsole, SetConsoleTitle, FreeConsole，当然，你完全可以把后面两个函数去掉，这样一来，三行代码就可以让一个DOS窗口显示！<br><br>“调用Win32API很困难”<br>至于调用API很困难的问题，建议楼主先去看看CSharp是怎么调用Windows的API的。<br><br>“缺乏有效的代码重用机制”<br>第一句话不再评论。而后面说的“函数式编程语言”，不知道楼主是否科普过什么叫函数式编程语言，或者有没有了解过lambda和lisp，看看这两者的特性之后再来说什么是“函数式编程语言”。至于说没有预编译指令的功能，楼主可以在VB6中试试 #if (condition) Then, #End If这两个玩意儿再来发表意见！<br><br>“缺乏作用域机制”<br>“我好像记得”，这样的词汇看起来有一种心虚的感觉，所以，你后面的整句话都错得很离谱。首先VB6存在函数级（过程）变量，模块级变量，全局变量。而当你要访问某模块里面的公有对象时，前面加上模块名称就可以很有效地区分了不同模块中存在相同对象名的情况，难道这不叫作用域机制吗？VB6的变量访问比绝大多数的面向对象语言都要方便，简单！<br><br>“语法不够统一化”<br>VB6中的函数存在有参数，无参数，以及有返回值和无返回值这样的情况。用CALL方式调用函数并在后面加上括号是表示函数需要传参，但不关心其返回值。而普通调用方式则较为自由，可以获得函数的返回值，但不关心是否需要传参。这是两个完全不同的功能，怎么就造成了语法不统一呢？而至于VB6可以用不同的符号去区分变量声明的数据类型，这完全是为了方便输入而设计的。而C++中定义了一大堆基本类型的别名，这也能说是语法不一致的问题吗？<br><br>“半动态类型半静态类型”<br>我想你目前很难找到一种比VB6执行速度，编译速度还要快的语言。另外，VB6在IDE中直接执行时是用了动态编译的方式，只有跑到某处代码区段时才会把相应的内容写入堆栈，这也可以解释了为什么要运行之后才能发现某个变量类型不合法的错误。但你尝试在生成EXE（编译）的时候如果还有这样的问题存在，是绝对不会编译成功的。<br><br>“源文件中出现二进制文件”<br>我不太明白资源文件和版本控制有什么直接冲突的地方。难道说版本仓库中不能上传frx和res文件吗？更何况，VB6 IDE中是自带资源管理器的，完全可以把资源另存为文本文件或者二进制文件。<br><br>“它亲娘已经不要它了”<br>VB已经持续了将近二十年的时间，现在国外（国内偏少）仍然有不少拥戴者。如果你接触过CSHAR和VB.NET，你会发现其中有大部分习惯都是沿袭VB6的，这些所谓的新一代“天之骄子”们还得叫他一声爹！<br><br>（愤怒的泡面）</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-14 14:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=void_shura_x" target="_blank">void_shura_x</a><span style="color:gray ">:</span>在微博看到了你们的争论帖子，作为一个超过了5年的VB6爱好者来说（尽管现在已经不再用），我很难忍受这样的评论帖。只是很多人都说语言只是工具，合适用的工具才是好工具，而且对于任何不 ..<span style="color:gray "> (2012-01-14 02:58) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3827" target="_blank" ></a><br></div></blockquote><br>好吧，你的吐槽还是挺有技术含量的<br>我没有在争辩语言优劣，我只是指一下vb6中不恰当、有待修改的地方，而且这大多在vb.net中得到了改进。当然，如果你非要认为vb6和vb.net完全不同的话当我没说<br><br>我只指几个问题<br><br>我觉得算法和数据结构是每个语言都应该有的，即使内置类库没有，也应该由一些第三方库提供，而vb6并没有太出名的这方面的第三方库<br><br>我没有说VB6不能实现控制台，而是很难，如果你觉得用API还不算很难的话............很负责任的说api神马都能做，所以这种时候不要提api了<br><br>作用域我是指循环、分支结构的作用域，楼上有代码<br><br>面向对象在百度百科的定义“首先根据客户需求抽象出业务对象；然后对需求进行合理分层，构建相对独立的业务模块；之后设计业务逻辑，利用多态、继承、封装、抽象的编程思想，实现业务需求；最后通过整合各模块，达到高内聚、低耦合的效果，从而满足客户要求。”<br>这里，继承应该算是最基本的特征。因此vb不算面向对象，暂不说是否有必要面向对象，你的理解首先有些问题<br><br>另外，我觉得编译时能报的错非要在运行的时候报是很蛋疼的....编译速度快有什么用...还不是只有开发人员感觉得到...为了这个增加了错误被发现的时间，不值。或者，至少也应该提供两种编译方式，有一种可以进行完整的类型检查/下标检查什么的<br><br>如果源代码中有二进制文件，那在版本控制系统中就没法对比了。而且vb的资源文件一旦修改，同步的时候便要整个上传。不知你看过MFC/.Net/Qt神马的资源文件没，资源文件只是文件清单而已<br><br>“它亲娘已经不要它了”....介个我陈述的只是个事实<br><br><br>另外，好像我写这个的时候确实忘了点东西.比如那个预处理命令神马的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-14 15:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=void_shura_x" target="_blank">void_shura_x</a><span style="color:gray ">:</span><br>在微博看到了你们的争论帖子，作为一个超过了5年的VB6爱好者来说（尽管现在已经不再用），我很难忍受这样的评论帖。只是很多人都说语言只是工具，合适用的工具才是好工具，而且对于任何不同工具上的优劣争论也是毫无意义的，只是大家的信仰不同。不过既然大家展开了自己的一些看法，那么我也来说一下自己的观点：<br>VB6和现在的很多高级语言不一样，首先是因为它的诞生日期比较早，自然有很多遗留下来的问题，这是个不可否认的事实！<br>“内置类库不全”<br>....... <a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3827" target="_blank" ></a><br></div></blockquote><br>神级吐槽，秒杀你们全场<br>站长一向很那啥，从来都把指令式语言认为是FP。。<br>而且，只要是他喜欢的语言基本上什么都好，他不喜欢的基本上什么都不好。这点你习惯就好。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-14 15:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>神级吐槽，秒杀你们全场<br>站长一向很那啥，从来都把指令式语言认为是FP。。<br>而且，只要是他喜欢的语言基本上什么都好，他不喜欢的基本上什么都不好。这点你习惯就好。<span style="color:gray "> (2012-01-14 15:21) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3839" target="_blank" ></a><br></div></blockquote><br>你刚刚不还说我说的有道理么，，，，，，你不能人身攻击啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-14 16:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情]你刚刚不还说我说的有道理么，，，，，，你不能人身攻击啊<span style="color:gray "> (2012-01-14 15:58) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3840" target="_blank" ></a><br></div></blockquote><br>其实我没仔细看<br>但你搞混FP和命令式实在是太蛋疼了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-01-14 16:44</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-14 17:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+啊，实际上类库的确不全，没有LUA，没有SDL，没有OGL，没有REGEX……<br><br>面向对象的话，VB属于基于对象<br><br>第三个没办法了，VB天生缺陷<br><br>第四个的话，可以用Windows.tlb。就不用声明了，有点类似汇编的&nbsp;&nbsp;Windows.inc<br><br>第五个不说也罢，VB没有宏纯属坑爹<br><br>第六个嘛……开发几年SDK，其实我感觉作用域还是挺蛋疼的概念，有没有也无所谓了……，我的编程语言有这个东西，但是我研究了一次，在没碰过<br><br>第七个嘛，其实无所谓的<br><br>没有第八个<br><br>第九个……其实要我说，就强制不允许自动声明就OK了……<br><br>第十个么……体验了RC的好以后回头看看VB6的RES的确没办法淡定<br><br>最后一个……其实这都无所谓，VB6的运行库很小，只要以后不要写OCX编程就OK了么</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-14 17:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+作用域我理解错了么……<br><br>我还以为是名字空间，原来是变量生存周期啊……<br><br>这个的确很重要……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-14 17:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xywhsoft" target="_blank">xywhsoft</a><span style="color:gray ">:</span>啊，实际上类库的确不全，没有LUA，没有SDL，没有OGL，没有REGEX……<br>面向对象的话，VB属于基于对象<br>第三个没办法了，VB天生缺陷<br>.......<span style="color:gray "> (2012-01-14 17:24) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3846" target="_blank" ></a><br></div></blockquote><br>有宏.....看下9楼<br>我一开始也没想到....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-14 17:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+那也能叫宏么……<br>只能说是条件编译吧……<br><br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>#define lua_pop(L,n) lua_settop(L, -(n)-1)<br>#define lua_newtable(L)&nbsp;&nbsp;&nbsp;&nbsp;lua_createtable(L, 0, 0)<br>#define lua_register(L,n,f) lua_pushcfunction(L, (f)): lua_setglobal(L, (n))<br>#define lua_pushcfunction(L,f) lua_pushcclosure(L, (f), 0)<br>#define lua_strlen(L,i)&nbsp;&nbsp;&nbsp;&nbsp;lua_objlen(L, (i))<br>#define lua_isfunction(L,n)&nbsp;&nbsp;&nbsp;&nbsp;(lua_type(L, (n)) = LUA_TFUNCTION)<br>#define lua_istable(L,n) (lua_type(L, (n)) = LUA_TTABLE)<br>#define lua_islightuserdata(L,n) (lua_type(L, (n)) = LUA_TLIGHTUSERDATA)<br>#define lua_isnil(L,n) (lua_type(L, (n)) = LUA_TNIL)<br>#define lua_isboolean(L,n) (lua_type(L, (n)) = LUA_TBOOLEAN)<br>#define lua_isthread(L,n) (lua_type(L, (n)) = LUA_TTHREAD)<br>#define lua_isnone(L,n) (lua_type(L, (n)) = LUA_TNONE)<br>#define lua_isnoneornil(L, n) (lua_type(L, (n)) &lt;= 0)<br>#define lua_pushliteral(L, s) lua_pushlstring(L, &quot;&quot; s, (sizeof(s)\sizeof(zstring))-1)<br>#define lua_setglobal(L,s) lua_setfield(L, LUA_GLOBALSINDEX, (s))<br>#define lua_getglobal(L,s) lua_getfield(L, LUA_GLOBALSINDEX, (s))<br>#define lua_tostring(L,i) lua_tolstring(L, (i), NULL)</li></ol></div><br><font face="Simsun "><font size="2"><br></font></font><br><font face="Simsun "><font size="2">这个是预定义，宏的话……</font></font><br><font face="Simsun "><font size="2"><br></font></font><br><font face="Simsun "><font size="2">macro func1() as Integer<br>&nbsp;&nbsp;代码<br>end macro</font></font><br><br>区别在于，条件编译只能是根据环境不同达到不同的编译结果，预定义可以有效的减少代码数量，让结构变得清晰。宏则是一种更为便捷的加强型预定义。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-14 17:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+啊，我以前也是搞VB的，其实说来的确LZ不太理智了……<br><br>编程工具的存在是有道理的，这些能力，对于一种高封装的语言来说，的确是可有可无的，毕竟功用不同，但是罪魁祸首是微软，如果VB搞的太强大，他的C++卖得出去么……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-14 17:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xywhsoft" target="_blank">xywhsoft</a><span style="color:gray ">:</span>啊，我以前也是搞VB的，其实说来的确LZ不太理智了……<br>编程工具的存在是有道理的，这些能力，对于一种高封装的语言来说，的确是可有可无的，毕竟功用不同，但是罪魁祸首是微软，如果VB搞 ..<span style="color:gray "> (2012-01-14 17:38) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3853" target="_blank" ></a><br></div></blockquote><br>好像是<br><br>我又丢了一次人....<br><br>不过感觉现在微软在推.Net...而不是MFC</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-14 17:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-01-14 18:20</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>神级吐槽，秒杀你们全场<br>站长一向很那啥，从来都把指令式语言认为是FP。。<br>而且，只要是他喜欢的语言基本上什么都好，他不喜欢的基本上什么都不好。这点你习惯就好。<span style="color:gray "> (2012-01-14 15:21) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3839" target="_blank" ></a><br></div></blockquote><br>倒数第二菊花正解。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-14 18:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>倒数第二菊花正解。<span style="color:gray "> (2012-01-14 18:20) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3863" target="_blank" ></a><br></div></blockquote><br>菊花</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2012-01-14 20:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>好吧，你的吐槽还是挺有技术含量的<br>我没有在争辩语言优劣，我只是指一下vb6中不恰当、有待修改的地方，而且这大多在vb.net中得到了改进。当然，如果你非要认为vb6和vb.net完全不同的话当我没 ..<span style="color:gray "> (2012-01-14 14:30) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3835" target="_blank" ></a><br></div></blockquote><br>不一定要出名<br>tv3d就有非常足够的三角矩阵切换和math library.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-14 23:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xttyctl9" target="_blank">xttyctl9</a><span style="color:gray ">:</span>不一定要出名<br>tv3d就有非常足够的三角矩阵切换和math library.<span style="color:gray "> (2012-01-14 20:19) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3867" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2012-01-15 15:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情]<span style="color:gray "> (2012-01-14 23:25) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3869" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-01-20 13:06</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>菊花[表情]<span style="color:gray "> (2012-01-14 18:33) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=794&amp;pid=3865" target="_blank" ></a><br></div></blockquote><br>句话</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.059699 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

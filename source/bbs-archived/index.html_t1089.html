@@ -1,0 +1,216 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>写了一个只有367行的httpd，支持图片，中文，下载等|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  名字叫ShanZhai Httpd编译要pcre库，先make，然后make install,卸载make uninstallszhttpd就可以启动了默认监听8080端口，html文件默认/var/www,配置文件在/etc/szhttpd/config.conf配置文件格式port 端口max_connect 最大 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,写了一个只有367行的httpd，支持图片，中文，下载等,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1089.html">写了一个只有367行的httpd，支持图片，中文，下载等</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-06-16 19:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>写了一个只有367行的httpd，支持图片，中文，下载等</h1>
+名字叫ShanZhai Httpd<br>编译要pcre库，先make，然后make install,卸载make uninstall<br>szhttpd就可以启动了<br>默认监听8080端口，html文件默认/var/www,配置文件在/etc/szhttpd/config.conf<br>配置文件格式<br>port 端口<br>max_connect 最大连接<br>addhost 域名 目录<br>addindex index.html等<br><br><br>[attachment=344]</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-16 20:11</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+简单看了下，因为在用windows，没测试<br><br>感觉C和C++的标准库一起用好像很坑爹的样子.......<br>如果用C++标准库来进行字符串运算和文件读取，估计会短不少..<br><br>还有mime也归入配置文件好一点..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-06-16 20:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+不是很习惯stl,感觉c更适合我的胃口，呵呵<br>虽然最早学c++,可是我都用c的方法用c++</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-16 20:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  我到现在还不会写makefile..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-06-16 20:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情] 我到现在还不会写makefile..<span style="color:gray "> (2012-06-16 20:17) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1089&amp;pid=6505" target="_blank" ></a><br></div></blockquote><br>其实就是<br>模式:<br>tab命令<br>比如<br>szhttpd:<br>\t(好像不支持tab..)g++ main.cpp -pcre -o szhttpd</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-16 20:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>其实就是<br>模式:<br>tab命令<br>比如<br>.......<span style="color:gray "> (2012-06-16 20:19) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1089&amp;pid=6507" target="_blank" ></a><br></div></blockquote><br>还得自己分析依赖关系.......我还是用qmake吧....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-06-16 21:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>还得自己分析依赖关系.......我还是用qmake吧....<span style="color:gray "> (2012-06-16 20:27) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1089&amp;pid=6509" target="_blank" ></a><br></div></blockquote><br>依赖可以用GNU Autoconf,configure就是用autoconf生成的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-16 21:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>依赖可以用GNU Autoconf,configure就是用autoconf生成的<span style="color:gray "> (2012-06-16 21:16) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1089&amp;pid=6511" target="_blank" ></a><br></div></blockquote><br>我是说文件之间的依赖关系<br><br>比如a.cpp包含了a.h<br>那么如果a.h修改了，就需要重新编译a.cpp</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-06-16 21:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>我是说文件之间的依赖关系<br>比如a.cpp包含了a.h<br>那么如果a.h修改了，就需要重新编译a.cpp<span style="color:gray "> (2012-06-16 21:21) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1089&amp;pid=6514" target="_blank" ></a><br></div></blockquote><br>cmake也很好</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-16 22:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>cmake也很好<span style="color:gray "> (2012-06-16 21:59) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1089&amp;pid=6522" target="_blank" ></a><br></div></blockquote><br>嗯&nbsp;&nbsp;目测和qmake差不多</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>padme0amidala</b></td>
+<td align="right" class="smalltxt">2012-06-19 13:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+啊。。。膜拜。。。倒腾两天还没搞定Apache。。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.041361 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

@@ -1,0 +1,306 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Qt的UDP功能调研-QUdpSocket数据收发|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  下面是一个简单的教程，实现用Qt的QUdpSocket进行数据收发 ps&#46;&#46;我们这里以Qt Creator向导中的基于Widget的窗口程序为基础。在QtCreator中可以如下图创建一个基于Widget的窗口程序   首先，QUdpSocke .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,Qt的UDP功能调研-QUdpSocket数据收发,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t804.html">Qt的UDP功能调研-QUdpSocket数据收发</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-16 16:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>Qt的UDP功能调研-QUdpSocket数据收发</h1>
+<div>下面是一个简单的教程，实现用Qt的QUdpSocket进行数据收发</div><div> </div><div>ps&#46;&#46;我们这里以Qt Creator向导中的基于Widget的窗口程序为基础。在QtCreator中可以如下图创建一个基于Widget的窗口程序</div><div>[attachment=233]</div><div> </div><div>[attachment=232]</div><div> </div><div> </div><div>首先，QUdpSocket属于QtNetwork模块，要确认工程文件(&#46;pro)中有下面的语句</div><div><div class="dp-highlighter"><ol start="1" class="dp-c"><li class="alt"><span><span>QT   += core gui network  </span></span></li></ol></div></div><div>然后我们在Qt Designer里面设计一下ui，布局和控件名称大致如下图</div><div>[attachment=234]</div><div> </div><div>然后编辑widget&#46;h</div><div>首先先包含QUdpSocket的头文件</div><div><div class="dp-highlighter"><div class="bar"></div><ol start="1" class="dp-c"><li class="alt"><span><span class="preprocessor">#include <QUdpSocket></span><span>  </span></span></li></ol></div></div><div>然后添加1个私有成员和4个槽</div><div><div class="dp-highlighter"><div class="bar"></div><ol start="1" class="dp-c"><li class="alt"><span><span class="keyword">class</span><span> Widget : </span><span class="keyword">public</span><span> QWidget  </span></span></li><li class=""><span>{  </span></li><li class="alt"><span>Q_OBJECT  </span></li><li class=""><span><span class="keyword">public</span><span>:  </span></span></li><li class="alt"><span><span class="keyword">explicit</span><span> Widget(QWidget *parent = 0);  </span></span></li><li class=""><span>~Widget();  </span></li><li class="alt"><span>QUdpSocket *conn;<span class="comment">//连接对象</span><span>  </span></span></li><li class=""><span><span class="keyword">private</span><span> slots:  </span></span></li><li class="alt"><span><span class="keyword">void</span><span> onData();</span><span class="comment">//收到新数据</span><span>  </span></span></li><li class=""><span><span class="keyword">void</span><span> onError();</span><span class="comment">//发生错误</span><span>  </span></span></li><li class="alt"><span><span class="keyword">void</span><span> on_DoBind_clicked();</span><span class="comment">//监听按钮</span><span>  </span></span></li><li class=""><span><span class="keyword">void</span><span> on_DoSend_clicked();</span><span class="comment">//发送按钮</span><span>  </span></span></li><li class="alt"><span><span class="keyword">private</span><span>:  </span></span></li><li class=""><span>Ui::Widget *ui;  </span></li><li class="alt"><span>};  </span></li></ol></div></div><div>然后写widget&#46;cpp中的首先代码</div><div>我们需要包含两个头文件，分别是字符集类和桌面类：</div><div><div class="dp-highlighter"><div class="bar"></div><ol start="1" class="dp-c"><li class="alt"><span><span class="preprocessor">#include <QTextCodec></span><span>  </span></span></li><li class=""><span><span class="preprocessor">#include <QDesktopWidget></span><span>  </span></span></li></ol></div></div><div>然后是构造函数，完成了设置默认编码(如果你的源文件不是utf8，请自己改一下)、设置窗口标题、将窗口移动到桌面中间</div><div><div class="dp-highlighter"><div class="bar"></div><ol start="1" class="dp-c"><li class="alt"><span><span>Widget::Widget(QWidget *parent):QWidget(parent),ui(</span><span class="keyword">new</span><span> Ui::Widget),conn(0)  </span></span></li><li class=""><span>{  </span></li><li class="alt"><span>ui->setupUi(<span class="keyword">this</span><span>);  </span></span></li><li class=""><span>QTextCodec::setCodecForTr(QTextCodec::codecForName(<span class="string">"UTF-8"</span><span>));  </span></span></li><li class="alt"><span>QTextCodec::setCodecForCStrings(QTextCodec::codecForName(<span class="string">"UTF-8"</span><span>));  </span></span></li><li class=""><span>QTextCodec::setCodecForLocale(QTextCodec::codecForName(<span class="string">"UTF-8"</span><span>));  </span></span></li><li class="alt"><span><span class="keyword">this</span><span>->setWindowTitle(tr(</span><span class="string">"UDP消息发送Demo"</span><span>));  </span></span></li><li class=""><span>QDesktopWidget* desktop = QApplication::desktop();  </span></li><li class="alt"><span>move((desktop->width() - <span class="keyword">this</span><span>->width())/2, (desktop->height() - </span><span class="keyword">this</span><span>->height())/2);  </span></span></li><li class=""><span>}  </span></li></ol></div></div><div>收到数据的槽，实现了读取数据报，并显示到文本框上</div><div><div class="dp-highlighter"><div class="bar"></div><ol start="1" class="dp-c"><li class="alt"><span><span class="keyword">void</span><span> Widget::onData()  </span></span></li><li class=""><span>{  </span></li><li class="alt"><span><span class="keyword">while</span><span>(conn->hasPendingDatagrams())</span><span class="comment">//如果还有数据报</span><span>  </span></span></li><li class=""><span>{  </span></li><li class="alt"><span>QByteArray data;  </span></li><li class=""><span>data&#46;resize(conn->pendingDatagramSize());<span class="comment">//将字节数组调整为和下一个数据报相通的大小</span><span>  </span></span></li><li class="alt"><span>QHostAddress sender;<span class="comment">//等下存储发送者ip地址</span><span>  </span></span></li><li class=""><span>quint16 senderPort;<span class="comment">//等下存储发送者端口</span><span>  </span></span></li><li class="alt"><span>conn->readDatagram(data&#46;data(), data&#46;size(),&sender, &senderPort);<span class="comment">//读取数据</span><span>  </span></span></li><li class=""><span><span class="comment">//显示到文本框</span><span>  </span></span></li><li class="alt"><span>ui->MsgArea->append(tr(<span class="string">"收到来自%1:%2的消息 %3"</span><span>)&#46;arg(sender&#46;toString())&#46;arg(QString::number(senderPort))&#46;arg(QString(data)));  </span></span></li><li class=""><span>}  </span></li><li class="alt"><span>}  </span></li></ol></div></div><div>遇到错误的槽，直接把错误显示到文本框</div><div><div class="dp-highlighter"><div class="bar"></div><ol start="1" class="dp-c"><li class="alt"><span><span class="keyword">void</span><span> Widget::onError()  </span></span></li><li class=""><span>{  </span></li><li class="alt"><span>ui->MsgArea->append(tr(<span class="string">"发生错误 %1"</span><span>)&#46;arg(conn->errorString()));  </span></span></li><li class=""><span>}  </span></li></ol></div></div><div>监听按钮的槽，实现了监听指定端口，如果正在监听，则销毁之前的连接对象，并重新监听新的端口</div><div><div class="dp-highlighter"><div class="bar"></div><ol start="1" class="dp-c"><li class="alt"><span><span class="keyword">void</span><span> Widget::on_DoBind_clicked()  </span></span></li><li class=""><span>{  </span></li><li class="alt"><span><span class="keyword">if</span><span>(conn)</span><span class="comment">//如果连接存在，先断开连接</span><span>  </span></span></li><li class=""><span>{  </span></li><li class="alt"><span>delete conn;  </span></li><li class=""><span>conn=0;  </span></li><li class="alt"><span>}  </span></li><li class=""><span>conn=<span class="keyword">new</span><span> QUdpSocket;</span><span class="comment">//生成连接对象</span><span>  </span></span></li><li class="alt"><span>conn->bind(ui->PortInput->value());<span class="comment">//监听端口</span><span>  </span></span></li><li class=""><span>connect(conn,SIGNAL(readyRead()),<span class="keyword">this</span><span>,SLOT(onData()));</span><span class="comment">//收到数据时，这个信号会发射</span><span>  </span></span></li><li class="alt"><span>connect(conn,SIGNAL(error(QAbstractSocket::SocketError)),<span class="keyword">this</span><span>,SLOT(onError()));</span><span class="comment">//遇到错误时，这个信号会发射</span><span>  </span></span></li><li class=""><span>ui->MsgArea->append(tr(<span class="string">"正在监听 %1"</span><span>)&#46;arg(ui->PortInput->value()));</span><span class="comment">//显示提示消息</span><span>  </span></span></li><li class="alt"><span>}  </span></li></ol></div></div><div>发送按钮的槽，检查连接对象是否存在，不存在窗体，然后发送数据报并提示在文本框上</div><div><br /></div><div><div class="dp-highlighter"><div class="bar"></div><ol start="1" class="dp-c"><li class="alt"><span><span class="keyword">void</span><span> Widget::on_DoSend_clicked()  </span></span></li><li class=""><span>{  </span></li><li class="alt"><span><span class="keyword">if</span><span>(!conn)</span><span class="comment">//如果不存在连接对象，则先创建一个</span><span>  </span></span></li><li class=""><span>conn=<span class="keyword">new</span><span> QUdpSocket;  </span></span></li><li class="alt"><span>ui->MsgArea->append(tr(<span class="string">"向%1:%2发送 %3"</span><span>)&#46;arg(ui->IpInput->text())&#46;arg(ui->PeerPort->value())&#46;arg(ui->MsgInput->text()));  </span></span></li><li class=""><span>QByteArray data;  </span></li><li class="alt"><span>data&#46;append(ui->MsgInput->text());  </span></li><li class=""><span>conn->writeDatagram(data,QHostAddress(ui->IpInput->text()),ui->PeerPort->value());<span class="comment">//法师数据报</span><span>  </span></span></li><li class="alt"><span>}  </span></li></ol></div></div><div> </div><div> </div><div>代码到这里结束了，</div><div>源代码托管（这里可以下载到压缩包）：<a href="https://github&#46;com/jybox/MyWorks/tree/master/UDP-Chat"><a href="https://github&#46;com/jybox/MyWorks/tree/master/UDP-Chat" target="_blank" >https://github&#46;com/jybox/MyWorks/tree/master/UDP-Chat</a></a> </div><div> </div><div>截图：</div><div>[attachment=235]</div><div>[attachment=236]</div><div> </div><div> </div><div>大体上，上下两部分是分开的，即监听部分和发送部分是可以单独工作的，中间的文本框是共用的</div><div> </div><div> </div><div><br /></div></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-16 17:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  高亮还是没折腾好，被phpwind吞了好多，大家可以去代码托管去看</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-16 17:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+#include怎么都没了。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-16 18:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>#include怎么都没了。。<span style="color:gray "> (2012-01-16 17:12) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=804&amp;pid=3893" target="_blank" ></a><br></div></blockquote><br>phpwind吞了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-16 18:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-01-16 20:20</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-16 21:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>#include\&lt;windows.h\&gt;</li></ol></div><br>输入测试</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-16 21:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>#include&lt;windows.h&gt;</li></ol></div><br>输入测试2</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-16 21:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>phpwind吞了<span style="color:gray "> (2012-01-16 18:34) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=804&amp;pid=3897" target="_blank" ></a><br></div></blockquote><br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code3'));">复制代码</a></div><div class="blockquote2" id="code3"><ol><li>#include&lt;windows.h&gt;</li></ol></div><br>肿么我的没吞</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-16 23:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>#include&lt;windows.h&gt;<br>肿么我的没吞<span style="color:gray "> (2012-01-16 21:35) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=804&amp;pid=3903" target="_blank" ></a><br></div></blockquote><br>你的木高亮</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-01-20 13:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  用coolcode</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-30 12:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=phpwave" target="_blank">phpwave</a><span style="color:gray ">:</span>[表情] 有编译好的程序没？<br>对象党[表情] <span style="color:gray "> (2012-01-29 20:47) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=804&amp;pid=4593" target="_blank" ></a><br></div></blockquote><br>自己下载源码编译去</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxyscxy</b></td>
+<td align="right" class="smalltxt">2012-01-30 14:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+马克，回家看</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>su</b></td>
+<td align="right" class="smalltxt">2012-02-02 23:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<span style="color:#000000 "> 第一次发帖，请教一下关于网络的</span><br><span style="color:#000000 "><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code4'));">复制代码</a></div><div class="blockquote2" id="code4"><ol><li>QUdpSocket * reciver;<br>reciver=new QUdpSocket();<br>reciver-&gt;bind(Port);<br>QHostAddress address;//记录发信人的IP<br>quint16 port;<br>QByteArray dataGrams;<br>int size=0;<br>while(reciver-&gt;hasPendingDatagrams())<br>{<br>size=reciver-&gt;pendingDatagramSize();<br>dataGrams.resize(size);<br>reciver-&gt;readDatagram(dataGrams.data(),dataGrams.size(),&amp;address,&amp;port);<br>}</li></ol></div>以上代码，关键是那个address，他记录的应该是发信息的人的IP吧，在一般情况下我收到信息再向那个地址回发一条信息对方可以收到，可是当对方用了路由器之后我就只能收到对方的信息，却发不回去，求解决。。。</span><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-03 02:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=su" target="_blank">su</a><span style="color:gray ">:</span>第一次发帖，请教一下关于网络的<br>QUdpSocket * reciver;<br>reciver=new QUdpSocket();<br>reciver-&gt;bind(Port);<br>QHostAddress address;//记录发信人的IP<br>.......<span style="color:gray "> (2012-02-02 23:37) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=804&amp;pid=5179" target="_blank" ></a><br></div></blockquote><br>首先，虽说那个是发信人的地址，但是发信人未必在监听端口阿...<br><br><br>如果对方确实在监听，那么就是网络是否通畅的问题了<br><br>路由器相当于一个nat（具体请百度），使内网几台电脑共用一个ip，这个过程中，端口会经过一个翻译的机制，反正就是很复杂啦。（关于这部分，你可以搜索“nat穿越”）<br><br>解决办法就是在路由器里设置端口映射（也叫端口转发）、DMZ主机</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>su</b></td>
+<td align="right" class="smalltxt">2012-02-03 12:48</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=0fan" target="_blank">0fan</a><span style="color:gray ">:</span>[表情]苍天啊、、、保佑我说对了吧、、、<br><span style="color:gray "> (2012-02-03 01:08) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=804&amp;pid=5184" target="_blank" ></a><br></div></blockquote><br>折腾了一上午，发现端口映射的方法可以完美解决我另外一个问题，让别人可以通过ip地址访问我电脑上写的网页，谢咯</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>su</b></td>
+<td align="right" class="smalltxt">2012-02-03 12:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>首先，虽说那个是发信人的地址，但是发信人未必在监听端口阿...<br>如果对方确实在监听，那么就是网络是否通畅的问题了<br>.......<span style="color:gray "> (2012-02-03 02:17) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=804&amp;pid=5185" target="_blank" ></a><br></div></blockquote><br>NAT穿透，哎~~原来经过NAT后的不只是IP地址变了，连端口号都变了，学习了。。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.051032 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

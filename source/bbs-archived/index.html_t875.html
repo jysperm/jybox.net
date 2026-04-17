@@ -1,0 +1,583 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>【有奖问答】【技术贴】无循环关键字实现重复执行|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  题目如标题，怎样使用非循环语句实现1+2+3+。。。。。。+n的值？也就是说，for、while、do以及if-else等等一系列循环关键字都不准用（也不准用乘法），你能实现么？" />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,【有奖问答】【技术贴】无循环关键字实现重复执行,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t875.html">【有奖问答】【技术贴】无循环关键字实现重复执行</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2012-01-29 15:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>【有奖问答】【技术贴】无循环关键字实现重复执行</h1>
+题目如标题，怎样使用非循环语句实现1+2+3+。。。。。。+n的值？<br>也就是说，for、while、do以及if-else等等一系列循环关键字都不准用（也不准用乘法），你能实现么？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2012-01-29 15:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+呼唤</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 15:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+递归</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 15:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+不能用if-else!？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 15:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+流程控制语句都不让用了还玩蛋啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2012-01-29 17:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我有方法｛暂时不会告诉你们 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 17:18</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+你订《电脑编程技巧与维护》了？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-01-29 19:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+loop rep就够了。 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2012-01-29 22:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>你订《电脑编程技巧与维护》了？<span style="color:gray "> (2012-01-29 17:18) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4580" target="_blank" ></a><br></div></blockquote><br><br>这时神马书？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 22:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>[表情]<br>这时神马书？<span style="color:gray "> (2012-01-29 22:33) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4608" target="_blank" ></a><br></div></blockquote><br>这书上有原文，题目都和你的一模一样。。你是从哪看的？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 22:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div style="background-color:#000;word-wrap:break-word;"><code style="margin:20px;color:#45ED00;display:block;"><font face="monospace"><font color="#ffff00">1&nbsp;</font><font color="#00ff00">int</font>&nbsp;sum(<font color="#00ff00">int</font>&nbsp;n)<br /><font color="#ffff00">2&nbsp;</font>{<br /><font color="#ffff00">3&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;m;<br /><font color="#ffff00">4&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;m = n&gt;<font color="#ff6060">1</font>?sum(n-<font color="#ff6060">1</font>):<font color="#ff6060">1</font>;<br /><font color="#ffff00">5&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;m + =n&gt;<font color="#ff6060">1</font>?n:<font color="#ff6060">0</font>;<br /><font color="#ffff00">6&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">return</font>&nbsp;m;<br /><font color="#ffff00">7&nbsp;</font>}<br /></font></code></div></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 22:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 或者直接计算n*(n+1)/2</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2012-01-29 22:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]这书上有原文，题目都和你的一模一样。。你是从哪看的？<span style="color:gray "> (2012-01-29 22:47) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4616" target="_blank" ></a><br></div></blockquote><br>巧合，绝对巧合，题目是我自己想的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 22:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div style="background-color:#000;word-wrap:break-word;"><code style="margin:20px;color:#45ED00;display:block;"><font face="monospace"><font color="#ffff00">1&nbsp;</font><font color="#ff40ff">from</font>&nbsp;__future__&nbsp;<font color="#ff40ff">import</font>&nbsp;division<br /><font color="#ffff00">2&nbsp;</font><font color="#00ffff">sum</font>&nbsp;=&nbsp;<font color="#ffff00">lambda</font>&nbsp;x:x*(x+<font color="#ff6060">1</font>)/<font color="#ff6060">2</font><br /></font></code></div>
+测试：
+<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>>>> from __future__ import division
+>>> sum = lambda x:x*(x+1)/2
+>>> sum(100)
+5050&#46;0
+>>></li></ol></div>
+（python&#46;）</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 22:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 用递归+assert+try/catch来实现也可以</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 22:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 好了，发奖吧。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2012-01-29 23:18</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+原创内容</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-01-29 23:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我才想过用?:的 结果被你抢了-、-<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 23:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=outman" target="_blank">outman</a><span style="color:gray ">:</span>我才想过用?:的 结果被你抢了-、-<br>内容来自[手机版] <span style="color:gray "> (2012-01-29 23:22) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4630" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-29 23:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<a href="http://blog.whtsky.tk/2012/01/29/%E6%97%A0%E5%BE%AA%E7%8E%AF%E5%85%B3%E9%94%AE%E5%AD%97%E5%AE%9E%E7%8E%B0%E9%87%8D%E5%A4%8D%E6%89%A7%E8%A1%8C" target="_blank" >http://blog.whtsky.tk/2012/01/29/%E6%97%A0%E5%BE%AA%E7%8E%AF%E5%85%B3%E9%94%AE%E5%AD%97%E5%AE%9E%E7%8E%B0%E9%87%8D%E5%A4%8D%E6%89%A7%E8%A1%8C</a><br><br> 纯广告</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-30 12:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+#include &lt;iostream&gt;<br>using namespace std;<br><br>class calcSun<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;static int sun;<br>&nbsp;&nbsp;&nbsp;&nbsp;calcSun()<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sun++;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>};<br>int calcSun::sun=0;<br><br>int main()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;calcSun calc100[100];<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;calcSun::sun&lt;&lt;endl;<br>}</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:11</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>#include &lt;iostream&gt;<br>using namespace std;<br>class calcSun<br>{<br>.......<span style="color:gray "> (2012-01-30 12:33) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4657" target="_blank" ></a><br></div></blockquote><br>纯c++解法</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]纯c++解法<span style="color:gray "> (2012-01-30 15:11) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4710" target="_blank" ></a><br></div></blockquote><br>想到一个解法.......<br><br>用系统定时器<br>定一个1毫秒自动加1的<br>再定一个100毫秒输出结果的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>想到一个解法.......<br>用系统定时器<br>定一个1毫秒自动加1的<br>.......<span style="color:gray "> (2012-01-30 15:14) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4716" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>想到一个解法.......<br>用系统定时器<br>定一个1毫秒自动加1的<br>.......<span style="color:gray "> (2012-01-30 15:14) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4716" target="_blank" ></a><br></div></blockquote><br>素质</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-31 01:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+多么蛋疼的玩法啊……<br><br>事实上对于本身就没有流程控制的汇编语言来说<br><br>JNE指令就可以解决这个问题了，而且轻松到爆&nbsp;&nbsp; - -<br><br><br>不过我十分好奇，不用流程控制语句有什么意义……<br>还不如完全用自己堆API做运行库来的划算呢</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-31 13:03</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xywhsoft" target="_blank">xywhsoft</a><span style="color:gray ">:</span>多么蛋疼的玩法啊……<br>事实上对于本身就没有流程控制的汇编语言来说<br>JNE指令就可以解决这个问题了，而且轻松到爆   - -<br>.......<span style="color:gray "> (2012-01-31 01:51) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=4890" target="_blank" ></a><br></div></blockquote><br>纯思维题呗。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>东风无力</b></td>
+<td align="right" class="smalltxt">2012-02-12 23:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+模板仿函数可以实现<br>具体不告诉你们</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-13 03:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=东风无力" target="_blank">东风无力</a><span style="color:gray ">:</span>模板仿函数可以实现<br>具体不告诉你们<span style="color:gray "> (2012-02-12 23:40) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=5540" target="_blank" ></a><br></div></blockquote><br>数组就够了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2012-02-14 20:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+VB党无节操地插一脚XD<br><blockquote class="blockquote3"><div class="text" style="padding:15px;"><font face="微软雅黑 "><br><span style="color:#974806 "><b>VB Code:</b></span><br><span style="color:#002060 ">Public Function</span> Eggache(<span style="color:#002060 ">ByVal</span> n <span style="color:#002060 ">As Long</span>)<span style="color:#002060 "> As Long</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#002060 ">On Error Resume Next</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#002060 ">Dim </span>lngSum <span style="color:#002060 ">As Long</span>, i <span style="color:#002060 ">As Long</span><br>&nbsp;&nbsp;&nbsp;&nbsp;lngSum = 0<br>Begin:<br>&nbsp;&nbsp;&nbsp;&nbsp;i = i + 1<br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#002060 ">On </span>i - n <span style="color:#002060 ">GoTo </span>Done<br>&nbsp;&nbsp;&nbsp;&nbsp;lngSum = lngSum + i<br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#002060 ">GoTo </span>Begin<br>Done:<br>&nbsp;&nbsp;&nbsp;&nbsp;Eggache = lngSum<br><span style="color:#002060 ">End Function</span><br></font></div></blockquote><br> <br> <br> 以上代码在VB4 16-Bit中测试通过。<br> </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 21:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=littlepig" target="_blank">littlepig</a><span style="color:gray ">:</span>VB党无节操地插一脚XD<br>以上代码在VB4 16-Bit中测试通过。<br>.......<span style="color:gray "> (2012-02-14 20:58) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=5582" target="_blank" ></a><br></div></blockquote><br>用了goto 不算</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-14 23:06</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+python:sum(range(n+1))</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-14 23:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+codepad.org/Mk6p4VLS 你们洗洗睡吧…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 23:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>codepad.org/Mk6p4VLS 你们洗洗睡吧…<span style="color:gray "> (2012-02-14 23:14) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=875&amp;pid=5586" target="_blank" ></a><br></div></blockquote><br>STL也有这样的算法</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-15 00:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第33楼jybox于2012-02-14 23:30发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>codepad.org/Mk6p4VLS 你们洗洗睡吧…<span style="color:gray "> (2012-02-14 23:14) </span>[url=http://jybox.net/bbs/job.php? ..</div></blockquote></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.066075 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

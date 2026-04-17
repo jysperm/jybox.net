@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>8086汇编函数：show_str|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  其实是做的书上一道题……-、-但JY死活要我发代码上来 难道他是想靠明星效应增加论坛人气么OK 上代码;show_str 传递：dh行数 dl列数 ds:si指向字符串首地址，字符串以0结尾 cl=颜色show_str:;检测行 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,8086汇编函数：show_str,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t39.html">8086汇编函数：show_str</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2011-08-04 16:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>8086汇编函数：show_str</h1>
+其实是做的书上一道题……-、-但JY死活要我发代码上来 难道他是想靠明星效应增加论坛人气么<br>OK 上代码<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>;show_str 传递：dh行数 dl列数 ds:si指向字符串首地址，字符串以0结尾 cl=颜色<br>show_str:<br>;检测行数是否为0 是的直接跳过去列数<br>mov bx,0<br>mov di,cx<br>mov cx,0<br>mov cl,dh<br>jcxz show_str_l<br>;计算行数<br>mov ax,0<br>mov al,160<br>dec dh<br>mul dh<br>add ax,160<br>mov bx,ax<br><br>;计算列数<br>show_str_l:<br>mov ax,0<br>mov ch,0<br>mov cl,dl<br>jcxz ok_show_str<br>mov al,dl<br>mov dx,2<br>div dl<br>mov ch,0<br>mov cl,ah<br>inc ax<br>jcxz ok_show_str<br>inc ax<br>ok_show_str:<br>mov cx,di<br>mov ah,0<br>add bx,ax<br><br>;开始输出<br>mov ax,0b800h<br>mov es,ax<br>mov ah,cl<br>;获取字符串并显示<br>mov cx,2<br>show_str_loop:<br>mov ch,0<br>mov byte ptr cl,ds:[si]<br>jcxz show_str_ret<br>mov al,cl<br>mov es:[bx],ax<br>inc si<br>add bx,2<br>mov cx,2<br>loop show_str_loop<br><br>show_str_ret:<br>ret</li></ol></div><br>传递的参数如注释，但我说过，由于是练习题，所以嘛，原来传进去的寄存器值call完这个函数后会变的，没有自动恢复<br>凑字数，发上使用方法<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>assume cs:code,ds:data<br>data segment<br>db &#39;hello world!&#39;,0<br>data ends<br><br>code segment<br>start:<br>mov ax,data<br>mov ds,ax<br>mov si,0<br>mov dh,0<br>mov dl,0<br>mov cl,123<br>call show_str<br>;以下这段代码是为了查看输出结果，按任意键退出<br>mov ah,7<br>int 21h<br>;以上这段代码是为了查看输出结果，按任意键退出<br>mov ax,4c00h<br>int 21h<br><br><br>show_str:<br>...;复制之<br><br><br>code ends<br>end start</li></ol></div><br> <br> </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-04 16:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 前排围观<br> 好吧，虽然我看不懂汇编</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2011-08-04 16:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-08-04 18:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+你不是写过几个汇编程序么，还给我发了一大坨汇编工具</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-04 19:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+忘光了.......而且...说是写的，也就是抄的嘛，你懂的  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.042962 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

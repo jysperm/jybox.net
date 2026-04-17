@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>[正式版]pthread多线程|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  有人会对标题中的框子产生疑问.为什么是&quot;正式版&quot;呢?现在jy和whtsky同志来做解答:基本木听懂墨阐发的技术贴至今一个都没看懂基于如此(绿坝河蟹)的原因,我决定重写.并且把整个pthread,能 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,[正式版]pthread多线程,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t926.html">[正式版]pthread多线程</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-02-05 08:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>[正式版]pthread多线程</h1>
+有人会对标题中的框子产生疑问.为什么是&quot;正式版&quot;呢?<br>现在jy和whtsky同志来做解答:<br><blockquote class="blockquote3"><div class="text" style="padding:15px;"><br>基本木听懂[jybox 2012-02-04 18:53]<br>墨阐发的技术贴至今一个都没看懂[whtsky 2012-02-04]<br></div></blockquote><br>基于如此(绿坝河蟹)的原因,我决定重写.并且把整个pthread,能写的都写上.<br>正文:<br>为了可移植这种迷人的特性(虽然我知道这不太可能),我采用pthread代替WINAPI作为多线程API.传送门:http://baike.baidu.com/view/974776.htm<br>Windows下需要pthread.h,可以百度下一个.Linux下gcc需要-lpthread.<br>建立线程:<br>pthread_create函数原型:<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li><br>int pthread_create(pthread_t*restrict tidp,const pthread_attr_t*restrict_attr,void*(*start_rtn)(void*),void *restrict arg);<br></li></ol></div><br>其中,第一个为线程地址指针,第二个为线程属性(基本NULL就行了),第三个为线程函数,第四个为一个参数指针.<br>为了传多个参数,一般传一个结构体指针.因为结构体在线程函数中会被copy一遍(还是fork?),所以在线程函数结尾需要free掉结构体.<br>关于线程的控制:<br>由于多线程下载的特性(有时需要暂停而不是停止),pthread_stop变得不太适用.<br>/*<br>好吧,说到这突然觉得pthread_stop也可以,只是需要处理好信息保存.<br>说到这突然觉得pthread_kill(注意,是发送信号,不是杀死!是PostMessage,不是TerminateThread!)一个信号过去让线程处理好再sleep也不错…<br>又觉得用pthread_join也不错……<br>*/<br>原本的想法是用互斥锁.pthread_mutex_init建立锁,pthread_mutex_(un)lock加(解)锁,由线程互斥阻塞线程执行来达到暂停/恢复的目的.pthread_mutex_destroy销毁互斥锁.<br>另一种方法是pthread_join.<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li><br>extern int pthread_join (pthread_t__th, void**__thread_return);<br></li></ol></div><br>作用是等待指定线程结束.<br>第一参数为被等待的线程tid,第二参数为保存返回值的变量指针.<br>可以据此建立一个线程执行阻塞.<br>现在比较难搞的是join貌似只能阻塞一次,没找到能循环阻塞(……)的方法.<br>而刚才在&quot;注释&quot;中提到的kill,因为没想好怎么让线程达到暂停状态,暂时按下不表.<br>原型<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code3'));">复制代码</a></div><div class="blockquote2" id="code3"><ol><li><br>int pthread_kill(pthread_t thread, int sig);<br></li></ol></div><br>其中第一参数为线程tid,第二参数为signal.线程内部使用signal(sig,sig_handler)来调用sig_handler执行预定功能.<br>最后多句嘴,不懂的,多百度.<br>内事不决问百度,<br>外事不决问狗狗.<br>拍砖随意.<br>Rev.201101</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>kevin</b></td>
+<td align="right" class="smalltxt">2012-02-05 10:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+DTDTDT留名</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-05 11:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+啥…c++0x不是包含多线程了么</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-02-05 12:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+#2 VS2010……不想下.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-05 15:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.038046 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

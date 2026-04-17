@@ -1,0 +1,156 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>土豆网视频播放数查看器|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  就为了写这个小程序居然花了我一下午的时间……这让我情何以堪先上示例：（没有任何防黑措施，仅供技术交流之用）http://www.catrio.tk/tudou/源码：----------------------------------------------------------- .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,土豆网视频播放数查看器,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t929.html">土豆网视频播放数查看器</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-02-06 09:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>土豆网视频播放数查看器</h1>
+<span style="color:#555b6e "></span><br>就为了写这个小程序居然花了我一下午的时间……这让我情何以堪<br><br>先上示例：（没有任何防黑措施，仅供技术交流之用）<a href="http://www.catrio.tk/tudou/" target="_blank" >http://www.catrio.tk/tudou/</a><br><br>源码：<br><br>----------------------------------------------------------------------------------------------------------------<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li><br>&lt;html&gt;<br><br>&lt;head&gt;&lt;meta charset=&quot;gbk&quot;&gt;&lt;/head&gt;<br><br>&lt;title&gt;查询土豆网视频播放次数&lt;/title&gt;<br><br>&lt;body&gt;<br><br>&lt;form method=&quot;get&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入土豆网视频地址：&lt;input type=&quot;text&quot; name=&quot;u&quot;&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type=&quot;submit&quot;&gt;查询播放次数&lt;/button&gt;<br><br>&lt;/form&gt;<br><br>&lt;?php<br><br>if(isset($_GET[&#39;u&#39;])){<br><br>if(substr($_GET[&#39;u&#39;],0,7)!=&quot;http://&quot;)$_GET[&#39;u&#39;]=&quot;http://&quot;.$_GET[&#39;u&#39;];<br><br>$result = @file_get_contents(&quot;compress.zlib://&quot;.$_GET[&#39;u&#39;]);<br><br>$istart=stripos($result,&quot;iid&quot;,0)+5;<br><br>$iend=stripos($result,&quot;,&quot;,$istart)-$istart;<br><br>$a=substr($result,$istart,$iend-1);<br><br>$istart=stripos($result,&quot;oid&quot;,0)+5;<br><br>$iend=stripos($result,&quot;,&quot;,$istart)-$istart;<br><br>$b=substr($result,$istart,$iend-1);<br><br>$c=&quot;http://istat.tudou.com/itemSum.srv?iabcdefg=&quot;.$a.&quot;&amp;uabcdefg=&quot;.$b;<br><br>$c=str_replace(&quot; &quot;,&quot;&quot;,$c);<br><br>$u=file_get_contents($c);<br><br>$istart=stripos($u,&quot;playNum&quot;,0)+9;<br><br>$iend=stripos($u,&quot;,&quot;,$istart)-$istart;<br><br>echo &quot;&lt;p&gt;该视频播放数：&quot;.substr($u,$istart,$iend).&quot;&lt;/p&gt;&quot;;<br><br>}<br><br>?&gt;<br><br>&lt;/body&gt;<br><br>&lt;/html&gt;<br></li></ol></div><br>----------------------------------------------------------------------------------------------------------------<br><br>原以为可以通过获取视频播放页的播放数达到目的，但是经过我非常精密的研究发现，在打开视频播放页面的初期播放数显示为0，后期才更改为实际播放数，这就是说土豆是通过js获取播放数的，于是自告奋勇打开其js文件研究……一小时后证实无效。<br><br>灵机一动打开抓包软件，经过筛选终于筛出一个有用的地址：<a href="http://istat.tudou.com/itemSum.srv?iabcdefg=118871182&amp;uabcdefg=84991497" target="_blank" >http://istat.tudou.com/itemSum.srv?iabcdefg=118871182&amp;uabcdefg=84991497</a><br><br>这里的iabcdefg就是视频的编号，而uabcdefg则不知道是什么意思，随便更改数字都可以，就是不能为空<br><br>难题又来了，如何获得视频编号？<br><br>……<br><br>一小时后，很无语的发现在视频播放页的源码中原来就有明文的视频编号-、-<br><br>欢呼雀跃，以为用curl获取页面源码即可，没想到获取回来的竟然是乱码；据资料显示似乎是编码问题，于是用iconv转码之，无效；<br><br>又经过一小时，终于知道了真相：原来土豆网使用了gzip技术，导致直接获取回来的数据是经过压缩的，要解码gzip，可以用php的file_get_contents函数：<br><br>file_get_contents(&quot;compress.zlib://&quot;.$url);//即可获得解码的网页数据<br><br>难题全部解决，于是剩下的工作就很简单了。（我一下午的光阴啊……）</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-06 10:20</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <br>别这么水</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-02-06 14:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-06 17:03</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  用iframe，然后用js取呗...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-02-06 17:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情] 用iframe，然后用js取呗...<span style="color:gray "> (2012-02-06 17:03) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=929&amp;pid=5401" target="_blank" ></a><br></div></blockquote><br>这样没技术含量 而且浪费用户流量</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-06 17:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=outman" target="_blank">outman</a><span style="color:gray ">:</span>[表情]这样没技术含量 而且浪费用户流量<span style="color:gray "> (2012-02-06 17:16) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=929&amp;pid=5402" target="_blank" ></a><br></div></blockquote><br>服务器资源比客户端资源更宝贵....<br><br>如果你真要节省资源的话，应该和土豆友情会谈，让它开放接口</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-02-06 20:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+jy 我见你英俊潇洒玉树临风 这艰巨任务就交给你了<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.051128 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

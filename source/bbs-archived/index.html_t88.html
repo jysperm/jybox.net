@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>关于矩阵基本运算算法|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  关于矩阵基本运算算法关于矩阵基本运算算法图片可能失效点击http://user.qzone.qq.com/910971114/blog/1313481659来自互联网.Airers友情转播(1)转置矩阵：//其中A,B是m*n矩阵void tramat(matrix A,matrix B){ //T(n) = O(m .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,关于矩阵基本运算算法,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t88.html">关于矩阵基本运算算法</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>iol</b></td>
+<td align="right" class="smalltxt">2011-08-17 17:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>关于矩阵基本运算算法</h1>
+<div align="center"><font size="4"><span style="color:#000000 "><font face="舒体 ">关于矩阵基本运算算法<br></font></span></font></div><font size="4">关于矩阵基本运算算法</font><br>图片可能失效&nbsp;&nbsp;<br>点击<a href="http://user.qzone.qq.com/910971114/blog/1313481659" target="_blank" >http://user.qzone.qq.com/910971114/blog/1313481659</a><br><br>来自互联网.Airers友情转播(1)转置矩阵：//其中A, B是m*n矩阵void tramat(matrix A,matrix B){ //T(n) = O(m*n)&nbsp;&nbsp;int i,j;&nbsp;&nbsp;for(i=0; i&lt;m; i++)&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;n;j++)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B[j]<i>=A<i>[j];}(2)矩阵相加：//其中A,B,C是m*n矩阵void addmat(matrix C, matrix A, matrix B){&nbsp;&nbsp;int i, j;&nbsp;&nbsp;for(i=0; i&lt;m; i++)&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;n;j++)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C<i>[j] = A<i>[j] + B<i>[j];}(3)矩阵相乘：//其中A是m*r矩阵，B是r*n矩阵，C为m*n矩阵void mutmat(matrix C, matrix A, matrix B){&nbsp;&nbsp;int i, j, k;&nbsp;&nbsp;for(i=0; i&lt;m; i++)&nbsp;&nbsp;&nbsp;&nbsp;for(j=0; j&lt;n; j++){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C<i>[j] = 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(k=0; k&lt;r; k++)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C<i>[j] += A<i>[k] * B[k][j];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}<br><br>给出<i>m</i>×<i>n</i>矩阵<i>A</i>和<i>B</i>，可定义它们的<b>和</b><i>A + B</i>为一<i>m</i>×<i>n</i>矩阵，等<i>i</i>,<i>j</i>项为 (<i>A + B</i>)[<i>i, j</i>] = <i>A</i>[<i>i, j</i>] + <i>B</i>[<i>i, j</i>]。举例：<br>此乘法有如下性质：<ul style="margin:0 0 0 25px"><li>(AB)<i>C</i> = <i>A</i>(BC)对所有<i>k</i>×<i>m</i>矩阵<i>A</i>, <i>m</i>×<i>n</i>矩阵<i>B</i>及<i>n</i>×<i>p</i>矩阵<i>C</i>（&quot;结合律&quot;）.</li><li>(<i>A + B</i>)<i>C</i> = <i>AC</i> + <i>BC</i>对所有<i>m</i>×<i>n</i>矩阵<i>A</i>及<i>B</i>和<i>n</i>×<i>k</i>矩阵<i>C</i>（&quot;分配律&quot;）。</li><li><i>C</i>(<i>A + B</i>) = <i>CA</i> + <i>CB</i>对所有<i>m</i>×<i>n</i>矩阵<i>A</i>及<i>B</i>和<i>k</i>×<i>m</i>矩阵<i>C</i>（&quot;分配律&quot;）。</li></ul><br>要注意的是：交换率<i><b>不一定</b></i>成立，即有矩阵A及B使得AB ≠ BA。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-17 18:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+表示对矩阵很迷茫</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>iol</b></td>
+<td align="right" class="smalltxt">2011-08-17 18:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.044564 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

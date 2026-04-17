@@ -1,0 +1,261 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>零毫秒服务器新增输出日志到文件功能|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  如题可以去看最新的源码另外,经过我的一番努力,配置文件机制定型了,写成了一个类..可以通过下面的形式调用int port=config[&quot;SERVER_PORT&quot;].toInt()" />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,零毫秒服务器新增输出日志到文件功能,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t672.html">零毫秒服务器新增输出日志到文件功能</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-07 21:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>零毫秒服务器新增输出日志到文件功能</h1>
+如题<br>可以去看最新的源码<br>[attachment=196]<br><br><br><br>另外,经过我的一番努力,配置文件机制定型了,写成了一个类..<br>可以通过下面的形式调用<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>int port=config[&quot;SERVER_PORT&quot;].toInt()</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-07 23:26</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+int port = config.port();<br>似乎这样更好？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-07 23:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>int port = config.port();<br>似乎这样更好？<span style="color:gray "> (2011-12-07 23:26) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=672&amp;pid=2899" target="_blank" ></a><br></div></blockquote><br>不可能阿.....除非用宏....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-07 23:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+首先你这个没法指定类型...而C++是严格类型的...<br>然后就是port这个函数那里来?</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-08 12:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第3楼jybox于2011-12-07 23:43发表的:<br>首先你这个没法指定类型...而C++是严格类型的...<br>然后就是port这个函数那里来?</div></blockquote>config类<br>定义config::port()返回int的端口值</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-08 14:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第4楼whtsky于2011-12-08 12:31发表的 回&nbsp;&nbsp;3楼(jybox)的帖子 的帖子<br>第3楼jybox于2011-12-07 23:43发表的:<br>首先你这个没法指定类型...而C++是严格类型的...<br>然后就是port这个函数那里来?config类<br>定义config::port()返回int的端口值</div></blockquote>那岂不是每增加一个配置项，都要加一个对应的函数？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-08 18:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第5楼jybox于2011-12-08 14:51发表的 回&nbsp;&nbsp;4楼(whtsky)的帖子 的帖子<br>第4楼whtsky于2011-12-08 12:31发表的 回&nbsp;&nbsp;3楼(jybox)的帖子 的帖子<br>第3楼jybox于2011-12-07 23:43发表的:<br>首先你这个没法指定类型...而C++是严格类型的...<br>然 ..</div></blockquote>嗯。<br>高度封装。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-08 19:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第6楼whtsky于2011-12-08 18:42发表的 回&nbsp;&nbsp;5楼(jybox)的帖子 的帖子<br>第5楼jybox于2011-12-08 14:51发表的 回&nbsp;&nbsp;4楼(whtsky)的帖子 的帖子<br>第4楼whtsky于2011-12-08 12:31发表的 回&nbsp;&nbsp;3楼(jybox)的帖子 的帖子<br>第3楼jybox于2011-1 ..</div></blockquote>那维护成本也太高了吧，一个配置项的名字需要出现在好几个地方。。。。和我那个帖子里说的那种方法不是一样了么<br><br>而且这样这个类就很难移植到其他工程了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-08 19:29</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第7楼jybox于2011-12-08 19:10发表的 回&nbsp;&nbsp;6楼(whtsky)的帖子 的帖子<br>第6楼whtsky于2011-12-08 18:42发表的 回&nbsp;&nbsp;5楼(jybox)的帖子 的帖子<br>第5楼jybox于2011-12-08 14:51发表的 回&nbsp;&nbsp;4楼(whtsky)的帖子 的帖子<br>第4楼whtsky于2011- ..</div></blockquote>移植到其他工程？有意义？<br>这样比较好维护啊。出问题的话肯定是在类里。<br>便于二次开发。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-08 19:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>移植到其他工程？有意义？<br>这样比较好维护啊。出问题的话肯定是在类里。<br>便于二次开发。<span style="color:gray "> (2011-12-08 19:29) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=672&amp;pid=2920" target="_blank" ></a><br></div></blockquote><br>比如,客户端工程....服务器和客户端的选项是不一样的<br><br>一个选项名要出现几次,明显违背软件设计的理念阿...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-08 19:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第9楼jybox于2011-12-08 19:51发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>移植到其他工程？有意义？<br>这样比较好维护啊。出问题的话肯定是在类里。<br>便于二次开 ..</div></blockquote>你原来的方案，选项名出现的才多吧…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-08 20:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>你原来的方案，选项名出现的才多吧…<span style="color:gray "> (2011-12-08 19:59) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=672&amp;pid=2925" target="_blank" ></a><br></div></blockquote><br>我现在的反感...只需要在使用的时候出现一次,类中根本不出现</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-08 20:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第11楼jybox于2011-12-08 20:14发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>你原来的方案，选项名出现的才多吧…<span style="color:gray "> (2011-12-08 19:59) </span>[url=http://jybox.net/bbs ..</div></blockquote>好吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-08 20:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第11楼jybox于2011-12-08 20:14发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>你原来的方案，选项名出现的才多吧…<span style="color:gray "> (2011-12-08 19:59) </span>[url=http://jybox.net/bbs ..</div></blockquote>好吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.047989 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

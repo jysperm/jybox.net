@@ -1,0 +1,231 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>客户端架构设计，初稿|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  估计今后的客户端可能都采用这样的设计个人认为在易用性上比较完美分为4个层次1.全局常量定义以及一些内联函数外加宏这部分就不解释了2.客户端内核它是一个类，这个内核只负责网络通讯 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,客户端架构设计，初稿,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t438.html">客户端架构设计，初稿</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-28 00:03</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>客户端架构设计，初稿</h1>
+估计今后的客户端可能都采用这样的设计<br>个人认为在易用性上比较完美<br><br>分为4个层次<br>1.全局常量定义以及一些内联函数外加宏<br>这部分就不解释了<br>2.客户端内核<br>它是一个类，这个内核只负责网络通讯，实现通讯协议，解析命令等等的。通过信号槽机制来调用相应的函数（内核只负责发出相应的信号）<br>这个部分仅依赖QtCore和QtNetwork，不依赖QtGUI<br>3.客户端内核扩展<br>这个部分开始就要依赖QtGUI了，它也是一个类，继承自客户端内核。在客户端内核的基础上增加对GUI的支持<br>它负责绑定对应的信号槽，启动和暂停内核，启动GUI等等<br>4.用户界面<br>就是界面嘛，这部分的代码将会非常少，所有功能性的代码都被写在了客户端内核和客户端内核扩展里面<br><br>为什么要这样的架构呢。这样的结构充分利用了QT信号槽的优势，把各个模块分开，便于多人协作<br>同时，第三方开发人员可以直接把内核拿出来，作为SDK来用（实现了Abreto构想的，使开发者不用接触到协议细节的SDK），<br>第三方开发人员通过继承出自己的客户端内核扩展类，和自己的GUI，就可以实现自己的客户端<br>协议相关的内容都是客户端内核来处理，第三方开发人员不必关心这些，通过继承该类，第三方开发人员也有很大的余地来发挥<br>同时，内核不依赖GUI，又给了开发人员很大的自由，毕竟QtGUI库有10MB大呢<br><br>同时，官方客户端本身，也是一个应用了SDK的绝佳的例子，供第三方开发人员参考<br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-10-28 23:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+总之我以为先写SDK，官方客户端是在官方SDK基础上开发的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-29 13:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>总之我以为先写SDK，官方客户端是在官方SDK基础上开发的<span style="color:gray "> (2011-10-28 23:39) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=438&amp;pid=2060" target="_blank" ></a><br></div></blockquote><br>结果没什么区别</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-29 21:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+刚刚已经把这样的设计实现了<br>可以去看r39+的源码<br>客户的核心类为ClientCore<br>继承出的扩展是<br>ClientCoreEx<br><br>顺便召唤whtsky</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-30 08:18</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 召唤我干神马</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-30 17:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情] 召唤我干神马<span style="color:gray "> (2011-10-30 08:18) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=438&amp;pid=2087" target="_blank" ></a><br></div></blockquote><br>大家一起围观，取长补短</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-11-20 21:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>结果没什么区别<span style="color:gray "> (2011-10-29 13:36) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=438&amp;pid=2062" target="_blank" ></a><br></div></blockquote><br>当然有区别，官方客户端应该将就SDK，而不是SDk将就官方客户端</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-20 21:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>当然有区别，官方客户端应该将就SDK，而不是SDk将就官方客户端<span style="color:gray "> (2011-11-20 21:22) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=438&amp;pid=2626" target="_blank" ></a><br></div></blockquote><br>在前期，基于SDK来开发客户端<br>SDK可能得不到全面的测试</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-11-20 21:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span><br>在前期，基于SDK来开发客户端<br>SDK可能得不到全面的测试 <a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=438&amp;pid=2627" target="_blank" ></a><br></div></blockquote><br>难道你用实际开发来测试？测试！！顾名思义测试是在开发SDK的时候做的，<br>而不应该在开发客户端的时候来测试SDK..<br>既然你发布SDK肯定是先测试了SDK是全面测试过无BUG的，<br>然后用这个SDK来开发官方客户端<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-20 21:44</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>[表情]难道你用实际开发来测试？测试！！顾名思义测试是在开发SDK的时候做的，<br>而不应该在开发客户端的时候来测试SDK..<br>既然你发布SDK肯定是先测试了SDK是全面测试过无BUG的，<br>然后用这个SDK来开 ..<span style="color:gray "> (2011-11-20 21:37) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=438&amp;pid=2629" target="_blank" ></a><br></div></blockquote><br>切合实际一点不行么？<br>在SDK的基础上写一个客户端是对它最好的测试<br><br>切合实际！没有人手单独对SDK进行测试，而要自己对自己写的代码进行测试难免有主观印象</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-20 22:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+先发布客户端，客户端确定稳定之后发布sdk......</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-21 08:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第10楼whtsky于2011-11-20 22:50发表的:<br>先发布客户端，客户端确定稳定之后发布sdk......</div></blockquote>我现在差不多就是这个意思</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.049206 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

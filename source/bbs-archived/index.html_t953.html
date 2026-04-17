@@ -1,0 +1,276 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>求大神帮忙改正~小弟新学C++|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  #include&quot;stdio.h&quot; void values(int a,int b,int c){ printf(&quot;Enter a whole number: &quot;); scanf(&quot;%d&quot;,a);printf(&quot;Enter a second whole number: &quot;); scanf(&quot;%d&quot;,b); printf(&quot;Enter a third whole number: &quot; .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,求大神帮忙改正~小弟新学C++,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t953.html">求大神帮忙改正~小弟新学C++</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xiewei</b></td>
+<td align="right" class="smalltxt">2012-02-14 06:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>求大神帮忙改正~小弟新学C++</h1>
+<span style="background-color:#ffffff "><span style="color:#000000 ">#include&quot;stdio.h&quot; <br>void values(int a,int b, int c)<br>{ printf(&quot;Enter a whole number: &quot;); <br>scanf(&quot;%d&quot;, &amp;a);<br>printf(&quot;Enter a second whole number: &quot;); <br>scanf(&quot;%d&quot;, &amp;b); <br>printf(&quot;Enter a third whole number: &quot;); <br>scanf(&quot;%d&quot;, &amp;c); } <br>int smallest(int a, int b, int c)<br>{ <br>int small=a; <br>if (a&gt;b){<br>small=b;<br>} if (b&gt;c){<br>small=c;<br>}<br>return small;<br>} <br>int largest(int a, int b, int c)<br>{ int large=a; <br>if (a&lt;b){<br>large=b;<br>}<br>if (b&lt;c){<br>large=c;<br>} <br>return large;<br>} <br>void a2question2()<br>{<br>int a,b,c,sum,product; <br>float average; <br>values(a,b,c); <br>sum = a+b+c; <br>average = (a+b+c)/3; <br>product = a*b*c; <br>printf(&quot;Sum = %d\nAverage = %.2f\nProduct = %d\nSmallest = %d\nLargest = %d\n&quot;,sum,average,product,smallest(a,b,c),largest(a,b,c));<br>} <br>int main()<br><br>{<br>a2question2(); <br>return 0;<br>}<br>---------------------------------------------<br>最后出来奇怪的结果 求指教，要求是必须让scanf作为单独的方程 values 读取input </span></span><br>[attachment=276]</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-02-14 07:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+童鞋你代码还没发完呢……<br>从图中看,估计你是因为求得的结果很郁闷.得到的Sum和Largest是随机数,对吧?<br>这是因为传给其他函数的abc并不是scanf来的三个数,因此其他函数从abc中读到的数字实际是内存中废弃或者别处的数据.<br>values()的形参是三个整型,这样相当于把这三个整型复制到values()内部作为它的参数.从你的意图看,你是要把输入的三个数写入a,b,c.这样应使用指针来操作,传给values()的应是int*类型,也就是这样:<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li><br>void values(int *a, int *b, int *c);<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*......*/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(&quot;%d&quot;,a);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*......*/<br>}<br></li></ol></div><br>main中类似这样:<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li><br>int *a,*b,*c;<br>values(a,b,c);<br></li></ol></div><br>顺便欠揍地提一句,从看到的你的代码看,这是纯正的C代码……想说C++,起码用用cin/cout吧……<br>抱歉,最近在看C++ Primer Plus,可能说得也不对,拍砖随意.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xiewei</b></td>
+<td align="right" class="smalltxt">2012-02-14 07:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>童鞋你代码还没发完呢……<br>从图中看,估计你是因为求得的结果很郁闷.得到的Sum和Largest是随机数,对吧?<br>这是因为传给其他函数的abc并不是scanf来的三个数,因此其他函数从abc中读到的数字实际是内存 ..<span style="color:gray "> (2012-02-14 07:31) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=953&amp;pid=5556" target="_blank" ></a><br></div></blockquote><br>太感谢了 我是初学可能不懂，应该是C语言吧。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-14 13:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第2楼xiewei于2012-02-14 07:36发表的 回 墨阐 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>童鞋你代码还没发完呢……<br>从图中看,估计你是因为求得的结果很郁闷.得到的Sum和Largest是 ..</div></blockquote>珍爱生命，远离cpp.<br>面向对象obj-c足以.还有可选的gc</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 14:20</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>童鞋你代码还没发完呢……<br>从图中看,估计你是因为求得的结果很郁闷.得到的Sum和Largest是随机数,对吧?<br>这是因为传给其他函数的abc并不是scanf来的三个数,因此其他函数从abc中读到的数字实际是内存 ..<span style="color:gray "> (2012-02-14 07:31) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=953&amp;pid=5556" target="_blank" ></a><br></div></blockquote><br>C++就是兼容C的嘛...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 14:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 14:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 14:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+C++就是兼容C的嘛...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-02-14 14:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+#3 那我60好几浪费了.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 14:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>#3 那我60好几浪费了.<br>内容来自[手机版] <span style="color:gray "> (2012-02-14 14:34) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=953&amp;pid=5573" target="_blank" ></a><br></div></blockquote><br>啥意思</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-02-14 15:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+#9 C++ Primer Plus,p170.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 16:48</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>#9 C++ Primer Plus,p170.<br>内容来自[手机版] <span style="color:gray "> (2012-02-14 15:07) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=953&amp;pid=5576" target="_blank" ></a><br></div></blockquote><br>具体</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2012-02-14 18:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-14 18:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xttyctl9" target="_blank">xttyctl9</a><span style="color:gray ">:</span>该主题已被管理员屏蔽!<span style="color:gray "> (2012-02-14 18:23) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=953&amp;pid=5578" target="_blank" ></a><br></div></blockquote><br>到底怎么回事</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-14 19:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第4楼jybox于2012-02-14 14:20发表的 回 墨阐 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>童鞋你代码还没发完呢……<br>从图中看,估计你是因为求得的结果很郁闷.得到的Sum和Largest是 ..</div></blockquote>c99..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.045257 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

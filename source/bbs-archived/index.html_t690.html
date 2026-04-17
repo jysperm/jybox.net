@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>jb256语言语法参考|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  JB256JB256是一个解释运行(本人没能力写编译器，但理论上可以编译运行)，可以直接操作(虚拟)内存的偏底层语言.256表示目前版本的JB语言只能进行256以内的无符号整数的算术运算，且只有256B的 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,jb256语言语法参考,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t690.html">jb256语言语法参考</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-12 23:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>jb256语言语法参考</h1>
+<span style="background-color:#ffffff "><font face="宋体 ">JB256JB256是一个解释运行(本人没能力写编译器，但理论上可以编译运行)，可以直接操作(虚拟)内存的偏底层语言.<br><br>256表示目前版本的JB语言只能进行256以内的无符号整数的算术运算，且只有256B的虚拟内存，不支持中文等多字节字符集.<br><br>ps.理论上，运算范围和内存空间可以无限大，只不过我们不建议用它编写过大的程序，因为这将会产生严重的连带副作用————蛋痛.</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">注意！由于本人能力有限，以上和以下的术语可能并不准确，请见谅.大家自行脑补<br>JB256没有标识符，只有下面3个关键字，4个运算符，和两个转义符号.</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">-------------------------<br>关键字，其实是3个寄存器(初值为0)：<br>jb (主控制器)负责执行命令<br>da (蛋A)寄存器A<br>db (蛋B)寄存器B</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">运算符<br>++&nbsp;&nbsp;&nbsp;&nbsp;值翻倍(乘2)(对应字节码0-63)<br>--&nbsp;&nbsp;&nbsp;&nbsp;值减倍(除2)注：若出现小数，一律进位(对应字节码64-128)<br>+&nbsp;&nbsp;&nbsp;&nbsp;值加一(对应字节码129-191)<br>-&nbsp;&nbsp;&nbsp;&nbsp;值减一(对应字节码192-255)</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">转义符号，空格或者斜杠，作用是一样的：<br>当有两个连续加号的时候，解释器会认为它是一个“值翻倍”，如果你确实要表示两个“值加一”，请在它们中间用空格或斜杠分割</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">虚拟内存，JB256有256块虚拟内存，每块虚拟内存可以保存一个0-255的无符号整数。内存的初值为0<br>其中第256块(索引是255)是只读内存，内容始终是当前执行到的位置的指针</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">运行过程<br>jb、da、db分别在三个时间轴上运行，每个单位时间内，向前执行一个计算，然后以jb的值为命令号，da和db的值为参数，来执行系统调用。然后将执行指针向前移动一格，继续执行。<br>jb、da、db的命令长度必须等长，在运行的时候，他们会被加载到内存中，内存中储存的是它们的字节码(前面已提到)。<br>它们在内存中的位置是这样：jb1、da1、db1、jb2、da2、db2、jb3、da3、db3.<br>理论上可以存储75组命令(75*3=255，最后的一块是只读内存)，但实际上，运行时你可以动态地擦写内存，写入命令，移动当前执行指针，或用这些内存存储数据</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">---------------------------<br>命令表(命令号即为jb的值)<br>空&nbsp;&nbsp;&nbsp;&nbsp; 1、2、3、4、6、8<br>交换A和B的值&nbsp;&nbsp;&nbsp;&nbsp; 7<br>A+B，结果存储到A(B中存储进位次数)&nbsp;&nbsp;&nbsp;&nbsp;16<br>A-B，结果存储到A(B中存储借位次数)&nbsp;&nbsp;&nbsp;&nbsp;17<br>A*B，结果存储到A(B中存储进位次数)&nbsp;&nbsp;&nbsp;&nbsp;18<br>A/B，结果存储到A(出现小数则进位)&nbsp;&nbsp;&nbsp;&nbsp;19<br>A%B，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 20<br>A&amp;B，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 21<br>A|B，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 22<br>A^B，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 23<br>A&amp;&amp;B，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 24<br>A||B，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 25<br>A^|B，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 26<br>!A，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 27<br>~A，结果存储到A&nbsp;&nbsp;&nbsp;&nbsp; 28<br>将A的值写到内存B处&nbsp;&nbsp;&nbsp;&nbsp; 5<br>将内存B处的值读入A&nbsp;&nbsp;&nbsp;&nbsp; 9<br>从键盘读取A个字符写入到B处开始的内存中 10<br>显示从内存B处开始A个字符&nbsp;&nbsp;&nbsp;&nbsp; 11<br>从键盘读取整数到A&nbsp;&nbsp;&nbsp;&nbsp; 12<br>显示A的值&nbsp;&nbsp;&nbsp;&nbsp; 13<br>跳至B处的内存开始执行&nbsp;&nbsp;&nbsp;&nbsp; 15<br>如果A的值非零，跳过下一条命令&nbsp;&nbsp;&nbsp;&nbsp;14<br>退出程序&nbsp;&nbsp;&nbsp;&nbsp; 其他所有值</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">看不懂？没关系，这本来就是**专用语言，下一章将用一个例子来讲解，大家就会明白了</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">我们拿出最初的那个例子程序<br>jb+/+4-+4--+-++--+/+/++-3+4--+4-+4<br>da+9+3-+/+4-+/+/+/+-+/+3/+/++-+4<br>db+9+7-+-+-/-+/+/+/++-+9+前面介绍的时候没有提到数字，其实数字是一种缩写形式+9即代表9个连续的加号，注意，如果加号中间有斜杠或空格，不能用数字来缩写</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">刚刚忘记说了，重复一下，它的功能是从标准输入读入两个数字，然后在标准输出显示它们的和<br>下面我们去除缩写形式，大概是下面的样子<br>jb+/++++-++++--+-++--+/+/++---++++--++++-++++<br>da++++++++++++-+/++++-+/+/+/+-+/+++/+/++-++++<br>db++++++++++++++++-+-+-/-+/+/+/++-+++++++++++</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">从标准输入读入两个数字，然后在标准输出显示它们的和,流程大概是这样的<br>读入一个数字到A（命令12）<br>交换A和B的值（命令7）<br>读入一个数字到A（命令12）<br>A+B，结果存储在A（命令16）<br>输出A的值（命令13）</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">然后我们对它进行断句<br>[attachment=202]</font></span><br><span style="background-color:#ffffff "><font face="宋体 ">看13楼，这个程序中其实没怎么用到蛋A和蛋B的值，所以接下来我们关心一下jb的运行过程<br>[attachment=203]</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">楼上新增了三行<br>从上到下<br>第一行是那条命令执行之后jb的值<br>第二行加星号的是在那里调用了系统函数（未加星号的表示jb的命令号是空命令）<br>加井号的表示这一行是必定被跳过的（也就是在执行14号命令的时候，蛋A的值必定非0）</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br><span style="background-color:#ffffff "><font face="宋体 ">其中在第6个命令、第10个命令处发生了读入（其中第8个命令还交换了蛋A和蛋B的值），第14个命令处发生了加法计算，22个命令处进行了输出，24个命令进行了退出<br>但除了这些预定要执行的命令之外，还有很多其他不必要的命令，比如16处的交换，17和20处的跳过，23处的按位异或。这些就是jb语言的蛋痛所在，为了达到既定的目标，大多都需要执行很多不必要的命令，如何让这些额外的命令不对既定流程造成影响，就是jb的难点所在<br><br><br>ok，教程就到这里</font></span><br><span style="background-color:#ffffff "><font face="宋体 "><br></font></span><br> </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-13 19:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+某花痴女:“我不要ruby，我不要perl，我要jb!”</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-13 19:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.047107 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>服务器or客户端bug....缓冲区异常|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  在客户端的菜单栏选取刷新好友列表之后服务器的缓冲区会出现异常（发两条消息却只显示一条，再发一条才显示上一条）暂不清楚到底是服务器还是客户端的问题" />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,服务器or客户端bug....缓冲区异常,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t730.html">服务器or客户端bug....缓冲区异常</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-24 18:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>服务器or客户端bug....缓冲区异常</h1>
+在客户端的菜单栏选取刷新好友列表之后<br><br>服务器的缓冲区会出现异常（发两条消息却只显示一条，再发一条才显示上一条）<br>暂不清楚到底是服务器还是客户端的问题</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxyscxy</b></td>
+<td align="right" class="smalltxt">2011-12-25 10:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+解决了不</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-25 14:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=dosbatch" target="_blank">dosbatch</a><span style="color:gray ">:</span>[表情] [表情] [表情] 当然没有，记得我上次和JY反应客户端发送信息过快会导致信息丢失，JY也没理，另：测试结果：客户端发送11个空格，服务器接收到9个空格，接收方收到7个空格- -话说貌似服务 ..<span style="color:gray "> (2011-12-25 11:05) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=730&amp;pid=3336" target="_blank" ></a><br></div></blockquote><br>你懂神马?你以为修复个bug就马上发布么？<br>连源代码在哪都不知道就说“当然没有”</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-25 23:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+bug730修复，<br>原因是客户端在同一个数据包中发送了两个消息<br>而服务器没有考虑到一个数据包中包括多个消息的情况<br>现在已经在客户端和服务器增加了对一个数据包中包括多个消息的支持<br>但没有查出为什么客户端会一次发送两个消息...<br><br><a href="https://github.com/jybox/ZeroMS/commit/1d572600a3231fe2a8ef703a5365902b26881e86" target="_blank" >https://github.com/jybox/ZeroMS/commit/1d572600a3231fe2a8ef703a5365902b26881e86</a></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-31 21:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=dosbatch" target="_blank">dosbatch</a><span style="color:gray ">:</span>[表情]说话注意基本礼节- -<br>另：你每次修复了BUG就会在后面跟帖的~- -SO,肯定没有[表情]<span style="color:gray "> (2011-12-31 21:29) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=730&amp;pid=3446" target="_blank" ></a><br></div></blockquote><br>跟不跟我说了算</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.049713 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

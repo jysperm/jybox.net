@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>PHP build-in WebServer|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  PHP从5.4开始内置一个轻量级的Web服务器，不支持并发，定位是用于开发和调试环境（以下适用于Linux以及Windows） 不得不说，在开发环境使用它的确非常方便很简单，安装好PHP后，切换到你的工 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,PHP build-in WebServer,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1225.html">PHP build-in WebServer</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-09-15 19:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>PHP build-in WebServer</h1>
+PHP从5.4开始内置一个轻量级的Web服务器，不支持并发，定位是用于开发和调试环境<br>（以下适用于Linux以及Windows）<br> <br>不得不说，在开发环境使用它的确非常方便<br>很简单，安装好PHP后，切换到你的工程所在目录，执行(确保php.exe在PATH中)：<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">php -S localhost:8000</div></blockquote><br> <br>这样就在当前目录建立起了一个Web服务器，你可以通过http://<span style="background-color:#f7f7f7 ">localhost:8000</span>/来访问<br>其中localhost是监听的ip，8000是监听的端口，可以自行修改。<br><br>每个请求的信息会打印在终端窗口，类似：<br><br><blockquote class="blockquote3"><div class="text" style="padding:15px;">[Thu Jul 21 10:48:50 2011] ::1:39146 GET / - Request read</div></blockquote><br><br><br> <br> <br>很多应用中，都会进行URL重写，所以PHP提供了一个设置“路由脚本”的功能<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">php -S localhost:8000 lp-main.php</div></blockquote><br><br>这样一来，所有的请求都会由lp-main.php来处理，大多数MVC框架都会有一个类似的路由脚本<br><br>所以在这里，我有必要给大家介绍一个支持MVC的轻量级的PHP框架——LightPHP：<br>项目地址：<a href="https://github.com/jybox/LightPHP" target="_blank" >https://github.com/jybox/LightPHP</a><br><br><br>参考资料：<br><a href="https://wiki.php.net/rfc/builtinwebserver" target="_blank" >https://wiki.php.net/rfc/builtinwebserver</a><br><a href="http://www.php.net/manual/en/features.commandline.webserver.php" target="_blank" >http://www.php.net/manual/en/features.commandline.webserver.php</a><br><a href="http://www.oschina.net/question/12_62984" target="_blank" >http://www.oschina.net/question/12_62984</a><br><a href="http://www.oschina.net/question/12_70049" target="_blank" >http://www.oschina.net/question/12_70049</a><br><br>##使用XDebug调试<br>添加下面两行到php.ini<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">zend_extention=/abosute/path/to/xdebug.dll <br>xdebug.remote_enable=1 </div></blockquote><br>其中第一行的路径务必为绝对路径，XDebug的配置可参考<span style="background-color:#f7f7f7 ">http://xdebug.org/docs/install</span><span style="background-color:#f7f7f7 "> </span><br><br><hr /><br>##PHP的其他命令行选项<br><br>-a选项可以开启一个交互式的PHP终端：<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">php -a</div></blockquote><br>-r 可以直接执行PHP代码：<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">php -r &#39;echo &quot;Hello World&quot;;&#39;</div></blockquote><br>-t 指定build WebServer的根目录<br>默认会以当前目录为根目录，你可以使用这个选项修改根目录<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">php -S localhost:8000 -t /var/www</div></blockquote><br>参考资料<br><a href="http://www.php.net/manual/en/features.commandline.options.php" target="_blank" >http://www.php.net/manual/en/features.commandline.options.php</a><br><a href="http://www.php.net/manual/en/features.commandline.usage.php" target="_blank" >http://www.php.net/manual/en/features.commandline.usage.php</a><br><a href="http://www.php.net/manual/en/features.commandline.interactive.php" target="_blank" >http://www.php.net/manual/en/features.commandline.interactive.php</a><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-09-15 19:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.032174 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

@@ -1,0 +1,426 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>0.1版服务器程序对登陆过程的处理|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  简要的进行一下文档化首先，我经过慎重考虑，决定还是用php做一个跳板，来读取mysql里phpwind的数据库里的用户信息为什么要用php做跳板，而不是服务器程序直接读取呢？原因如下：Windows版的Q .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,0.1版服务器程序对登陆过程的处理,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t315.html">0.1版服务器程序对登陆过程的处理</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-09 22:06</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>0.1版服务器程序对登陆过程的处理</h1>
+简要的进行一下文档化<br>首先，我经过慎重考虑，决定还是用php做一个跳板，来读取mysql里phpwind的数据库里的用户信息<br>为什么要用php做跳板，而不是服务器程序直接读取呢？原因如下：<br><ul style="margin:0 0 0 25px"><li>Windows版的QT不提供MySQL数据库驱动，需要自己编译，而编译过程相对复杂</li><li>对于服务器和数据库不在一台电脑的情况下，远程访问mysql数据库并不安全，而且有些主机商不允许这么做</li><li>便于在用做跳板的PHP处理文件中做一些额外的工作，例如在网站上显示使用量信息</li><li>有的用户可能并非使用mysql储存用户信息，用服务器通过mysql驱动访问太过于武断，而php更灵活于读取其他形式的用户信息（文件、mssql）</li></ul><br>因为需要用一个PHP文件做跳板，因此安全问题比较重要，一方面是要防止密码在传输过程中被窃取，另一方面是防止有些人利用这个PHP跳板批量暴力破译密码，经过考虑，采取安全措施如下<br><ul style="margin:0 0 0 25px"><li>PHP处理文件中和服务器程序中各保存一个私钥，服务器要把客户端传来的经过不可逆加密的密码再利用这个私钥加密一次(私钥是一个字符串)</li><li>可以在PHP处理文件中设置只允许某个IP访问，当然，这个IP就是服务器程序所在IP</li></ul><br>具体通讯约定：<br>PHP处理文件的借口是一个类似这样的地址：<br><i>http://jybox.net/0-ms/api/login.php</i><br>get参数：<br><ul style="margin:0 0 0 25px"><li>mode=post(固定这么写)</li></ul><br>post参数：<br><ul style="margin:0 0 0 25px"><li>do=login(登陆验证都固定这么写)</li><li>pwd=经过私钥加密的密码，关于如何加密见后文</li><li>time=服务器程序收到这个消息的时间</li><li>user=要登陆的用户名</li><li>clientname=客户端名称描述性字符串(是从客户端发来的登陆命令中提取出来的)</li><li>clientver=客户端版本顺序号(是从客户端发来的登陆命令中提取出来的，这个和上面一项都是为了方便统计)</li></ul><br>返回信息：<br>两行字符串<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>0或1(表示是否验证成功)<br>用户名</li></ol></div><br>密码的加密方法(伪代码)：<br><i>MD5(密钥+客户端发来的经过不可逆加密的密码)</i><br> <br> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 22:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+人家搭建个聊天服务器还要开php </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-09 22:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>人家搭建个聊天服务器还要开php[表情] <br>并发数一高服务器就挂了[表情] <span style="color:gray "> (2011-10-09 22:12) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1398" target="_blank" ></a><br></div></blockquote><br>貌似并不复杂.....要不用户信息存在哪里？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 22:18</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+mysql的select性能不高，详情可以参考<a href="http://obmem.info/?p=317" target="_blank" >这篇吐槽</a> <br>作者是写<a href="http://code.google.com/p/simplecd/" target="_blank" >SimpleCD</a> 的。。<br><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#333333 ">Windows版的QT不提供MySQL数据库驱动，需要自己编译，而编译过程相对复杂</span></div></blockquote><br>吐槽无力。<br><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#333333 ">对于服务器和数据库不在一台电脑的情况下，远程访问mysql数据库并不安全，而且有些主机商不允许这么做</span></div></blockquote><br> <br> 为什么要不在一台电脑上。。<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">便于在用做跳板的PHP处理文件中做一些额外的工作，例如在网站上显示使用量信息</div></blockquote><br>完全可以在S端进行统计。。<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">有的用户可能并非使用mysql储存用户信息，用服务器通过mysql驱动访问太过于武断，而php更灵活于读取其他形式的用户信息（文件、mssql）</div></blockquote><br>你难道准备发布S端+一个SQL文件，告诉大家数据库自己搭建，PHP自己去写？<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 22:20</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>貌似并不复杂.....要不用户信息存在哪里？<span style="color:gray "> (2011-10-09 22:13) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1399" target="_blank" ></a><br></div></blockquote><br>存数据库啊。。。<br>多开一个WEB服务器意味着更多的资源消耗、更多的维护投入、还有可能DoS.DDoS...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 22:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<a href="http://apps.hi.baidu.com/share/detail/34835376" target="_blank" >http://apps.hi.baidu.com/share/detail/34835376</a><br>Win下MySQL驱动编译并不难，按照操作编译即可，何况Win主机算是很奇葩的存在了；<br>大不了官方编译一个Win版本提供下载嘛。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 22:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+不是所有人都有整合论坛用户的需求的。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-09 22:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+--为什么要不在一台电脑上。。<br>S端服务器可是要有执行权限的，虚拟主机不行，必须VPS，但是有VPS的可不是多数。所以有的用户可能用自己的电脑充当S端服务器，而使用自己虚拟主机上的mysql数据库<br><br>--你难道准备发布S端+一个SQL文件，告诉大家数据库自己搭建，PHP自己去写？<br>--不是所有人都有整合论坛用户的需求的。。<br>那你的意思是什么？储存在mysql里，然后S端服务器去读取？<br>我觉得..貌似有mysql的话，应该也就是有apache和php了。<br>如果用户不需要一个论坛的话，只要建一个用户表就行了嘛，就算是用S端直接读取，不也是要一个用户表吗<br><br><br>你需要考虑用户不同的需求，用户可能不只是phpwind论坛，用户可能需要修改读取用户表的相关源码，你得承认修改php比C++更简单，而且不用重新编译</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 23:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+用自己的电脑当s，那为什么还要连接远程服务器？<br>有mysql就基本有apache？你确定？<br>整合各类不同的用户修改的是sql语句，和php.c没关系，而且不会有人闲着无聊整天改这个，编译用不了多久<br>php所带来的只是无谓的资源消耗而已。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 23:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+只用一个用户表，群组呢？好友呢？各种设置呢？php可以作为ajax接口，但接管数据库操作太不现实了<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 23:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我只想安心做聊天服务器，还要再开php服务器还要从php拿数据，我脑残嘛<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-09 23:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+就算我兼职做网页服务器，我为什么一定要用php写网页？python行不行？java行不行？go行不行？erlang行不行？我干嘛还要装php绕一个大圈来拿我的数据？<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-10-10 18:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 总之不赞成和PHPWind论坛的用户相通<br>人家有自己的论坛呢？<br>要么自己写一个用户系统(其实我正打算写)<br>以后所有的产品都跟这个用户系统相通，<br>就是这样,, 而且用PHP太坑爹</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-10 19:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+--我为什么一定要用php写网页？python行不行？java行不行？go行不行？erlang行不行？<br>当然，当然可以，只是规定了一个借口，你可以使用任何动态网页语言，这就是它的灵活性<br><br>--整合各类不同的用户修改的是sql语句，和php.c没关系<br>使用php可以灵活地存取各种数据库<br><br>--只用一个用户表，群组呢？好友呢？各种设置呢？php可以作为ajax接口，但接管数据库操作太不现实了<br><br>-- 总之不赞成和PHPWind论坛的用户相通<br>--人家有自己的论坛呢？<br>和phpwind互通只是一个例子，未必是phpwind，也未必需要论坛，你们可能还是没有理解我的这句话“如果用户不需要一个论坛的话，只要建一个用户表就行了嘛，就算是用S端直接读取，不也是要一个用户表吗”<br><br>--我只想安心做聊天服务器，还要再开php服务器还要从php拿数据，我脑残嘛<br>不用到php(泛指动态网页语言)是不可能的，因为需要用户注册页、个人中心等等的网页。而一旦涉及这些，大部分人第一想到的肯定是与论坛互通(当然，不搭建论坛也是可以的).与论坛的用户信息互通现在基本是可以定下来的了(要注意，这是非常灵活的，可以与任何论坛或网站系统互通，也可以不使用论坛).现在主要的问题是使用PHP做跳板来验证密码，还是用服务器直接读取数据库。<br>还有几个方面的原因：<br>*为了减少服务器程序在技术上的复杂度，当然，我也知道，这不是长久之计，早晚都要用到数据库的。<br>*为了隔离数据，因为服务器程序是要接受客户端的指令的，我的技术也不能保证服务器程序万无一失，对于用户信息这样的敏感数据，还是与服务器程序隔离比较好。<br>*另外是考虑一致性，在我的计划中，可能还会开发其他的程序(和零毫秒无关，只是我个人问题)，可能也涉及到用户验证，这些程序可能是直接给用户使用的，所以显然不能直接读数据库，显然要用PHP来验证。<br>*而且既然用户注册、个人中心都是网页的，用户验证也使用网页比较好，原因就是上面提到的数据隔离和技术一致性<br><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-10-10 20:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>--我为什么一定要用php写网页？python行不行？java行不行？go行不行？erlang行不行？<br>当然，当然可以，只是规定了一个借口，你可以使用任何动态网页语言，这就是它的灵活性<br>--整合各类不同的用户 ..<span style="color:gray "> (2011-10-10 19:52) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1439" target="_blank" ></a><br></div></blockquote><br>要么自己写一个用户系统</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-10 20:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>要么自己写一个用户系统<span style="color:gray "> (2011-10-10 20:23) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1441" target="_blank" ></a><br></div></blockquote><br>汗，要写的是通讯软件</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-10 21:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 你能想象你登陆QQ，然后QQ乐呵乐呵的去访问腾讯服务器的某一个网页来验证身份嘛</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-10 21:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情] 你能想象你登陆QQ，然后QQ乐呵乐呵的去访问腾讯服务器的某一个网页来验证身份嘛<span style="color:gray "> (2011-10-10 21:27) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1448" target="_blank" ></a><br></div></blockquote><br>我可以告诉你...事实上QQ的通讯协议是基于网页(http)的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-10 21:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情]我可以告诉你...事实上QQ的通讯协议是基于网页(http)的<span style="color:gray "> (2011-10-10 21:55) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1451" target="_blank" ></a><br></div></blockquote><br>腾讯蛋疼？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-10 22:04</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情]我可以告诉你...事实上QQ的通讯协议是基于网页(http)的<span style="color:gray "> (2011-10-10 21:55) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1451" target="_blank" ></a><br></div></blockquote><br><a href="https://code.google.com/p/libqq-pidgin/wiki/QQ2010Protocol" target="_blank" >https://code.google.com/p/libqq-pidgin/wiki/QQ2010Protocol</a><br>怎么基于HTTP</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-10 22:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>https://code.google.com/p/libqq-pidgin/wiki/QQ2010Protocol<br>怎么基于HTTP[表情]<span style="color:gray "> (2011-10-10 22:04) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1453" target="_blank" ></a><br></div></blockquote><br><a href="http://www.cnblogs.com/czjone/archive/2010/03/16/1636017.html" target="_blank" >http://www.cnblogs.com/czjone/archive/2010/03/16/1636017.html</a></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-10 23:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+qq官方客户端不是http协议的，何况文中的http通讯如果现在能用吗？<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-11 19:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>qq官方客户端不是http协议的，何况文中的http通讯如果现在能用吗？<br>内容来自[手机版] <span style="color:gray "> (2011-10-10 23:39) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=315&amp;pid=1460" target="_blank" ></a><br></div></blockquote><br>当然能啦......</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-11 20:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+你确定！？<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-10-18 22:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+总之这不是一个很好的方式 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.052189 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

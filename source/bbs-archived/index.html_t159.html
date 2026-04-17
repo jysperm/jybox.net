@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>LightPHP 2.0版本开发计划(绝非YY)|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  一下子升到了2.0，因为这个更新确实非常大，基本相当于重写一遍了以下都是开发计划，而非YY下面的所有内容都会在20天后实现(LightPHP2.0的开发周期是9.1-9.20) 方向依旧不会变LIghtPHP是一个轻量 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,LightPHP 2.0版本开发计划(绝非YY),程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t159.html">LightPHP 2.0版本开发计划(绝非YY)</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-30 21:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>LightPHP 2.0版本开发计划(绝非YY)</h1>
+一下子升到了2.0，因为这个更新确实非常大，基本相当于重写一遍了<br>以下都是开发计划，而非YY<br>下面的所有内容都会在20天后实现(LightPHP2.0的开发周期是9.1-9.20)<br> <br>方向依旧不会变<br>LIghtPHP是一个轻量级的，面向初学者和时间匆忙的开发者，用于迅速构建具有代码重用性的网页(站)<br> <br>2.0版本要重点突出以下关键词<br>轻量级、安全、便捷<br> <br>功能预告<br>1.增加SafeSQL类，提供安全SQL支持，有效的防止SQL注入攻击，同时要加强LightPHP本身的安全性<br>简单说，用户把外部参数插入到SQL语句中的时候，需要指定参数的类型和格式。SafeSQL类负责检查参数是否符合格式，并检查一些常见注入攻击语句<br><br>2.增加Login类，提供登录状态管理功能，并支持和其他系统进行帐号互通，互通时只需指定用户表、用户名的字段名、密码的字段名、密码的不可逆加密方式即可<br>而且自带dz和pw的支持，对于这两个系统，只需简单的设置即可自动支持<br><br>3.增强主题功能，我再编写两个主题，默认自带3个主题，自由切换<br><br>4.详细的使用手册，要有两个部分<br>&lt;LightPHP从入门到精通&gt;循序渐进的介绍LightPHP的使用<br>&lt;LightPHP速查&gt;详细介绍每个类和函数<br><br>5.邮件类支持，提供smtp和sendmail等多种发信方式，不过这个貌似技术含量不大...没事，留着自己用<br><br>6.更加规范的代码和命名<br>减少对全局命名空间的污染<br>打算把所有类声明在LP空间里<br>然后函数要加前缀<br>唯一一个全局变量$page改成$lpage</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2011-08-31 16:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+JY是闲的DT了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-31 18:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我表示有好几个人对此都是有期待的，所以我要完善下，写新版本  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2011-08-31 19:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">引用第2楼jybox于2011-08-31 18:15发表的 回 1楼(outman) 的帖子 :<br>我表示有好几个人对此都是有期待的，所以我要完善下，写新版本 [表情]&nbsp;&nbsp;<a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=159&amp;pid=529" target="_blank" ></a><br></div></blockquote><br>有我</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2011-09-03 14:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+坐等2.0……有时间了我去自己写网站去……（估计是没时间 ）</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-03 19:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+没时间就要挤时间嘛。。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.040782 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

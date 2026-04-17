@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>这下彻底把服务器的自动备份折腾稳定了|管理 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="管理  一个月前，无奈本人几乎不会任何脚本（js.....的话..），只好用C++标准库写了个“脚本”，自动打包关键目录、导出数据库，上传到dropbox（这部分是借助一个sh脚本实现的）........但是我那个版 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,这下彻底把服务器的自动备份折腾稳定了,管理" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f6.html">管理</a> -&gt; <a href="index.html_t987.html">这下彻底把服务器的自动备份折腾稳定了</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-23 19:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>这下彻底把服务器的自动备份折腾稳定了</h1>
+<br><br>一个月前，无奈本人几乎不会任何脚本（js.....的话..），只好用C++标准库写了个“脚本”，自动打包关键目录、导出数据库，上传到dropbox（这部分是借助一个sh脚本实现的）........但是我那个版本写的实在烂的可以.....几乎无可维护性可言.....再加上不知为何，系统的cron不好使<br><br>所以自动备份其实一直都没实现<br><br><hr /><br>今天，抽空用qt重写了一遍这个“脚本”，不得不说，用Qt写比标准库舒服100倍啊，只是需要编译....如果配个解释器就爽歪歪了（pyqt么？）<br>代码在这里：<a href="https://github.com/jybox/MyWorks/blob/master/Backuper/backuper.cpp" target="_blank" >https://github.com/jybox/MyWorks/blob/master/Backuper/backuper.cpp</a><br>然后用sh写了个死循环，6个小时备份一次...<br><br><hr /><br>另外，针对vps的用户们，通知一下，参与备份的目录有（放在这些目录就会被自动备份）：<br>/home和 /var/www<br>参与备份的数据库：jy_app jymain kevin_blog kevin_test luztak_blg luztak_x mason_sb zeroms<br>（如果要新建和删除数据库，请联系我，以便加入到自动备份中）<br><br>自动备份将保留最近一个月内的10个左右的备份....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-02-23 22:09</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+沙发不动,天理不容.<br>话说数据库名泄露是怎么回事(虽然我的库作用还只在规划里)/抠鼻<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-02-23 22:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+有了/var/www还搞/home?前者主站,后者别人的VH?<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-23 22:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第2楼墨阐于2012-02-23 22:10发表的:<br>有了/var/www还搞/home?前者主站,后者别人的VH?<br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd ">[手机版]</span> </font></div></blockquote>right.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-24 00:20</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  你可以理解为/var/www下的是我的网站，/home下的是你们的地盘</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.052919 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

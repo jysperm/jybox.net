@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>非对称加密算法-RSA笔记|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  RSA是一种非对称加密算法，即加密和解密使用不同的密钥(密码)RSA可用于协商密钥、高强度的加密、数字签名RSA基于（大规模）因数分解的复杂性，即，将两个（极大的）质数相乘很容易，但分 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,非对称加密算法-RSA笔记,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1218.html">非对称加密算法-RSA笔记</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-09-03 23:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>非对称加密算法-RSA笔记</h1>
+<br><font size="3"><font face="微软雅黑 ">RSA是一种非对称加密算法，即加密和解密使用不同的密钥(密码)</font></font><br>RSA可用于协商密钥、高强度的加密、数字签名<br><br><br>RSA基于（大规模）因数分解的复杂性，即，将两个（极大的）质数相乘很容易，但分解一个数的质因数则非常复杂。<br>这里我们可以认为，RSA（经过一定条件）挑选两个极大的质数，将他们（经过一定处理）作为私钥，在加密时，将这两个质数与要加密的数据一同进行（很复杂的）不可逆的运算(例如相乘).<br>具体算法可参考Wiki百科<br><br><br>目前还没有一个简单的方法来分解质因数，但也没有证明这种算法不存在。<br>目前认为分解质因数是解密RSA的唯一方法，但也没有证明没有其他的方法。<br>尽管不能证明RSA绝对安全，但是它也算是目前公认的，较为可靠的非对称加密算法之一了<br><br><br><br><br>##密钥生成<br>生成密钥需要挑选两个随机的质数，因此必须有随机的、不可预测的随机数来源，否则被选中的两个质数有可能被预测或推算到。<br>目前256bit长度的密钥已经可以被比较轻易的暴力破解，随着计算机计算能力的提高，这个标准还会慢慢提高<br>目前1024bit算是一段时间内比较可靠的密钥长度<br><br><br>##速度<br>RSA速度目前还是比较慢的，大多时候只是用RSA来协商密钥，然后选用对称加密来加密数据<br><br><br>##中间人攻击<br>如果有一个中间人，可以截获A和B的通讯。那么它可以拦截A发给B的公钥，将自己的公钥告诉B。然后拦截B发给A的公钥，将自己的密钥告诉A。这样，A和B，其实都只是在和中间人通讯，中间人在偷听的同时，在A和B之间中转消息。<br><br><br>目前主要采用数字证书来防范中间人攻击<br><br><br>##数字签名<br>如果将私钥公布出去，而将公钥保密。那么只有你可以加密数据，而其他任何人都可以解密数据。<br>那么我们认为，凡是可以用公钥解密的，都是你用私钥加密的。<br>这样就起到了认证身份的作用<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.049464 second(s),query:4 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

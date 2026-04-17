@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>去中心化即时通讯网络的探讨二：网络模型|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  打算实现两层的网络模型。节点（就是一个客户端）分为两种，一种是超级节点，一种是客户端节点。（有点参考自Skype.）所有有公网ip、带宽和其他资源充足的客户端节点都有可能被推选为超 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,去中心化即时通讯网络的探讨二：网络模型,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t1036.html">去中心化即时通讯网络的探讨二：网络模型</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-07 22:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>去中心化即时通讯网络的探讨二：网络模型</h1>
+<br><br>打算实现两层的网络模型。节点（就是一个客户端）分为两种，一种是超级节点，一种是客户端节点。（有点参考自Skype.）<br>所有有公网ip、带宽和其他资源充足的客户端节点都有可能被推选为超级节点，为其他的客户端节点提供服务，支撑网络，超级节点在整个网络中占到1%-10%.<br><br>每个客户端节点连接到5-15个超级节点，还要和正在通信的好友建立连接.<br>每个超级节点和10-30个其他超级节点建立连接，同时为100-300个客户端节点提供服务.<br>这里的连接不一定是要建立真正的连接，只是确认对方在线，并且随时可以传输数据就可以了.<br><br>所有广播和查询类的消息（注册广播、在线广播、查找好友）都只在超级节点之间传播，就相当于每个超级节点带领的客户端节点是一个小单元。<br>也就是说超级节点用来维护这个网络，主要为客户端节点提供查找好友等等的能力，把所有的用户联系在一起。整个超级节点组成的网络（而不是某个或某几个人）充当了类似中心服务器的功能。<br><br>当用户通过超级节点查找到要通讯的对方的ip时，就可以建立点对点的连接，来传输聊天消息、音视频、文件图片了。<br>当然，对于极端特殊的网络情况，超级节点还要为客户端节点提供消息和数据转发、打洞的服务。<br><br>这里有个问题就是，如果没有人愿意当超级节点怎么办，有超级节点恶意地，不按照规则地传输数据怎么办。<br>毕竟有无公网ip、带宽、CPU/内存资源都是要客户端自身汇报给网络的，是可以伪造的。<br><br>我打算这里引入两个数值，一个是贡献值，一个是信用值。<br>贡献值是指这个用户为网络做了多少贡献（充当超级节点），又消耗了整个网络的多少资源（使用其他超级节点提供的服务）.<br>而信用值是这个用户对网络做了多少破坏，和举报了多少其他人的破坏行为。<br>这两个数值要实现为“总量为0”的形式，也就是说整个网络上所有人的贡献值和信用值加在一起分别等于0...你得到的贡献值或者信用值其实都是其他人失去的.（至于具体怎么实现不在本文讨论之列）<br><br>引入了这样的机制，就好办多了。对于信用值非常低的（频繁从事故意的破坏行动），低到一定程度，大家就都不与他连接，把他踢出网络。<br>而贡献值和信用值比较高的，则优先为他们提供服务。<br><br>这样又引入了问题：如果某人的电脑非常烂，无法为其他人提供服务，贡献值很低，那么就非常容易被无视么？<br>我想，“为贡献值高的用户优先提供服务”应该是一种极端不理想的情况，我觉得在大多情况下，应该可以保证对于每个人都有充足的资源的..<br><br><hr /><br>数据传输要实现与具体协议无关，也就是说既可以用TCP，也可以用UDP.所以上文和下文的“连接”一词也不区分这个了<br><br>在进行广播和查询的时候，要避免出现泛洪的情况。而是进行“有结构”的转发：<br><br>对查询而言，总是有一个目标的（比如查询用户时，目标就是用户ID），可以使用某种散列，把这个目标相关的查询映射到用户ID上，让消息的转发有路径可言——最后都到达用户ID和这个查询的目标的散列值最接近的用户那里终止。<br>广播也采用这样的形式，这样最后，针对同一个目标（比如查询用户时，目标就是用户ID）的广播和查询，最后都会在同一个客户端会和，得到解决<br>（当然，还需要其他一些机制来保证消息的转发不会终端）<br><br>至于类似用户注册广播，这样的没有目标的广播，则随意引入一个随机数，作为目标来转发.....通过设置几个随机数，几个路径，使转发路径覆盖网络的一部分，而且是基本随机的。其他用户则也用类似的机制进行查询，如果一个路径上查询不到，换个随机数接着查，至少我感觉，命中率应该是比较高的<br><hr /><br>为什么我认为命中率是比较高的呢？<br>因为这类广播和查询，完全是没有必要加密的，整个转发路径上所有人都能看到这个消息，可以对消息进行缓存。一个人查询就相当于让整个查询转发路径上的人都知道了查询结果.<br>当然，这样就没法实现“隐身”登录了.因为只要你通过这个网络进行广播和查询，必定会有和你不相干的人参与消息的转发，他们会知道你其实在线的.<br><br>当然这里还有很多没有解决的问题，例如如何实现类似QQ的讨论组和QQ群.如何实现数据的离线发送.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2012-05-07 22:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+猜你喜欢<br>丧心病狂的jy<br>=、=</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-07 23:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xttyctl9" target="_blank">xttyctl9</a><span style="color:gray ">:</span>猜你喜欢<br>丧心病狂的jy<br>=、=<span style="color:gray "> (2012-05-07 22:52) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1036&amp;pid=6136" target="_blank" ></a><br></div></blockquote><br>（那个帖子）完全是丧心病狂的whtsky</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.041350 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

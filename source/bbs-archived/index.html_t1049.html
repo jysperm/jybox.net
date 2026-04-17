@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>加密系列2：散列算法|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  散列算法  又叫： 单向加密 、 散列算法 、 HASH(哈希)函数 、 摘要算法 举个栗子  让我们来设想这样的一个场景，在教室中，你和同桌在聊天，周围也都是同学. 你向来对你的银行卡密码严格保 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,加密系列2：散列算法,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1049.html">加密系列2：散列算法</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-19 03:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>加密系列2：散列算法</h1>
+ <br><font size="5"><b>散列算法</b></font><br> <br> <br>又叫： <b>单向加密</b> 、 <b>散列算法</b> 、 <b>HASH(哈希)函数</b> 、 <b>摘要算法</b><br> <br><font size="4"><b>举个栗子</b></font><br> <br> <br>让我们来设想这样的一个场景，在教室中，你和同桌在聊天，周围也都是同学. <br>你向来对你的银行卡密码严格保密(围观群众：废话),没有人知道，但是你的同桌突然告诉你，他知道你的银行卡密码. <br>你很慌张，急于确认对方是否真的知道，但周围又都是同学，不能让同桌直接说出来，怎么办呢？<br> <br> <br>你也许想到，问他“我的银行卡密码最后一位是多少？” <br>但是呢，如果你的同桌其实不知道你的密码，却蒙对了怎么办，十个数字蒙对一个还是有可能的. <br>又如果，你的同桌真的说对了，于是周围同学都知道了你的密码的最后一位，你的银行卡密码的安全性一下子下降了若干倍.<br> <br> <br>其实问题很好解决，你可以问他“我的银行卡密码六个数字相乘在一起是多少？” <br>这样，你的同桌一通猛算之后报出了答案，你也一通猛算，知道了同桌到底知不知道你的密码. <br>这样一来，你的同桌必须知道密码中所有的六位数字，才能算出答案. <br>而你周围的同学，却无法通过这个答案推算出你的密码.<br> <br><font size="4"><b>散列函数</b></font><br> <br> <br>我们来思考一下为什么周围的同学无法通过这个结果，推算出的密码. <br>因为一个数字，可以是多组数字的乘积，例如你同桌报出的答案是5040,那么你的银行卡密码有可能是257463,也可能是422957,还可能是524297...总之，可能性有成千上万种.所以其他人不可能通过这个结果推算出银行卡密码.<br> <br> <br>当然，我上面的这种方法也有漏洞，虽然无法直接由结果推算出密码，但是却限制了可能的密码的范围，本质上和说出密码最后一位没太大区别.<br> <br> <br>于是，数学家出现了，他们通过严谨的数学方法创造了一些十分可靠的散列算法，例如比较常见的<b>MD5</b> 、 <b>SHA系列</b> 等等.<br>例如MD5,这种算法可以由任意长的数据，算出一个32位的<b>散列值</b> . <br> <br>下面是几组字符串和对应的散列值<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">散列函数主要有MD5、SHA系列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ffcab6ac050c7015de2fc630ca295d8a</div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;">MD5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7f138a09169b250e9dcb378140907378</div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;">MD5即Message-Digest Algorithm 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dfd59ae55e55a50dcd6f71e15ed01cd9</div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;">MD5即Message-Digest Algorithm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5e7b52ed19e4f7bc429819bc74c85942</div></blockquote><br>可以看到，明文和散列值没有任何规律性可言，这点是经过严格的数学证明的(但是后来的数学家也发现了一些漏洞，我们在后文再讨论这个). <br> <br>请对比第三条和第四条，即使明文仅仅相差了一个数字，形成的散列值也完全不同了.<br> <br><font size="4"><b>性质</b></font><br> <br> <br>再次总结散列函数的性质，散列函数可以将任意长度的数据(明文)，生成一个固定长度的散列值. <br>由于明文的长度是无限的，所以明文的可能性也是无限的，但散列值的长度有限、可能性有限. <br>所以一个散列值会对应无数个明文.<br> <br> <br>所以呢，也有可能出现数据明明不同，但却生成了同样的散列值的情况，这种情况被称为<b>散列碰撞</b> . <br>散列碰撞是不可避免的，但一个优秀的散列算法应该保证无法(或极其困难)人为构造一个散列碰撞.<br> <br> <br>所以我们可以认为，一个优秀的散列算法，应该具备以下的性质：<br> <br><ul style="margin:0 0 0 25px"><li>可以将任意长度的数据生成固定长度的散列值，这个散列值可以视为是随机且不可预测的.</li><li>同样的数据会生成同样的散列值，不同的数据(即使是很细微的不同)在一定范围内(因为必定会重复嘛)生成不同的散列值.</li><li>无法(或极其困难)从散列值计算出明文，无法(或极其困难)人为地构造散列碰撞.</li></ul><br><font size="3"><font face="AR PL UKai CN "><br></font></font><br> <br><font size="4"><b>应用</b></font><br> <br> <br> <br><font size="3"><b>检查数据完整性/真实性</b></font><br> <br> <br>这是散列算法重要的作用之一.<br>你经常可以看到，在下载软件(游戏)时，网站上都会有类似下面的标语<br> <br><blockquote class="blockquote3"><div class="text" style="padding:15px;">请用MD5校验工具校验下载到的文件的MD5值，最新客户端的MD5值为xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.</div></blockquote><br> <br>这么做，有两方面目的，一是可以帮助用户判断文件有没有损坏.另一方面是防止用户下载到一些经过黑客修改过的软件.<br> <br> <br>这就利用了散列算法对同一数据生成同样的散列值，不同数据生成不同的散列值这一性质. <br> <br>当然，MD5目前已经被发现了一些漏洞，我们在后文探讨.<br> <br><font size="3"><b>证明自己拥有数据</b></font><br> <br> <br>这是开头的那个例子的情况.<br>A知道一些数据，它要向B证明自己知道这些数据，但是出于某些原因，比如：<ul style="margin:0 0 0 25px"><li>有其他人在窃听，不能直接传输数据.</li><li>这份数据非常大，传输起来非常耗时.</li></ul><br>这时A就可以通过散列算法，将这些数据计算出一个散列值，发给B. <br>B用同样的散列算法计算出这些数据的散列值，和A发来的散列值进行对比，如果一样，则说明A确实拥有这些数据.<br> <br><font size="3"><b>防止逆向算出明文</b></font><br> <br> <br>(在目前的大多数网站中)当你注册一个用户的时候，程序会将你设置的密码通过散列算法计算出散列值，保存在数据库中，而不会储存你的明文密码.<br>当你登录的时候，程序会用同样的散列算法计算出你输入的密码的散列值，和数据库中的散列值进行对比，如果相同，则说明你密码输入正确.<br> <br> <br>为什么要这样呢？因为事实上，网站并不关心你设置了什么样的密码，它只关心你密码输入的是否正确. <br>不可避免地，网站也有数据失窃的时候，如果在数据库中储存的是明文的密码，那么得到数据的人便可以随意登录任意用户的帐号了. <br>而如果数据库中储存的是散列值，那么得到数据的人就没办法了——因为登录时要求你输入的是密码，而不是散列值，而从散列值是无法算出密码的！<br> <br> <br>我还得废话一句，某些情况下是可以通过一些手段来获得散列值对应的明文的，我们在后文讨论.<br> <br><font size="3"><b>标识数据</b></font><br> <br> <br>比如我们在使用迅雷下载文件的时候，迅雷会在它的用户中寻找正在下载同样的文件的用户，互相上传来加快速度. <br>但是迅雷怎么就知道你们下载的是同一个文件呢？大部分时候，一个文件的文件名在不同的地方都是不一样的啊.<br> <br> <br>你当然能够猜到，用散列算法呗，同样的数据的散列值是相同的.迅雷通过散列值来表示一个文件，而不是通过文件名.<br> <br> <br>这样的情况还有很多，例如在QQ上，别人给你发了一张图片，QQ会先发送这个图片的散列值. <br>然后你的QQ会先在本地找，看看以前收到过这张图片没有，如果有的话就不必传输图片了，没有的话才开始传输这个图片.<br> <br><font size="3"><b>表达诚意</b></font><br> <br> <br>如果你有一些计算机基础的话，对前面提到的几点一定不会陌生，但看到这个小标题，你一定傻了——<b>表达诚意</b>是毛啊？<br> <br> <br>如果你每天收到大量的垃圾邮件，你表示灰常无奈，你需要发信人对你表示出诚意，否则你就不接收. <br>那么你可以要求发信人发信的时候，带上一段“表达诚意的数据”，使得整封邮件(以及发信时间等信息)加上这段数据后，散列的结果的前N位为0.<br> <br> <br>因为在散列之前，我们不知道一个明文对应怎样的散列值，所以要得到这个附加到邮件上后，能使得散列的结果前N位为0的数据可谓十分困难. <br>唯一的办法就是反复更换不同的数据，来进行试验，直到达到要求(前N位为0).<br>如果N等于6的话，平均需要试验1700万次才能得到这个满足要求的数据，这在一般的计算机上大概需要花费几分钟的时间. <br> <br> <br>如果发信人真的有诚意，是不会在乎这么几分钟的时间的，而群发广告的家伙却不会有这个诚意——这样的话，他们每天恐怕只能发几百封广告...<br> <br> <br>PS.这项技术被称为hashcash,但是目前应用并不广泛.<br> <br><font size="4"><b>针对散列算法的攻击</b></font><br> <br> <br> <br><font size="3"><b>通过散列值计算明文</b></font><br> <br> <br>如前面<b>表达诚意</b>一节所说，唯一的办法就是反复试验，直到达到结果为止. <br>对于网站的登录密码来说，一般密码都在16位以下，甚至10位以下，攻击者可以将这个范围内所有的组合都计算一遍，如果发现哪个密码组合(明文)的散列值和目标散列值一样，那么就说明这个散列值对应这个明文.<br> <br> <br>事实上现在有很多网站提供这样的在线查询服务.<br> <br> <br>当然，这种暴力地穷举，也只能对一些比较短小的数据有效.较长的数据，因为组合实在太多样，所以穷举无能为力.<br> <br><font size="3"><b>防范穷举</b></font><br> <br> <br>对于用户来说，可以提高密码的复杂度，让攻击者放弃攻击. <br>例如你的密码有16位，但是攻击者只试验完了10位的密码的组合就放弃了.<br> <br> <br>对于开发者来说，可以通过在散列算法中加入salt(佐料)来人为地提高穷举的难度. <br>例如，以前的散列算法是<b>MD5(密码)</b> ,这样在密码很短的情况下很容易被穷举成功. <br>你可以修改为<b>MD5(用户名+MD5(密码))</b>,这样，被散列的内容被人为地提高到了32个字符或者更多，极大地增加了穷举的难度.<br> <br> <br>在散列算法中嵌入例如用户名这样的干扰数据，还有一些好处.那就是如果攻击者掌握了整个网站的数据库，那么攻击者不得不为每个用户单独进行一次穷举. <br>因为有用户名的加入，不同的用户即使密码一样，散列值也不一样，所以攻击者不得不为每个用户单独进行一次穷举.<br> <br><font size="3"><b>MD5的碰撞</b></font><br> <br> <br>早在2004年，中国的一位数学家王小云就研究出了人为构造MD5碰撞的方法.<br> <br> <br>通过这种方法，可以在比较短(至少比穷举短)的时间内，创造一段指定MD5的数据. <br>可以让经过修改的文件保持原来的MD5值，从而进行恶意攻击等行为.<br> <br> <br>值得注意的一点，这只是MD5的漏洞，只能说MD5目前不再是一个优秀的散列算法了.&nbsp;&nbsp; <hr /><br>在此建议使用SHA系列的散列算法，目前该算法还没有发现明显的漏洞，是比较安全的.<br> <br> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-19 04:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  怎么排版这么乱啊，我是在MaDe写的....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>laoyis</b></td>
+<td align="right" class="smalltxt">2012-05-19 23:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+挽尊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxy</b></td>
+<td align="right" class="smalltxt">2012-05-20 11:29</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=laoyis" target="_blank">laoyis</a><span style="color:gray ">:</span>挽尊<span style="color:gray "> (2012-05-19 23:19) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1049&amp;pid=6202" target="_blank" ></a><br></div></blockquote><br>scxyscxy和scxy都是我...scxyscxy是以前的账号，现在换这个了，别2个都@...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>cu2s</b></td>
+<td align="right" class="smalltxt">2012-05-21 20:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+不错~~~~~~~</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.040875 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

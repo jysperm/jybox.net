@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>QT工程文件.pro选项详解|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  app - 建立一个应用程序的makefile。这是默认值，所以如果模板没有被指定，这个将被使用。lib - 建立一个库的makefile。vcapp - 建立一个应用程序的Visual Studio项目文件。vclib - 建立一个库的Visual Stud .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,QT工程文件.pro选项详解,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t236.html">QT工程文件.pro选项详解</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-01 19:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>QT工程文件.pro选项详解</h1>
+app - 建立一个应用程序的makefile。这是默认值，所以如果模板没有被指定，这个将被使用。<br><br>lib - 建立一个库的makefile。<br><br>vcapp - 建立一个应用程序的Visual Studio项目文件。<br><br>vclib - 建立一个库的Visual Studio项目文件。<br><br>subdirs - 这是一个特殊的模板，它可以创建一个能够进入特定目录并且为一个项目文件生成makefile并且为它调用make的makefile。<br><br>“app”模板<br>“app”模板告诉qmake为建立一个应用程序生成一个makefile。当使用这个模板时，下面这些qmake系统变量是被承认的。你应该在你的.pro文件中使用它们来为你的应用程序指定特定信息。<br><br>HEADERS - 应用程序中的所有头文件的列表。<br><br>SOURCES - 应用程序中的所有源文件的列表。<br><br>FORMS - 应用程序中的所有.ui文件（由Qt设计器生成）的列表。<br><br>LEXSOURCES - 应用程序中的所有lex源文件的列表。<br><br>YACCSOURCES - 应用程序中的所有yacc源文件的列表。<br><br>TARGET - 可执行应用程序的名称。默认值为项目文件的名称。（如果需要扩展名，会被自动加上。）<br><br>DESTDIR - 放置可执行程序目标的目录。<br><br>DEFINES - 应用程序所需的额外的预处理程序定义的列表。<br><br>INCLUDEPATH - 应用程序所需的额外的包含路径的列表。<br><br>DEPENDPATH - 应用程序所依赖的搜索路径。<br><br>VPATH - 寻找补充文件的搜索路径。<br><br>DEF_FILE - 只有Windows需要：应用程序所要连接的.def文件。<br><br>RC_FILE - 只有Windows需要：应用程序的资源文件。<br><br>RES_FILE - 只有Windows需要：应用程序所要连接的资源文件。<br><br>CONFIG变量<br>配置变量指定了编译器所要使用的选项和所需要被连接的库。配置变量中可以添加任何东西，但只有下面这些选项可以被qmake识别。<br><br>下面这些选项控制着使用哪些编译器标志：<br><br>release - 应用程序将以release模式连编。如果“debug”被指定，它将被忽略。<br><br>debug - 应用程序将以debug模式连编。<br><br>warn_on - 编译器会输出尽可能多的警告信息。如果“warn_off”被指定，它将被忽略。<br><br>warn_off - 编译器会输出尽可能少的警告信息。<br><br>下面这些选项定义了所要连编的库/应用程序的类型：<br><br>qt - 应用程序是一个Qt应用程序，并且Qt库将会被连接。<br><br>thread - 应用程序是一个多线程应用程序。<br><br>x11 - 应用程序是一个X11应用程序或库。<br><br>windows - 只用于“app”模板：应用程序是一个Windows下的窗口应用程序。<br><br>console - 只用于“app”模板：应用程序是一个Windows下的控制台应用程序。<br><br>dll - 只用于“lib”模板：库是一个共享库（dll）。<br><br>staticlib - 只用于“lib”模板：库是一个静态库。<br><br>plugin - 只用于“lib”模板：库是一个插件，这将会使dll选项生效。<br><br>例如，如果你的应用程序使用Qt库，并且你想把它连编为一个可调试的多线程的应用程序，你的项目文件应该会有下面这行：<br><br>    CONFIG += qt thread debug注意，你必须使用“+=”，不要使用“=”，否则qmake就不能正确使用连编Qt的设置了，比如没法获得所编译的Qt库的类型了。<br><br> <br><br>qmake高级概念<br>操作符<br><br>“=”操作符      分配一个值给一个变量<br>“+=”操作符     向一个变量的值的列表中添加一个值<br>“-=”操作符      从一个变量的值的列表中移去一个值<br>“*=”操作符      仅仅在一个值不存在于一个变量的值的列表中的时候，把它添加进去<br>“~=”操作符      替换任何与指定的值的正则表达式匹配的任何值 DEFINES ~= s/QT_[DT].+/QT<br>作用域<br>win32:thread {<br>        DEFINES += QT_THREAD_SUPPORT    } else:debug {        DEFINES += QT_NOTHREAD_DEBUG    } else {        warning(&quot;Unknown configuration&quot;)    }    }变量<br>到目前为止我们遇到的变量都是系统变量，比如DEFINES、SOURCES和HEADERS。你也可以为你自己创建自己的变量，这样你就可以在作用域中使用它们了。创建自己的变量很容易，只要命名它并且分配一些东西给它。比如：<br><br>    MY_VARIABLE = value你也可以通过在其它任何一个变量的变量名前加$$来把这个变量的值分配给当前的变量。例如：<br><br>   MY_DEFINES = $$DEFINESMY_DEFINES = $${DEFINES}<br>第二种方法允许你把一个变量和其它变量连接起来，而不用使用空格。qmake将允许一个变量包含任何东西（包括$(VALUE)，可以直接在 makefile中直接放置，并且允许它适当地扩张，通常是一个环境变量）。无论如何，如果你需要立即设置一个环境变量，然后你就可以使用$$()方法。比如：<br><br>    MY_DEFINES = $$(ENV_DEFINES)这将会设置MY_DEFINES为环境变量ENV_DEFINES传递给.pro文件地值。另外你可以在替换的变量里调用内置函数。这些函数（不会和下一节中列举的测试函数混淆）列出如下：<br><br>join( variablename, glue, before, after )<br>这将会在variablename的各个值中间加入glue。如果这个变量的值为非空，那么就会在值的前面加一个前缀before和一个后缀after。只有variablename是必须的字段，其它默认情况下为空串。如果你需要在glue、before或者after中使用空格的话，你必须提供它们。<br><br>member( variablename, position )<br>这将会放置variablename的列表中的position位置的值。如果variablename不够长，这将会返回一个空串。variablename是唯一必须的字段，如果没有指定位置，则默认为列表中的第一个值。<br><br>find( variablename, substr )<br>这将会放置variablename中所有匹配substr的值。substr也可以是正则表达式，而因此将被匹配。<br><br>    MY_VAR = one two three four    MY_VAR2 = $$join(MY_VAR, &quot; -L&quot;, -L) -Lfive    MY_VAR3 = $$member(MY_VAR, 2) $$find(MY_VAR, t.*)MY_VAR2将会包含“-Lone -Ltwo -Lthree -Lfour -Lfive”，并且MYVAR3将会包含“three two three”。<br><br>system( program_and_args )<br>这将会返回程序执行在标准输出/标准错误输出的内容，并且正像平时所期待地分析它。比如你可以使用这个来询问有关平台的信息。<br><br>    UNAME = $$system(uname -s)    contains( UNAME, [lL]inux ):message( This looks like Linux ($$UNAME) to me )测试函数<br>qmake提供了可以简单执行，但强大测试的内置函数。这些测试也可以用在作用域中（就像上面一样），在一些情况下，忽略它的测试值，它自己使用测试函数是很有用的。<br><br>contains( variablename, value )<br>如果value存在于一个被叫做variablename的变量的值的列表中，那么这个作用域中的设置将会被处理。例如：<br><br>    contains( CONFIG, thread ) {        DEFINES += QT_THREAD_SUPPORT    }如果thread存在于CONFIG变量的值的列表中时，那么QT_THREAD_SUPPORT将会被加入到DEFINES变量的值的列表中。<br><br>count( variablename, number )<br>如果number与一个被叫做variablename的变量的值的数量一致，那么这个作用域中的设置将会被处理。例如：<br><br>    count( DEFINES, 5 ) {        CONFIG += debug    }error( string )<br>这个函数输出所给定的字符串，然后会使qmake退出。例如：<br><br>    error( &quot;An error has occured&quot; )文本“An error has occured”将会被显示在控制台上并且qmake将会退出。<br><br>exists( filename )<br>如果指定文件存在，那么这个作用域中的设置将会被处理。例如：<br><br>    exists( /local/qt/qmake/main.cpp ) {        SOURCES += main.cpp    }如果/local/qt/qmake/main.cpp存在，那么main.cpp将会被添加到源文件列表中。<br><br>注意可以不用考虑平台使用“/”作为目录的分隔符。<br><br>include( filename )<br>项目文件在这一点时包含这个文件名的内容，所以指定文件中的任何设置都将会被处理。例如：<br><br>     include( myotherapp.pro )myotherapp.pro项目文件中的任何设置现在都会被处理。<br><br>isEmpty( variablename )<br>这和使用count( variablename, 0 )是一样的。如果叫做variablename的变量没有任何元素，那么这个作用域中的设置将会被处理。例如：<br><br>    isEmpty( CONFIG ) {        CONFIG += qt warn_on debug    }message( string )<br>这个函数只是简单地在控制台上输出消息。<br><br>    message( &quot;This is a message&quot; )文本“This is a message”被输出到控制台上并且对于项目文件的处理将会继续进行。<br><br>system( command )<br>特定指令被执行并且如果它返回一个1的退出值，那么这个作用域中的设置将会被处理。例如：<br><br>    system( ls /bin ) {        SOURCES += bin/main.cpp        HEADERS += bin/main.h    }所以如果命令ls /bin返回1，那么bin/main.cpp将被添加到源文件列表中并且bin/main.h将被添加到头文件列表中。<br><br>infile( filename, var, val )<br>如果filename文件（当它被qmake自己解析时）包含一个值为val的变量var，那么这个函数将会返回成功。你也可以不传递第三个参数（val），这时函数将只测试文件中是否分配有这样一个变量var。<br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-01 19:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  转贴，确实有用的说</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.050592 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

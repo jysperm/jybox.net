@@ -1,0 +1,801 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>TXT文本字数统计小工具，C++完成|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  啥都不说了，上代码：#includeiostream&gt;#includestring&gt;#includefstream&gt;usingnamespacestd;intmain(){cout&quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&quot;endl;cout&quot;txt文本文档字数统计小工具(暂时只支持英文文 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,TXT文本字数统计小工具，C++完成,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t272.html">TXT文本字数统计小工具，C++完成</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center><a href="index.html_t272.html">&lt;&lt; </a>&nbsp;&nbsp;<b>1</b>&nbsp; <a href="index.html_f272_2.html">&nbsp;2&nbsp;</a>  <a href=""index.html_f272_2.html""> &gt;&gt;</a> &nbsp;Pages: ( 2 total )</center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-05 10:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>TXT文本字数统计小工具，C++完成</h1>
+ <br>啥都不说了，上代码：<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>#include&nbsp;&nbsp;&lt;iostream&gt;<br>#include&nbsp;&nbsp;&lt;string&gt;<br>#include&nbsp;&nbsp;&lt;fstream&gt;<br>using&nbsp;&nbsp;namespace&nbsp;&nbsp;std;<br><br>int&nbsp;&nbsp;main()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;txt文本文档字数统计小工具(暂时只支持英文文档)～～～～～&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;使用方法：&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;步骤1:把需要统计的TXT文本文件复制到该程序目录下&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;步骤2:在程序中输入文件名称&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;ifstream&nbsp;&nbsp;file;<br>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;count,i;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;请输入文件名称(别忘了把后缀名.txt带上哦！):&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;&nbsp;fileName,word;<br>&nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt;&nbsp;&nbsp;fileName;<br>&nbsp;&nbsp;&nbsp;&nbsp;file.open(fileName.c_str(), ios::app);<br>&nbsp;&nbsp;&nbsp;&nbsp;if(fileName.empty())<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;错误！！！无文件名！！！&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;-1;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!file)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;错误！！！无文件！！！&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;-1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(file &gt;&gt; word)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(string::size_type index = 0;index != word.size();++index)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isalnum(word[index]))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count++;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;这个TXT文档有&quot;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;count&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;个字&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;0;<br>}</li></ol></div><br> <br> <br> <br>运行截图：<br>[attachment=100]<br>[attachment=101]<br> <br>源代码下载：<br><a href="http://code.google.com/p/programmingpotato/downloads/list" target="_blank" >http://code.google.com/p/programmingpotato/downloads/list</a><br> <br> <br> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 10:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 我不想打击你，但是。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 10:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+作为一个python控完全无法理解用c++写那么多代码干这么简单的事。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 11:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+python读取文件大小：<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>f=open(&quot;文件名&quot;,&quot;r&quot;)#r=read<br>print len(f.read())</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 11:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+whtsky@w:~$ cat b<br>ab<br>whtsky@w:~$ ./a<br>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>txt文本文档字数统计小工具～～～～～<br>使用方法：<br>步骤1:把需要统计的TXT文本文件复制到该程序目录下<br>步骤2:在程序中输入文件名称<br>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>请输入文件名称(别忘了把后缀名.txt带上哦！):b<br>这个TXT文档有1个字<br>whtsky@w:~$ <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 11:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+count为什么-1？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-05 11:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+其实这个程序有序多BUG，但大部分已改过来了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>其实这个程序有序多BUG，但大部分已改过来了[表情]<span style="color:gray "> (2011-10-05 11:51) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1093" target="_blank" ></a><br></div></blockquote><br>学python吧少年</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]学python吧少年<span style="color:gray "> (2011-10-05 12:05) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1094" target="_blank" ></a><br></div></blockquote><br>你教我？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>你教我？[表情]<span style="color:gray "> (2011-10-05 12:08) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1095" target="_blank" ></a><br></div></blockquote><br>好啊 你想学什么。。。。。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:11</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]好啊 你想学什么。。。。。。<span style="color:gray "> (2011-10-05 12:10) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1096" target="_blank" ></a><br></div></blockquote><br>从最简单的Hello，Word！开始吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>从最简单的Hello，Word！开始吧<span style="color:gray "> (2011-10-05 12:11) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1097" target="_blank" ></a><br></div></blockquote><br>print &quot;Hello World&quot;</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>print &quot;Hello World&quot;<span style="color:gray "> (2011-10-05 12:13) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1098" target="_blank" ></a><br></div></blockquote><br>这么简单～～～～<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>print &quot;Hello World&quot;<span style="color:gray "> (2011-10-05 12:13) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1098" target="_blank" ></a><br></div></blockquote><br><a href="http://jybox.net/bbs/read.php?tid-274.html" target="_blank" >http://jybox.net/bbs/read.php?tid-274.html</a></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:18</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>这么简单～～～～<br>[表情]<span style="color:gray "> (2011-10-05 12:14) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1099" target="_blank" ></a><br></div></blockquote><br>python讲究的就是KISS~</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+#coding=utf-8<br>print &#39;&#39;&#39;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>txt文本文档字数统计小工具～～～～～<br>使用方法：<br>步骤1:把需要统计的TXT文本文件复制到该程序目录下<br>步骤2:在程序中输入文件名称<br>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&#39;&#39;&#39;<br>filename = raw_input(&quot;请输入文件名称(别忘了把后缀名.txt带上哦！):&quot;)<br>if filename == &#39;&#39;:<br>&nbsp;&nbsp;print &#39;错误！！！无文件名！！！&#39;<br>else:<br>&nbsp;&nbsp;try:<br>&nbsp;&nbsp;&nbsp;&nbsp;f=open(filename,&#39;r&#39;)<br>&nbsp;&nbsp;&nbsp;&nbsp;print &#39;这个TXT文档有&#39;,len(f.read()),&#39;个字&#39;<br>&nbsp;&nbsp;except:<br>&nbsp;&nbsp;&nbsp;&nbsp;print &#39;错误！！！无文件！！！&#39; </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-10-05 12:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 好吧，不错，路过</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-05 15:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  qt不比py复杂...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-05 15:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+py没面向对象，不爽</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 15:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>py没面向对象，不爽<span style="color:gray "> (2011-10-05 15:27) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1112" target="_blank" ></a><br></div></blockquote><br>神人</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 15:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code3'));">复制代码</a></div><div class="blockquote2" id="code3"><ol><li>#coding=utf-8<br>class h:<br>&nbsp;&nbsp;def say(self):<br>&nbsp;&nbsp;&nbsp;&nbsp;print &quot;Python可以面向对象..&quot;<br>a=h()<br>a.say()</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-05 17:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>#coding=utf-8<br>class h:<br>  def say(self):<br>    print &quot;Python可以面向对象..&quot;<br>a=h()<br>.......<span style="color:gray "> (2011-10-05 15:42) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1117" target="_blank" ></a><br></div></blockquote><br>泛型、多重继承、运算符重载，还有多态呢？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-05 18:26</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>泛型、多重继承、运算符重载，还有多态呢？<span style="color:gray "> (2011-10-05 17:24) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1122" target="_blank" ></a><br></div></blockquote><br>脚本语言而已<br>又不是拿来写系统</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-05 19:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]脚本语言而已<br>又不是拿来写系统<span style="color:gray "> (2011-10-05 18:26) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1126" target="_blank" ></a><br></div></blockquote><br>...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-07 12:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+现在只支持英文，中文怎么办呢？ 求方法！</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-07 12:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>现在只支持英文，中文怎么办呢？[表情] 求方法！<span style="color:gray "> (2011-10-07 12:39) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1249" target="_blank" ></a><br></div></blockquote><br>不会把.......</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-07 12:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+python吧少年 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zhaoqike</b></td>
+<td align="right" class="smalltxt">2011-10-23 19:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+。。。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-23 20:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=zhaoqike" target="_blank">zhaoqike</a><span style="color:gray ">:</span>。。。。<span style="color:gray "> (2011-10-23 19:54) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1864" target="_blank" ></a><br></div></blockquote><br>新同学？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zhaoqike</b></td>
+<td align="right" class="smalltxt">2011-10-23 20:06</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+是的，刚开始没看懂代码，问了一个菜狗问题，问完不知道怎么撤销已发布的回复，就把回复编辑成四个句号了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-23 20:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=zhaoqike" target="_blank">zhaoqike</a><span style="color:gray ">:</span>是的，刚开始没看懂代码，问了一个菜狗问题，问完不知道怎么撤销已发布的回复，就把回复编辑成四个句号了<span style="color:gray "> (2011-10-23 20:06) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1870" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zhaoqike</b></td>
+<td align="right" class="smalltxt">2011-10-23 20:11</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>新同学？<span style="color:gray "> (2011-10-23 20:00) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1869" target="_blank" ></a><br></div></blockquote><br>今天晚上刚注册的，不知道怎么撤销已发布的回复？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-23 20:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=zhaoqike" target="_blank">zhaoqike</a><span style="color:gray ">:</span>今天晚上刚注册的，不知道怎么撤销已发布的回复？<span style="color:gray "> (2011-10-23 20:11) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1874" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-23 20:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+可以编辑成空的然后等删帖、<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-23 20:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>可以编辑成空的然后等删帖、<br>内容来自[手机版] <span style="color:gray "> (2011-10-23 20:45) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=1883" target="_blank" ></a><br></div></blockquote><br>这等问题还是去问phpwind官方吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2011-12-06 18:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我表示py也有类~~</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-06 19:03</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第36楼mason于2011-12-06 18:33发表的:<br>我表示py也有类~~</div></blockquote>jy完全是对脚本语言的歧视，不用争了…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-06 19:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>jy完全是对脚本语言的歧视，不用争了…<span style="color:gray "> (2011-12-06 19:03) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=2826" target="_blank" ></a><br></div></blockquote><br>....其实我看好js...<br><br>py神马的,设计功能又不强...还得要运行库....说是脚本,但又不像脚本<br><br>js算是纯脚本,扩展性强....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-06 19:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第38楼jybox于2011-12-06 19:33发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>jy完全是对脚本语言的歧视，不用争了…<span style="color:gray "> (2011-12-06 19:03) </span>[url=http://jybox.net/b ..</div></blockquote>py设计功能不强？<br>js不用类库？<br>py扩展性不强!!!？那就没有语言的扩展性强了<br>tinycc能直接把c/c++编译成库，借助boost可以直接在py里写c，内置的setup()可以让你在写完c之后一键编译+安装库<br>py和js不能相提并论…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-06 20:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>py设计功能不强？<br>js不用类库？<br>py扩展性不强!!!？那就没有语言的扩展性强了<br>tinycc能直接把c/c++编译成库，借助boost可以直接在py里写c，内置的setup()可以让你在写完c之后一键编译+安装库<br>py和js不能 ..<span style="color:gray "> (2011-12-06 19:45) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=2834" target="_blank" ></a><br></div></blockquote><br>设计功能和C++比确实不行<br><br>js只是一个语言...不包括类库<br><br>js的解析器,使用领域肯定比py要多<br><br><br>借助boost可以直接在py里写c,为什么不直接用C?我的意识就是py每个方面都能搞,反而没啥特点了.要设计\要效率不如用C,要灵活性\轻量级不如用js</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-06 20:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第40楼jybox于2011-12-06 20:08发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>py设计功能不强？<br>js不用类库？<br>py扩展性不强!!!？那就没有语言的扩展性强了<br>tinycc能直接 ..</div></blockquote>js解析库比py使用范围广到哪里了？<br>系统管理？科学计算？<br>说话要有根据啊，你拿出证据来。包括你那个git merge.<br>设计功能肯定没c强大啊，但是也够用了，不知道你为什么总是喜欢用py的短处和别人的长处比。<br>轻量级？运行速度js还没py快呢，解释器大小你敢和lua比吗？<br>为什么不直接用c？py写程序快还是c快？有性能瓶颈的地方我用c，不就兼顾开发效率和运行效率了吗？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-06 20:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>js解析库比py使用范围广到哪里了？<br>系统管理？科学计算？<br>说话要有根据啊，你拿出证据来。包括你那个git merge.<br>设计功能肯定没c强大啊，但是也够用了，不知道你为什么总是喜欢用py的短处和别 ..<span style="color:gray "> (2011-12-06 20:19) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=2838" target="_blank" ></a><br></div></blockquote><br>就好像Qt提供了嵌入式js而不是py一样,js是更轻量级和可扩展的语言<br>而py不仅仅是语言<br><br>现在说js有前景的成堆成堆的,相比之下py没啥名气(虽然用的人也不少,但是一直都不是焦点人物)</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-06 21:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第42楼jybox于2011-12-06 20:58发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>js解析库比py使用范围广到哪里了？<br>系统管理？科学计算？<br>说话要有根据啊，你拿出证据 ..</div></blockquote>py真的比js有前途……………<br>qt支持的是css+js，是一种网页式的界面设计。<br>支持js的原因是会css的都会js，而且css+js经典搭配，用py太蛋疼了。(py+css？你疯了？)<br>但是可扩展性请举出例子来。js的扩展性就是个渣。<br>据我所知，截止目前，swig都对js没有支持。<br>对于程序内置语言来说，lua和py是远比js优秀的多的语言。<br>世界上最优秀的两个文本编辑器，emacs用的是lisp，vim支持python.<br>我没有听说过哪个伟大的程序用js做脚本的。js运行效率底下、扩展性差，语言本身很丑陋。<br>js的优势在于网页前端设计，其他地方，几乎一无是处。<br>nodejs虽然有比较好的效率(能达到java的一半)，数据库操作也很方便，但是没有良好的开发框架。<br>很明显，你对于js和py都不够了解。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-06 21:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>py真的比js有前途……………<br>qt支持的是css+js，是一种网页式的界面设计。<br>支持js的原因是会css的都会js，而且css+js经典搭配，用py太蛋疼了。(py+css？你疯了？)<br>但是可扩展性请举出例子来。js的扩展 ..<span style="color:gray "> (2011-12-06 21:08) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=2847" target="_blank" ></a><br></div></blockquote><br>js我确实是了解的.......现在android\IOS,很多程序都是借助js,而系统也提供了原生的支持....<br>包括FF和Chrome的插件等等</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-06 21:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第44楼jybox于2011-12-06 21:31发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>py真的比js有前途……………<br>qt支持的是css+js，是一种网页式的界面设计。<br>支持js的原因是 ..</div></blockquote>那是因为涉及到网页操作，js在前端语言呈垄断地位，仅此而已。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-06 21:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>那是因为涉及到网页操作，js在前端语言呈垄断地位，仅此而已。<span style="color:gray "> (2011-12-06 21:35) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=2852" target="_blank" ></a><br></div></blockquote><br>反正都是DOM为啥不用py...这还是说明了问题....<br>比如py蛋疼的缩进....绝对让人抓狂</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-06 21:48</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第46楼jybox于2011-12-06 21:42发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>那是因为涉及到网页操作，js在前端语言呈垄断地位，仅此而已。<span style="color:gray "> (2011-12-06 21:35) ..</div></blockquote>蛋疼的缩进？<br>py强制人们写出优美的代码…如果你认为缩进很蛋疼…<br>都是dom，浏览器已经有js解释器了，干嘛不用js？而且js内置的dom支持比py好用。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-06 21:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第46楼jybox于2011-12-06 21:42发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>那是因为涉及到网页操作，js在前端语言呈垄断地位，仅此而已。<span style="color:gray "> (2011-12-06 21:35) ..</div></blockquote>难道你比较喜欢没有缩进…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-06 23:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>难道你比较喜欢没有缩进…<span style="color:gray "> (2011-12-06 21:49) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=272&amp;pid=2857" target="_blank" ></a><br></div></blockquote><br>我不喜欢它强迫我缩进....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-07 18:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第49楼jybox于2011-12-06 23:28发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>难道你比较喜欢没有缩进…<span style="color:gray "> (2011-12-06 21:49) </span>[url=http://jybox.net/bbs/job.php?action ..</div></blockquote>嗯，这是个人喜好的问题。<br>但py确实比js强很多，js有点弱到爆的感觉…<br>除了网页前端/web开发，你还能用js做什么。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.072019 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

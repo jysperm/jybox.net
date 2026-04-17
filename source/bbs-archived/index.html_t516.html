@@ -1,0 +1,681 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>遇到了点问题,考虑可能重构i所有代码|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  现在在获取和更新好友列表的时候出现了很多莫名其妙的问题,一定程度上是因为我,之前的设计不够好,毕竟没经验嘛,代码比较混乱,缺乏层次感,不易于调试。如果这周末之前仍不能解决问题,我 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,遇到了点问题,考虑可能重构i所有代码,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t516.html">遇到了点问题,考虑可能重构i所有代码</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 12:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>遇到了点问题,考虑可能重构i所有代码</h1>
+现在在获取和更新好友列表的时候出现了很多莫名其妙的问题,一定程度上是因为我,之前的设计不够好,毕竟没经验嘛,代码比较混乱,缺乏层次感,不易于调试。<br>如果这周末之前仍不能解决问题,我会考虑重构所有的代码,包括客户端和服务器<br>可能一定程度上会影响进度,但也是意料中的事情,之前看过一篇文章,说成功的项目都是反反复复推翻重写的<br>反正第二版是打算等到寒假搞的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-11-10 19:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-10 21:03</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+推倒重写吧…其实c#/python写服务器比c/c++舒服得多</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 21:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>推倒重写吧…其实c#/python写服务器比c/c++舒服得多<span style="color:gray "> (2011-11-10 21:03) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2367" target="_blank" ></a><br></div></blockquote><br>没见过用py写的<br>c#直接无视</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 22:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  还是一点眉目都没用，客户端的服务器用断点来看都没有问题.............<br><br>真的要重写了？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-10 22:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第3楼jybox于2011-11-10 21:17发表的 回 2楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>推倒重写吧…其实c#/python写服务器比c/c++舒服得多<span style="color:gray "> (2011-11-10 21:03) </span>[url=http:/ ..</div></blockquote>为什么无视？<br>python在网游后台貌似用的比较广…你可以可以看一下tornado，facebook开源的一个异步非阻塞服务器框架<br>因为现在大多数东西的性能瓶颈都在数据库上，所以服务器语言其实很随意了…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-10 22:41</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第3楼jybox于2011-11-10 21:17发表的 回 2楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>推倒重写吧…其实c#/python写服务器比c/c++舒服得多<span style="color:gray "> (2011-11-10 21:03) </span>[url=http:/ ..</div></blockquote>如果是因为跨平台的原因的话，有个东西叫mono。tomboy和banshee都是c#写的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 22:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>如果是因为跨平台的原因的话，有个东西叫mono。tomboy和banshee都是c#写的<span style="color:gray "> (2011-11-10 22:41) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2373" target="_blank" ></a><br></div></blockquote><br>C#只有微软专有的实现，其他移植版肯定不如微软的强....<br>不想客户端和服务器的技术太分散，毕竟现在人手少，尽量用相同的技术</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第7楼jybox于2011-11-10 22:57发表的 回 6楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>如果是因为跨平台的原因的话，有个东西叫mono。tomboy和banshee都是c#写的<span style="color:gray "> (2011-11-1 ..</div></blockquote>他真的能和微软的一样强…语言本身是开放的<br>但你要这么想，这样能提高不少开发效率…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>他真的能和微软的一样强…语言本身是开放的<br>但你要这么想，这样能提高不少开发效率…<span style="color:gray "> (2011-11-10 23:01) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2375" target="_blank" ></a><br></div></blockquote><br>没发现能提高开发效率.....<br>C#在linux不怎么常见，而且有种山寨的感觉<br>还有个问题，如果提供动态连接库的话，C#和py都不方便吧？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>他真的能和微软的一样强…语言本身是开放的<br>但你要这么想，这样能提高不少开发效率…<span style="color:gray "> (2011-11-10 23:01) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2375" target="_blank" ></a><br></div></blockquote><br>你怎么总是推荐冷门的技术呢......上次是那个数据库<br><br>另外，貌似现在都搞起来了，不好改啊<br>我对py又没了解（C#有点），不好把握方向<br>另外，py总是给人脚本语言的感觉.....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>他真的能和微软的一样强…语言本身是开放的<br>但你要这么想，这样能提高不少开发效率…<span style="color:gray "> (2011-11-10 23:01) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2375" target="_blank" ></a><br></div></blockquote><br>确实有个地方用py好一点<br>那就是以后的http接口，用py写cgi可能比C++好一点</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第9楼jybox于2011-11-10 23:21发表的 回 8楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>他真的能和微软的一样强…语言本身是开放的<br>但你要这么想，这样能提高不少开发效率… ..</div></blockquote>动态连接库py肯定不行，c#没试过<br>至于开发效率，自己去看看代码长度吧…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第10楼jybox于2011-11-10 23:24发表的 回 8楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>他真的能和微软的一样强…语言本身是开放的<br>但你要这么想，这样能提高不少开发效率… ..</div></blockquote>我勒个去，py和c#以及mongodb都不算冷门啊<br>你让erlang情何以堪<br>脚本语言怎么了…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第10楼jybox于2011-11-10 23:24发表的 回 8楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>他真的能和微软的一样强…语言本身是开放的<br>但你要这么想，这样能提高不少开发效率… ..</div></blockquote>http://tech.163.com/digi/11/1109/11/7IDORKT600162OUT.html<br>表示无奈…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>http://tech.163.com/digi/11/1109/11/7IDORKT600162OUT.html<br>表示无奈…<span style="color:gray "> (2011-11-10 23:39) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2381" target="_blank" ></a><br></div></blockquote><br>一个IM的服务器用脚本写听起来多蛋疼，py不利于大型项目的整体设计，这个任务只有C++能胜任（强大的面向对象机制以及指针）<br>py用来写小组件还可以<br><br>我也说过了，不能过分追求开发效率，也不能过分追求运行效率，我觉得C++还是比较折中的选择</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>http://tech.163.com/digi/11/1109/11/7IDORKT600162OUT.html<br>表示无奈…<span style="color:gray "> (2011-11-10 23:39) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2381" target="_blank" ></a><br></div></blockquote><br>虽然C#第四....不过肯定是桌面领域，而且肯定是win</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-10 23:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>虽然C#第四....不过肯定是桌面领域，而且肯定是win<span style="color:gray "> (2011-11-10 23:43) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2383" target="_blank" ></a><br></div></blockquote><br>以及开始重构了......力争加强架构设计...写优雅的代码</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 12:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第16楼jybox于2011-11-10 23:43发表的 回 14楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>http://tech.163.com/digi/11/1109/11/7IDORKT600162OUT.html<br>表示无奈…<span style="color:gray "> (2011-11-10 23:39) </span>[ur ..</div></blockquote>banshee..tomboy..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 12:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第15楼jybox于2011-11-10 23:42发表的 回 14楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>http://tech.163.com/digi/11/1109/11/7IDORKT600162OUT.html<br>表示无奈…<span style="color:gray "> (2011-11-10 23:39) </span>[ur ..</div></blockquote>好吧。你赢了。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-11 12:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第19楼whtsky于2011-11-11 12:34发表的 回&nbsp;&nbsp;15楼(jybox)的帖子 的帖子<br>第15楼jybox于2011-11-10 23:42发表的 回 14楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>http://tech.163.com/digi/11/1109/11/7 ..</div></blockquote>主要是因为我不会py,你说说我应该看什么样的书(py),看起来好像py分好多类<br>当然,我没说要用py,只是了解下。<br>我现在基本没法想象不用面向对象和指针怎么写大型的程序</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 19:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>主要是因为我不会py,你说说我应该看什么样的书(py),看起来好像py分好多类<br>当然,我没说要用py,只是了解下。<br>我现在基本没法想象不用面向对象和指针怎么写大型的程序<span style="color:gray "> (2011-11-11 12:47) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2387" target="_blank" ></a><br></div></blockquote><br>=.=Python的话其实看官方文档是最好的..国内有本《可爱的python》可以拿来快速入门<br>学Python 2.5-2.7..Python3坑爹ing.<br>Py其实可以当做胶水语言来用，那些用c写起来很麻烦的东西都可以用py来实现，有性能瓶颈的地方再用C写</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 19:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>确实有个地方用py好一点<br>那就是以后的http接口，用py写cgi可能比C++好一点<span style="color:gray "> (2011-11-10 23:24) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2378" target="_blank" ></a><br></div></blockquote><br>CGI会很蛋疼。。<br>如果用python实现http api的话，我来写好了。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-11 19:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>CGI会很蛋疼。。<br>如果用python实现http api的话，我来写好了。。<span style="color:gray "> (2011-11-11 19:43) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2390" target="_blank" ></a><br></div></blockquote><br>蛋疼？你是说用C++写cgi蛋疼，还是用cgi而不是php蛋疼？<br>api接口用py再合适不过了，php访问系统的数据不方便，C++语法太严谨</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 20:06</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>蛋疼？你是说用C++写cgi蛋疼，还是用cgi而不是php蛋疼？<br>api接口用py再合适不过了，php访问系统的数据不方便，C++语法太严谨<span style="color:gray "> (2011-11-11 19:47) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2392" target="_blank" ></a><br></div></blockquote><br>python的话，用CGI会很蛋疼<br>4进程+tornado+负载平衡，单机的python能每秒处理8000+的访问量（输出helloworld），可以和java相媲美了<br>cgi的话只有不到1000</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-11 20:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>python的话，用CGI会很蛋疼<br>4进程+tornado+负载平衡，单机的python能每秒处理8000+的访问量（输出helloworld），可以和java相媲美了<br>cgi的话只有不到1000<span style="color:gray "> (2011-11-11 20:06) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2393" target="_blank" ></a><br></div></blockquote><br>足够了，只有需要与论坛互通的数据才需要经过api...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 20:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>足够了，只有需要与论坛互通的数据才需要经过api...<span style="color:gray "> (2011-11-11 20:32) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2397" target="_blank" ></a><br></div></blockquote><br>你要考虑对你服务器的资源消耗啊。。<br>CGI每访问一次页面都要创建/杀死一个进程</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-11 21:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>你要考虑对你服务器的资源消耗啊。。<br>CGI每访问一次页面都要创建/杀死一个进程<span style="color:gray "> (2011-11-11 20:45) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2398" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 22:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情]<span style="color:gray "> (2011-11-11 21:59) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2399" target="_blank" ></a><br></div></blockquote><br>既然我们可以用更少的资源干更多的事，干嘛CGI</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-11 22:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>既然我们可以用更少的资源干更多的事，干嘛CGI[表情]<span style="color:gray "> (2011-11-11 22:30) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2401" target="_blank" ></a><br></div></blockquote><br>表示还是不懂那个技术，有通用性么？C++可以用么？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-11 22:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>既然我们可以用更少的资源干更多的事，干嘛CGI[表情]<span style="color:gray "> (2011-11-11 22:30) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2401" target="_blank" ></a><br></div></blockquote><br>另外，我觉得效率这个问题不是说说就可以的，要有实验..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 22:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>表示还是不懂那个技术，有通用性么？C++可以用么？<span style="color:gray "> (2011-11-11 22:35) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2402" target="_blank" ></a><br></div></blockquote><br>tornado是只有Python能用的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 22:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>另外，我觉得效率这个问题不是说说就可以的，要有实验..<span style="color:gray "> (2011-11-11 22:36) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2403" target="_blank" ></a><br></div></blockquote><br>想想也比CGI快啊<br>CGI是，访问页面-创建一个python进程-获取返回值-处理成网页返回<br>tornado：常驻系统进程-受到请求-异步执行代码，等待下次请求-代码执行完毕，返回结果</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 22:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>另外，我觉得效率这个问题不是说说就可以的，要有实验..<span style="color:gray "> (2011-11-11 22:36) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2403" target="_blank" ></a><br></div></blockquote><br><a href="http://www.cnblogs.com/Alexander-Lee/archive/2011/05/02/tornado_host_django.html" target="_blank" >http://www.cnblogs.com/Alexander-Lee/archive/2011/05/02/tornado_host_django.html</a></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-11 22:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>http://www.cnblogs.com/Alexander-Lee/archive/2011/05/02/tornado_host_django.html<span style="color:gray "> (2011-11-11 22:40) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2406" target="_blank" ></a><br></div></blockquote><br>情况不同，别人的实验不算数，另外这个网址大不开，超时</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 22:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>情况不同，别人的实验不算数，另外这个网址大不开，超时<span style="color:gray "> (2011-11-11 22:49) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2407" target="_blank" ></a><br></div></blockquote><br><br>你觉得是阻塞的快还是非阻塞的快</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-11 23:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]<br>你觉得是阻塞的快还是非阻塞的快<span style="color:gray "> (2011-11-11 22:52) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2408" target="_blank" ></a><br></div></blockquote><br>阻塞？cgi阻塞？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-11 23:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第36楼jybox于2011-11-11 23:19发表的 回 35楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]<br>你觉得是阻塞的快还是非阻塞的快<span style="color:gray "> (2011-11-11 22:52) </span>[url=http://jybox.net/b ..</div></blockquote>傻了<br>你自己去测试吧…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-12 13:41</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]傻了<br>你自己去测试吧…<span style="color:gray "> (2011-11-11 23:57) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2410" target="_blank" ></a><br></div></blockquote><br>等雏形出来的吧<br>另外你寒假有时间么</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-12 13:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]傻了<br>你自己去测试吧…<span style="color:gray "> (2011-11-11 23:57) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=516&amp;pid=2410" target="_blank" ></a><br></div></blockquote><br>事实上，说服我还是比较难的<br>不过如果是你（泛指试图说服我的）负责这个部分，倒是没问题<br>或者合作<br><br>总之说服我用我不太看好的技术确实有点难度，我承认我有点固执</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-12 17:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第38楼jybox于2011-11-12 13:41发表的 回 37楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]傻了<br>你自己去测试吧…<span style="color:gray "> (2011-11-11 23:57) </span>[url=http://jybox.net/bbs/job.php?acti ..</div></blockquote>有…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-12 17:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第39楼jybox于2011-11-12 13:43发表的 回 37楼(whtsky) 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]傻了<br>你自己去测试吧…<span style="color:gray "> (2011-11-11 23:57) </span>[url=http://jybox.net/bbs/job.php?acti ..</div></blockquote>python http api？可以啊…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.088482 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

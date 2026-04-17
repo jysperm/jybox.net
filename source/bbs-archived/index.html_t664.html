@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>关于配置文件机制的实现的讨论|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  暂时只讨论服务器工程原来的架构:../public/const.h(全局公共定义)const.h(服务器工程专有的定义)现将其中的大部分选项移出到配置文件,剩下没有修改必要的选项留在const.h但有个问题,有些选项(例 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,关于配置文件机制的实现的讨论,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t664.html">关于配置文件机制的实现的讨论</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-05 20:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>关于配置文件机制的实现的讨论</h1>
+暂时只讨论服务器工程<br><br>原来的架构:<br>../public/const.h(全局公共定义)<br>const.h(服务器工程专有的定义)<br><br>现将其中的大部分选项移出到配置文件,剩下没有修改必要的选项留在const.h<br>但有个问题,有些选项(例如端口号),服务器和客户端是相同的,但这部分很难重用(因为客户端和服务器是两个不同的配置文件,需要在两个文件中都写一份)<br><br>默认配置文件在./config.ini,ini格式,其中有注释来指导用户修改(用#号注释,不用分号,虽然分号也可以注释ini,但是#号好看点)<br>同时将这个默认配置文件加入资源文件<br><br>运行时:<br>判断是否有配置文件<br>如没有,输出资源文件中的默认配置文件<br>读取入内存<br><br>在ini文件的读取上,可以用QSettings<br>采用启动时一次性读入内存,之后一律从内存读取选项(或者可以增加&quot;重新读取&quot;的按钮)<br>在const.h中新增:<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>QSettings *config;//全局对象,用来访问配置<br>void loadConfig();//重新读取配置的函数的声明,也就是加载config</li></ol></div>新增settings.cpp,实现loadConfig()函数<br>------------------------------------------------------------------<br><font size="5">关于如何读取配置文件值</font><br>有两种方案,各有利弊<br>1.直接用QSettings读取<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>//setting.cpp<br>config=new QSettings(&quot;./config.ini&quot;);<br>//读取时<br>int port=config-&gt;value(&quot;SERVER_PORT&quot;).toInt();</li></ol></div>缺点:<br>(1)需要函数调用有性能损耗.(2)代码太长了<br>2.预先读取到变量中<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code3'));">复制代码</a></div><div class="blockquote2" id="code3"><ol><li>//const.h<br>int SERVER_PORT;<br>//等等.....<br>//setting.cpp<br>SERVER_PORT=config-&gt;value(&quot;SERVER_PORT&quot;).toInt();<br>//等等......<br>//读取时<br>int port=SERVER_PORT;</li></ol></div>缺点:维护成本太高了(同一个常量名要出现在三个地方)<br>-----------------------------------------------------------------------------------------<br><font size="5">默认值问题</font><br>现在只能做到当没有配置文件时,自动输出默认配置文件<br>但当需要一个选项值,而配置文件中没有的时候,就会出错<br>而apache.ini\php.ini在这种情况下都会自动使用默认值<br><br>其实这个问题也好解决,只要再同时打开一个默认配置文件就行了<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code4'));">复制代码</a></div><div class="blockquote2" id="code4"><ol><li>//const.h<br>QSettings *config;<br>QSettings *defaultConfig;<br>//settings.cpp<br>config=new QSettings(&quot;./config.ini&quot;);<br>defaultConfig=new QSettings(&quot;:/config.ini&quot;);<br>//读取时<br>int port=config-&gt;value(&quot;SERVER_PORT&quot;,defaultConfig-&gt;value(&quot;SERVER_PORT&quot;));<br>//请参见Qt文档中有关QSettings::value()的内容</li></ol></div><br>但是.....貌似代码变得更长了....而且常量名出现了两次<br><br>那么,封装成一个函数呢?<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code5'));">复制代码</a></div><div class="blockquote2" id="code5"><ol><li>//const.h<br>QVariant configValue(QString key);//函数实现略<br>//读取时<br>int port=configValue(&quot;SERVER_PORT&quot;).toInt();</li></ol></div>看起来好点了,不过还是需要一个类型转换....不完美<br>而且调用函数的成本又增大了<br><br><br><br><font size="5"><span style="color:#ff0000 ">求对比上面各种实现方法的利弊<br></span></font><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2011-12-06 18:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我觉得配置文件的格式应该用xml比较好，毕竟可读性很强，而且Qt也支持xml，工程量会减少很多。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2011-12-06 18:29</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-06 18:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+调用函数成本不用担心，这种效率问题根本不叫问题。<br>直接qsettings.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-06 19:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=mason" target="_blank">mason</a><span style="color:gray ">:</span>我觉得配置文件的格式应该用xml比较好，毕竟可读性很强，而且Qt也支持xml，工程量会减少很多。<span style="color:gray "> (2011-12-06 18:28) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=664&amp;pid=2820" target="_blank" ></a><br></div></blockquote><br>我是这样想的...有层次关系的用xml,无层次关系的用ini</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.042768 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

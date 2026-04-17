@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>PHP的锁的用处，和我写的几个锁|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  首先我们看一个栗子用户访问了jb（我是说JyBBS）的一个帖子1.从数据库取出这个帖子的访问量，存到一个变量中2.把这个变量加一3.把这个变量写入到数据库这看起来很正常，但是，现在一般的w .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,PHP的锁的用处，和我写的几个锁,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1176.html">PHP的锁的用处，和我写的几个锁</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-11 17:14</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>PHP的锁的用处，和我写的几个锁</h1>
+<div align="left">首先我们看一个栗子</div><div align="left"><br></div><div align="left">用户访问了jb（我是说JyBBS）的一个帖子</div><div align="left"><br></div><span style="color:#444444 "></span><br><blockquote class="blockquote3"><div class="text" style="padding:15px;"><div align="left">1.从数据库取出这个帖子的访问量，存到一个变量中<div align="left">2.把这个变量加一<div align="left">3.把这个变量写入到数据库</div></div></div></div></blockquote><span style="color:#444444 "></span><div align="left"><br></div><div align="left">这看起来很正常，但是，现在一般的web服务器都是多个进程同时运行的，如果恰巧有两个用户同时访问同一个帖子</div><div align="left">那么整个过程就会是这样：</div><div align="left"><br></div><span style="color:#444444 "></span><br><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户A：从数据库取出这个帖子的访问量，存到一个变量A中（例如100）<br>用户B：从数据库取出这个帖子的访问量，存到一个变量B中（也是100）<br>用户A：把这个变量A加一（这时是101）<br>用户B：把这个变量B加一（这时是101）<br>用户A：把这个变量A写入到数据库（这时数据库中是101）<br>用户B：把这个变量B写入到数据库（这时数据库中还是101）<br></span><div align="left"></div></blockquote><span style="color:#444444 "><br> </span><div align="left"><br></div><div align="left">大家细看一下！用户A写入数据库的结果实际上被覆盖了，访问量只增加了一次！</div><div align="left">对于访问量这不重要，但是如果是你去淘宝买东西充值（好吧，其实淘宝用的是java）呢？</div><div align="left"><br></div><div align="left">---------------------</div><div align="left"><br></div><div align="left">这种情况下我们就要用到锁，这是在并发（就是多个进程/线程同时运行）编程中很常见和常用的概念</div><div align="left"><br></div><div align="left">加锁就是，有一个中间人，负责管理各个进程，让他们的工作同步，不会出现例如上面的情况</div><div align="left"><br></div><div align="left">引入锁之后，上面的过程是这样的：</div><div align="left"><br></div><span style="color:#444444 "></span></div><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户A：询问中间人，我是否可以加锁</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">中间人：是的，你可以，因为现在并没有被其他人锁定</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户A：从数据库取出这个帖子的访问量，存到一个变量A中（例如100）<br>用户B：询问中间人，我是否可以加锁</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">中间人：不，你不可以，因为已经被A加锁了</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户</span><span style="color:#444444 ">B：好吧，我等着</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户A：把这个变量A加一（这时是101）</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户B：询问中间人，我是否可以加锁</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">中间人：不，你不可以，因为已经被A加锁了</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户B：好吧，我等着<br>用户A：把这个变量A写入到数据库（这时数据库中是101）</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户A：告诉中间人，我的工作已经做完了，不需要这个锁了</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">中间人：OK<br>用户B：询问中间人，我是否可以加锁</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">中间人：是的，你可以，因为现在并没有被其他人锁定（锁已经被A释放了）</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户B：从数据库取出这个帖子的访问量，存到一个变量B中（这时是101）<br>用户B：把这个变量B加一（这时是102）</span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">用户B：把这个变量B写入到数据库（这时数据库中就是102了）<span style="color:#444444 "><br><span style="color:#444444 ">用户B：告诉中间人，我的工作已经做完了，不需要这个锁了</span></span></span></div></blockquote><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 "><span style="color:#444444 "><span style="color:#444444 ">中间人：OK</span></span></span></div></blockquote><br><span style="color:#444444 "> </span><br><div align="left"><span style="color:#444444 "><br></span></div><div align="left"><span style="color:#444444 "><br></span></div><div align="left"><span style="color:#444444 ">在ASP、ASP.Net中，都提供了比较简单的加锁接口</span></div><div align="left"><span style="color:#444444 ">但是在坑爹的PHP中，却不这么容易</span></div><div align="left"><span style="color:#444444 "><br></span></div><div align="left"><span style="color:#444444 ">在PHP中，没有提供加锁的简单接口，我们只能通过取巧，用其他途径实现加锁</span></div><div align="left"><span style="color:#444444 ">有三种可以参考的方式</span></div><div align="left"><ul style="margin:0 0 0 25px"><li><span style="color:#444444 ">1.文件锁，建立一个文件，然后对文件加锁（这是操作系统提供的功能），其他进程要想获得锁，比如得到这个文件的锁。这时操作系统会保证同时只有一个进程得到锁</span></li><li><span style="color:#444444 ">2.MySQL锁，通过MySQL的加锁功能</span></li><li><span style="color:#444444 ">3.共享内存锁，对内存来加锁，这也是操作系统提供的功能</span></li></ul></div><div align="left"><span style="color:#444444 "><br></span></div><div align="left"><span style="color:#444444 ">我实现了前两种锁，分别叫lpFileLock和lpMySQLLock</span></div><div align="left"><span style="color:#444444 ">代码在这里<a href="https://github.com/jybox/JYLib/blob/master/LightPHP/lp-class/lpLock.class.php" target="_blank" >https://github.com/jybox/JYLib/blob/master/LightPHP/lp-class/lpLock.class.php</a></span></div><div align="left"><span style="color:#444444 "><br></span></div><div align="left"><span style="color:#444444 ">使用lpFileLock的话，上面的流程会变成这样的代码：</span></div><div align="left"><span style="color:#444444 "><br></span></div><span style="color:#444444 "><span style="color:#444444 "></span></span><br><blockquote class="blockquote3"><div class="text" style="padding:15px;"><span style="color:#444444 ">$lock=new lpFileLock(&quot;mylock&quot;);<span style="color:#444444 ">$lock-&gt;lock();<span style="color:#444444 ">//从数据库中得到浏览量$a</span></span></span><div align="left">$a++;<div align="left">//把$a写回数据库<div align="left">$lock-&gt;unLock();</div></div></div></div></blockquote><br> <br> <br><span style="color:#444444 "></span><br><div align="left"><br></div><div align="left">上面的代码中还有个lpMutex，它是一个互斥区，为加锁提供了一种更简单的方法：</div><div align="left"><br></div><span style="color:#444444 "></span><br><blockquote class="blockquote3"><div class="text" style="padding:15px;"><br>{<br>lpMutex $lock;<br>//从数据库中得到浏览量$a<br>$a++;<br>//把$a写回数据库<br>}</div></blockquote><span style="color:#444444 "></span><br><div align="left"><b><font size="4"><br></font></b></div><div align="left"><b><font size="4">死锁问题</font></b></div><div align="left">从上面的流程可以看出，一旦得到锁后，一直不释放锁，那么就成了死锁——其他任何人都无法再得到这个锁</div><div align="left">所有的工作都卡住了——你的网站也挂了</div><div align="left"><br></div><div align="left">所以我把锁写成了类，超出作用域，或者脚本执行结束，会自动释放锁</div><div align="left"><br></div><br> </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-11 17:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  这格式，太坑了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-08-11 18:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+一眼扫了几行 觉得和操作系统中的互斥锁比较相似 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-11 18:06</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=outman" target="_blank">outman</a><span style="color:gray ">:</span>一眼扫了几行 觉得和操作系统中的互斥锁比较相似[表情] <span style="color:gray "> (2012-08-11 18:02) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1176&amp;pid=7166" target="_blank" ></a><br></div></blockquote><br>都是一个原理，只不过这里讲的是如何在PHP中使用和实现</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.042615 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

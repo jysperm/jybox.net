@@ -1,0 +1,186 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>零毫秒SB2.x翻译草稿|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  SB2.x有关消息详情请看之前的草稿这里只是对翻译的一个预览 SC：服务器对客户端发送的消息CS：客户端对服务器发送的消息CC：客户端对客户端发送的消息 ****登陆消息(CS)----Login参数：用户名 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,零毫秒SB2.x翻译草稿,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t784.html">零毫秒SB2.x翻译草稿</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-11 13:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>零毫秒SB2.x翻译草稿</h1>
+SB2.x<br><span style="color:#ff0000 "><b>有关消息详情请看之前的草稿</b></span><br><span style="color:#ff0000 "><b>这里只是对翻译的一个预览</b></span><br> <br>SC：服务器对客户端发送的消息<br>CS：客户端对服务器发送的消息<br>CC：客户端对客户端发送的消息<br> <br>****登陆消息(CS)----Login<br>参数：用户名、经过散列的密码、p2p端口号、是否是主连接、是否强制登陆、是否隐藏ip<br>是否是主连接：main/sub(这个是直接包含在消息内容里的，不区分大小写，下同)<br>是否强制登陆：try/compulsory<br>是否隐藏ip：hideip/showip<br> <br>****登陆结果(SC)----LoginResult<br>参数：登陆结果、同名用户ip<br>登陆结果的取值：登陆成功(ok)、密码错误(pwderror)、有同名用户在线(isonline)、未知错误(unkonw)<br>ps.这个消息原名为LoginOk和LoginError<br> <br>****请求对方信息(CS/SC/CC)----AskInfo<br>参数：要请求的信息的名字列表<br>时间：time；版本号：varname；版本顺序号：vernum；程序名称：clientname<br> <br>****返回信息(CS/SC/CC)----Info<br>参数：被请求的信息名称和值的对应表(例如：time:12345798;varname:V123;)<br> <br>****请求公钥(cs)----AskPublicKey<br> <br>****返回公钥(SC)----PublicKey<br>参数：公钥<br> <br>****无法理解消息(SC)----Unkonw<br>参数：描述信息<br> <br>****保持响应(CS)----Hi<br>ps.这个消息原名为Ping<br> <br>****需要更新好友列表(SC)----ChangeUserList<br>参数：列表名<br> <br>****请求好友列表(CS)----AskUserList<br>参数：是否请求全部 是否包括头像<br>是否请求全部：all/change<br>是否包括头像：logo/nologo<br> <br>****好友列表(SC)----UserList<br>参数：是否是全部、在线列表<br>是否是全部：all/change<br> <br>****系统广播消息(SC)----SystemMsg<br>参数：消息内容<br> <br>****退出登录(CS)----LogOut<br> <br>****发送消息(CS)----SendMsg<br>参数：目标用户名，是否开启匿名聊天，消息内容<br>匿名聊天：hide/show<br> <br>****接收消息(SC)----NewMsg(相当于，服务器提醒客户端：新消息)<br>参数：发送者，来自的视图，消息内容<br> <br>****上传图片(CS/CC)----NewImageData<br>参数：图片的二进制数据<br> <br>****请求下载图片(CS)----AskImageData<br>参数：最长等待时间 图片的MD5值<br> <br>****返回图片(SC)----ImageData<br>参数：图片的二进制数据<br> <br>****询问图片是否存在(CS/CC)----AskImageInfo<br>参数：图片的MD5值<br> <br>****返回图片存在状态(SC/CC)----ImageInfo<br>参数：图片剩余的缓存时间<br> <br>****请求对方添加我/请求加入群(CS)----UserRequest<br>参数：对方用户名、来自的视图，留言<br> <br>****新好友申请(SC)----NewRequest<br>参数：对方用户名、来自的视图、留言<br> <br>****新 群申请(SC)----NewGroupRequest<br>参数：对方用户名 留言<br> <br>****处理好友申请(CS)----RequestResult<br>参数：对方用户名 是否同意<br> <br>****请求好友资料(CS)----AskUserInfo<br>参数：对方用户名、要请求的项目的名字<br>头像：logo<br>ip：ip<br>p2p端口号：port<br>邮箱：email<br>个人主页：website<br>个人简介：introduction<br> <br>****返回好友资料(SC)----UserInfo<br>参数：用户名 被请求的信息名称和值的对应表(例如：ip:123.45.7.98;port:4322;)<br> <br>****创建临时讨论小组(CS)----CreateTempGroup<br> <br>****请求重传图片(CC)----ReAskImageData<br>参数：图片MD5<br> <br>****请求发送文件(CC)----FileRequest<br>参数：文件MD5 文件名 文件总大小 每个分片的大小<br>接收者如果发现缓存中有这个文件即可以不传输<br>文件名用于提示用户<br> <br>****同意/拒绝发送文件(CC)----FileRequestResult<br>参数：被处理文件MD5 是否同意 每个分片的大小<br>是否同意的取值：同意(ok)、拒绝(deny)、缓存中已存在(cache)<br> <br>****文件数据(CC)----FileData<br>参数：属于哪个文件MD5 这个分片的MD5 分片二进制数据<br> <br>****差错重传(CC)----ReAskFileData<br>参数：文件MD5 第几个分片(0开始)<br> <br>****请求配置信息键名(CS)----AskConfigurationKeyList<br>参数：无<br> <br>****配置信息键名列表(SC)----ConfigurationKeyList<br>参数：键名列表<br> <br>****请求键内容(CS)----AskConfigurationValue<br>参数：键名<br> <br>****键内容(SC)----ConfigurationValue<br>参数：键名、二进制数据<br> <br>****修改键值(CS)----ChangeConfigurationValue<br>参数：键名 二进制数据<br> <br>****删除键(CS)----RemoveConfigurationKey<br>参数：键名<br> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-11 16:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  头像是AVATAR!!!AVATAR!!!</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-01-11 16:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情] 头像是AVATAR!!!AVATAR!!!<span style="color:gray "> (2012-01-11 16:22) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=784&amp;pid=3746" target="_blank" ></a><br></div></blockquote><br>是的..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-11 16:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+太长了。。。而且纯文本看着费劲。。<br><br>表格化吧。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-11 16:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>太长了。。。而且纯文本看着费劲。。<br>表格化吧。。<span style="color:gray "> (2012-01-11 16:28) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=784&amp;pid=3749" target="_blank" ></a><br></div></blockquote><br>草稿嘛，最后肯定写到wp里.....<br>好吧，头像这个我忘了，是avatar</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2012-01-11 17:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<span style="color:#bfbfbf ">****登</span><span style="color:#ff0000 "><strike>陆</strike>录</span><span style="color:#bfbfbf ">消息(CS)----Login</span><br><span style="color:#bfbfbf ">参数：用户名、经过散列的密码、p2p端口号、是否是主连接、是否强制登陆、是否隐藏ip</span><br><span style="color:#bfbfbf ">是否是主连接：main/sub(这个是直接包含在消息内容里的，不区分大小写，下同)</span><br><span style="color:#bfbfbf ">是否强制登陆：</span><span style="color:#ffc000 "><u>try</u> normal</span><span style="color:#bfbfbf ">/</span><span style="color:#ff0000 "><strike>compulsory</strike> force</span><br><span style="color:#bfbfbf ">是否隐藏ip：hideip/showip</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****登</span><span style="color:#ff0000 "><strike>陆</strike></span><span style="color:#ff0000 ">录</span><span style="color:#bfbfbf ">结果(SC)----</span><span style="color:#ff0000 "><strike>LoginResult </strike>LoginReturn</span><br><span style="color:#bfbfbf ">参数：登</span><span style="color:#ff0000 "><strike>陆</strike></span><span style="color:#ff0000 ">录</span><span style="color:#bfbfbf ">结果、同名用户ip</span><br><span style="color:#bfbfbf ">登陆结果的取值：登</span><span style="color:#ff0000 "><strike>陆</strike></span><span style="color:#ff0000 ">录</span><span style="color:#bfbfbf ">成功(ok)、密码错误(pwderror)、有同名用户在线(isonline)、未知错误(</span><span style="color:#ff0000 "><strike>unkonw</strike> unknown</span><span style="color:#bfbfbf ">)</span><br><span style="color:#bfbfbf ">ps.这个消息原名为LoginOk和LoginError</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求对方信息(CS/SC/CC)----</span><span style="color:#ffc000 "><u>AskInfo</u> ReqVer</span><br><span style="color:#bfbfbf ">参数：要请求的信息的名字列表</span><br><span style="color:#bfbfbf ">时间：time；版本号：</span><span style="color:#ff0000 "><strike>varname </strike>Version</span><span style="color:#bfbfbf ">；版本顺序号：</span><span style="color:#ff0000 "><strike>vernum </strike>Reversion</span><span style="color:#bfbfbf ">；程序名称：clientname</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****返回信息(CS/SC/CC)----</span><span style="color:#ffc000 "><u>Info </u>Ver</span><br><span style="color:#bfbfbf ">参数：被请求的信息名称和值的对应表(例如：time:12345798;varname:V123;)</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求公钥(cs)----</span><span style="color:#ff0000 "><strike>AskPublicKey </strike>ReqPublicKey</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****返回公钥(SC)----PublicKey</span><br><span style="color:#bfbfbf ">参数：公钥</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****无法理解消息(SC)----</span><span style="color:#ff0000 "><strike>Unkonw </strike>Unknown</span><br><span style="color:#bfbfbf ">参数：描述信息</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****保持响应(CS)----</span><span style="color:#ff0000 "><strike>Hi </strike>KeepAlive</span><br><span style="color:#bfbfbf ">ps.这个消息原名为Ping</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****需要更新好友列表(SC)----</span><span style="color:#ff0000 "><strike>ChangeUserList </strike>FriendsUpdated</span><br><span style="color:#bfbfbf ">参数：列表名</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求好友列表(CS)----</span><span style="color:#ff0000 "><strike>AskUserList </strike>ReqUpdateFriends</span><br><span style="color:#bfbfbf ">参数：是否请求全部 是否包括头像</span><br><span style="color:#bfbfbf ">是否请求全部：</span><span style="color:#a5a5a5 ">all/</span><strike>change </strike><span style="color:#ff0000 ">diffonly</span><br><span style="color:#bfbfbf ">是否包括头像：</span><strike>logo </strike><span style="color:#ff0000 ">avatar</span><span style="color:#a5a5a5 ">/</span><strike>nologo </strike><span style="color:#ff0000 ">withoutavatar</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****好友列表(SC)----</span><span style="color:#ff0000 "><strike>UserList </strike>Friends</span><br><span style="color:#bfbfbf ">参数：是否是全部、在线列表</span><br><span style="color:#bfbfbf ">是否是全部：</span><span style="color:#ff0000 ">all/<strike>change </strike>diffonly</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****系统广播消息(SC)----</span><span style="background-color:#ffffff "><span style="color:#ff0000 "><strike>SystemMsg </strike></span></span><span style="color:#ff0000 ">BroadcastMsg</span><br><span style="color:#bfbfbf ">参数：消息内容</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****退出登录(CS)----</span><span style="color:#ff0000 "><strike>LogOut </strike>Logout</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****发送消息(CS)----SendMsg</span><br><span style="color:#bfbfbf ">参数：目标用户名，是否开启匿名聊天，消息内容</span><br><span style="color:#bfbfbf ">匿名聊天：</span><span style="color:#ffc000 "><u>hide </u>Anonymous</span><span style="color:#a5a5a5 ">/</span><span style="color:#ffc000 "><u>show </u>Normal</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****接收消息(SC)----NewMsg(相当于，服务器提醒客户端：新消息)</span><br><span style="color:#bfbfbf ">参数：发送者，来自的视图，消息内容</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****上传图片(CS/CC)----</span><span style="color:#ff0000 "><strike>NewImageData </strike>UploadImg</span><br><span style="color:#bfbfbf ">参数：图片的二进制数据</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求下载图片(CS)----</span><span style="color:#ff0000 "><strike>AskImageData </strike>ReqImg</span><br><span style="color:#bfbfbf ">参数：最长等待时间 图片的MD5值</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****返回图片(SC)----</span><span style="color:#ff0000 "><strike>ImageData </strike>ImageReturn</span><br><span style="color:#bfbfbf ">参数：图片的二进制数据</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****询问图片是否存在(CS/CC)----</span><span style="color:#ff0000 "><strike>AskImageInfo </strike>ChkImgStatus</span><br><span style="color:#bfbfbf ">参数：图片的MD5值</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****返回图片存在状态(SC/CC)----</span><span style="color:#ff0000 "><strike>ImageInfo </strike>ImgStateReturn</span><br><span style="color:#bfbfbf ">参数：图片剩余的缓存时间</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求对方添加我/请求加入群(CS)----</span><span style="color:#ff0000 "><strike>UserRequest </strike>拆分ReqMakeFriends以及ReqJoinGroup</span><br><span style="color:#bfbfbf ">参数：对方用户名、来自的视图，留言</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****新好友申请(SC)----</span><span style="color:#ff0000 "><strike>NewRequest </strike>NewFriendReq</span><br><span style="color:#bfbfbf ">参数：对方用户名、来自的视图、留言</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****新 群申请(SC)----</span><span style="color:#ff0000 "><strike>NewGroupRequest </strike>NewMemberReq</span><br><span style="color:#bfbfbf ">参数：对方用户名 留言</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****处理好友申请(CS)----</span><span style="color:#ff0000 "><strike>RequestResult </strike>拆分为FriendReqRe以及</span><span style="color:#ff0000 ">MemberReqRe</span><br><span style="color:#bfbfbf ">参数：对方用户名 是否同意</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求好友资料(CS)----</span><span style="color:#ff0000 "><strike>AskUserInfo </strike>ReqUserInfo</span><br><span style="color:#bfbfbf ">参数：对方用户名、要请求的项目的名字</span><br><span style="color:#bfbfbf ">头像：</span><span style="color:#ff0000 "><strike>logo </strike>avatar</span><br><span style="color:#bfbfbf ">ip：ip</span><br><span style="color:#bfbfbf ">p2p端口号：port</span><br><span style="color:#bfbfbf ">邮箱：email</span><br><span style="color:#bfbfbf ">个人主页：website</span><br><span style="color:#bfbfbf ">个人简介：introduction</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****返回好友资料(SC)----</span><span style="color:#ff0000 "><strike>UserInfo </strike>UserInfoReturn</span><br><span style="color:#bfbfbf ">参数：用户名 被请求的信息名称和值的对应表(例如：ip:123.45.7.98;port:4322;)</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****创建临时讨论小组(CS)----CreateTempGroup</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求重传图片(CC)----</span><span style="color:#ff0000 "><strike>ReAskImageData </strike>ReReqImg</span><br><span style="color:#bfbfbf ">参数：图片MD5</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求发送文件(CC)----</span><span style="color:#ff0000 "><strike>FileRequest </strike>ReqSendFile</span><br><span style="color:#bfbfbf ">参数：文件MD5 文件名 文件总大小 每个分片的大小</span><br><span style="color:#bfbfbf ">接收者如果发现缓存中有这个文件即可以不传输</span><br><span style="color:#bfbfbf ">文件名用于提示用户</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****同意/拒绝发送文件(CC)----</span><span style="color:#ff0000 "><strike>FileRequestResult </strike>SendReqReturn</span><br><span style="color:#bfbfbf ">参数：被处理文件MD5 是否同意 每个分片的大小</span><br><span style="color:#bfbfbf ">是否同意的取值：同意(</span><span style="color:#ff0000 "><strike>ok </strike>accept</span><span style="color:#bfbfbf ">)、拒绝(deny)、缓存中已存在(</span><span style="color:#ff0000 "><strike>cache </strike>cached</span><span style="color:#bfbfbf ">)</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****文件数据(CC)----</span><span style="color:#ff0000 "><strike>FileData </strike>FilePartReturn</span><br><span style="color:#bfbfbf ">参数：属于哪个文件MD5 这个分片的MD5 分片二进制数据</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****差错重传(CC)----</span><span style="color:#ff0000 "><strike>ReAskFileData </strike>ReqReSendFilePart</span><br><span style="color:#bfbfbf ">参数：文件MD5 第几个分片(0开始)</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求配置信息键名(CS)----</span><span style="color:#ff0000 "><strike>AskConfigurationKeyList </strike>ReqConfKeys</span><br><span style="color:#bfbfbf ">参数：无</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****配置信息键名列表(SC)----</span><span style="color:#ff0000 "><strike>ConfigurationKeyList </strike>ConfKeysReturn</span><br><span style="color:#bfbfbf ">参数：键名列表</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****请求键内容(CS)----</span><span style="color:#ff0000 "><strike>AskConfigurationValue </strike>ReqConfValueData</span><br><span style="color:#bfbfbf ">参数：键名</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****键内容(SC)----</span><span style="color:#ff0000 "><strike>ConfigurationValue</strike> ConfValueDataReturn</span><br><span style="color:#bfbfbf ">参数：键名、二进制数据</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****修改键值(CS)----</span><span style="color:#ff0000 "><strike>ChangeConfigurationValue</strike> ReqModiConfValueData</span><br><span style="color:#bfbfbf ">参数：键名 二进制数据</span><br><span style="color:#bfbfbf "> </span><br><span style="color:#bfbfbf ">****删除键(CS)----</span><span style="color:#ff0000 "><strike>RemoveConfigurationKey</strike> ReqDelConfKey</span><br><span style="color:#bfbfbf ">参数：键名……</span></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2012-01-11 17:04</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<span style="color:#ff0000 ">红色表示有问题的 <strike>划掉的是你原来的</strike> 建议改</span><br><span style="color:#ffc000 ">橙色表示有疑问的 <u>带下划线的是你原来的</u> 可改可不改</span><br> <br>累死我了= =<br>真心不想吐槽jy的英语水平……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-01-11 17:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+你不觉得字符太多么？ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-11 17:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=mason" target="_blank">mason</a><span style="color:gray ">:</span>你不觉得字符太多么？[表情] <span style="color:gray "> (2012-01-11 17:36) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=784&amp;pid=3754" target="_blank" ></a><br></div></blockquote><br>实际消息中的字符串就那么几个，大部分是消息常量名</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.044968 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

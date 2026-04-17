@@ -1,0 +1,216 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>完美的QQ钓鱼方案设计|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  这就是我在2010年年末构想的，可行性非常高，但因为种种原因没有实现的钓鱼方案首先，定位是通过模拟QQ客户端来实现盗号，要实现密码、密保获取、解绑密保卡和手机、修改密码等操作的 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,完美的QQ钓鱼方案设计,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t105.html">完美的QQ钓鱼方案设计</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-19 17:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>完美的QQ钓鱼方案设计</h1>
+这就是我在2010年年末构想的，可行性非常高，但因为种种原因没有实现的钓鱼方案<br><br>首先，定位是通过模拟QQ客户端来实现盗号，要实现密码、密保获取、解绑密保卡和手机、修改密码等操作的一气呵成<br><br>先通过替换官方的QQ客户端，让QQ一打开就是自己的钓鱼程序。界面要仿的像一点。用户输入密码，点击登录后。程序自动在后台通过QQ安全中心的登录页面，输入用户输入的QQ号和密码，然后把验证码返回给用户输入。然后检查密码是否正确、如果不正确当然要提示用户，如果正确进行下一步<br><br>然后是告诉用户&quot;QQ号因为XXXX原因被锁定，需要输入密保问题来解锁&quot;。很多类似的钓鱼程序都是让用户选择密保问题，这样非常容易被识破。程序可以在后台通过QQ安全中心的修改密保问题功能来获取3个问题，然后要用户输入。然后后台自动修改密保、解绑密保卡、手机、修改密码，这个过程中可能会出现很多次验证码，没关系，统统返回给用户输入。<br><br>输入完了，其实也没必要再骗了，因为用户已经没办法在短时间内找回QQ了，随便给个什么提示，退出钓鱼程序就好了。<br><br>另外，前面说的那个解锁QQ的部分，貌似现在官方都是通过网页进行的。如果条件允许的话，可以伪造QQ安全中心的网站，然后修改hosts文件。不过这个的工程量和破绽远比使用客户端要复杂</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-20 21:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  幽灵你闲的啊.....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-08-22 16:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+顶呀！！做出来了么？ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-22 16:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+没有，而且也没有继续做的打算.......<br>当时是因为准备中考，被放下了，而现在没兴趣了<br><br>所以才发出来，分享给大家</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pcliker</b></td>
+<td align="right" class="smalltxt">2011-08-22 21:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+— 本帖被 jybox 设置为精华(2011-08-19) —<br><br>你这个贱货……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-22 22:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  随意...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-31 02:44</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+表示07年我还是菜逼的时候，曾经用这招[那个时候就有这样的东西了]<br>盗了数百个QQ，然后和小MM说我是多么牛的黑客<br><br>后来很多人找我让我盗号，我勒个去，我哪会盗号啊……<br><br>于是和别人说，我是有道德的黑客，不做那些事情&nbsp;&nbsp; - -</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-31 17:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xywhsoft" target="_blank">xywhsoft</a><span style="color:gray ">:</span>表示07年我还是菜逼的时候，曾经用这招[那个时候就有这样的东西了]<br>盗了数百个QQ，然后和小MM说我是多么牛的黑客<br>后来很多人找我让我盗号，我勒个去，我哪会盗号啊……<br>.......<span style="color:gray "> (2012-01-31 02:44) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=105&amp;pid=4913" target="_blank" ></a><br></div></blockquote><br>我以前也搞过，是自己用vb仿了一个QQ的界面，钓鱼<br><br>那时的杀软还没现在这么强，很好得手</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-18 23:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  现在的杀软太厉害了，钓鱼都能检查出来，哎...<br><br>想当年</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zzh8829</b></td>
+<td align="right" class="smalltxt">2012-06-19 04:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+你完全可以弄个网址比如叫<br><a href="https://aq.qq.qq-safety.com/cn2/findpsw/pc/pc_find_pwd_input_account" target="_blank" >https://aq.qq.qq-safety.com/cn2/findpsw/pc/pc_find_pwd_input_account</a>&nbsp;&nbsp;(原网址没有qq-safety)<br>之类的东西,这比改host可靠多了...<br>我们那帮同学都能被各种垃圾网站骗...<br>比如某人发一个 来看看我照片 然后就让你登录“qq空间”... <br>他们sb的连域名都不看就敢输密码... <br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-19 18:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=zzh8829" target="_blank">zzh8829</a><span style="color:gray ">:</span>你完全可以弄个网址比如叫<br>https://aq.qq.qq-safety.com/cn2/findpsw/pc/pc_find_pwd_input_account  (原网址没有qq-safety)<br>之类的东西,这比改host可靠多了...<br>我们那帮同学都能被各种垃圾网站骗...<br>比如某人发一 ..<span style="color:gray "> (2012-06-19 04:38) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=105&amp;pid=6544" target="_blank" ></a><br></div></blockquote><br>这种钓鱼好低端......</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.042808 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

@@ -1,0 +1,231 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>QQ留言刷入，残品[PHP]|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  代码运行正常，QQ也会提醒有留言，但是到留言板看并没有，应该是TX的问题，直接贴代码。手机发个贴真闹心。。。URL: http://aspzend.iblogger.org/test/qqly.txt" />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,QQ留言刷入，残品[PHP],程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1195.html">QQ留言刷入，残品[PHP]</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>四夕青俊</b></td>
+<td align="right" class="smalltxt">2012-08-21 19:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>QQ留言刷入，残品[PHP]</h1>
+代码运行正常，QQ也会提醒有留言，但是到留言板看并没有，应该是TX的问题，直接贴代码。手机发个贴真闹心。。。<br>URL: http://aspzend.iblogger.org/test/qqly.txt</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>四夕青俊</b></td>
+<td align="right" class="smalltxt">2012-08-21 19:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+管理删了吧，手机发表代码没有上来。。。<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>四夕青俊</b></td>
+<td align="right" class="smalltxt">2012-08-21 19:41</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+代码运行正常，QQ也会提醒有留言，但是到留言板看并没有，应该是TX的问题，直接贴代码。客户端发帖不知道会成啥样。。。<br>﻿&lt;?php<br>include(&quot;head.html&quot;);<br>echo &#39;&lt;title&gt;QQ空间留言刷入&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&#39;;<br><br>function save($url,$postcot){<br>$cn=curl_init();<br>curl_setopt($cn,CURLOPT_URL,$url);<br>curl_setopt($cn,CURLOPT_USERAGENT,&#39;TTMobile/09.03.18/symbianOS9.1 Series60/3.0 Nokia6120cAP3.03&#39;);<br>curl_setopt($cn,CURLOPT_POST,1);<br>curl_setopt($cn,CURLOPT_POSTFIELDS,$postcot);<br>curl_setopt($cn,CURLOPT_RETURNTRANSFER,1);<br>$content=curl_exec($cn);<br><br>curl_close($cn);<br>Return $content;<br>}<br>Function getValue($body){<br>Preg_match_all(&#39;!name=&quot;(iv_format|msg|submitbtn|sid|entry|B_UID|iv_backurl|amp;sid|sign|r_sid)&quot;.*value=&quot;(.*)&quot;!isU&#39;,$body,$result,PREG_SET_ORDER);<br>Return $result;<br>}<br>Function getImg($body){<br>Preg_match(&#39;!(&lt;img[^&gt;]*验证码[^&gt;]*&gt;)!is&#39;,$body,$result);<br>Return $result[1];<br>}<br>$qq=$_POST[&#39;qq&#39;];<br>$sid=$_POST[&#39;sid&#39;];<br>$httime=$_POST[&#39;httime&#39;];<br>$htcs=$_POST[&#39;htcs&#39;];<br>$_content=$_POST[&#39;content&#39;];<br>$content=explode(&quot;#&quot;,$_content);<br>$cnt=count($content);<br>$g=$_POST[&#39;g&#39;];<br>if(isset($_POST[&#39;qq&#39;])||$g==&quot;提交&quot;)<br>{<br>for($i=$htcs;$i&gt;0;$i--)<br>{$ra=mt_rand(0,$cnt-1);<br>if($g[&#39;g&#39;]==&quot;提交&quot;)<br>{<br>$ml=&#39;iv_format=&#39;.$_POST[&#39;iv_format&#39;].&#39;&amp;msg=&#39;.$_POST[&#39;msg&#39;].&#39;&amp;submitbtn=&#39;.$_POST[&#39;submitbtn&#39;].&#39;&amp;sid=&#39;.$_POST[&#39;sid&#39;].&#39;&amp;entry=&#39;.$_POST[&#39;entry&#39;].&#39;&amp;B_UID=&#39;.$_POST[&#39;B_UID&#39;].&#39;&amp;iv_backurl=&#39;.$_POST[&#39;iv_backurl&#39;].&#39;&amp;ispostmsg=&#39;.$_POST[&#39;ispostmsg&#39;].&#39;&amp;sid=&#39;.$_POST[&#39;amp;sid&#39;].&#39;&amp;sign=&#39;.$_POST[&#39;sign&#39;].&#39;&amp;iv_verify=&#39;.$_POST[&#39;iv_verify&#39;].&#39;&amp;r_sid=&#39;.$_POST[&#39;r_sid&#39;].&#39;&amp;msg=&#39;.$_POST[&#39;msg&#39;].&#39;&amp;submitbtn=&#39;.$_POST[&#39;submitbtn&#39;].&#39;&amp;sid=&#39;.$_POST[&#39;sid&#39;].&#39;&amp;entry=&#39;.$_POST[&#39;entry&#39;].&#39;&amp;B_UID=&#39;.$_POST[&#39;B_UID&#39;].&#39;&amp;iv_backurl=&#39;.$_POST[&#39;iv_backurl&#39;].&#39;&amp;ispostmsg=&#39;.$_POST[&#39;ispostmsg&#39;].&#39;&amp;sid=&#39;.$_POST[&#39;amp;sid&#39;].&#39;&amp;sign=&#39;.$_POST[&#39;sign&#39;];<br>$save=save(&#39;http://blog60.z.qq.com/mmsgb/add_msg_action_switch.jsp&#39;,$ml);<br>$g=NULL;<br>}<br>else<br>$save=save(&quot;http://blog30.z.qq.com/mmsgb/add_msg.jsp?entry=blog&amp;sid=&quot;.$sid,&#39;msg=&#39;.$content[$ra].&#39;&amp;sign=0&amp;B_UID=&#39;.$qq.&#39;&amp;entry=board&#39;);<br>if(strpos($save,&#39;验证码&#39;))<br>&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;$ret=getValue($save);<br>&nbsp;&nbsp;&nbsp;&nbsp;$img=getImg($save);<br>&nbsp;&nbsp; echo&lt;&lt;&lt;EOF<br>&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;<br>系统检测到您的号码可能有安全隐患，需要进行安全验证。&lt;br/&gt;<br>$img<br>&lt;br/&gt;<br>&lt;input type=&quot;text&quot; name=&quot;iv_verify&quot;&gt;<br>EOF;<br>Foreach($ret as $arr)<br>Echo &quot;&lt;input type=&#39;hidden&#39; name=&#39;{$arr[1]}&#39; value=&#39;{$arr[2]}&#39;/&gt;&quot;;<br>echo &#39;&lt;input type=&quot;hidden&quot; name=&quot;htcs&quot; value=&quot;&#39;.($i-1).&#39;&quot;/&gt;<br>&lt;input type=&quot;hidden&quot; name=&quot;httime&quot; value=&quot;&#39;.$httime.&#39;&quot;/&gt;<br>&lt;input type=&quot;hidden&quot; name=&quot;content&quot; value=&quot;&#39;.$_content.&#39;&quot;/&gt;<br>&lt;input type=&quot;hidden&quot; name=&quot;qq&quot; value=&quot;&#39;.$qq.&#39;&quot;/&gt;<br>&lt;input type=&quot;hidden&quot; name=&quot;sid&quot; value=&quot;&#39;.$sid.&#39;&quot;/&gt;<br>&lt;input type=&quot;submit&quot; name=&quot;g&quot; value=&quot;提交&quot;/&gt;<br>&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;&#39;;<br>exit;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>sleep($httime);<br>}<br>}<br>else<br>{<br>?&gt;<br>&lt;form action=&quot;&quot;method=&quot;post&quot;&gt;<br>被踩的QQ号码:&lt;br/&gt;&lt;input type=&quot;text&quot; name=&quot;qq&quot;/&gt;&lt;br/&gt;<br>你的SID码:&lt;br/&gt;&lt;input type=&quot;text&quot; name=&quot;sid&quot;/&gt;&lt;br/&gt;<br>留言内容(多个用#分开,系统随机选取一条回复):&lt;br/&gt;&lt;input type=&quot;text&quot; name=&quot;content&quot;/&gt;&lt;br/&gt;<br>每隔多少秒回帖一次:&lt;br/&gt;&lt;input type=&quot;text&quot;&nbsp;&nbsp;name=&quot;httime&quot;&nbsp;&nbsp;maxlength=&quot;5&quot;/&gt;&lt;br/&gt;<br>回帖次数:&lt;br/&gt;&lt;input type=&quot;text&quot;&nbsp;&nbsp;name=&quot;htcs&quot;&nbsp;&nbsp;maxlength=&quot;5&quot;/&gt;&lt;br/&gt;<br>&lt;input type=&quot;submit&quot;&nbsp;&nbsp;value=&quot;提交&quot;/&gt;<br>&lt;/form&gt;<br><br>&lt;?php<br>}<br>?&gt;</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>四夕青俊</b></td>
+<td align="right" class="smalltxt">2012-08-21 19:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+版主还是删了吧，第一次发帖就这样。。。闹心</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>四夕青俊</b></td>
+<td align="right" class="smalltxt">2012-08-21 19:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+版主不用删了。。。我真心蛋疼。。。<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>梦逝空尘</b></td>
+<td align="right" class="smalltxt">2012-08-21 22:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+路过……<br>我去测试下…… </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>四夕青俊</b></td>
+<td align="right" class="smalltxt">2012-08-21 22:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+你去吧~代码本身没有问题~空间要有权限<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-21 23:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+include(&quot;head.html&quot;);<br><br>话说这个head.html在哪里</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-08-21 23:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+虽不懂但觉历</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>四夕青俊</b></td>
+<td align="right" class="smalltxt">2012-08-22 06:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+写进qqly.txt里了<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxy</b></td>
+<td align="right" class="smalltxt">2012-08-22 13:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b></b></td>
+<td align="right" class="smalltxt">2012-12-02 01:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.042540 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

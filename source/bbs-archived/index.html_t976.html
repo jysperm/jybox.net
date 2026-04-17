@@ -1,0 +1,291 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>说说我的编码风格|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  这是我现行，以及今后打算使用的缩进html/js/css，2个空格缩进（其实这个是跟whtsky改的），如果有条件的话，发布的时候改为一个tab缩进（省流量）其他代码，4个空格缩进文件末尾无论如何都 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,说说我的编码风格,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t976.html">说说我的编码风格</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-20 03:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>说说我的编码风格</h1>
+这是我现行，以及今后打算使用的<br><br>缩进<br>html/js/css，2个空格缩进（其实这个是跟whtsky改的），如果有条件的话，发布的时候改为一个tab缩进（省流量）<br>其他代码，4个空格缩进<br>文件末尾无论如何都留一个以上的空行<br><br>变量<br>一般表示数值的话，无特殊要求都用int<br>表示布尔（是/否）用bool，用true和false表示是/否<br>用0表示空指针，而不是NULL（原因是NULL不是C++的关键字，而且不同的类库在NULL的类型上不一样，虽然不影响我，但是觉得不舒服的样子，为毛C++没有一个null的关键字呢？）<br>没有特殊情况，变量等到使用的时候再声明（听说C89不允许这样子？）<br><br>命名<br>变量/函数第一个单词小写，之后每个单词首字母大写<br>bool变量和返回bool的函数加is前缀<br>类名/命名空间名每个单词首字母大写<br>循环计数器依次用i j k l<br>类成员变量没有m_前缀（好像这个是mfc的风格）<br><br>空白：<br>所有能不用多余空格的地方都不加空格（&amp;&amp;&nbsp;&nbsp;|| 的左右是个例外）<br>大括号单独成行<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>if(1+1==2)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;//.....<br>}</li></ol></div><br>每个函数中间隔一个空行<br>指针符（*），引用符（&amp;）贴近变量/函数名一侧<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>inline OMessage &amp;OMessage::append(QByteArray *data)</li></ol></div><br><br>注释一律用双斜杠来注释，不用/*..*/<br><font size="4">类</font><br>成员的顺序：public（slots）、protected（slots）、signals、private（slots）<br>类文件单独一个头文件/实现文件，文件名跟随类名（大小写混合），其他文件全小写<br>inline函数写在头文件里<br><br><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-02-20 07:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+sf.看到bool,想起MySQL的tinyint(1)了.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-20 12:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+只有html用2空格.js和css缩进层次不深，4个空格.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-20 15:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>只有html用2空格.js和css缩进层次不深，4个空格.<span style="color:gray "> (2012-02-20 12:38) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=976&amp;pid=5695" target="_blank" ></a><br></div></blockquote><br>他们都混在一起.............目前还没发现哪个编辑器可以针对语言类型设置缩进</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-20 19:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第3楼jybox于2012-02-20 15:15发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>只有html用2空格.js和css缩进层次不深，4个空格.<span style="color:gray "> (2012-02-20 12:38) </span>[url=http://jyb ..</div></blockquote>notepad++或pycharm或vim自定义脚本都可以.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-20 20:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>notepad++或pycharm或vim自定义脚本都可以.<span style="color:gray "> (2012-02-20 19:01) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=976&amp;pid=5700" target="_blank" ></a><br></div></blockquote><br>高级货</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-20 21:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第5楼jybox于2012-02-20 20:23发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>notepad++或pycharm或vim自定义脚本都可以.<span style="color:gray "> (2012-02-20 19:01) </span>[url=http://jybox.net/bbs/ ..</div></blockquote>notepad++很亲民吧…macvim配置好了还是不错的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-20 23:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>notepad++很亲民吧…macvim配置好了还是不错的<span style="color:gray "> (2012-02-20 21:30) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=976&amp;pid=5704" target="_blank" ></a><br></div></blockquote><br>C++用qtc，其他一律记事本.......写html/css的时候开个w3c抄代码就行了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-02-20 23:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第7楼jybox于2012-02-20 23:10发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>notepad++很亲民吧…macvim配置好了还是不错的<span style="color:gray "> (2012-02-20 21:30) </span>[url=http://jybox.n ..</div></blockquote>抄代码……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-07-19 16:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我缩进全部tab</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-19 17:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>我缩进全部tab<span style="color:gray "> (2012-07-19 16:35) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=976&amp;pid=6861" target="_blank" ></a><br></div></blockquote><br>总听说用tab不友好什么的....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-07-19 18:11</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>总听说用tab不友好什么的....<span style="color:gray "> (2012-07-19 17:33) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=976&amp;pid=6862" target="_blank" ></a><br></div></blockquote><br>写代码的时候打那么多空格恨不得砸了键盘。。。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxy</b></td>
+<td align="right" class="smalltxt">2012-07-19 19:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>写代码的时候打那么多空格恨不得砸了键盘。。。。<span style="color:gray "> (2012-07-19 18:11) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=976&amp;pid=6865" target="_blank" ></a><br></div></blockquote><br>极有同感, 我也习惯用tab</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-19 20:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  IDE不是都有自动缩进么....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-07-19 20:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情] IDE不是都有自动缩进么....<span style="color:gray "> (2012-07-19 20:13) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=976&amp;pid=6871" target="_blank" ></a><br></div></blockquote><br>有是有，但是开始总要按几个啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-19 20:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<a href="http://hi.baidu.com/eachcan/blog/item/4560ff1904c5ae70dbb4bd7e.html" target="_blank" >http://hi.baidu.com/eachcan/blog/item/4560ff1904c5ae70dbb4bd7e.html</a><br><a href="http://blog.csdn.net/tonywearme/article/details/7061530" target="_blank" >http://blog.csdn.net/tonywearme/article/details/7061530</a><br><br>众说纷云吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.049107 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

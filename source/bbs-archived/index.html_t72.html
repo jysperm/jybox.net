@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>笔记|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  业务的封装就是让业务逻辑与界面逻辑分开面向对象三大特性:封装.继承,多态工厂模式 编程是一门技术 更是一门艺术,不能只满足于写完代码运行结果正确就完事,时常考虑如何让代码更加精简,.." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,笔记,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t72.html">笔记</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>iol</b></td>
+<td align="right" class="smalltxt">2011-08-12 12:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>笔记</h1>
+业务的封装&nbsp;&nbsp;就是让业务逻辑与界面逻辑分开<br>面向对象三大特性:封装.继承,多态<br>工厂模式 <br>编程是一门技术 更是一门艺术,不能只满足于写完代码运行结果正确就完事,时常考虑如何让代码更加精简,更加容易维护,容易扩展和复用.<br>面向对象的编程，并不是类越多越好，类的划分是为了封装，但分类的基础是抽象，具有相同属性和功能的对象<br>的抽象集合才是类<br>没有人是天生就牛X的，有一些所谓的技术牛人总会在人面前说什么,&quot;你连这都不懂&quot;,&quot;这还不简单了，你够笨的’等等说词。给人感觉他非常聪明,天生就会的样子，其实他在之前也不知走过多少弯路，犯过多少错，或许他之前也被更早的牛人羞辱过，所以再继续把羞辱传给后人.<br>男人的胸怀是被冤枉撑大的!天天在这行当里混，阅人无数，被羞辱也是正常的事了.问题在于是不是头脑清醒，自己不能放弃.<br>，学习一定是一个自己感悟的过程，而程序员的感悟就是自己写程序做项目，通过实践再学习，最终升华为牛人.<br>一种编程方式：依赖注入（Dependency Injection）<br>反射<br>eg:Animal animal = (Animal)Assembly.Load(&quot;&quot;AnimalSystem&quot;).CreateInstance(&quot;AnimalSystem.Cat&quot;);<br><br>知足是可以常乐，但知足如何能进步！?<br><br>面向对象的四个好处 ，是可维护、可扩展、可复用和灵活性好<br><br>可以把PC电脑理解成是大的软件系统，任何部件如CPU、内存、硬盘，显卡等都可以理解为程序中封装的类或程序集，由于PC易插拨的方式，那么不管哪一个出问题，都可以在不影响别的部件的前题下进行修改或替换。<br><br>PC电脑里叫易插拨，面向对象里把这种关系叫强内聚、松耦合。<br><br>设计模式其中的几大设计原则，单一职责原则，开放—封闭原则，依赖倒转原则<br><br>谓单一职责原则，就是指就一个类而言，应该仅有一个引起它变化的原因<br><br>开放—封闭原则是说对扩展开发，对修改关闭<br><br>依赖倒转原则 抽象不应该依赖细节，细节应该依赖于抽象<br><br>世间万物都是遵循某种类似的规律，谁先把握了这些规律，谁就最早成为了强者。<br><br>收音机就是典型的耦合过度<br><br>浪奔，浪流，万里江海点点星光耀，人间事，多纷扰，化作滚滚东逝波涛，有泪，有笑…………<br><br>人生目标很明确，别的方面弱一些有什么关系呢?<br><br>三层架构，分层开发<br><br>三层架构或者分层开发说起来容易，在程序开发时的初学者还是有很多的误解。<br><br>1 UI层&nbsp;&nbsp; (表现层,界面层)<br><br>2 数据访问层（Data Access Layer）或简称 DAL 层<br><br>3 业务逻辑层（Business Logic Layer）<br><br> 若是程序不会变化，原有的设计就没什么问题，运行结果正确足够了，但若是程序可能会时常随业务而变化，新的设计就大大提高了应变性，这其实就是应用设计模式的目的所在。<br><br> </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>iol</b></td>
+<td align="right" class="smalltxt">2011-08-12 12:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+...沙发自己坐</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>iol</b></td>
+<td align="right" class="smalltxt">2011-08-12 12:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+求加精/*子*/....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>iol</b></td>
+<td align="right" class="smalltxt">2011-08-12 13:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+求挽..潜</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-08-12 17:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  貌似</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-17 14:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  围观一下，另外你怎么又退群了？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.046569 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

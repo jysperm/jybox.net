@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>一起来YY下一个版本(0.2)的零毫秒|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  之前讨论已经决定继续使用SB协议ps.SB=String  Binary=字符串数据+二进制包头SB协议第2版将增加的内容：该版本协议开始提供向下兼容...要仔细一点设计表情、聊天(群)图片、传文件、群共享文件、 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,一起来YY下一个版本(0.2)的零毫秒,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t634.html">一起来YY下一个版本(0.2)的零毫秒</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-25 20:18</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>一起来YY下一个版本(0.2)的零毫秒</h1>
+之前讨论已经决定继续使用SB协议<br>ps.SB=String &amp; Binary=字符串数据+二进制包头<br><hr /><br><font size="4">SB协议第2版</font>将增加的内容：<br>该版本协议开始提供向下兼容...要仔细一点设计<br><b>表情、聊天(群)图片、传文件、群共享文件、好友系统、群系统、临时小组(详情见后文)、离线消息(详情见后文)、完善错误处理机制、漫游聊天记录、漫游配置(详情见后文)</b><br>临时小组：类似QQ的讨论组，任意创建，当小组中所有用户都下线时自动销毁<br>离线消息：初步只打算支持文本消息和表情，不支持图片<br>漫游配置：在服务器上开辟一定空间(初步1MB)，给客户端自由支配，自由存取。比如可以被用于键值对形式(该功能在SDK中提供)。可以被官方客户端或者第三方客户端漫游储存一些自定义配置信息。<br><br>语音、视频等P2P相关功能暂不提供。这个版本中的传文件也算是P2P功能，先以此作为试点，下一版可能提供语音视频。<br><hr /><font size="4">服务器方面</font><br>GUI管理工具：用于管理服务器程序，支持远程，支持跨平台间管理(即例如用Windows的GUI管理工具可以管理位于远程Linux服务器上的服务器程序)<br>守护程序：在服务器程序出错时自动重启服务器<br>数据库方面包括四个数据库<br>1.用户信息数据库——通过远程接口访问，只储存用户名和密码，与论坛互通<br>2.聊天记录、用户活动日志<br>3.服务器程序日志<br>4.用户配置/关系信息<br><hr /><font size="4">官方客户端</font><br>增加主题系统：可以通过CSS控制样式、动态布局(即主题可以控制ui布局)、自动版本升级等<br>客户端没用太多要说的，主要就是实现通讯协议<br><hr /><font size="4">SDK</font><br>SDK依旧从官方客户端中抽取，尽量把所有可供重用的代码都抽取出来，提供详细的文档(这样也有助于其他开发人员了解零毫秒官方客户端的实现)<br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-11-25 21:44</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+GUI管理工具意义不大，先往后放着<br>重点是完善文档和SDK.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-25 21:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>GUI管理工具意义不大，先往后放着<br>重点是完善文档和SDK.<span style="color:gray "> (2011-11-25 21:44) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=634&amp;pid=2689" target="_blank" ></a><br></div></blockquote><br>能用是关键....<br>0.1写完我就要开始拉人了<br><br>我偏向于写客户端....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>osfpu</b></td>
+<td align="right" class="smalltxt">2012-08-07 09:04</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  路过,拉人拉我吧,让我学习学习</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>四夕青俊</b></td>
+<td align="right" class="smalltxt">2012-08-21 16:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+目测不会有Android版<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-21 17:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=四夕青俊" target="_blank">四夕青俊</a><span style="color:gray ">:</span>目测不会有Android版<br>内容来自[手机版] <span style="color:gray "> (2012-08-21 16:47) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=634&amp;pid=7239" target="_blank" ></a><br></div></blockquote><br>会的，不过那是很远很远的事情了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.047624 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

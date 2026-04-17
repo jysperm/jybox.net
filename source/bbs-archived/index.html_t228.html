@@ -1,0 +1,317 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>零毫秒编码约定|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  #M h1{text-align:center}#M &#46;red{color:red; .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,零毫秒编码约定,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t228.html">零毫秒编码约定</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-29 22:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>零毫秒编码约定</h1>
+<style type="text/css">
+#M h1
+{
+text-align:center
+}
+#M &#46;red
+{
+color:red;
+font-weight:bold;
+}
+#M td
+{   
+border-right: 1px solid #C1DAD7;
+border-bottom: 1px solid #C1DAD7;
+background: #fff;
+padding: 3px 3px 3px 6px;
+color: #4f6b72;
+}  
+#M pre
+{
+font-family: 'Courier New' , Courier, monospace;
+color:#008200;
+padding-left:35px;
+}
+</style>
+<div id="M">
+<h1>零毫秒编码约定</h1>
+<h2>概述</h2>
+<p>
+该约定规定了编写代码，和维护工程的格式<br />
+无论这里约定的格式是否是最好的，都请每个人务必遵守，因为格式的统一更加重要<br />
+如果发现这个约定有重大问题，请及时发起讨论，以便统一修改<br />
+本约定没有规定的内容，至少要在一个文件中保持一致，也就是说要和文件的创建者的风格保持一致
+</p>
+<h2>SVN</h2>
+<ol start="0">
+<li class="red">每一次提交，都必须注明修改了哪些内容，有什么意义，这个版本是否是可以运行的版本。如果对他人的代码做了修改，一定要注明修改原因</li>
+<li class="red">SVN只存放源文件，编译好的文件以及编译中间文件不要上传</li>
+</ol>
+<p>
+例如：
+</p>
+<pre>
+新增概述和通讯协议初稿
+修正了概述的几处格式错误，对通讯协议和概述做了小幅修改
+改一下目录结构(说实话我根本不知道默认这3个目录是干啥的)，顺便建立了0&#46;1的目录
+为了发布出来给Abreto看一下
+保存一下进度(无实际功能更新)
+保存一下进度,SafeSQL还差最后两个函数：text和rx
+保存进度,SafeSQL已经基本完成
+LightPHP保存进度,大体定型，还有文档没编写
+</pre>
+<h2>文档</h2>
+<ol start="2">
+<li class="red">文档采用纯文本或HTML格式，根据内容类型自行选择。注意编码务必是UTF-8(在Windows下创建时要注意)。HTML文件不要过于花哨，适用基本标签即可(可以参考我写的这几个HTML文件)</li>
+</ol>
+<h2>文件命名</h2>
+<p>
+扩展名：<br />
+(均为小写)<br />
+QT专有文件类型保持默认即可
+</p>
+<table>
+<tr>
+<td><b>文件类型</b></td>
+<td><b>扩展名</b></td>
+<td><b>备注</b></td>
+</tr>
+<tr>
+<td>纯文本</td>
+<td>&#46;txt</td>
+<td></td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>&#46;html</td>
+<td></td>
+</tr>
+<tr>
+<td>头文件</td>
+<td>&#46;h</td>
+<td></td>
+</tr>
+<tr>
+<td>C++源文件</td>
+<td>&#46;cpp</td>
+<td></td>
+</tr>
+<tr>
+<td>脚本文件</td>
+<td>&#46;bat/&#46;sh</td>
+<td>Windows/Linux</td>
+</tr>
+<tr>
+<td>动态链接库</td>
+<td>&#46;dll/&#46;so</td>
+<td>Windows/Linux</td>
+</tr>
+<tr>
+<td>可执行文件</td>
+<td>&#46;exe</td>
+<td>(无视平台)</td>
+</tr>
+</table>
+<p>
+C++类文件的头文件和实现文件均以类名命名，但均为小写<br />
+所有参与编译的文件务必为英文名(以兼容所有编译器)
+</p>
+<h2>注释</h2>
+<p>
+注意，这个是非常重要的内容！
+</p>
+<ol start="3">
+<li class="red">文件头部保持空白，所有作者、修改者、修改内容等信息请通过svn查看</li>
+<li class="red">在类和函数的原型声明处简要注明用途，(如果有必要的话)在函数实现部分简要叙述思路</li>
+<li class="red">不要写没有用的注释！比如下面的，这明显是个废话</li>
+</ol>
+<pre>
+class Widget:public QWidget
+{
+//下面是构造函数
+explicit Widget(QWidget *parent = 0);
+&#46;&#46;&#46;
+</pre>
+<ol start="6">
+<li class="red">所有十行以内的注释均用单行注释，以方便用多行注释临时注释大段代码</li>
+<li class="red">同一份注释只写在一个地方</li>
+<li>注释写在要说明的语句或代码段之前</li>
+</ol>
+<h2>编码</h2>
+<ol start="9">
+<li class="red">所有标识符的命名必须适用有意义，易于理解的名字，但因为编译器的支持问题，只能使用英文</li>
+</ol>
+<h2>开发工具IDE</h2>
+<ol start="10">
+<li class="red">开发工具没限制，但是要注意上传的时候只上传源文件和项目配置文件(如QT的&#46;pro和VS的&#46;dsp)，不要上传其他IDE专有的文件</li>
+</ol>
+<h2>版本</h2>
+<pre>
+&lt;主版本>&#46;&lt;次版本>&#46;&lt;修订号(顺序号)>-&lt;日期> r&lt;SVN版本号>
+如：1&#46;0&#46;1-2011&#46;9&#46;30 r5
+</pre>
+<p>
+主版本和次版本从0开始计算，修订顺序号从1开始不间断计数，日期为发布日期，SVN版本号和SVN上的版本对应
+有功能更新则按照更新幅度更改主版本或次版本，如果只是修复bug则只修订顺序号(无论如何，只要更新，修订顺序号都加一)
+</p>
+</div></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-29 22:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  效果这么差.........大家还是去svn看吧.....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-09-29 23:06</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+正在阅 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-29 23:26</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ﻬ ǒ┢Ab♡&lt;<a href="mailto:m@abreto.net ">m@abreto.net</a>&gt;&nbsp;&nbsp;23:12:59<br>文件头部保持空白，所有作者、修改者、修改内容等信息请通过svn查看<br>我非常不同意<br>[管理]JyBox(2456652728)&nbsp;&nbsp;23:12:58<br>这个&nbsp;&nbsp; 好处其实挺多的<br>ﻬ ǒ┢Ab♡&lt;<a href="mailto:m@abreto.net ">m@abreto.net</a>&gt;&nbsp;&nbsp;23:13:32<br>难道我update了过后还要上svn慢慢的翻记录么？<br>[管理]JyBox(2456652728)&nbsp;&nbsp;23:13:27<br>你打算在头部留多少信息？也就是一次嘛..<br>再说以后svn是天天都要去的地方<br>ﻬ ǒ┢Ab♡&lt;<a href="mailto:m@abreto.net ">m@abreto.net</a>&gt;&nbsp;&nbsp;23:14:08<br>我直接看一下注释就可以明白的事情为什么要复杂化成查svn<br>你去看看其他软件的源码的文件头部<br>[管理]JyBox(2456652728)&nbsp;&nbsp;23:15:29<br>...但是这会让文件看起来更复杂<br>而且关键问题是源文件不应该承担这个任务，版本控制应该是版本控制系统应该做的<br><a href="http://www.oschina.net/code/explore/qt-4.7.1/src/gui/itemviews/qtreeview.cpp" target="_blank" >http://www.oschina.net/code/explore/qt-4.7.1/src/gui/itemviews/qtreeview.cpp</a><br>这是QT的源文件<br>头部只有版权声明&nbsp;&nbsp;没有作者神马的<br>ﻬ ǒ┢Ab♡&lt;<a href="mailto:m@abreto.net ">m@abreto.net</a>&gt;&nbsp;&nbsp;23:16:28<br>问题是我没有那么多时间去查修改者<br>[管理]JyBox(2456652728)&nbsp;&nbsp;23:17:02<br>我不认为那浪费时间<br>在文件里保存有几个问题，首先是只能保存有限的几次<br>你要在文件和svn里双份保存?<br>资源重用是最基本的，同一个东西不能同时保存在两个地方（这一点忘记加了）<br>[管理]JyBox(2456652728)&nbsp;&nbsp;23:20:24<br>在看完修改者和原因之后势必要看看他到底修改了哪些代码，这还是要回到svn<br> </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-09-30 21:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+修改意见01：<br>文件头部保持空白，所有作者、修改者、修改内容等信息请通过svn查看<br>要保留版权什么的<br>还有 @package<br>@subpackage<br>以及负责人</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-30 22:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>修改意见01：<br>文件头部保持空白，所有作者、修改者、修改内容等信息请通过svn查看<br>要保留版权什么的<br>还有 @package<br>@subpackage<br>.......<span style="color:gray "> (2011-09-30 21:43) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=228&amp;pid=809" target="_blank" ></a><br></div></blockquote><br>事实证明你得真的非常不靠谱啊，和你合作太蛋疼了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-01 19:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+已于2011.10.1更新，与svn同步</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2011-10-01 22:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+坐等协议稳定…… </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.056322 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

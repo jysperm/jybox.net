@@ -1,0 +1,201 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>零毫秒3.0的新进度-一些决定和思索|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  别看最近没什么消息，我写了很多文章，只不过没往外发#零毫秒2.0没错，先说这个2.0——中心化的即时通讯。它将于9月1日完成，两个月后。我会尽力完成计划中(http://0-ms.org/wiki/show/SB2.0)的所 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,零毫秒3.0的新进度-一些决定和思索,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t1110.html">零毫秒3.0的新进度-一些决定和思索</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-03 21:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>零毫秒3.0的新进度-一些决定和思索</h1>
+别看最近没什么消息，我写了很多文章，只不过没往外发<br><br>#零毫秒2.0<br>没错，先说这个2.0——中心化的即时通讯。<br>它将于9月1日完成，两个月后。我会尽力完成计划中(<a href="http://0-ms.org/wiki/show/SB2.0" target="_blank" >http://0-ms.org/wiki/show/SB2.0)</a>的所有功能。<br><br>嗯以下就都是关于3.0的消息了。<br><br>名字<br>我想说我觉得“零毫秒”这个名字实在是太好了。<br>零毫秒3.0不仅会继续使用这个名字，而且有可能将版本号归零，从头开始。<br>当然，这会引起一些混乱，所以我可能会给即将完成的零毫秒2.0一个新的名字。<br><br>#自由和开放<br>这半年依赖，我感到。过于自由也许并不是好事。尤其现在零毫秒没有稳定和充足的用户群，没有常驻的开发人员。这种情况下，尊重每个人的意见也许会让它变得更加混乱。<br>一个中心化、自由开放的即时通讯，这是我的理想。但不一定是你们的，你们或许只是感兴趣。<br>在没有利益驱使的情况下，恐怕没人能坚持不合自己意愿的事情。<br><br>就像前两天开工的LightPHP一样，我希望对零毫秒做出以下的声明<br>* 不对它今后的发展做任何保证<br>* 不保证一定接受每一个人的每一个意见<br>* 不保证一定解决每个人在使用中遇到的每一个问题<br><br>其实这和废话差不多——我以前也是这样，而且也不会有任何公司敢保证以上三点。<br>这样，零毫秒似乎成了我的私人项目。嗯，差不多。<br><br>它依然是开发的——源码就放在那里(<a href="https://github.com/jybox/ZeroMS" target="_blank" >https://github.com/jybox/ZeroMS)</a>，你随时可以参与，而且你也不必为任何人负任何责任。<br><br>也就是说，零毫秒的发展将取决于我的决定(废话..难道之前不是么)，放心，我会尽可能让我的那些决定看起来不那么无理取闹的。<br><br>总之，以上都是废话，你们该吐槽就吐槽，该喷我就喷我<br><br>#有关零毫秒3.0的新决定<br>通讯载体JSON<br>对IPv6提供与IPv4同等的支持<br>在所有地方使用SSL，只使用TCP<br>只在PC平台上提供完整功能，其他终端(移动终端/Web)只提供部分功能<br>PC平台上依旧使用Qt<br>不优先考虑开发UI<br>将提供一个强大的插件平台<br><br>#零毫秒3.0是一个惊天大阴谋<br>一个强大的插件平台<br><br>这是一个不可多得的去中心化网络，利用它可以快速地部署P2P应用<br>例如文件分享，文件存储，分布式计算，流媒体播放、去中心化论坛/SNS(<a href="http://www.v2ex.com/t/41027" target="_blank" >http://www.v2ex.com/t/41027</a>)、去中心化电子货币<br>(开始YY了)<br><br>以上决定来自于与很多人的讨论<br>除了一直活跃在这里的常客<br>还有几位新朋友：<br><br>这个帖子(<a href="http://www.v2ex.com/t/41027" target="_blank" >http://www.v2ex.com/t/41027)</a>的楼主(在精英盒子的[backcolor= transparent]ID：rockxie)，以及帖子的回复者</span><br>[backcolor= transparent]田众和，田总。木错，田总也为零毫秒提出了宝贵的意见，请参见我博客最新一篇日志</span><br>[backcolor= transparent]<br></span><br>[backcolor= transparent]#零毫秒3.0时间表</span><br><table class="read_form" style="width:100%;background-color:#ffffff;border-width:1px;border-style:solid;border-color:#dddddd" cellspacing="0" cellpadding="0"><tr><td style="border-color:#dddddd"> 2012.10-2012.12</td><td style="border-color:#dddddd"> 完成于网络构建、基础通信有关的理论设计</td></tr><tr><td style="border-color:#dddddd"> 2013.1</td><td style="border-color:#dddddd"> 根据理论设计进行小型实验，并修正设计</td></tr><tr><td style="border-color:#dddddd"> 2013.2-2013.5</td><td style="border-color:#dddddd"> 完成网络构建与基础通讯的底层部分</td></tr><tr><td style="border-color:#dddddd"> 2013.6-2013.9</td><td style="border-color:#dddddd"> 完成UI前端，实现基本的通讯功能，内测版本</td></tr><tr><td style="border-color:#dddddd"> 2013.10-2013.12</td><td style="border-color:#dddddd"> 重构之前的理论设计，加入组群等其余部分的理论设计</td></tr><tr><td style="border-color:#dddddd"> 2014.1-2014.4</td><td style="border-color:#dddddd"> 重构代码，加入新功能。公测版本</td></tr><tr><td style="border-color:#dddddd"> 2014.5-2014.8</td><td style="border-color:#dddddd"> 加入插件系统，适当美化UI，编写插件</td></tr><tr><td style="border-color:#dddddd"> 2014.9-2014.12</td><td style="border-color:#dddddd"> 每月一个新版本，每次小范围重构代码、修补bug、编写插件、美化UI</td></tr><tr><td style="border-color:#dddddd"> 2015.1</td><td style="border-color:#dddddd"> 正式版</td></tr></table><br>内测和公测之间删档，即不向下兼容。公测和正式版无明显界限<br><br>这个时间表已经考虑到了学校的放假时间。我打算上学时每天2个小时投入这个时间表(不计在学校的时间)，休息日每天投入4个小时，以保证按时完成<br>多了不管，少了择日再补，每天打卡欢迎监督</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-07-03 21:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 。。田总！！？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-07-03 22:26</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+做个ncurses的版本就好了，直接在终端里用</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-03 23:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>。。田总！！？<span style="color:gray "> (2012-07-03 21:46) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1110&amp;pid=6650" target="_blank" ></a><br></div></blockquote><br>田总对零毫秒做出了重要批示：<br>“特别是羡慕嫉妒恨的精英盒子童鞋，你至于么，你别以为你开发个零毫秒还有什么终端就了不起了（无视<a class=" _cardshow" href="http://jybox.net/bbs/u.php?uid=1" data-card-key="@jybox" data-card-url="pw_ajax.php?action=smallcard&type=showcard&uid=1" target="_blank" >@jybox</a>&nbsp;&nbsp;）如果你再发这样的消息我就按照@马丁 的意图：爱干啥干啥，直接拉黑！”</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxy</b></td>
+<td align="right" class="smalltxt">2012-07-04 13:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+jy还是找些基友一起开发吧,&nbsp;&nbsp;一人开发很蛋疼,&nbsp;&nbsp;特别是这种非小型项目.&nbsp;&nbsp;而且进度也慢</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>dditty</b></td>
+<td align="right" class="smalltxt">2012-07-04 17:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+大家一起做会比一个人做轻松许多～～还有，我怀疑田是纯属炒作，不必理会他，还有，你给他发什么消息了，他至于这样？？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-04 21:44</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=dditty" target="_blank">dditty</a><span style="color:gray ">:</span>大家一起做会比一个人做轻松许多～～还有，我怀疑田是纯属炒作，不必理会他，还有，你给他发什么消息了，他至于这样？？<span style="color:gray "> (2012-07-04 17:15) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1110&amp;pid=6661" target="_blank" ></a><br></div></blockquote><br>我只是吐槽一下它官网抄了零毫秒官网一篇文章...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-04 21:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=scxy" target="_blank">scxy</a><span style="color:gray ">:</span>jy还是找些基友一起开发吧,  一人开发很蛋疼,  特别是这种非小型项目.  而且进度也慢<span style="color:gray "> (2012-07-04 13:42) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1110&amp;pid=6658" target="_blank" ></a><br></div></blockquote><br>问题是有人么，大家都有自己的事情...<br><br>又没拒绝你们，想来就来想走就走，这样对谁都好</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2012-07-21 11:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+2015年。。。。。 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-21 12:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>2015年。。。。。[表情] <span style="color:gray "> (2012-07-21 11:16) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1110&amp;pid=6882" target="_blank" ></a><br></div></blockquote><br>都说了&nbsp;&nbsp;这是一个大项目</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.042838 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

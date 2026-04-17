@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>闲的实在没事干，写了个小Python程序|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  import osls = os.linesepi = input(&quot;Enter &#39;1&#39; to read;Enter &#39;2&#39; to make a file;Enter &#39;3&#39; to edit a file:&quot;)if i == 1:&#39;readTextFile.py -- read and display text file&#39;# get filenamefname = raw_input(&#39;Enter file na .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,闲的实在没事干，写了个小Python程序,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1128.html">闲的实在没事干，写了个小Python程序</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2012-07-14 17:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>闲的实在没事干，写了个小Python程序</h1>
+<font face="Simsun "><font size="2"></font></font><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>import os<br>ls = os.linesep<br><br>i = input(&quot;Enter &#39;1&#39; to read;Enter &#39;2&#39; to make a file;Enter &#39;3&#39; to edit a file:&quot;)<br><br>if i == 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&#39;readTextFile.py -- read and display text file&#39;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;# get filename<br>&nbsp;&nbsp;&nbsp;&nbsp;fname = raw_input(&#39;Enter file name: &#39;)<br>&nbsp;&nbsp;&nbsp;&nbsp;print<br><br>&nbsp;&nbsp;&nbsp;&nbsp;# attempt to open file for reading<br>&nbsp;&nbsp;&nbsp;&nbsp;try:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fobj = open(fname, &#39;r&#39;)<br>&nbsp;&nbsp;&nbsp;&nbsp;except IOError, e:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&quot;*** file open error:&quot;, e<br>&nbsp;&nbsp;&nbsp;&nbsp;else:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# display contents to the screen<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for eachLine in fobj:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print eachLine,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fobj.close()<br>elif i == 2:<br>&nbsp;&nbsp;&nbsp;&nbsp;#获取文件名<br>&nbsp;&nbsp;&nbsp;&nbsp;while True:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fname = raw_input(&quot;Please Enter File Name:&quot;)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except IOError, e:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print &quot;*** file open error:&quot;, e<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br><br>&nbsp;&nbsp;&nbsp;&nbsp;all = []<br>&nbsp;&nbsp;&nbsp;&nbsp;print &quot;\nEnter lines (&#39;.&#39; by itself to quit).\n&quot;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;while True:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry = raw_input(&#39;&gt;&#39;)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if entry == &#39;.&#39;:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all.append(entry)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;#输入到文件<br>&nbsp;&nbsp;&nbsp;&nbsp;fobj = open(fname, &#39;w&#39;)<br>&nbsp;&nbsp;&nbsp;&nbsp;fobj.writelines([&#39;%s%s&#39; % (x, ls) for x in all])<br>&nbsp;&nbsp;&nbsp;&nbsp;fobj.close()<br>&nbsp;&nbsp;&nbsp;&nbsp;print &quot;DONE&quot;</li></ol></div><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-07-14 19:09</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+不要用input.<br>另外，不知道你为什么要捕获异常。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-07-14 19:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+input是执行所得的输入结果。<br>你可以试试在提示Enter &#39;1&#39; to read;Enter &#39;2&#39; to make a file;Enter &#39;3&#39; to edit a file:的时候输入：__import__(&quot;sys&quot;).exit()</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-07-14 19:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <div style="background-color:#000;word-wrap:break-word;"><code style="margin:20px;color:#45ED00;display:block;"><font face="monospace"><font color="#ffff00"><b>&nbsp;1&nbsp;</b></font><font color="#8080ff"><b>import</b></font>&nbsp;os<br /><font color="#ffff00"><b>&nbsp;2&nbsp;</b></font><br /><font color="#ffff00"><b>&nbsp;3&nbsp;</b></font>i =&nbsp;<font color="#00ffff"><b>int</b></font>(<font color="#00ffff"><b>raw_input</b></font>(<font color="#ff40ff"><b>&quot;Enter '1' to read;Enter '2' to make a file;Enter '3' to edit a file:&quot;</b></font>))<br /><font color="#ffff00"><b>&nbsp;4&nbsp;</b></font><br /><font color="#ffff00"><b>&nbsp;5&nbsp;</b></font><font color="#ffff00"><b>if</b></font>&nbsp;i ==&nbsp;<font color="#ff40ff"><b>1</b></font>:<br /><font color="#ffff00"><b>&nbsp;6&nbsp;</b></font>&nbsp;&nbsp;&nbsp;&nbsp;�| �| �| �|&nbsp;<font color="#ff40ff"><b>'readTextFile&#46;py -- read and display text file'</b></font><br /><font color="#ffff00"><b>&nbsp;7&nbsp;</b></font><br /><font color="#ffff00"><b>&nbsp;8&nbsp;</b></font>�| �| �| �|&nbsp;<font color="#00ffff"><b># get filename</b></font><br /><font color="#ffff00"><b>&nbsp;9&nbsp;</b></font>�| �| �| �| fname =&nbsp;<font color="#00ffff"><b>raw_input</b></font>(<font color="#ff40ff"><b>'Enter file name: '</b></font>)<br /><font color="#ffff00"><b>10&nbsp;</b></font>�| �| �| �|&nbsp;<font color="#00ffff"><b>print</b></font><br /><font color="#ffff00"><b>11&nbsp;</b></font><br /><font color="#ffff00"><b>12&nbsp;</b></font>�| �| �| �|&nbsp;<font color="#00ffff"><b># attempt to open file for reading</b></font><br /><font color="#ffff00"><b>13&nbsp;</b></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ffff"><b>print</b></font>&nbsp;<font color="#00ffff"><b>open</b></font>(fname,&nbsp;<font color="#ff40ff"><b>'r'</b></font>)&#46;read()<br /><font color="#ffff00"><b>14&nbsp;</b></font><br /><font color="#ffff00"><b>15&nbsp;</b></font><font color="#ffff00"><b>elif</b></font>&nbsp;i ==&nbsp;<font color="#ff40ff"><b>2</b></font>:<br /><font color="#ffff00"><b>16&nbsp;</b></font>&nbsp;&nbsp;&nbsp;&nbsp;�| �| �| �|&nbsp;<font color="#00ffff"><b>#�~N��~O~V�~V~G件�~P~M</b></font><br /><font color="#ffff00"><b>17&nbsp;</b></font>�| �| �| �| fname =&nbsp;<font color="#00ffff"><b>raw_input</b></font>(<font color="#ff40ff"><b>&quot;Please Enter File Name:&quot;</b></font>)<br /><font color="#ffff00"><b>18&nbsp;</b></font>�| �| �| �| fobj =&nbsp;<font color="#00ffff"><b>open</b></font>(fname,&nbsp;<font color="#ff40ff"><b>'w'</b></font>)<br /><font color="#ffff00"><b>19&nbsp;</b></font><br /><font color="#ffff00"><b>20&nbsp;</b></font>�| �| �| �|&nbsp;<font color="#00ffff"><b>print</b></font>&nbsp;<font color="#ff40ff"><b>&quot;</b></font><font color="#ff6060"><b>\n</b></font><font color="#ff40ff"><b>Enter lines ('&#46;' by itself to quit)&#46;</b></font><font color="#ff6060"><b>\n</b></font><font color="#ff40ff"><b>&quot;</b></font><br /><font color="#ffff00"><b>21&nbsp;</b></font><br /><font color="#ffff00"><b>22&nbsp;</b></font>�| �| �| �|&nbsp;<font color="#ffff00"><b>while</b></font>&nbsp;<font color="#00ffff"><b>True</b></font>:<br /><font color="#ffff00"><b>23&nbsp;</b></font>&nbsp;&nbsp;&nbsp;&nbsp;�| �| �| �| �| �| �| �| entry =&nbsp;<font color="#00ffff"><b>raw_input</b></font>(<font color="#ff40ff"><b>'&gt;'</b></font>)<br /><font color="#ffff00"><b>24&nbsp;</b></font>�| �| �| �| �| �| �| �|&nbsp;<font color="#ffff00"><b>if</b></font>&nbsp;entry ==&nbsp;<font color="#ff40ff"><b>'&#46;'</b></font>:<br /><font color="#ffff00"><b>25&nbsp;</b></font>&nbsp;&nbsp;&nbsp;&nbsp;�| �| �| �| �| �| �| �| �| �| �| �| fobj&#46;close()<br /><font color="#ffff00"><b>26&nbsp;</b></font>�| �| �| �| �| �| �| �|&nbsp;<font color="#ffff00"><b>else</b></font>:<br /><font color="#ffff00"><b>27&nbsp;</b></font>&nbsp;&nbsp;&nbsp;&nbsp;�| �| �| �| �| �| �| �| �| �| �| �| fobj&#46;write(entry)<br /><font color="#ffff00"><b>28&nbsp;</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fobj&#46;write(os&#46;linesep)<br /><font color="#ffff00"><b>29&nbsp;</b></font><br /><font color="#ffff00"><b>30&nbsp;</b></font>�| �| �| �|&nbsp;<font color="#00ffff"><b>print</b></font>&nbsp;<font color="#ff40ff"><b>&quot;DONE&quot;</b></font><br /></font></code></div></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-07-14 19:20</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+擦，colorit也那么不靠谱了//</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-07-14 22:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.057060 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

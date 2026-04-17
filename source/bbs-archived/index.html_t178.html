@@ -1,0 +1,291 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>手算MD5大概要多长时间？|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  如题..刚刚看到一个新闻说一个叫王小云的在04年把MD5和SHA-1都给破译了....而且发表了论文，不过具体啥情况我没看懂..既然破译了，那些破MD5的网站怎么还都是暴破？......再说这个算摘要算法.. .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,手算MD5大概要多长时间？,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t178.html">手算MD5大概要多长时间？</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-14 23:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>手算MD5大概要多长时间？</h1>
+如题..<br>刚刚看到一个新闻说一个叫王小云的在04年把MD5和SHA-1都给破译了....而且发表了论文，不过具体啥情况我没看懂..<br>既然破译了，那些破MD5的网站怎么还都是暴破？......再说这个算摘要算法...何来的破译<br><br>而且那新闻上写的这人居然不喜欢用电脑，是手算的...........<br><br>有空去看看MD5的原理，看看能不能手算.......（显摆显摆，你懂的）....或者哪怕自己写个MD5函数也很NB啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-09-15 21:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 有人想写, </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-18 16:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+数学水平高的差不多````````````</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>temp</b></td>
+<td align="right" class="smalltxt">2011-09-19 01:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+楼主你好，新闻里说的破译其实是不科学的说法，王小云教授论文里是指出MD5算法存在碰撞的现象。即两段不同的字符串编码，可能有相同的MD5。本来发现碰撞的概率是微乎其微的，但是王小云教授的论文指出可以通过特殊的构造，使得能够在很短的时间内，就能发现这种碰撞现象。相关演示程序：fastcoll。MD5算法本身不可逆。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-19 19:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+仔细又看了一下<br>貌似你说的没错（我看的那篇文章可能太过夸大了）<br><br>不过既然都可以伪造了MD5了，那它还安全吗？<br>闲的没事破解它干吗啊.....要是发现漏洞了，岂不是还要换算法，多麻烦啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>temp</b></td>
+<td align="right" class="smalltxt">2011-09-19 22:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>仔细又看了一下<br>貌似你说的没错（我看的那篇文章可能太过夸大了）<br>不过既然都可以伪造了MD5了，那它还安全吗？<br>闲的没事破解它干吗啊.....要是发现漏洞了，岂不是还要换算法，多麻烦啊<span style="color:gray "> (2011-09-19 19:32) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=178&amp;pid=660" target="_blank" ></a><br></div></blockquote><br>其实并不是可以伪造，的确能够快速构造碰撞，但是这个发生碰撞的MD5值却不是你能控制的，比如你已知一个字符串的MD5值，但是你无法通过这个MD5值推出发生碰撞的另一个字符串，也就是说事实上这个漏洞很难被利用。但是这个发现的确也促使科学家去开发更安全的算法，现在对安全性要求高的系统几乎都使用更安全的SHA-512。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-19 23:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<br>发明这玩意的真不是人</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2011-09-20 19:09</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我表示md5算法是非常激情 我有一本c的书就有这个 写这个算法写了两页-、-<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-20 19:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=outman" target="_blank">outman</a><span style="color:gray ">:</span>我表示md5算法是非常激情 我有一本c的书就有这个 写这个算法写了两页-、-<br>内容来自[手机版] <span style="color:gray "> (2011-09-20 19:09) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=178&amp;pid=670" target="_blank" ></a><br></div></blockquote><br>两页？神啊....我记得要好多代码呢</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason961125</b></td>
+<td align="right" class="smalltxt">2011-10-04 14:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 貌似不止这么多吧？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-31 02:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+嗯，其实吧……因为很多人用MD5的地方不是该用他的地方，所以安全隐患自然多<br><br>例如我这样用MD5：<br>Password = xxxx<br>For i = 1 to 500<br>Password = MD5(PassWord)<br>next i<br><br><br>直接循环若干次，你一次能用库找出来[实际上库是收录了8位数字 + 6位英文的全部序列，以及常用密码]<br><br>我算上500次你能找出来吗？<br><br><br><br>还有更脑残的用法，原数据不加密，直接摆个MD5上去<br><br>例如我们天朝开发的绿坝娘<br>一个txt存放MD5，小学生都知道直接换成admin的密文，就可以卸载了<br>肿么乳此坑爹</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-31 02:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+而王教授所谓的碰撞，实际上就是寻找相同结果的不同数据，而并非常规意义上的破解<br><br>这种方法有效，仅对我上一层楼所说的绿坝式脑残用法……<br><br>原数据都不加密，直接摆一组MD5上去……那么只要能匹配到MD5，原数据就赤果果的出现在了眼前</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-31 17:09</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xywhsoft" target="_blank">xywhsoft</a><span style="color:gray ">:</span>而王教授所谓的碰撞，实际上就是寻找相同结果的不同数据，而并非常规意义上的破解<br>这种方法有效，仅对我上一层楼所说的绿坝式脑残用法……<br>原数据都不加密，直接摆一组MD5上去……那么只 ..<span style="color:gray "> (2012-01-31 02:40) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=178&amp;pid=4912" target="_blank" ></a><br></div></blockquote><br>零毫秒2.0打算用&nbsp;&nbsp;SHA-256(用户名+密码)&nbsp;&nbsp; 这样的方式<br>这样因为里面有用户名，即便爆破也必须为每一个用户单独跑一次爆破</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-31 19:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>零毫秒2.0打算用  SHA-256(用户名+密码)   这样的方式<br>这样因为里面有用户名，即便爆破也必须为每一个用户单独跑一次爆破<span style="color:gray "> (2012-01-31 17:09) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=178&amp;pid=4957" target="_blank" ></a><br></div></blockquote><br>这绝对是牛逼的做法，强悍啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-31 19:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xywhsoft" target="_blank">xywhsoft</a><span style="color:gray ">:</span>这绝对是牛逼的做法，强悍啊<span style="color:gray "> (2012-01-31 19:42) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=178&amp;pid=5001" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-31 20:04</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]<span style="color:gray "> (2012-01-31 19:50) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=178&amp;pid=5002" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.045596 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

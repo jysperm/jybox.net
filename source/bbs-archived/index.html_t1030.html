@@ -1,0 +1,276 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>去中心化即时通讯网络的探讨一：用户注册|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  如题，我打算把零毫秒3.0发展成去中心化的即时通讯网络。但是现在还有很多理论问题没有解决，至少按我的了解，目前世界上应该是没有成功的(目标是达到QQ一样的功能，但不需要中心服务 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,去中心化即时通讯网络的探讨一：用户注册,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t1030.html">去中心化即时通讯网络的探讨一：用户注册</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-04 22:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>去中心化即时通讯网络的探讨一：用户注册</h1>
+如题，我打算把零毫秒3.0发展成去中心化的即时通讯网络。但是现在还有很多理论问题没有解决，至少按我的了解，目前世界上应该是没有成功的(目标是达到QQ一样的功能，但不需要中心服务器)类似项目.<br><br>还需要解释一下这里的去中心化是什么意思，这里的去中心化，就是说网络中每个用户都是平等的，没有人有特权，不会出现整个网络受某个人，某几个人控制的情况，不会因为个别人的离开发生故障。<br>但是也可能会有一些特殊的节点为其他客户端提供一些特别的服务，但是和QQ一类中心化的即时通讯相比，区别就是这些特殊的节点并没有特权，用户可以选择信任或者不信任它（不信任就是不使用，不使用这个节点提供的服务也不会影响你使用这个即时通讯网络）<br><br><hr /><br>这篇来讨论用户注册。<br>在整个零毫秒3.0(暂时用这个名字指代这个项目)的设计过程中，主要参考了两个项目：<br><br>比特币（一个去中心化的电子支付网络，但还属于试验品，有诸多不足）<br>Skype（一个商业化的侧重语音的即时通讯网络，大量应用了P2P技术）<br><br>没有中心服务器就意味着，在整个网络中没有任何人是可以完全信任的(至少在QQ中，我们是完全信任腾讯的)，这会给很多工作带来麻烦，整体上也会给整个网络增加计算量，但是相比于它带来的好处——为了不受任何人控制，付出一点CPU和带宽还是值得的）.所以整个验证系统是要通过严谨的加密来实现，要假定所有人都是不可信任的，所有人都有可能恶意地对网络发起攻击<br><br>因为没有中心服务器，注册信息就不能保存在一个位置，要分布在整个网络中。我参考了比特币的用户验证机制，其实应该说是非对称加密。<br>生成账号的时候，将解密密钥公开（公钥）作为用户ID，将加密密钥作为私钥保存，作为自己持有这个账号的证明。<br>在网络上发送出的每一个消息都要用私钥签名，其他人可以用公钥来核实签名，这样用户验证其实很简单。<br><br>但是为了保证安全性，密钥达到2048bit才是比较理想的，即324Byte，或者转换为512个ASCII字符，这个体积在网络传输时还可以容忍，但让用户记忆实在是不可能.....<br><br>于是，注册过程其实就是生产公钥和私钥，然后用私钥签署第一个消息——这个公钥对应的用户名，然后广播出去。<br><br><font size="5"><b>用户列表的存储</b></font><br><br>这里就有了两个选择：<br>（1）仿造比特币，在每个客户端上存储完整的用户列表，每一个条目之间都计算散列值（这个散列值是之前所有条目的散列值），以保证整个用户列表的完整性。每次客户端上线，都向邻居节点询问离线期间，用户列表中新增的条目。<br>这样的好处就是可以直接在本机上查找用户名所对应的ID，可以明确记录用户的注册时间。<br>缺点就是和比特币一样，每个客户端要存储大量的“垃圾信息”...<br>按每个条目0.6K计算，一千个用户大概600K，一百万个大概6M，一亿是600M<br>其实也可以容忍，在用户在百万级别的时候........<br>（2）不在每个客户端上存储完整的用户列表，查询的时候向其他主机进行查询。<br>其实注册消息的附加信息只有用户名一项，完全可以整合在“在线广播”（就是客户端告诉其他人自己在线的广播）中，这样，注册信息会在网络上反复进行广播，也不怕找不到。在收到在线广播(里面包含注册信息)的时候，每个客户端都缓存一段时间，然后长时间（半个月？）不活跃的用户可以从缓存中删掉。<br>好处就是省了储存用户列表。<br>坏处就是也有一定的可能性向其他人查询不到这个用户（所有知道这个用户的人都下线了），但是这也说明这个人实在不太活跃......还有可能查询到不同步的信息，或者多个用户名指向同一个id....还有就是好像没法记录用户的注册时间了....这样好像没法确定注册的先后顺序，确认谁先注册一个用户名了.....<br><br><font size="5"><b>防止恶意注册</b></font><br><br>然后一点，如果采用了上面那个“在每个客户端存储所有用户列表”的选择，那么如果出现大量的恶意注册用户就麻烦了，所以看来还是（2）（不在每个客户端存储完整的用户列表）好一点，这样长时间不活跃的、疑似恶意用户的，可以把他们从用户列表缓存中删掉嘛，当大多数人这么做的时候，这个用户就被大家删掉了......<br><br>可以参考比特币的一种模式，被他们称为“工作量证明机制”，（拿到零毫秒3.0上面来说）就是在注册用户的时候，要求提供一个（计算力量的）担保，使加上这个担保后的数据包的散列值的前N位为0，从而人为的提高注册账号的成本。<br>但是不同客户端的计算能力差距很大，CPU和GPU的计算能力差距也很大，这个N实在不好确定，太低了，注册用户的成本还是不够高，太高了，对于一部分电脑比较烂的用户会造成麻烦。<br><br>另外一个事实决定了零毫秒3.0这样一个即时通讯网络并不适合比特币这种机制，因为比特币的本质是电子货币，它本身有一种机制（产生新货币）来激励用户为网络做贡献而不是破坏。因为一般情况下，利用计算力量为网络做贡献的收益大于对网络进行攻击，所以不会有人试图去攻击比特币的网络。<br>但是零毫秒缺乏这样的奖励机制，还有什么比钱（电子货币）更有激励作用呢？如果只是一个“贡献值”......攻击者才不会对这个数值感兴趣呢。<br>这一点还要依靠建立一种自己的信用评估机制（以后再说）.<br><br>所以还是要采用上面（2）（不在每个客户端存储完整的用户列表）这个机制好一点，至少不用担心恶意注册用户了（长时间不活跃的、疑似恶意用户的，可以把他们从用户列表缓存中删掉嘛，当大多数人这么做的时候，这个用户就被大家删掉了......）。<br><br><font size="5"><b>修改和删除注册信息</b></font><br><br>上面的机制中，（1）缺乏修改注册信息（用户名）的机制<br>而（2）因为无法确定注册信息先后，会导致可以任意修改，导致数据不同步（一个用户名指向多个ID，多个用户名指向一个ID）<br>其实在（1）中，可以增加一个“有效期”的字段，并不是很复杂，但是如果允许修改用户的话，那么用户名就不能唯一标识一个用户了（其实（2）也有这个问题），总不能用2048bit(324Byte)的公钥来做用户的唯一标识吧<br><br><font size="5"><b>投票</b></font><br><br>一个注册是否有效，要通过大家投票来确定。最简单的方法就是，收到这个广播之后，如果认可，就存储起来并向其他节点转发，如果不认可就直接丢弃。<br>但是这样还有一个问题，最先收到广播的客户端似乎在投票中拥有更大的权重.......<br>对于方案（1）来说，因为有完整的历史记录，校验有效性很简单<br>但是对于（2）来说....校验一个注册是否有效就有点复杂了......这种情况下，最先收到广播的客户端拥有更大的权重的问题就更明显了。<br><br><font size="5"><b>总结</b></font><br><br>（1）的问题：<br>磁盘占用会越来越多，需要抵御用户的而已注册，长期不活跃用户、恶意注册用户无法从用户列表中移除<br>（2）的问题：<br>因为没法判断注册信息的时间顺序，在校验注册有效性上很困难。同样因为没法判断注册信息的时间顺序，用户名和ID的对应关系很容易混乱<br><br><b>ps.这篇文章就是一个探讨，把我的思考过程都写出来了，但是并没有得出一个结论，欢迎大家探讨</b></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-05-04 22:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+去洗澡了先占个位待会儿回来看.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>dditty</b></td>
+<td align="right" class="smalltxt">2012-05-04 22:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+Geekkk.com看过，应该是个不错的构思！</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxy</b></td>
+<td align="right" class="smalltxt">2012-05-05 12:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+第一种虽有“垃圾信息”，可是现在的电脑也不差这点空间，那总比把用户都给搞乱了好吧？一个ID对应N个用户，那岂不得乱了？！<br><br>还是中心化好办多了，要去中心化至少也得有一定用户规模吧？个人觉得。<br><br>这2个东西我越看越乱......</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-05 15:41</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=scxy" target="_blank">scxy</a><span style="color:gray ">:</span>第一种虽有“垃圾信息”，可是现在的电脑也不差这点空间，那总比把用户都给搞乱了好吧？一个ID对应N个用户，那岂不得乱了？！<br>还是中心化好办多了，要去中心化至少也得有一定用户规模吧 ..<span style="color:gray "> (2012-05-05 12:46) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1030&amp;pid=6117" target="_blank" ></a><br></div></blockquote><br>.....不差这点空间？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-06 21:09</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=scxy" target="_blank">scxy</a><span style="color:gray ">:</span>第一种虽有“垃圾信息”，可是现在的电脑也不差这点空间，那总比把用户都给搞乱了好吧？一个ID对应N个用户，那岂不得乱了？！<br>还是中心化好办多了，要去中心化至少也得有一定用户规模吧 ..<span style="color:gray "> (2012-05-05 12:46) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1030&amp;pid=6117" target="_blank" ></a><br></div></blockquote><br>关键是这个空间是只增不减的，到什么时候都是隐患啊....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-06-23 08:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 打酱油路过 完全没看帖子</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-23 10:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=outman" target="_blank">outman</a><span style="color:gray ">:</span>[表情] 打酱油路过 完全没看帖子<span style="color:gray "> (2012-06-23 08:05) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1030&amp;pid=6570" target="_blank" ></a><br></div></blockquote><br>确实写的比较乱，针对这个问题，现在已经想出成熟的解决方案了，过一段时间再发贴....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zzh8829</b></td>
+<td align="right" class="smalltxt">2012-06-23 21:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+你这计划太乱了啊 咱们先模拟一下...<br><br>我注册了一个账户<br>你注册了一个账户<br><br>然后我广播出去 你收到了 你的列表里就有我了 我列表里也有你<br>那我要特恨你 把你删了&nbsp;&nbsp;然后恨你的人还特别多.. 大家都把你删了<br>那你的帐号是不是就被当作垃圾帐号处理掉了........ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-23 21:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=zzh8829" target="_blank">zzh8829</a><span style="color:gray ">:</span>你这计划太乱了啊 咱们先模拟一下...<br>我注册了一个账户<br>你注册了一个账户<br>.......<span style="color:gray "> (2012-06-23 21:34) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1030&amp;pid=6578" target="_blank" ></a><br></div></blockquote><br>好吧，我讲一下我最新的解决方案，最新的解决方案很简单.关键问题是如何区分注册的先后顺序<br> <br>注册者决定注册一个用户名后，开始随机向其他人查询这个用户名是否已经存在，等到询问到足够多的用户时，按照少数服从多数的原则，判断这个用户名是否已经存在。如果已经存在，就需要更换其他用户名来注册了。因为这里是随机的向其他人询问，所以除非攻击者控制了网络中的多数节点，否则是没法干扰结果的。<br> <br>当发现这个用户名没有被其他人注册后，就可以注册这个用户名了。注册者需要尽可能多的向其他人宣告“我要定这个用户名了！”,总之一定要尽可能多地通知其他用户，让它们知道你注册了这个用户名。而之后随着你使用一段时间零毫秒，与你相关的信息会大量的存在于网络中，这样所有的人就都知道你了。<br> <br>但是这里还有个问题，就是如果攻击者收到注册者的第一遍查询后，立刻自己去注册这个用户名怎么办。所以我们规定，所有客户端要在收到“我要定这个用户名了！”的宣告之后24小时才承认这个用户名属于这个用户.这样的话如果有两个人试图在24小时内注册同一个用户名，就都会因为信息混乱而被退回.只要大多数人遵守这个规则，那么就不会出现攻击者抢先注册的情况。<br> <br>当然这里还有一个问题，就是攻击者可以每隔几个小时就注册一遍这个用户名，让真正想要注册的人无法注册.这个恐怕没啥有效的办法来解决了，因为没有人能区分究竟是谁真正需要这个用户名.但是我们可以引入信用机制，如果你觉得自己受到的类似这样的恶意的攻击，你可以向其他人发起封杀攻击者的提议，如果大多数人都同意了这个提议，那么攻击者就会被排除在网络之外了.<br>因为每一个消息都是有数字签名的，所以你只需要把攻击者发出的恶意注册的数据包作为证据提供给别人就行。其他用户只需要计算一下签名就可以知道这些数据包是否是攻击者发出的.<br> <br>-----------<br>总之：关键就是，所有决定都要让大多数人来做决定，除非攻击者控制了大多数人，否则无法达成攻击的目的.<br> <br>------------<br>`然后我广播出去 你收到了 你的列表里就有我了 我列表里也有你`<br>你理解有错误，这里的注册是把用户id绑定到一个用户名上的过程<br> <br>------------<br>`那我要特恨你 把你删了&nbsp;&nbsp;然后恨你的人还特别多.. 大家都把你删了`<br> <br>确实是这样，决定都是由大多数人作出的....所以如果大多数人要排斥你，那也没办法<br> <br> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-23 21:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+这篇帖子很乱了，有空我还要汇总一下，出一个新版本</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-23 22:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=scxy" target="_blank">scxy</a><span style="color:gray ">:</span>第一种虽有“垃圾信息”，可是现在的电脑也不差这点空间，那总比把用户都给搞乱了好吧？一个ID对应N个用户，那岂不得乱了？！<br>还是中心化好办多了，要去中心化至少也得有一定用户规模吧 ..<span style="color:gray "> (2012-05-05 12:46) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1030&amp;pid=6117" target="_blank" ></a><br></div></blockquote><br>`还是中心化好办多了，要去中心化至少也得有一定用户规模吧？个人觉得。`<br><br>确实，这个反感需要有一定数量的用户做基础，才能保证大多数人的决策是正确的决策<br><br>例如只有10个用户在用，那么攻击者可以一个人开20个账号来伪造“大多数人”的决定<br>当然，我会通过其他的一些手段尽可能阻止这种攻击行为</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>kevin</b></td>
+<td align="right" class="smalltxt">2012-06-26 19:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+建议安装时提醒用户选择，让他自愿参加此计划（M$都是这样的）。参加此计划的主机都写入一个列表Servers，按加入网络时间先后排序。用户列表Users（如果怕歧义随你）。列表分块打包！！不然你准备更新一次就600M？<br><br><br>普通用户：<br>##########################################################<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新Servers：从列表第一个主机开始尝试连接，更新Servers。5000ms超时后向主服务器jybox.net更新Servers（获取MD5进行比对，判断是否需要）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;验证用户存在：从列表第一个主机开始尝试连接，验证。<br>##########################################################<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装完成时：更新Servers<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;启动时： 更新Servers ，验证用户存在<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用时：验证用户存在<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册时：（必须软件注册！按你的方法需要计算成本）更新Servers（同上），在进行验证用户名，注册，报告Servers（所有发出请求：UDP吧，后台完成）。<br>##########################################################<br>Servers（控制适当数量）：<br>##########################################################<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新Servers：与普通用户相同<br>##########################################################<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装时： 更新Servers，向Servers、主服务器报告自身<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;启动时：更新Servers，向Servers、主服务器报告自身启动<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接到注册请求：验证是否存在，从列表第一个主机开始尝试连接，验证其他主机是否收到请求（得到一定数目肯定回应后中止）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接到登陆请求：验证自身数据库中是否存在。（向其他随机若干个主机发送请求，只发送一次（其他主机不再发送，避免死循环）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关闭时：向Servers、主服务器报告自身关闭<br><br>乱写的，暑假说。<br>你还是需要一个中心服务器，但只管理一部分主机。<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>kevin</b></td>
+<td align="right" class="smalltxt">2012-06-26 19:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我第一个C++应用就试试这个，考完了弄</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-26 21:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=kevin" target="_blank">kevin</a><span style="color:gray ">:</span>我第一个C++应用就试试这个，考完了弄<span style="color:gray "> (2012-06-26 19:49) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1030&amp;pid=6602" target="_blank" ></a><br></div></blockquote><br>好久不见....话说零毫秒3.0的设计还没搞定呢</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.052134 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

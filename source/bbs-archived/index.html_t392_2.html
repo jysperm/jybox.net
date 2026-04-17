@@ -1,0 +1,381 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>总结一下大家给我的建议，大家讨论一下哪些有必要采纳|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒" />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,总结一下大家给我的建议，大家讨论一下哪些有必要采纳,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t392.html">总结一下大家给我的建议，大家讨论一下哪些有必要采纳</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center><a href="index.html_t392.html">&lt;&lt; </a> <a href=index.html_t392.html>&nbsp;1&nbsp;</a>&nbsp;&nbsp;<b>2</b>&nbsp;  <a href=""index.html_f392_2.html""> &gt;&gt;</a> &nbsp;Pages: ( 2 total )</center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-27 23:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>总结一下大家给我的建议，大家讨论一下哪些有必要采纳</h1>
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>不可能了，它没SQL...根本不行<br>mongodb适用于极大量数据，但事实上消息记录的数据并不多<br>而且在我的设计里，数据库只存最近一两个月的，其他导出到文件，或者到其他数据库<span style="color:gray "> (2011-10-27 22:56) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2024" target="_blank" ></a><br></div></blockquote><br>小量数据mongodb也比sql表现好的，参见<br><a href="http://wenku.baidu.com/view/efc645e8856a561252d36fe6.html" target="_blank" >http://wenku.baidu.com/view/efc645e8856a561252d36fe6.html</a><br><a href="http://zhidao.baidu.com/question/323822592.html" target="_blank" >http://zhidao.baidu.com/question/323822592.html</a><br><a href="http://www.iteye.com/topic/990585" target="_blank" >http://www.iteye.com/topic/990585</a><br>人家是NoSQL啊！！！！！！！！！！！！<br>=============================================<br>聊天记录其实很多的，我个人和某同学一个月短信就能有3000+<br>再算上所有用户，你懂的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-27 23:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+其实你看过的话就会发现很多nosql的语句都比sql简单不少</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-27 23:26</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+比如python下的mongodb，在取得表对象（table）之后，只要这样<br>&nbsp;&nbsp;&nbsp;&nbsp;datas = {<br>&#39;name&#39;:&#39;whtsky&#39;, <br>&#39;birth&#39;:1997,<br> &#39;hobby&#39;:&#39;computer<br>}&nbsp;&nbsp;#这是python的字典类型<br>&nbsp;&nbsp;&nbsp;&nbsp;table.save(datas)<br><br>就能插入一条数据啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-27 23:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+再比如Google的BigTable，同样一个NoSQL：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mop = Mop(name=username,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pword=password,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owner=users.get_current_user(),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time=dktime)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mop.put()<br>很明显比SQL简单啊（上面这段是从我写的一个猫扑自动打卡的小程序里摘出来的。。）</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-27 23:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+还有，协议开源是指二次开发的，单纯使用数据库不受协议限制<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-27 23:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>1.你本来就开放源代码<br>2.坑爹，他就不是SQL啊！！！！！！！！！！！！人家是NoSQL！！！！！！<br>你当是GAE啊还给你搞个GQL！！！！！！！！！！！<br>3.略过<br>.......<span style="color:gray "> (2011-10-27 23:17) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2027" target="_blank" ></a><br></div></blockquote><br>又核实了一下，使用MongoDB的程序(即使用了MongoDB驱动的程序)即使不改MongoDB，也要使用Apache协议。我当然不在乎，但是第三方开发者呢<br>我可以很明确的说，离了SQL我没法玩......QT有N多类可以更方便的操作数据库，包括类似MongoDB的方法。而使用了MongoDB，就没法使用QT的这些功能。虽然你说MongoDB方便，但使用MongoDB会失去很多选择的余地<br><br>才3000？算不得大量，起码得过亿啊...<br><br>还是之前的问题，如果用MongoDB，除非为他单独写代码，否则就要放弃对QT支持的十多种数据库的支持</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-27 23:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>还有，协议开源是指二次开发的，单纯使用数据库不受协议限制<br>内容来自[手机版] <span style="color:gray "> (2011-10-27 23:32) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2032" target="_blank" ></a><br></div></blockquote><br>感觉这个问题上你过于极端了<br>没必要要求这么高的效率，其他地方浪费的效率远比这里多得多</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-27 23:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我一个人3000.两个月6000.算上用户数量…sql会无比悲剧。而且nosql已经比sql简单很多了。关于apache协议那事很奇怪，因为apache协议允许二次开发闭源和换协议的，关于强制apache协议…有官方说明什么的嘛…<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-28 00:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+在大数据量上单次查询都能比sql快几秒…你要想到用户，我们看个聊天记录等那么久伤感情吧？而且mongodb在这方面确实比sql好很多。mysql和sqlite在大数据面前表现都很差。写个函数封装一下就好了吧。转不了多少格式的。睡了。<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-28 00:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+还有搞中间方案，我写qt你写mg的，反正我离不开sql。没关系，这不需要太多时间的，一共也没几行代码，可以我先写，你按我的翻译。另外，这部分估计会等到寒假开工。0.1是不含这个部分的。另外，貌似相比这个，确定通讯协议更紧迫<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-28 12:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我真的不懂c++…难道用py重写？<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-28 19:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>我真的不懂c++…难道用py重写？<br>内容来自[手机版] <span style="color:gray "> (2011-10-28 12:19) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2044" target="_blank" ></a><br></div></blockquote><br>我离不开SQL，相信大多数开发者也是这样的<br><br>你一直在强调给用户选择，但是一旦使用MG，会失去很多选择（QT的一些类，以及QT支持的十多种数据库）.而且引入这样一个并不常用的类库，会很大程度上增加项目的复杂度<br><br>现在有几个解决方案，一个是你试着写MG版本<br>一个是我试着写MG的QT驱动，不过这玩意连sql都没，真不知道怎么写驱动</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-28 20:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情]我离不开SQL，相信大多数开发者也是这样的<br>你一直在强调给用户选择，但是一旦使用MG，会失去很多选择（QT的一些类，以及QT支持的十多种数据库）.而且引入这样一个并不常用的类库，会 ..<span style="color:gray "> (2011-10-28 19:37) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2048" target="_blank" ></a><br></div></blockquote><br>这货真的比SQL简单啊<br>使用QT不是为了限制自己的。。<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-28 20:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]这货真的比SQL简单啊<br>使用QT不是为了限制自己的。。<br><span style="color:gray "> (2011-10-28 20:15) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2051" target="_blank" ></a><br></div></blockquote><br>这样失去的选择太多了，不值得</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-28 21:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>这样失去的选择太多了，不值得<span style="color:gray "> (2011-10-28 20:39) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2053" target="_blank" ></a><br></div></blockquote><br>转一下格式又不会怀孕的说</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-28 22:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]转一下格式又不会怀孕的说<span style="color:gray "> (2011-10-28 21:52) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2055" target="_blank" ></a><br></div></blockquote><br>不是转格式的问题，那么多，你转的过来嘛</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-30 08:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>不是转格式的问题，那么多，你转的过来嘛<span style="color:gray "> (2011-10-28 22:53) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2057" target="_blank" ></a><br></div></blockquote><br>用户名QString，聊天记录QString，时间long int，还有什么。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-30 17:04</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]用户名QString，聊天记录QString，时间long int，还有什么。。<span style="color:gray "> (2011-10-30 08:19) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=2089" target="_blank" ></a><br></div></blockquote><br>我想把记录集转为QT专有的记录集格式，...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-30 14:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+1.<br>这个叫“牺牲”？当成白花时间的义务劳动了？<br>2.<br>SNS？先老实做好IM再说吧。<br>竞争力？最终用户？能吃么。。抢了腾讯的市场才叫成功？<br>itunes？可比性在哪？<br>关注小白用户=关心最终用户的使用体验？就非得惯着小白用户而不是激发他们的潜能么？<br>3.<br>开发效率远比运行效率重要的多……你到底对自己的技术多没自信才会考虑这个？<br>不考虑运行效率用户体验能好到哪里去？<br>4.<br>捐赠？没个富二代，等着喝西北风吧。<br>5.<br>纯属蛋疼。<br>6.<br>有些宏inline和const代替不了。<br>另外对于constexpr还好说，有的地方就算看起来能改成const，最后还得反过来用宏。<br>不过这个对于一开始就用C++写的程序来说问题不大。<br>7.<br>只是吐槽一点：Qt的“原生”界面是模拟的……虽然效果不错。<br>8.<br>源代码开头加版权信息是常识。二次分发显然不见得得考虑你的代码出处让人找得到版权信息，除非你用一个授权协议强制规定分发者这样做。<br><br>SQL在不完全要求ACID的地方迟早会成为非主流的过时技术。看着办吧。<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2011-12-30 20:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+无视楼上，我可不知道他们有没有说我的观点。（没看）<br>我觉得运行效率和用户体验是紧密联系的。这要看你们的发展方向。现在用老电脑的很多，如果你们主战windows,我觉得这个运行效率和用户体验可以并在一块（谁想卡个几分钟的，不恼火死）</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-30 20:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=幻の上帝" target="_blank">幻の上帝</a><span style="color:gray ">:</span>1.<br>这个叫“牺牲”？当成白花时间的义务劳动了？<br>2.<br>SNS？先老实做好IM再说吧。<br>竞争力？最终用户？能吃么。。抢了腾讯的市场才叫成功？<br>.......<span style="color:gray "> (2011-12-30 14:25) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=392&amp;pid=3419" target="_blank" ></a><br></div></blockquote><br>谢谢，收下了<br><br>这个帖子有些时间了<br>其中有些我们得出和你差不多的结论</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xttyctl9</b></td>
+<td align="right" class="smalltxt">2012-01-04 12:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.052981 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

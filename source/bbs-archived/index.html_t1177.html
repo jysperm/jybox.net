@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>表示经过多天到研究，终于写好了预编译器|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  RT作用是把指定的汇编源码中的所有中文变量自动识别并替换成对应的英文变量，且为了提高效率，在运行结束后会把目前识别到的所有中文变量和自动生成的英文变量储存到文件里，方便下次 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,表示经过多天到研究，终于写好了预编译器,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1177.html">表示经过多天到研究，终于写好了预编译器</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-08-11 18:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>表示经过多天到研究，终于写好了预编译器</h1>
+RT<br>作用是把指定的汇编源码中的所有中文变量自动识别并替换成对应的英文变量，且为了提高效率，在运行结束后会把目前识别到的所有中文变量和自动生成的英文变量储存到文件里，方便下次调用。目前测试无问题。<br>ps1：昨天群里的有人说可以用正则表达式解决，或许这会是个好方法，但实在不想放弃写了这么久的东西<br>ps2：这个东西已经被我一怒之下重写了两次源码，现在发出的版本是贯彻”一个函数不应该超出一个屏幕“的中心思想解决的，这种方法的确很方便调试，但由于我图方便，用的全是全局变量，所以可读性绝对很差<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>#include &lt;iostream&gt;<br>#include &lt;string&gt;<br>#include &lt;fstream&gt;<br>#include &lt;cctype&gt;<br>using namespace std;<br>void addrecord();<br>bool ischinese(char a);<br>void ifisnew(int j);<br>void autoreplace();<br>void donew();<br>void doold(int j);<br>void addcn();<br>void writeinrp();<br>void writeinfile();<br>void newreplace();<br><br>//伟大的全局变量<br>ifstream set(&quot;set.ini&quot;),file;<br>ofstream ofile;<br>string a;<br>bool isnew=0;<br>int i=0,j=0;<br>int filei=0,filej=0;<br>int temp=0;//杂七杂八的int变量<br>int strstart=0;<br>int savej=0;<br>int stringsize,tempj;<br>string stringtemp(&quot;啊&quot;);<br>int chsize=stringtemp.size();//用来了解一个汉字的字节长度<br>char newname[20];<br>bool inaddmode=0;//用来判断是否处于自动截取中文状态<br>struct yoxi{<br>&nbsp;&nbsp;&nbsp;&nbsp;string ch;<br>&nbsp;&nbsp;&nbsp;&nbsp;string en;<br>}*rp;<br>string *rfile;<br>yoxi *newrp;//用来暂存新的rp<br>//伟大 的全局变量<br><br>int main(int argc,char* argv[]){<br>&nbsp;&nbsp;&nbsp;&nbsp;stringtemp=&quot;&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;while(!set.eof()){++i;getline(set,a);}//看文件有多少行<br>&nbsp;&nbsp;&nbsp;&nbsp;--i;<br>&nbsp;&nbsp;&nbsp;&nbsp;set.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;set.seekg(ios::beg);<br>&nbsp;&nbsp;&nbsp;&nbsp;rp=new yoxi[i];<br><br>&nbsp;&nbsp;&nbsp;&nbsp;for(;j&lt;i;++j){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&gt;&gt;rp[j].ch;//中文<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&gt;&gt;rp[j].en;//英文&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;set.close();<br><br>&nbsp;&nbsp;&nbsp;&nbsp;file.open(argv[1]);<br>&nbsp;&nbsp;&nbsp;&nbsp;filei=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;while(!file.eof()){++filei;getline(file,a);}//看文件有多少行<br>&nbsp;&nbsp;&nbsp;&nbsp;--filei;<br>&nbsp;&nbsp;&nbsp;&nbsp;file.clear();<br>&nbsp;&nbsp;&nbsp;&nbsp;file.seekg(ios::beg);<br>&nbsp;&nbsp;&nbsp;&nbsp;rfile=new string[filei];<br>&nbsp;&nbsp;&nbsp;&nbsp;for(filej=0;filej&lt;filei;++filej){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getline(file,rfile[filej]);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((temp=rfile[filej].find(&quot;;&quot;))!=string::npos){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]=rfile[filej].substr(0,temp);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;file.close();<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;for(filej=0;filej&lt;filei;++filej){<br>&nbsp;&nbsp;&nbsp;&nbsp;//首先替换set.ini中已有的记录<br>&nbsp;&nbsp;&nbsp;&nbsp;autoreplace();<br>&nbsp;&nbsp;&nbsp;&nbsp;savej=j;<br>&nbsp;&nbsp;&nbsp;&nbsp;//然后开始寻找并添加新中文<br>&nbsp;&nbsp;&nbsp;&nbsp;addcn();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;string b=&quot;temp/&quot;+(string)argv[1];<br>&nbsp;&nbsp;&nbsp;&nbsp;ofile.open(b.c_str());<br>&nbsp;&nbsp;&nbsp;&nbsp;for(filej=0;filej&lt;filei;++filej){//改完后就该写入了<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ofile&lt;&lt;rfile[filej]&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;ofile.close();<br>&nbsp;&nbsp;&nbsp;&nbsp;delete [] rfile;<br>&nbsp;&nbsp;&nbsp;&nbsp;delete [] rp;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>return 0;<br>}<br><br>void addrecord(){<br>&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;&quot;inad&quot;;cin.get();<br>&nbsp;&nbsp;&nbsp;&nbsp;writeinrp();//内存中的数组所做的工作<br>&nbsp;&nbsp;&nbsp;&nbsp;writeinfile();//写入文件<br>&nbsp;&nbsp;&nbsp;&nbsp;inaddmode=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;newreplace();//再次替换<br>}<br><br>void newreplace(){<br>&nbsp;&nbsp;&nbsp;&nbsp;stringtemp=rfile[filej];<br>&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;rfile[filej]&lt;&lt;&quot;\ntst&quot;;cin.get();<br>&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]=&quot;&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;while((temp=stringtemp.find(rp[savej].ch.c_str()))!=string::npos){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ifisnew(savej);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isnew){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;stringtemp&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(ischinese(stringtemp[temp])){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((++temp)==stringtemp.size()){break;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]+=stringtemp.substr(0,temp);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;&quot;new\n&quot;&lt;&lt;rfile[filej]&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringtemp=stringtemp.substr(temp);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;stringtemp&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;donew();continue;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringtemp.replace(temp,rp[savej].ch.size(),rp[savej].en);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;&quot;old\n&quot;&lt;&lt;stringtemp&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]+=stringtemp.substr(0,temp+rp[savej].en.size());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;rfile[filej]&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringtemp=stringtemp.substr(temp+rp[savej].en.size());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;stringtemp&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doold(savej);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]+=stringtemp;<br>&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;rfile[filej].size()&lt;&lt;endl&lt;&lt;stringsize;cin.get();<br>&nbsp;&nbsp;&nbsp;&nbsp;tempj-=(stringsize-rfile[filej].size());<br>&nbsp;&nbsp;&nbsp;&nbsp;stringsize=rfile[filej].size();<br>&nbsp;&nbsp;&nbsp;&nbsp;++savej;<br>&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;&quot;end\n&quot;;<br>}<br><br>bool ischinese(char a){<br>&nbsp;&nbsp;&nbsp;&nbsp;return (!(a&gt;=0&amp;&amp;a&lt;=127));<br>}<br><br>void ifisnew(int j){<br>&nbsp;&nbsp;&nbsp;&nbsp;isnew=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;if(temp==0&amp;&amp;temp+rp[j].ch.size()==stringtemp.size()){return;}<br>&nbsp;&nbsp;&nbsp;&nbsp;if(temp==0){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;&quot;goopd\n&quot;&lt;&lt;stringtemp[temp+rp[j].ch.size()];cin.get();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ischinese(stringtemp[temp+rp[j].ch.size()]))isnew=1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;else{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((temp+rp[j].ch.size())==stringtemp.size()){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ischinese(stringtemp[temp-1]))isnew=1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ischinese(stringtemp[temp-1])||ischinese(stringtemp[temp+rp[j].ch.size()]))isnew=1;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br><br>void autoreplace(){<br>&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;i;++j){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//for(filej=0;filej&lt;filei;++filej){//一行为单位<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringtemp=rfile[filej];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]=&quot;&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while((temp=stringtemp.find(rp[j].ch))!=string::npos){//若并非找不到<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;&quot;temp:&quot;&lt;&lt;temp&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ifisnew(j);//要先知道它是不是一个新字符串<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isnew){donew();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;stringtemp&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doold(j);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;stringtemp&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]+=stringtemp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br><br>void donew(){<br>&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;&quot;new\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;while(ischinese(stringtemp[++temp]));<br>&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]+=stringtemp.substr(0,temp);//cout&lt;&lt;rfile[filej]&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;stringtemp=stringtemp.substr(temp);//cout&lt;&lt;stringtemp&lt;&lt;endl;<br>}<br><br>void doold(int j){<br>&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;&quot;old\nstringtemp:&quot;&lt;&lt;stringtemp&lt;&lt;endl&lt;&lt;temp+rp[j].ch.size()&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;stringtemp.replace(temp,rp[j].ch.size(),rp[j].en);<br>&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;stringtemp&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;rfile[filej]+=stringtemp.substr(0,temp+rp[j].en.size());<br>&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;rfile[filej]&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;stringtemp=stringtemp.substr(temp+rp[j].en.size());<br>}<br><br>void addcn(){<br>&nbsp;&nbsp;&nbsp;&nbsp;//for(filej=0;filej&lt;filei;++filej){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringsize=rfile[filej].size();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(tempj=0;tempj&lt;stringsize;++tempj){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(rfile[filej][tempj]==&#39;;&#39;){break;}//遇到注释标记直接跳出循环<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!inaddmode){//如果不是在截取中文模式<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ischinese(rfile[filej][tempj])){//假如是英文和数字以外的字符（也就是中文了）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strstart=tempj;//这个变量用来储存中文字符串的开始位置<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inaddmode=1;//进入截取中文状态<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else{//若在截取中文模式<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!ischinese(rfile[filej][tempj])){//且遇到英文的<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addrecord();//提高可读性，一个函数解决<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;&quot;whatthefuck&quot;&lt;&lt;rfile[filej]&lt;&lt;endl&lt;&lt;tempj;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//还有一种情况，当循环结束但还是处于截取中文模式，就说明这段中文直到末尾<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(inaddmode){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addrecord();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cout&lt;&lt;&quot;whatthefuck2&quot;&lt;&lt;rfile[filej];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;//}<br>}<br><br>void writeinfile(){<br>&nbsp;&nbsp;&nbsp;&nbsp;++i;<br>&nbsp;&nbsp;&nbsp;&nbsp;ofile.open(&quot;set.ini&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;i;++j)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ofile&lt;&lt;rp[j].ch&lt;&lt;&quot; &quot;&lt;&lt;rp[j].en&lt;&lt;endl;<br>&nbsp;&nbsp;&nbsp;&nbsp;ofile.close();<br>}<br><br>void writeinrp(){<br>&nbsp;&nbsp;&nbsp;&nbsp;newrp=new yoxi[i+1];<br>&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;i;++j){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newrp[j]=rp[j];<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;delete []rp;<br>&nbsp;&nbsp;&nbsp;&nbsp;newrp[i].ch=rfile[filej].substr(strstart,tempj-strstart);<br>&nbsp;&nbsp;&nbsp;&nbsp;sprintf(newname,&quot;a%d&quot;,i+1);<br>&nbsp;&nbsp;&nbsp;&nbsp;newrp[i].en=newname;<br>&nbsp;&nbsp;&nbsp;&nbsp;rp=newrp;<br>}</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-11 18:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+用C写这个该是有多么蛋痛啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-08-11 19:03</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>用C写这个该是有多么蛋痛啊<span style="color:gray "> (2012-08-11 18:25) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1177&amp;pid=7168" target="_blank" ></a><br></div></blockquote><br>是C++</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-08-11 19:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+用bison+flex自动生成多好。。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-11 21:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=outman" target="_blank">outman</a><span style="color:gray ">:</span>是C++<span style="color:gray "> (2012-08-11 19:03) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1177&amp;pid=7169" target="_blank" ></a><br></div></blockquote><br>明明是C风格</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.048534 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

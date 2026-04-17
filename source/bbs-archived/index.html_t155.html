@@ -1,0 +1,351 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>关于右手(全中文操作系统)的一点YY|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  先给某些不明真相的围观群众一点解释 &quot;右手&quot;是我,ABreto、迪迦构想的一个全中文的操作系统，目前还在YY阶段 引为什么会发这个？今天找UBuntu下的第三方QQ客户端，找到一个名为myqq的控 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,关于右手(全中文操作系统)的一点YY,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t155.html">关于右手(全中文操作系统)的一点YY</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-30 01:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>关于右手(全中文操作系统)的一点YY</h1>
+先给某些不明真相的围观群众一点解释<br> <br>&quot;右手&quot;是我,ABreto、迪迦构想的一个全中文的操作系统，目前还在YY阶段<br> <br><font size="5">引</font><br>为什么会发这个？今天找UBuntu下的第三方QQ客户端，找到一个名为myqq的控制台版QQ，开源而且跨平台的，主要是C代码，少量C++，下载后编译通过，还不错。<br>内存不到1MB，挂一个小时，CPU占用时间不到10秒钟。看来搞完VPS之后可以用它做QQ代挂啊..<br> <br>再查一查myqq的作者，叫xiaoxia，据说是一个高三学生，而且他也写了个操作系统，叫SGOS，也是开源的，下载后简单的看了一下，代码量不大，但已经非常完整了，包括GUI<br> <br><font size="5">正文</font><br><font size="2">下面就是对右手的YY了，首先，我们那时候YY过，要做中文硬件神马的，估计希望实在不大。我觉得比较可行的方案就是用传统(汇编和C，C++就不用了，太高级了)的代码构造一个底层，这个底层要做个和将来的中文硬件一样功能，由它来启动一个真正的中文操作系统内核。</font><br><font size="2"><br></font><br><font size="2">为了实现中文内核，这个底层的量需要把握的好一点，要让中文内核高性能的运行，又不要去抢内核的功能。要尽量把这个底层写的小一点。<br></font><br><font size="2"><br></font><br><font size="2">另外，SGOS发明了一种叫BXML的数据结构，也就是二进制XML，SGOS的应用程序也是用这种数据结构的(详情可以看他们的文档)<br></font><br><font size="2">简单说就是使用XML的结构，但是储存的数据都是二进制的<br></font><br><font size="2">这个实在是让我眼前一亮....真的是不错的创意，非常不错啊。这样就让二进制文件有了可扩展性和可读性(这种可读性是不影响需要保密的内容的)<br></font><br><font size="2">我觉得右手也应该采用类似的结构<br></font><br><font size="2"><br></font><br><font size="2">另外，我以为Windwos把GUI做到了内核级别，Linux主要是把网络做到了内核级别。那么，右手很显然，两个都要做到内核级别，至于什么是内核级别，往下看。网络不用说，现在基本上是纯网络的时代了，windows不把网络做到内核级别就是因为比尔当时对网络的轻视，而LInux正是因为这样才做到了高效率，占领了大部分的网络服务器<br></font><br><font size="2">至于GUI，我觉得一个新的操作系统想要推广，GUI是必不可少的，虽然在初期阶段，程序员才是用户，但是大多程序员都是有轻视别人的作品的习惯，除非是特别有名气的人。所以也要对GUI有良好的支持，把用户群体瞄准计算机爱好者，而不止是程序员。但是GUI的支持还是要把握一个度，这样才能实现高性能(才能用于服务器)，最好能提供卸载和安装GUI的功能，能做到动态(运行时卸载/安装)就更好了<br></font><br><font size="2"><br></font><br><font size="2">驱动，这是受SGOS和linux、Android的启发。在SGOS中，只有几个关键的模块属于内核，比如内存管理和进程调度，其他的(包括所有驱的动)都算是系统进程，这样保证了系统的稳定性，即使驱动错误也不影响内核。而Linux也差不多，而且提供了运行时加载内核。这都是非常不错的主意<br></font><br><font size="2">再说Android，ANdroid给人的感觉就是非常易用，而且又显得有技术含量，可扩展性很强。如官方所说，即使是拨号器、主屏幕、短信、输入法这样的程序都可以使用第三方的</font><font size="2">。<br>WIndwos在这方面做得非常不好，GUI只有一个选择。很多程序，比如资源管理器，估计99%的用户浏览文件都是用它，也不知道是因为windows的可扩展性太差，还是资源管理器真的很强大<br>右手也要吸取这些特点，提供运行时驱动的安装和卸载，尽量把大部分功能移到内核以外，并可以使用第三方程序<br></font><br> <br><font size="2">ubuntu在桌面领域比其他linux要强大得很，一个重要的原因是安装和配置软件方便，比如apt-get等一系列的软件安装工具。右手也要如此，有个官方软件库，可以方便的安装软件，只需输入名字即可。而且尽量要对小软件友好一点，门槛略低，但不要让垃圾软件进来。<br></font><br><font size="2">windows安装软件要选择目录，而linux则不必，我感觉linux显然要更好一点，首先就是安装和管理软件的方便程度，还因为有些软件为了避免没有运行库，往往会带着运行库，如果可以自己选择目录，那就会造成浪费，很可能一个运行库文件被复制了N个地方。而像LInux，把不同类别的文件(配置文件、运行库、数据文件、主程序)分类存放要更好一点。但是文件过于分散似乎也不太好，这会造成某些垃圾软件卸载不方便。所以我觉得把运行库文件混放在一起，而主程序、数据文件分别建立以程序名为文件名的目录储存比较好<br></font><br><font size="2">再说ANdroid，它的软件管理实在太方便了，这就是统一的好处。但一个操作系统，不可能像一个手机系统那么统一，但也要尽量<br></font><br><font size="2">除了官方库，显然还要有个离线的安装方式，右手的这种软件包要做到像android的apk一样方便.....<br></font><br><font size="2"><br></font><br><font size="2">文件扩展名，linux是不区分文件扩展名的。但我觉得这样可能不太友好，无法快速的从文件名判断文件类型。右手是一个中文操作系统，显然&quot;主程序.程序&quot;这样的命名并不是什么好主意，所以我觉得使用一些符号作为文件名的结尾，大致判断文件类型(比如二进制程序、二进制库文件、二进制数据文件、文本配置文件、文本数据文件)更好些，而具体的文件类型则在文件里面。而文件的结构前面也提了，用那种BXML是个不错的选择，反正这是全中文操作系统，估计大部分标准的文件格式都不符合我们的要求，索性都不支持吧<br></font><br><font size="2"><br></font><br><font size="2">网络，现在的网络显然不符合我们全中文的要求，我觉得这个可以和硬件问题一样处理，在现有的底层(硬件)网络基础上写一个模拟层，模拟出中文网络的硬件，然后在此之上启动中午网络。刚刚说的是底层，所以对于http这样高级的协议就不好意思了，果断不支持.....<br></font><br> <br> 暂时就这些吧，也不少了，如果转载的话连这段也复制进去吧，精英盒子(jybox.net)是首发</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>andy_saw</b></td>
+<td align="right" class="smalltxt">2011-08-30 01:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+1、<br>你以为， Windows把Gui做到了内核级别， 那么请问Mac是干嘛的。<br>你以为，Linux把Gui做到了内核级别，那请问FreeBSD是干嘛的。<br>2、<br>“这样就让二进制文件有了可扩展性和可读性(这种可读性是不影响需要保密的内容的)<br>”对于一个程序员而言，区分需要把什么写进需要保密或者是不保密的区域是个头疼的问题，不然的话单机游戏的销量也不会那么摧悲了<br><br>3、<br>至于网络，为什么各种各样不同的操作系统能够互相通讯，那是因为在通讯时底层都遵循TCP\IP的协议，但是这也不妨碍你在两台“右手”电脑间进行通讯，不过再这样弄就是大费周章了。<br><br>以上仅属个人观点。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>andy_saw</b></td>
+<td align="right" class="smalltxt">2011-08-30 02:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+另外,SMP OS很多方面都和PC OS不具有可比性，早期Andirod\Symbian下环境相对PC都苛刻得多，所以致使得其在各方面的运用都已经达到了极致，如果说软件的管理，其实我觉得PC没必要那么严格，os管多了反而不是好事，这对开发者来说会大大增大开发难度。<br>除非你像苹果那样，所有源码都过手。<br><br>另外，我个人觉得，要YY的话，应该是在OS API上，如果操作系统自带有强大的API，会使得程序都是以非常非常简单而又高效而又健壮、稳定的方式来制作，这应该才是开发者的福音，像object c那样。<br><br>其余的YY，硬件上需要的支持很大</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-30 09:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+对于一个程序员而言，区分需要把什么写进需要保密或者是不保密的区域是个头疼的问题，不然的话单机游戏的销量也不会那么摧悲了<br><br>我表示，这种BXML，只是使用的XML的结构，但二进制数据依旧是二进制数据</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2011-08-30 09:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+现在YY尚早</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2011-08-30 12:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+一点建议：<br>操作系统的目的就是让用户方便地使用计算机。用户才不会关心你的程序是怎么运转的，他们只是希望编辑自己的文档、玩玩自己喜爱的游戏……所以你的系统一定要兼容性好、稳定性好、安全性好，否则一切都是扯淡……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>andy_saw</b></td>
+<td align="right" class="smalltxt">2011-08-30 13:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+一点建议：<br>操作系统的目的就是让用户方便地使用计算机。用户才不会关心你的程序是怎么运转的，他们只是希望编辑自己的文档、玩玩自己喜爱的游戏……所以你的系统一定要兼容性好、稳定性好、安全性好，否则一切都是扯淡…… <br><br>是啊， 所以只需要你提供的接口强大~！</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-30 18:41</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+这点我提到了，要加强对GUI的支持，在初期就把用户瞄准计算机爱好者，而不止是程序员<br>兼容性这个问题貌似不存在，我们几乎不需要兼容什么<br>稳定性是必须的<br>游戏.............这个的难度实在太大，我们只能提供接口</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>andy_saw</b></td>
+<td align="right" class="smalltxt">2011-08-31 03:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+…………你可以为游戏开发者提供便利之处，以便于更高层次的开发工具诞生。<br><br>例如简化IO（实际是你自己封装好，然后作为API），简化图形（这个做起来有很大难度，但是以后可以由专人来处理），等等。。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-31 17:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我打算提供面向对象的API，形式上像QT，MFC那样。<br>因为很显然不会有人为右手制作这么强大的框架，所以我们要对开发者友好一点</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2011-09-03 14:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+GUI设计神码的……你要是需要……我这里有一套正在设计的完整操作系统GUI方案……<br>不过……<br>1、这货我是打算卖掉的……<br>2、这货在设计时完全没有考虑硬件问题……所以它对于硬件的要求比较高……（多点触摸操作，需要生物识别设备，需要联网）<br>3、你可能需要写一个自然语言识别程序……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-03 19:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+1.我依然打算定位为开源软件，另外这个目前确实是在YY阶段<br>2.生物识别？太科幻了把，网络是必须的。。。<br>3.这个没问题，我就是要设计新的编程语言，设计（而不是编写）工作很可能在近期完成</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason961125</b></td>
+<td align="right" class="smalltxt">2011-10-04 20:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  都闲的蛋疼。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-04 20:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=mason961125" target="_blank">mason961125</a><span style="color:gray ">:</span>[表情]  [表情] 都闲的蛋疼。<span style="color:gray "> (2011-10-04 20:34) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=155&amp;pid=1069" target="_blank" ></a><br></div></blockquote><br> YY无极限</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-06 22:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+linux桌面环境的开放导致的就是混乱…<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-10-17 22:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+今天重温此贴<br>想到了一个蛋疼的货<br>&nbsp;&nbsp;<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-10-18 21:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>今天重温此贴<br>想到了一个蛋疼的货<br>[表情] [表情] [表情] <br>[表情] 易语言[表情]<br>[表情] [表情] [表情]  <br>.......<span style="color:gray "> (2011-10-17 22:15) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=155&amp;pid=1677" target="_blank" ></a><br></div></blockquote><br>我们不会走易语言的覆辙，<br>那东西太dt了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-25 18:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第17楼dosbatch于2011-12-25 13:33发表的:<br>[表情] [表情] [表情] [表情] 无数介于骇客和黑客的人正热衷于易语言，另：SGOS？是什么？基于LINUX内核的OS?PS:世界上只有三大系统内核，不可改变的事实[s ..</div></blockquote>bsd.libux.nt？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-30 13:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=dosbatch" target="_blank">dosbatch</a><span style="color:gray ">:</span>[表情] [表情] [表情] [表情] 无数介于骇客和黑客的人正热衷于易语言，另：SGOS？是什么？基于LINUX内核的OS?PS:世界上只有三大系统内核，不可改变的事实[表情] [表情] <span style="color:gray "> (2011-12-25 13:33) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=155&amp;pid=3341" target="_blank" ></a><br></div></blockquote><br>图森破。<br>先不论平台，也不科普无内核设计的体系结构，osdev上过没。<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-30 13:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+骚年啊……开发人员需要的是SDK，API不过其中的一部分……<br>其它用户只需要UI，不需要API……<br>UI直接实现在内核里面么，○疼到什么境界了……<br>只能说图样了么。。。<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.049428 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

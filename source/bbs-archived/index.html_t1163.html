@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>关于Apache的itk工作模式|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  itk工作模块：http://mpm-itk.sesse.net/目前神马终端，也就是你看到的网页，就是在用它它的功能是让apache以不同的用户权限运行网站这一点你可以从http://whathost.tk/t.php 看到但是这家伙确实很大程度 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,关于Apache的itk工作模式,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1163.html">关于Apache的itk工作模式</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-03 03:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>关于Apache的itk工作模式</h1>
+itk工作模块：<a href="http://mpm-itk.sesse.net/" target="_blank" >http://mpm-itk.sesse.net/</a><br><br>目前神马终端，也就是你看到的网页，就是在用它<br>它的功能是让apache以不同的用户权限运行网站<br>这一点你可以从<a href="http://whathost.tk/t.php" target="_blank" >http://whathost.tk/t.php</a> 看到<br><br>但是这家伙确实很大程度上拖慢了速度，下面有一份资料表明它比Apache的prefork工作模块慢了五倍<br><blockquote class="blockquote3"><div class="text" style="padding:15px;">http://blog.stuartherbert.com/php/2008/04/19/using-mpm-itk-to-secure-a-shared-server/<br>To benchmark mpm-itk, I used Apache s ab benchmark to load a simple phpinfo() page 1,000 times. I ran the benchmark five times, and averaged the results.<br>mpm-itk: average of 37.01 seconds<br>mpm-prefork: average of 6.21 seconds<br>mpm-itk benchmarks much better than suexec and suphp, but is still quite a bit slower than mpm-peruser.</div></blockquote><br><br><br>比较有效的一个解决办法是用PHP的安全模式，它会按照所运行PHP脚本的UID来限制文件读写权限。<br>但是这并不是一个完美的解决方案，PHP也打算在将来版本中取消这个功能<br>比如，这样将导致PHP脚本无法读取一些系统文件，例如/proc/uptime之类的<br><br>另外，如果以wsgi模式运行python网站的话，那么还是要解决权限。<br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-08-03 03:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+还有个解决方案是SuExec，它可以让CGI以指定的用户权限运行，但是一旦这样，就必须使用CGI模式的PHP和Python<br><br><br><br>另外还发现PHP安全模式的一个问题，那就是很难统计和控制内存/CPU等资源的使用量，使用SuEXec和itk都可以通过限制用户的进程，来限制资源</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.048963 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

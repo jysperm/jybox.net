@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>C++中的class和struct.|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  有没有必要在C++代码里把class换成struct....貌似某高人说class里所有的变量都应该private... 我指的是你astar的代码...." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,C++中的class和struct.,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1079.html">C++中的class和struct.</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zzh8829</b></td>
+<td align="right" class="smalltxt">2012-06-10 07:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>C++中的class和struct.</h1>
+有没有必要在C++代码里把class换成struct....<br><br>貌似某高人说class里所有的变量都应该private... <br><br>我指的是你astar的代码....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-10 10:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+标题给你改了一下<br><br>class和struct的区别：<br>struct来自C语言，语义是一个结构体<br>class来自C++，语义是一个类<br>在C++中，他们的区别只有：class默认所有成员私有（private），struct默认所有成员公有（public）<br><br>---------------------------<br><br>“貌似某高人说class里所有的变量都应该private...”<br>这种说法应该算是正确的，这属于设计风格方面的，不必必须遵守<br>他的意思是，例如你的类里面有一个叫value的变量，例如：<br><br>class A<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;int value;<br>}<br><br>你把value设置成了公有，任何人都可以去修改它，而且什么时候value被修改了，类A本身并不知道<br>而且其他人（类）还可以把value设置成非法的值，例如如果value表示一个长度，那么负数对它来说就是非法值了<br><br>所以，（按照那位高人的观点）不应该把变量设置为public，你可以这样来解决：<br><br>class A<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;int getValue()<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return value;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;void setValue(int value)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(value &gt; 0)//判断值的有效性<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;value=value;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xxxxx();//还可以触发一些任务<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int value;<br>}<br><br>这样，可以在设置值的时候判断值的有效性、触发一些任务（如果需要的话），在获取值的时候也可以触发一些任务（如果需要的话）<br><br>----------------------------------------<br><br>当然，这不是规定，只是一些人的看法，我个人来讲还是同意这位高人的这个观点的<br>但是很显然，这种写法会让代码很复杂，所以通常来讲，我只有编写一些给别人用的库的时候，且需要检查取值有效性、触发任务的时候才会这么写<br><br>至于竞赛，快是比较首要的，顾不得那么多了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zzh8829</b></td>
+<td align="right" class="smalltxt">2012-06-10 21:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+class public: = 12 chars...|struct&nbsp;&nbsp;= 6 chars...|<br>速度提升50% </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-10 22:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=zzh8829" target="_blank">zzh8829</a><span style="color:gray ">:</span>class public: = 12 chars...|struct  = 6 chars...|<br>速度提升50% [表情]<span style="color:gray "> (2012-06-10 21:19) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1079&amp;pid=6428" target="_blank" ></a><br></div></blockquote><br>对编译器来说都一样，尤其是带优化器的<br><br>嗯...我的编译器有补全.....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2012-06-14 13:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>标题给你改了一下<br>class和struct的区别：<br>struct来自C语言，语义是一个结构体<br>class来自C++，语义是一个类<br>.......<span style="color:gray "> (2012-06-10 10:27) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1079&amp;pid=6411" target="_blank" ></a><br></div></blockquote><br>不止是成员，还有继承的访问权限也一样。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2012-06-14 13:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>对编译器来说都一样，尤其是带优化器的<br>嗯...我的编译器有补全.....<span style="color:gray "> (2012-06-10 22:02) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1079&amp;pid=6429" target="_blank" ></a><br></div></blockquote><br>访问权限在编译时检查以后就没了，不干预代码生成，和优化器不应该有关系。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.053848 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

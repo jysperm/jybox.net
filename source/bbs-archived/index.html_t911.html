@@ -1,0 +1,171 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>[转]自己写的一个智能指针类|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  什么是智能指针？传送门：http://baike.baidu.com/view/1391603.htm。然后直接上代码：#include stdexcept&gt; /*** Author: Abreto m@abreto.net&gt;***/template class T&gt;class GPointer{public:GPointer(void);GPointer(T);GPointer(T *);GPoint .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,[转]自己写的一个智能指针类,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t911.html">[转]自己写的一个智能指针类</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-02-03 12:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>[转]自己写的一个智能指针类</h1>
+什么是智能指针？传送门：<a href="http://baike.baidu.com/view/1391603.htm" target="_blank" >http://baike.baidu.com/view/1391603.htm</a>。<br>然后直接上代码：<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>#include &lt;stdexcept&gt;<br> <br>/**<br>* Author: Abreto &lt;m@abreto.net&gt;<br>*<br>**/<br>template &lt;class T&gt;<br>class GPointer<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;GPointer(void);<br>&nbsp;&nbsp;&nbsp;&nbsp;GPointer(T);<br>&nbsp;&nbsp;&nbsp;&nbsp;GPointer(T *);<br>&nbsp;&nbsp;&nbsp;&nbsp;GPointer(const GPointer&lt;T&gt; &amp;);<br>&nbsp;&nbsp;&nbsp;&nbsp;~GPointer();<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;T &amp; operator *(void);<br>&nbsp;&nbsp;&nbsp;&nbsp;const T &amp; operator *(void) const;<br>&nbsp;&nbsp;&nbsp;&nbsp;T * operator -&gt;(void);<br>&nbsp;&nbsp;&nbsp;&nbsp;const T * operator -&gt;(void) const;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;T * operator +(unsigned int);<br>&nbsp;&nbsp;&nbsp;&nbsp;const T * operator +(unsigned int) const;<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;T*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;size_t&nbsp;&nbsp;&nbsp;&nbsp; use;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;void inc_use(void);<br>&nbsp;&nbsp;&nbsp;&nbsp;void dec_use(void);<br>};<br> <br>template &lt;class T&gt;<br>void GPointer&lt;T&gt;::inc_use(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;use++;<br>}<br> <br>template &lt;class T&gt;<br>void GPointer&lt;T&gt;::dec_use(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( 0 == (--use) ) delete ptr;<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::GPointer(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ptr = new T;<br>&nbsp;&nbsp;&nbsp;&nbsp;use = 0;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;inc_use();<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::GPointer(T d)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ptr = new T(d);<br>&nbsp;&nbsp;&nbsp;&nbsp;use = 0;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;inc_use();<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::GPointer(T *p)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ptr = p;<br>&nbsp;&nbsp;&nbsp;&nbsp;use = 0;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;inc_use();<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::GPointer(const GPointer&lt;T&gt; &amp;p)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ptr = p.ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;use = p.use;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;inc_use();<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::~GPointer(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;dec_use();<br>}<br> <br>template &lt;class T&gt;<br>T &amp; GPointer&lt;T&gt;::operator *(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (*ptr);<br>&nbsp;&nbsp;&nbsp;&nbsp;throw std::runtime_error(&quot;错误的NULL指针&quot;);<br>}<br> <br>template &lt;class T&gt;<br>const T&amp; GPointer&lt;T&gt;::operator *(void) const<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (*ptr);<br>&nbsp;&nbsp;&nbsp;&nbsp;throw std::runtime_error(&quot;错误的NULL指针&quot;);<br>}<br> <br>template &lt;class T&gt;<br>T * GPointer&lt;T&gt;::operator -&gt;(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>}<br> <br>template &lt;class T&gt;<br>const T * GPointer&lt;T&gt;::operator -&gt;(void) const<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>}<br> <br>template &lt;class T&gt;<br>T* GPointer&lt;T&gt;::operator +(unsigned int offset)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (ptr + offset);<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>}<br> <br>template &lt;class T&gt;<br>const T* GPointer&lt;T&gt;::operator +(unsigned int offset) const<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ( ptr + offset );<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>}</li></ol></div><span style="background-color:#ffffff "><span style="color:#333333 "><font face="WenQuanYi Micro Hei Mono ">懒得写注释了,没有多少..应该随便读的懂..</font></span></span><br><span style="background-color:#ffffff "><span style="color:#333333 "><font face="WenQuanYi Micro Hei Mono ">可以像普通指针那样使用，比如：</font></span></span><br><span style="background-color:#ffffff "><span style="color:#333333 "><font face="WenQuanYi Micro Hei Mono "></font></span></span><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>GPointer&lt;int&gt; ptr;<br>*ptr = 10;<br>GPointer&lt;double&gt; ptr2 = new double[10];<br>*(ptr2+2) = 12.2;</li></ol></div><span style="background-color:#ffffff "><span style="color:#333333 "><font face="WenQuanYi Micro Hei Mono ">也可以这样,</font></span></span><br><span style="background-color:#ffffff "><span style="color:#333333 "><font face="WenQuanYi Micro Hei Mono "></font></span></span><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code3'));">复制代码</a></div><div class="blockquote2" id="code3"><ol><li>typedef GPointer&lt;int&gt; pint_t;<br>typedef GPointer&lt;long&gt; plong_t;<br>typedef GPointer&lt;char&gt; pchar_t;<br>// ...<br>pint_t ptr;<br>*ptr = 12;<br>// ...</li></ol></div><br>(原文链接:<a href="http://blog.abreto.net/blog/2012/02/smart-pointer.html" target="_blank" >http://blog.abreto.net/blog/2012/02/smart-pointer.html</a>).<span style="background-color:#ffffff "><span style="color:#333333 "><font face="WenQuanYi Micro Hei Mono "><br><br></font></span></span></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-02-03 13:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+卧渠..超过时间限制..<br>改了一下<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code4'));">复制代码</a></div><div class="blockquote2" id="code4"><ol><li>#include &lt;stdexcept&gt;<br> <br>/**<br>* Author: Abreto &lt;m@abreto.net&gt;<br>*<br>**/<br>template &lt;class T&gt;<br>class GPointer<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;GPointer(void);<br>&nbsp;&nbsp;&nbsp;&nbsp;GPointer(T);<br>&nbsp;&nbsp;&nbsp;&nbsp;GPointer(T *);<br>&nbsp;&nbsp;&nbsp;&nbsp;GPointer(const GPointer&lt;T&gt; &amp;);<br>&nbsp;&nbsp;&nbsp;&nbsp;~GPointer();<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;T &amp; operator *(void);<br>&nbsp;&nbsp;&nbsp;&nbsp;const T &amp; operator *(void) const;<br>&nbsp;&nbsp;&nbsp;&nbsp;T * operator -&gt;(void);<br>&nbsp;&nbsp;&nbsp;&nbsp;const T * operator -&gt;(void) const;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;T * operator +(unsigned int);<br>&nbsp;&nbsp;&nbsp;&nbsp;const T * operator +(unsigned int) const;<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;T*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;size_t*&nbsp;&nbsp;&nbsp;&nbsp; use;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;void inc_use(void);<br>&nbsp;&nbsp;&nbsp;&nbsp;void dec_use(void);<br>};<br> <br>template &lt;class T&gt;<br>void GPointer&lt;T&gt;::inc_use(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;(*use)++;<br>}<br> <br>template &lt;class T&gt;<br>void GPointer&lt;T&gt;::dec_use(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( 0 == (--(*use)) )<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete use;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::GPointer(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ptr = new T;<br>&nbsp;&nbsp;&nbsp;&nbsp;use = new size_t(0);<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;inc_use();<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::GPointer(T d)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ptr = new T(d);<br>&nbsp;&nbsp;&nbsp;&nbsp;use = new size_t(0);<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;inc_use();<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::GPointer(T *p)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ptr = p;<br>&nbsp;&nbsp;&nbsp;&nbsp;use = new size_t(0);<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;inc_use();<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::GPointer(const GPointer&lt;T&gt; &amp;p)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ptr = p.ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;use = p.use;<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;inc_use();<br>}<br> <br>template &lt;class T&gt;<br>GPointer&lt;T&gt;::~GPointer(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;dec_use();<br>}<br> <br>template &lt;class T&gt;<br>T &amp; GPointer&lt;T&gt;::operator *(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (*ptr);<br>&nbsp;&nbsp;&nbsp;&nbsp;throw std::runtime_error(&quot;错误的NULL指针&quot;);<br>}<br> <br>template &lt;class T&gt;<br>const T&amp; GPointer&lt;T&gt;::operator *(void) const<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (*ptr);<br>&nbsp;&nbsp;&nbsp;&nbsp;throw std::runtime_error(&quot;错误的NULL指针&quot;);<br>}<br> <br>template &lt;class T&gt;<br>T * GPointer&lt;T&gt;::operator -&gt;(void)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>}<br> <br>template &lt;class T&gt;<br>const T * GPointer&lt;T&gt;::operator -&gt;(void) const<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>}<br> <br>template &lt;class T&gt;<br>T* GPointer&lt;T&gt;::operator +(unsigned int offset)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (ptr + offset);<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>}<br> <br>template &lt;class T&gt;<br>const T* GPointer&lt;T&gt;::operator +(unsigned int offset) const<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if( ptr )<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ( ptr + offset );<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>}</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-02-03 14:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 第二层地狱了 AB你把18层全部占光吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-03 15:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+计数的功能好像不大对劲<br><br>size_t*&nbsp;&nbsp;&nbsp;&nbsp; use;这个为毛用动态内存阿，这不是没事给自己找事么</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-02-03 20:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>计数的功能好像不大对劲<br>size_t*     use;这个为毛用动态内存阿，这不是没事给自己找事么<span style="color:gray "> (2012-02-03 15:51) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=911&amp;pid=5206" target="_blank" ></a><br></div></blockquote><br>新的指针use+1后而旧的指针的use不会加1(如果不用指针)</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-02-03 22:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>新的指针use+1后而旧的指针的use不会加1(如果不用指针)<span style="color:gray "> (2012-02-03 20:10) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=911&amp;pid=5251" target="_blank" ></a><br></div></blockquote><br>好吧，我2B了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-02-04 10:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>好吧，我2B了<span style="color:gray "> (2012-02-03 22:21) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=911&amp;pid=5254" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-02-05 11:29</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.042422 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

@@ -1,0 +1,771 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>发个自写的加密算法【xywhEncry1】，国际安全性保证，标题要长，求破求虐！|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  xywhEncry1 是一种RC4算法的改进版本开发他的主要原因是我个人感觉RC4不够强力所以加了一层伪随机计算，以及将128位密钥扩展到4096字节的密钥使强度大大增加了，众所周知RC4出生三十多年至今 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,发个自写的加密算法【xywhEncry1】，国际安全性保证，标题要长，求破求虐！,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t881.html">发个自写的加密算法【xywhEncry1】，国际安全性保证，标题要长，求破求虐！</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 03:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>发个自写的加密算法【xywhEncry1】，国际安全性保证，标题要长，求破求虐！</h1>
+xywhEncry1 是一种RC4算法的改进版本<br>开发他的主要原因是我个人感觉RC4不够强力<br>所以加了一层伪随机计算，以及将128位密钥扩展到4096字节的密钥<br>使强度大大增加了，众所周知RC4出生三十多年至今<br>安全性都是十分卓越的，所以我这个算法安全性是绝对不会存在什么问题的<br><br>另外在运算优化方面，我经过数次优化[但仍有很大的优化余地]<br><br><br><br>程序已经更新，请关注第二页[24楼]</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 03:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+这个压缩包是7z格式的，不知道为啥现在的站长居然都不添加7z附件上传<br>批评一下<br><br>连7z都不加，如何崇尚开源……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 03:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>源代码：<br><br><br><br>Sub xywhEncry1(ByVal DataPtr As Any Ptr,ByVal DataSize As Integer,ByVal Paaword As ZString Ptr,ByVal PwSize As Integer)<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim SBox(1023) As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; S盒[用于密钥的二次混淆]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim KBox(63) As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; K盒[用于密钥的一次混淆]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim TPW(63) As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 临时密码盒[密码填充于此]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim PwInt As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 二次混淆因子[用于S盒混淆的运算因子,取自K盒]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim PwStep As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 原始密码的步数[一步=4字节]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim DtStep As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 数据的计算步数<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim RAM As Any Ptr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 临时内存<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim i As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 循环变量<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim TmpInt As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 临时Int变量<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;PwStep = PwSize \ 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 首先算出密码的步数[一步=4字节]<br>&nbsp;&nbsp;&nbsp;&nbsp;If PwSize Mod 4 Then<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PwStep += 1<br>&nbsp;&nbsp;&nbsp;&nbsp;EndIf<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;RAM = Allocate(PwStep*4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 将密码复制到临时容器中[为了末尾\0处理]<br>&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(RAM,Paaword,PwSize)<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;For i = 0 To 63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 使用密码填满“密码容器”<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@TPW(i),((i Mod PwStep) * 4) + RAM,4)<br>&nbsp;&nbsp;&nbsp;&nbsp;Next<br>&nbsp;&nbsp;&nbsp;&nbsp;#Ifdef DebugMode<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putfile(ExePath &amp; &quot;\Dump-TPW.txt&quot;,@TPW(0),0,256)<br>&nbsp;&nbsp;&nbsp;&nbsp;#EndIf<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;For i = 0 To 63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 进行第一次对密钥的伪随机混淆[K盒混淆]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim TB(1) As UShort<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@TB(0),@TPW(i),4)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(0)) Mod 65536<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(0) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(1)) Mod 65536<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(1) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@KBox(i),@TB(0),4)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PwInt = KBox(i) Xor TPW(i)&nbsp;&nbsp;&nbsp;&nbsp;&#39; 为第二次密钥伪随机混淆采集因子<br>&nbsp;&nbsp;&nbsp;&nbsp;Next<br>&nbsp;&nbsp;&nbsp;&nbsp;#Ifdef DebugMode<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putfile(ExePath &amp; &quot;\Dump-KBox.txt&quot;,@KBox(0),0,256)<br>&nbsp;&nbsp;&nbsp;&nbsp;#EndIf<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;For i = 0 To 1023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 进行第二次密钥混淆[S盒混淆]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim TB(1) As UShort<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PwInt = PwInt Xor KBox(i Mod 64)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@TB(0),@PwInt,4)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(0)) Mod 65536<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(0) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(1)) Mod 65536<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(1) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@SBox(i),@TB(0),4)<br>&nbsp;&nbsp;&nbsp;&nbsp;Next<br>&nbsp;&nbsp;&nbsp;&nbsp;#Ifdef DebugMode<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PutFile(ExePath &amp; &quot;\Dump-SBox.txt&quot;,@SBox(0),0,4096)<br>&nbsp;&nbsp;&nbsp;&nbsp;#EndIf<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;DtStep = DataSize \ 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 准备加密使用的数据[四字节对其]<br>&nbsp;&nbsp;&nbsp;&nbsp;If DataSize Mod 4 Then<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DtStep += 1<br>&nbsp;&nbsp;&nbsp;&nbsp;EndIf<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim DataOut(DtStep) As Integer<br>&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@DataOut(0),DataPtr,DataSize)<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;For i = 0 To DtStep-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 开始加密<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim TB(1) As UShort<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@TB(0),@SBox(i Mod 1024),4)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(0)) Mod 65536<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(0) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(1)) Mod 65536<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(1) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@SBox(i Mod 1024),@TB(0),4)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DataOut(i) = DataOut(i) Xor SBox(i Mod 1024)<br>&nbsp;&nbsp;&nbsp;&nbsp;Next&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 回写结果<br>&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(DataPtr,@DataOut(0),DataSize)<br>&nbsp;&nbsp;&nbsp;&nbsp;#Ifdef DebugMode<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PutFile(ExePath &amp; &quot;\Dump-All.txt&quot;,@DataOut(0),0,DataSize)<br>&nbsp;&nbsp;&nbsp;&nbsp;#EndIf<br>End Sub</li></ol></div><br> </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-01-30 07:11</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+虽然一点都不懂，但是好像很厉害的样子<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 08:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+计算速度还是太快了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-30 12:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  对这方面没研究<br><br>phpwind默认就没7z，我一般都是用zip</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 12:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第5楼jybox于2012-01-30 12:36发表的 Re:发个自写的加密算法【xywhEncry1】，国际安全性保证，标题要长，求破 .. 的帖子<br>[表情] 对这方面没研究<br>phpwind默认就没7z，我一般都是用zip</div></blockquote>*nix应该是tar.gz主流吧…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-30 14:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>*nix应该是tar.gz主流吧…<span style="color:gray "> (2012-01-30 12:40) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4664" target="_blank" ></a><br></div></blockquote><br>看起来是的，很多发行版都不自带zip</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxyscxy</b></td>
+<td align="right" class="smalltxt">2012-01-30 14:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+马克，回家再看</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=phpwave" target="_blank">phpwave</a><span style="color:gray ">:</span>RHEL都带ZIP<br>Linux操作系统下的zip<br>　　Linux以完美的跨平台性能很好得兼容zip格式，在Windows下打包的zip格式文件，在Linux操作系统下可以使用zip命令来完成压缩，同样也可以使用unzip命令来解压文件。 ..<span style="color:gray "> (2012-01-30 14:52) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4690" target="_blank" ></a><br></div></blockquote><br>你到底想说神马</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>你到底想说神马<span style="color:gray "> (2012-01-30 15:12) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4711" target="_blank" ></a><br></div></blockquote><br>释放优越感么。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+*nix主流是tar.gz，秀下限自粽</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+跨平台的话tar最好，秀下限自粽</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+windows不支持tar？呵呵<br>SB</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 15:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=phpwave" target="_blank">phpwave</a><span style="color:gray ">:</span>[表情]你自己试试<br>P.s：没第三方软件<span style="color:gray "> (2012-01-30 15:26) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4727" target="_blank" ></a><br></div></blockquote><br>非精简版系统自带tar。cab的解压缩的。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 16:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=phpwave" target="_blank">phpwave</a><span style="color:gray ">:</span>我的WIN7，原版<br>[表情]有CAB,就是没tar<br>[表情]makecab.exe还是字符界面[表情]<br><span style="color:gray "> (2012-01-30 15:32) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4729" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 17:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+没办法继续编辑原帖子了，今天更新了一下，效率翻了十倍，但是加密的核心代码也有所改变，新的代码随后根楼贴出</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 17:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+没办法继续编辑原帖子了，今天更新了一下，效率翻了十倍，但是加密的核心代码也有所改变，新的代码随后根楼贴出<br> <br> <br>[attachment=250]<br><br><br><br> <br>还是惯例，下载了该后缀到7z解压<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 17:41</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>Sub xywhEncry1(ByVal DataPtr As Any Ptr,ByVal DataSize As Integer,ByVal Paaword As ZString Ptr,ByVal PwSize As Integer)<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim SBox(1023) As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; S盒[用于密钥的二次混淆]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim KBox(63) As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; K盒[用于密钥的一次混淆]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim TPW(63) As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 临时密码盒[密码填充于此]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim PwInt As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 二次混淆因子[用于S盒混淆的运算因子,取自K盒]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim PwStep As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 原始密码的步数[一步=4字节]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim DtStep As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 数据的计算步数<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim RAM As Any Ptr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 临时内存<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim i As Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 循环变量<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim TmpInt As UInteger&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 临时Int变量<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;PwStep = (PwSize + 3) \ 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 首先算出密码的步数[一步=4字节]<br>&nbsp;&nbsp;&nbsp;&nbsp;RAM = Allocate(PwStep*4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 将密码复制到临时容器中[为了末尾\0处理]<br>&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(RAM,Paaword,PwSize)<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;For i = 0 To 63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 使用密码填满“密码容器”<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@TPW(i),((i Mod PwStep) * 4) + RAM,4)<br>&nbsp;&nbsp;&nbsp;&nbsp;Next<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;For i = 0 To 63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 进行第一次对密钥的伪随机混淆[K盒混淆]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim TB(3) As UByte<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@TB(0),@TPW(i),4)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(0)) And 255<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(0) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(1)) And 255<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(1) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(2)) And 255<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(2) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(3)) And 255<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(3) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@KBox(i),@TB(0),4)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PwInt = KBox(i) Xor TPW(i)&nbsp;&nbsp;&nbsp;&nbsp;&#39; 为第二次密钥伪随机混淆采集因子<br>&nbsp;&nbsp;&nbsp;&nbsp;Next<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;For i = 0 To 1023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 进行第二次密钥混淆[S盒混淆]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim TB(1) As UShort<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PwInt = PwInt Xor KBox(i And 63)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@TB(0),@PwInt,4)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(0)) And &amp;HFFFF<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(0) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TmpInt = (TmpInt + TB(1)) And &amp;HFFFF<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB(1) = TmpInt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory(@SBox(i),@TB(0),4)<br>&nbsp;&nbsp;&nbsp;&nbsp;Next<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;DtStep = (DataSize + 3) \ 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 计算加密需要进行的次数[四字节对齐]<br>&nbsp;&nbsp;&nbsp;&nbsp;Dim DataOut As Integer Ptr<br>&nbsp;&nbsp;&nbsp;&nbsp;For i = 0 To DtStep-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39; 开始加密<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DataOut = DataPtr + (4 * i)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SBox(i And 1023) += SBox((i+1) And 1023)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*DataOut = *DataOut Xor SBox(i And 1023)<br>&nbsp;&nbsp;&nbsp;&nbsp;Next<br>End Sub</li></ol></div><br><br><br>这一次更新，改变K盒混淆为8位，加密计算为32位[通过加密计算提升速度，用K盒精度增强安全性]<br><br>放出来的压缩包同时附带了 DLL 和 LIB 以及两者的使用范例<br><br>还有完整的源代码[在SDK目录]<br><br>优化后的代码，每秒加密的速度提升到了 535MB</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 17:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+附件改成zip格式了&nbsp;&nbsp; - -<br><br>大了那么多</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <br>个人感觉，一个足够安全的加密算法要求要足够慢<br>如果算法快的话只要穷举就好了<br>也不能太慢，否则过度影响服务器效率<br>比较理想的值应该是家用电脑计算一个10位字符串速度在0.05~0.5s之间</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+网上那么多md5反算的根本原因就是MD5太快了<br>6位纯数字密码能在几秒钟之内攻破。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:26</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=phpwave" target="_blank">phpwave</a><span style="color:gray ">:</span>P4 HT表示要几个小时<span style="color:gray "> (2012-01-30 18:22) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4747" target="_blank" ></a><br></div></blockquote><br>你怎么不说286</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情] <br>个人感觉，一个足够安全的加密算法要求要足够慢<br>如果算法快的话只要穷举就好了<br>也不能太慢，否则过度影响服务器效率<br>比较理想的值应该是家用电脑计算一个10位字符串速度在0.05~0.5s之间<span style="color:gray "> (2012-01-30 18:16) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4743" target="_blank" ></a><br></div></blockquote><br>你所说的属于采样算法[也叫摘要算法]<br>是专用于短数据加密的密码，典型的就是MD5算法<br><br>我这种属于数据加密算法，是用于大型二进制数据加密的<br>并使用伪随机技术保证内容的不可破解性<br><br>并非同一种算法</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+=。=好吧请无视这楼</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+典型的应用就是一些自解压软件，使用摘要算法存储密码[也有很多软件为了足够的安全性，而干脆不保存密码]<br>然后使用数据加密算法对数据加密，嗯嗯，总之两者配合是很常见的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+另外因为翻页了，所以申请主楼解锁，我编辑一下</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=xywhsoft" target="_blank">xywhsoft</a><span style="color:gray ">:</span>你所说的属于采样算法[也叫摘要算法]<br>是专用于短数据加密的密码，典型的就是MD5算法<br>我这种属于数据加密算法，是用于大型二进制数据加密的<br>.......<span style="color:gray "> (2012-01-30 18:30) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4754" target="_blank" ></a><br></div></blockquote><br>抱歉，没仔细看<br>但加密速度快的话不也同样可以快速穷举出来么。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+啊……这就是为什么这类算法都吹嘘伪随机了<br>因为伪随机是一种使数据环环相扣的加密手段，这种手段就是为了避免穷举法<br>也就是一环出错就无法完整整体的破解<br><br>再者就是因为针对大数据，所以要求必须快，而这类算法典型都是针对超过1KB以上数据进行加密的<br>想象一下，穷举1KB的数据，你该如何做？<br><br>而且他是没办法逆运算的哦，你需要一个一个的审查，嘿嘿</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+另外摘要算法密文和原文是一一对应的<br>而加密算法则是三角恋关系，这样破解的话，原文、密码，缺一不可，靠猜是不行的<br>也就是说无所谓爆破</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 18:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  好吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-30 19:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+已经解锁了，等你编辑完我还会锁回去.....<br><br>设置的是只允许在发贴后20分钟内编辑</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2012-01-30 22:52</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情] <br>个人感觉，一个足够安全的加密算法要求要足够慢<br>如果算法快的话只要穷举就好了<br>也不能太慢，否则过度影响服务器效率<br>比较理想的值应该是家用电脑计算一个10位字符串速度在0.05~0.5s之间<span style="color:gray "> (2012-01-30 18:16) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4743" target="_blank" ></a><br></div></blockquote><br>MD5是用来校验的吧……貌似这种算法很需要效率的？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 22:53</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=littlepig" target="_blank">littlepig</a><span style="color:gray ">:</span>MD5是用来校验的吧……貌似这种算法很需要效率的？<span style="color:gray "> (2012-01-30 22:52) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4805" target="_blank" ></a><br></div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-30 22:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=littlepig" target="_blank">littlepig</a><span style="color:gray ">:</span>MD5是用来校验的吧……貌似这种算法很需要效率的？<span style="color:gray "> (2012-01-30 22:52) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4805" target="_blank" ></a><br></div></blockquote><br>加密算法的要求：<br>加密成本尽可能低<br>解密/破译成本尽可能高<br><br><br>很多时候后者比前者更重要</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2012-01-30 23:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>加密算法的要求：<br>加密成本尽可能低<br>解密/破译成本尽可能高<br>.......<span style="color:gray "> (2012-01-30 22:55) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4807" target="_blank" ></a><br></div></blockquote><br>一般加密算法：呃，一般用户比较在意速度<br>文艺加密算法：是的，安全性第一<br>101011加密算法：…………………………</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-30 23:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+特不懂为什么用VB写<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 23:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>特不懂为什么用VB写<br>内容来自[手机版] <span style="color:gray "> (2012-01-30 23:55) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4852" target="_blank" ></a><br></div></blockquote><br>因为楼主是搞VB的。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-30 23:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+#47&nbsp;&nbsp;看百度百科Example都是C写的.lz是翻译的么...<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-30 23:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=墨阐" target="_blank">墨阐</a><span style="color:gray ">:</span>#47  看百度百科Example都是C写的.lz是翻译的么...<br>内容来自[手机版] <span style="color:gray "> (2012-01-30 23:58) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=881&amp;pid=4856" target="_blank" ></a><br></div></blockquote><br>有百科么？xywhEncry1？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-31 00:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+RC4/抠鼻 不然我还问lz是否自己翻译- -||<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-31 00:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+所以其实你把它改得妈都不认得也没多大关系(貌似它只有爸…).只要加密强度够,成本低.独立发布都木事.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-31 01:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+啊，解释两件事情：<br><br>1.这个当然不是VB，你见过VB支持这么淫荡的指针用法么？编译器名叫FreeBasic，是依托GCC的Basic编译器<br><br>2.这个算法是原创，因为刚创作出来，所以百度是找不到的，至于我提到RC4，是因为这个算法某些层面类似RC4，但有不是RC4，主要表现在使用了三重伪随机和四字节运算加速等手段，所以，他的安全性比RC4更好，速度也比RC4更快<br><br>强度是不需要担心的，我用了比RC4强数倍的极端手段做密钥混淆<br>成本么……源代码 + 静态库 + 动态库&nbsp;&nbsp; 都放出来了，意味着这一开始就是开源免费的东西，成本不计<br><br><br>一般加密算法：呃，一般用户比较在意速度<br>文艺加密算法：是的，安全性第一<br>101011加密算法：<br><br><br>另外这个我怎么看都不是加密算法……<br><br>事实上常见的算法分为：<br>采样算法[摘要算法]，代表是MD5<br>编码算法，代表是Base64和Hex<br>混淆算法，就是很多人所谓的加密……实际就是类似编码算法换了一种显示方式而已<br>加密算法：根据密码与原文，制造出密文的通信加密手段<br>压缩算法：采取去除高位、重复链接等手段使原文件尽量小的算法<br><br><br>而我发这个，是加密算法，别搞混</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-31 01:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+刚才看到FreeBasic了,抱歉没把代码全看完,爪机ing.说实话对你说的几个算法感觉界限分得不是很清…代码也没看,不知道怎么写的.在学校,也试不了.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-31 01:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+既然是可逆,那么伪随机不能干扰主信息位,也就是说随机数只能起对Cracker的干扰作用.对吧.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-31 01:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+签名/采样,加密,压缩.个人基本分成这三个情况.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-31 01:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+是这样的，三重伪随机：<br><br>首先将密码填充到一个256字节的结构中<br>第一重伪随机，将这个结构通过溢出取八位运算[可以理解为MOD运算]，混淆到K盒，并在过程中抽取摘样混淆码用于第二重伪随机<br>第二重伪随机，根据混淆码与K盒数据运算，并且溢出取十六位求余，混淆到S盒，S盒为4096字节<br>这个时候S盒就作为密钥使用[可以理解为将密码放大到4096长度]<br>第三重伪随机进行同时进行加密，首先S盒与下一元素进行溢出计算，并且赋给当前元素，这样保证同样的内容加密出来的随机性，随后与原文进行XOR计算<br><br><br><br>可以理解为，没有密钥的情况是，是绝对不可能破解的<br>有密钥则可以还原回原文，但有原文是不可能还原回密钥的<br><br>并且采用XOR计算的算法有一个优点，就是加密和解密可以使用同一个函数<br>也就是对称加密算法</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>xywhsoft</b></td>
+<td align="right" class="smalltxt">2012-01-31 02:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+没有随机数<br>伪随机使用类似这样的计算<br><br>(128 + 256) and &amp;HFF = 128<br><br>两个值相加，并取八位，循环数据交换混淆，过程是不可逆的<br>而多重伪随机就是确保绝对的不可逆</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.062425 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

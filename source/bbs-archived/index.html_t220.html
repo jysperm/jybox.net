@@ -1,0 +1,441 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>怎样用C++实现把string类型的文本保存为.txt？|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  想用控制台写个记事本，但有些功能不知在怎么实现1、把用户输入的文本保存在string类型的变量里，并保存为.txt文件2、可以打开用户保存的.txt文件求执导～～～下面是开头：#includeiostream&gt;#i .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,怎样用C++实现把string类型的文本保存为.txt？,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t220.html">怎样用C++实现把string类型的文本保存为.txt？</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-28 21:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>怎样用C++实现把string类型的文本保存为.txt？</h1>
+<font face="微软雅黑 ">想用控制台写个记事本，但有些功能不知在怎么实现</font><br><font face="微软雅黑 ">1、把用户输入的文本保存在string类型的变量里，并保存为.txt文件</font><br><font face="微软雅黑 ">2、可以打开用户保存的.txt文件</font><br><font face="微软雅黑 ">求执导～～～</font><br><font face="微软雅黑 ">下面是开头：</font><br><font face="微软雅黑 "></font><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>#include&nbsp;&nbsp;&lt;iostream&gt;<br>#include&nbsp;&nbsp;&lt;string&gt;<br>using&nbsp;&nbsp;namespace&nbsp;&nbsp;std;<br><br>int&nbsp;&nbsp;main()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;\t欢迎使用GnoteBook记事笔记本\t\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n&quot;;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;&nbsp;note;<br><br>}</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-28 22:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  表示我根本不会用控制台的记事本，比如vi、vim、gvim神马的<br>更别提写了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-28 22:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+保存文件嘛<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>QFile file(FilePath);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//路径<br>if(file.open(QIODevice::WriteOnly))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QTextStream stream(&amp;file);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream&lt;&lt;note;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.close();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br></li></ol></div><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-29 21:41</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code3'));">复制代码</a></div><div class="blockquote2" id="code3"><ol><li>#include&nbsp;&nbsp;&lt;iostream&gt;<br>#include&nbsp;&nbsp;&lt;string&gt;<br>#include&nbsp;&nbsp;&lt;QTextIStream&gt;<br>#include&nbsp;&nbsp;&lt;QFile&gt;<br>using&nbsp;&nbsp;namespace&nbsp;&nbsp;std;<br><br>int&nbsp;&nbsp;main()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;\t欢迎使用GnoteBook记事笔记本\t\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n&quot;;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;&nbsp;note;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;请选择：\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;1.新建记事本请输入1\t2.打开记事本请输入2\t\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;请选择：&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;mode(0);<br>&nbsp;&nbsp;&nbsp;&nbsp;cin&nbsp;&nbsp;&gt;&gt;&nbsp;&nbsp;mode;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;if(mode&nbsp;&nbsp;&gt;&nbsp;&nbsp;2)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;错误！退出！！\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;-1;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;if(mode&nbsp;&nbsp;==&nbsp;&nbsp;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;错误！退出！！\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;-1;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;if(mode&nbsp;&nbsp;==&nbsp;&nbsp;1)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;请输入内容，输入完毕后请按ctrl+z&nbsp;&nbsp;或者&nbsp;&nbsp;ctrl+d：\n&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(getline(cin,note));<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;QFile file(C:);<br>&nbsp;&nbsp;&nbsp;&nbsp;if(file.open(QIODevice::WriteOnly))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QTextStream stream(&amp;file);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream&lt;&lt;note;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.close();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;文件已保存在C盘～～～～\n&quot;<br>}</li></ol></div>这个问题很多呀～～～还有，你给我的代码使用是要加入哪些头文件？我用的QT<br>错误：<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code4'));">复制代码</a></div><div class="blockquote2" id="code4"><ol><li>In file included from /usr/include/c++/4.5/backward/strstream:47:0,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from ../GoteBook/GoteBook.cpp:5:<br>/usr/include/c++/4.5/backward/backward_warning.h:28:2: warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated.<br>../GoteBook/GoteBook.cpp: In function ‘int main()’:<br>../GoteBook/GoteBook.cpp:39:16: error: ‘C’ was not declared in this scope<br>../GoteBook/GoteBook.cpp:43:25: error: no match for ‘operator&lt;&lt;’ in ‘stream &lt;&lt; note’<br>/usr/include/qt4/QtCore/qtextstream.h:183:18: note: candidates are: QTextStream&amp; QTextStream::operator&lt;&lt;(QBool)<br>/usr/include/qt4/QtCore/qtextstream.h:184:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(QChar)<br>/usr/include/qt4/QtCore/qtextstream.h:185:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(char)<br>/usr/include/qt4/QtCore/qtextstream.h:186:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(short int)<br>/usr/include/qt4/QtCore/qtextstream.h:187:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(short unsigned int)<br>/usr/include/qt4/QtCore/qtextstream.h:188:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(int)<br>/usr/include/qt4/QtCore/qtextstream.h:189:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(unsigned int)<br>/usr/include/qt4/QtCore/qtextstream.h:190:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(long int)<br>/usr/include/qt4/QtCore/qtextstream.h:191:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(long unsigned int)<br>/usr/include/qt4/QtCore/qtextstream.h:192:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(qlonglong)<br>/usr/include/qt4/QtCore/qtextstream.h:193:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(qulonglong)<br>/usr/include/qt4/QtCore/qtextstream.h:194:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(float)<br>/usr/include/qt4/QtCore/qtextstream.h:195:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(double)<br>/usr/include/qt4/QtCore/qtextstream.h:196:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(const QString&amp;)<br>/usr/include/qt4/QtCore/qtextstream.h:197:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(const QByteArray&amp;)<br>/usr/include/qt4/QtCore/qtextstream.h:198:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(const char*)<br>/usr/include/qt4/QtCore/qtextstream.h:199:18: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; QTextStream::operator&lt;&lt;(const void*)<br>/usr/include/qt4/QtCore/qchar.h:394:28: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QDataStream&amp; operator&lt;&lt;(QDataStream&amp;, const QChar&amp;)<br>/usr/include/qt4/QtCore/qbytearray.h:577:28: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QDataStream&amp; operator&lt;&lt;(QDataStream&amp;, const QByteArray&amp;)<br>/usr/include/qt4/QtCore/qstring.h:1083:28: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QDataStream&amp; operator&lt;&lt;(QDataStream&amp;, const QString&amp;)<br>/usr/include/qt4/QtCore/qobject.h:397:22: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QDebug operator&lt;&lt;(QDebug, const QObject*)<br>/usr/include/qt4/QtCore/qiodevice.h:247:22: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QDebug operator&lt;&lt;(QDebug, QIODevice::OpenMode)<br>/usr/include/qt4/QtCore/qlocale.h:720:28: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QDataStream&amp; operator&lt;&lt;(QDataStream&amp;, const QLocale&amp;)<br>/usr/include/qt4/QtCore/qtextstream.h:290:21: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; operator&lt;&lt;(QTextStream&amp;, QTextStream&amp; (*)(QTextStream&amp;))<br>/usr/include/qt4/QtCore/qtextstream.h:293:21: note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QTextStream&amp; operator&lt;&lt;(QTextStream&amp;, QTextStreamManipulator)<br>../GoteBook/GoteBook.cpp:47:1: error: expected ‘;’ before ‘}’ token</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-29 22:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  睁大眼睛看第38行<br>QFile file(C:);</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-30 12:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情]  [表情]  [表情] 睁大眼睛看第38行<br>QFile file(C:);<span style="color:gray "> (2011-09-29 22:31) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=796" target="_blank" ></a><br></div></blockquote><br>怎么了？有问题么~~~</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-30 17:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>怎么了？有问题么~~~<span style="color:gray "> (2011-09-30 12:58) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=801" target="_blank" ></a><br></div></blockquote><br>你不觉得有问题？参数应该是个文件地址吧，而且是字符串.......</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-30 22:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<font face="微软雅黑 ">这样还是错的：</font><br><font face="微软雅黑 "></font><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code5'));">复制代码</a></div><div class="blockquote2" id="code5"><ol><li>QFile file(&quot;C:\&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;if(file.open(QIODevice::WriteOnly))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QTextStream stream(&amp;file);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream&lt;&lt;note;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.close();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&quot;文件已保存在C盘～～～～\n&quot;;</li></ol></div><br>错误：<br><font face="微软雅黑 "></font><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code6'));">复制代码</a></div><div class="blockquote2" id="code6"><ol><li>In file included from /usr/include/c++/4.5/backward/strstream:47:0,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from ../GoteBook/GoteBook.cpp:5:<br>/usr/include/c++/4.5/backward/backward_warning.h:28:2: warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated.<br>../GoteBook/GoteBook.cpp:39:16: warning: missing terminating &quot; character<br>../GoteBook/GoteBook.cpp:39:5: error: missing terminating &quot; character<br>../GoteBook/GoteBook.cpp: In function ‘int main()’:<br>../GoteBook/GoteBook.cpp:40:5: error: expected primary-expression before ‘if’<br>../GoteBook/GoteBook.cpp:39:15: warning: unused variable ‘file’<br>make: *** [GoteBook.o] 错误 1</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-30 22:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+表要喷我， <br>不会用Qt地说～～～～</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-30 22:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+马上要学地说～～～ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-30 22:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  你指定文件名了吗..........................试问怎么往C：/写东西.............</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-30 22:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+另外从错误信息看，还有其他错误，貌似是多了或少了一个双引号</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-30 22:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情] 你指定文件名了吗..........................试问怎么往C：/写东西.............<span style="color:gray "> (2011-09-30 22:39) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=813" target="_blank" ></a><br></div></blockquote><br><b>不懂呀～～～～求指教！！</b></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-30 22:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<font face="微软雅黑 ">舅舅我！</font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-30 23:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>舅舅我！[表情]<span style="color:gray "> (2011-09-30 22:51) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=816" target="_blank" ></a><br></div></blockquote><br>我也没办法啊，我对你是否成功安装了QT表示怀疑<br>你试试那些自带示例能不能编译<br>另外可以参考我的hosts文件编辑器，涉及文件读写<br><a href="http://code.google.com/p/jybox/source/browse/#svn%2FHostsEdit" target="_blank" >http://code.google.com/p/jybox/source/browse/#svn%2FHostsEdit</a></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-30 23:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+试着编译了一个示例，结果：<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code7'));">复制代码</a></div><div class="blockquote2" id="code7"><ol><li>RCC: Error in &#39;../stickman/stickman.qrc&#39;: Cannot find file &#39;animations/chilling&#39;<br>make: *** [qrc_stickman.cpp] 错误 1</li></ol></div>额～～～～看不懂</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-30 23:17</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>试着编译了一个示例，结果：<br>RCC: Error in &#39;../stickman/stickman.qrc&#39;: Cannot find file &#39;animations/chilling&#39;<br>make: *** [qrc_stickman.cpp] 错误 1额～～～～看不懂[表情]<span style="color:gray "> (2011-09-30 23:12) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=823" target="_blank" ></a><br></div></blockquote><br>好吧，你可以重新安装QT了..............<br><br>ps.不必at我，作为站长每个帖子我都会看</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-09-30 23:18</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code8'));">复制代码</a></div><div class="blockquote2" id="code8"><ol><li>sudo apt-get install qt4-dev-tools qt4-doc qt4-qtconfig qt4-demos qt4-designer<br>sudo apt-get install qtcreator</li></ol></div><br>这么安装完全无压力</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-30 23:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+怎么安装完了还是一样～～～郁闷！！</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-01 00:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>怎么安装完了还是一样～～～郁闷！！[表情]<span style="color:gray "> (2011-09-30 23:40) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=827" target="_blank" ></a><br></div></blockquote><br>同情，实在不行等11.10正式版发布之后重装系统吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-01 09:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+顺便问一下，你用的是最新版还是长期支持版？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-10-01 09:04</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>同情，实在不行等11.10正式版发布之后重装系统吧<span style="color:gray "> (2011-10-01 00:07) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=832" target="_blank" ></a><br></div></blockquote><br>顺便问一下，你用的是最新版还是长期支持版？<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-01 17:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=编程土豆" target="_blank">编程土豆</a><span style="color:gray ">:</span>顺便问一下，你用的是最新版还是长期支持版？<br><span style="color:gray "> (2011-10-01 09:04) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=836" target="_blank" ></a><br></div></blockquote><br>最新版......</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zhaoqike</b></td>
+<td align="right" class="smalltxt">2011-10-23 19:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+windows下：<br>在c盘下新建一个aa.txt的文件<br>QString note = &quot;jfkdlsjdlf&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;QFile file(&quot;C:\\aa.txt&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;if(file.open(QIODevice::WriteOnly))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QTextStream stream(&amp;file);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream&lt;&lt;note;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.close();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>注意：文件名两个斜杠，要用QString,文件名双引号</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zhaoqike</b></td>
+<td align="right" class="smalltxt">2011-10-23 19:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+如果是linux下的我就暂时不会了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-10-23 20:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=zhaoqike" target="_blank">zhaoqike</a><span style="color:gray ">:</span>windows下：<br>在c盘下新建一个aa.txt的文件<br>QString note = &quot;jfkdlsjdlf&quot;;<br>    QFile file(&quot;C:\\aa.txt&quot;);<br>    if(file.open(QIODevice::WriteOnly))<br>.......<span style="color:gray "> (2011-10-23 19:35) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=220&amp;pid=1862" target="_blank" ></a><br></div></blockquote><br>linux区别不大<br><br>\\是因为反斜杠需要转义<br><br>也可以用/来分割路径...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.068530 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

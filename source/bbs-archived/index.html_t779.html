@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>零毫秒SB2.x设计草稿，灰常草，狂草|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  SB2.x整体设计整体设计了大概有哪些消息，哪些参数没有详细约定细节SC：服务器对客户端发送的消息CS：客户端对服务器发送的消息CC：客户端对客户端发送的消息----用户表示方法：用户表示 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,零毫秒SB2.x设计草稿，灰常草，狂草,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t779.html">零毫秒SB2.x设计草稿，灰常草，狂草</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-09 23:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>零毫秒SB2.x设计草稿，灰常草，狂草</h1>
+SB2.x整体设计<br>整体设计了大概有哪些消息，哪些参数<br>没有详细约定细节<br><br>SC：服务器对客户端发送的消息<br>CS：客户端对服务器发送的消息<br>CC：客户端对客户端发送的消息<br><br>----用户表示方法：<br>用户表示方法是基于用户名的，但也可以使用用户id<br>用户名：一个字符串，只允许包括大小写字母、下划线、数字或中文，且开头必须为字母<br>用户id：一个数字，不以0开头，通常为顺序号<br><br>用户的注册工作交给网页<br><br>群名和用户名约定一样，也可以用群id表示<br>表示群的时候在群名前加星号，例如*jybox或者*123<br><br>临时讨论小组为一个星号加一个零开头的随机数字<br>例如*0852或*0456<br><br>群、临时讨论小组、用户，统一对待，<br>比如，好友列表里其实也包括群和临时讨论小组<br>在发送消息的时候，目标用户可以填用户、群也可以填临时讨论小组<br><br><br>****登陆消息(CS)<br>参数：用户名、经过散列的密码、p2p端口号、是否是主连接、是否强制登陆、是否隐藏ip<br>密码的散列方式：SHA-256(公钥+SHA-256(密码))<br>p2p端口号用于支持CC消息的传输，采用UDP协议(UDP对坑爹运营商的各种网络限制穿透能力比较好)<br>是否是主连接：只有主连接算是在线，客户端可以采用多个非主连接实现多线程的下载上传图片<br>是否强制登录：如果服务器告知客户端登录失败是因为有同名用户在线，客户端可以加上这个参数重试，把对方顶下线<br>是否隐藏ip：客户端可以选择不向其他客户端暴露ip，但是这样可能无法使用一些p2p功能(例如传文件)，在选择隐藏ip的情况下可以不提供p2p端口号<br>该消息可以使一个客户端从未认证状态转为登陆状态<br><br>----非主连接<br>非主连接无法发送聊天消息，但可以，也需要完成聊天图片的下载和上传<br><br>****登陆结果(SC)<br>参数：登陆是否成功、错误原因、同名用户ip<br>错误原因的取值：密码错误、有同名用户在线、未知错误<br>如果是因为已有同名用户在线，则需要发送同名用户的ip(这时用户登录时设置的隐藏ip是无用的)<br>这时，客户端可以再登陆请求上加上强制登陆的选项<br><br>****请求对方信息(CS/SC/CC)<br>参数：要请求的信息的名字列表<br>用这个消息来向对方请求一些信息，例如时间、程序版本等等<br><br>****返回信息(CS/SC/CC)<br>参数：被请求的信息名称和值的对应表(例如：时间:12345798;版本:V123;)<br>这个是对“请求对方信息”的回应，如果“请求对方信息”中有自己无法理解的消息名字，那么可以不返回，或者返回空值<br>但是这里协议要求CS/SC必须支持以下信息名称：时间、程序版本号、程序名称(ps.待补充)<br>CC则允许对方拒绝发送所有的信息(出于隐私保护目的)<br><br>****请求公钥(cs)<br>参数：无<br>客户端向服务器请求公钥<br><br>****返回公钥(SC)<br>参数：公钥<br>公钥是服务器生成的一串随机字符串，长度在10-30字符即可，每次生成的公钥都必须是唯一且完全随机的<br><br>****无法理解消息(SC)<br>参数：描述信息<br>描述信息：一个描述性字符串，指明最新版协议的地址等信息<br>当服务器无法理解客户端发来的消息时，发送该消息，同时丢弃缓冲区中剩余的所有数据<br>如果服务器对于一个客户端反复收到这个消息，服务器可以选择断开与它的连接<br><br>****保持响应(CS)<br>参数：无<br>如果客户端在一定时间内没有发来有效的消息，则服务器可以断开与之的连接<br>因为有时候，如果客户端出错，会导致明明客户端已经退出，但连接仍然存在的情况<br>为了一直保证服务器不把自己T掉线，客户端需要每隔一段时间(暂定200秒)发送一次消息，如果无消息可发，可以选择发送该消息<br><br>****需要更新好友列表(SC)<br>参数：列表名<br>列表名：若是好友列表即为自己的用户名，如果是群或临时讨论小组即为群名<br>如果客户端的好友的登陆状态发生了变化，服务器向客户端发送这个消息提醒客户端及时更新在线列表<br><br>****请求好友列表(CS)<br>参数：是否请求全部 是否包括头像<br>是否请求全部：是否发送全部在线列表，如果选否，即表示只发送发生变动的部分<br>是否包括头像：因为大多数情况下，只有第一次请求才需要头像<br><br><br>****好友列表(SC)<br>参数：是否是全部、在线列表<br>是否是全部：这是否是全部在线列表，如果为否，表示只是发生变动的部分<br>在线列表：列表中每一项是一个用户，包括：用户名、是否在线、ip、p2p端口号、头像<br>如果用户选择了隐藏ip，这里就不发送ip和p2p端口号<br>头像是头像的MD5值，客户端需要稍后从服务器下载头像<br>注意在线列表里也包括群和临时讨论小组，他们的在线状态始终是在线，没有ip和p2p端口号<br><br>****系统广播消息(SC)<br>参数：消息内容<br><br>****退出登录(CS)<br>参数：无<br>该消息可以帮助客户端从登录状态转为未认证状态<br>其实作用不大，如果客户端希望退出登录，可以直接断开连接<br><br>****发送消息(CS)<br>参数：目标用户名，是否开启匿名聊天，消息内容<br>消息中的图片以MD5值表示<br>支持发送离线消息<br>匿名聊天：接受者既无法知道对方的ip信息，又无法知道真实的用户名和资料<br>这种情况下，服务器应该对消息中的用户名加以处理，生成一个完全随机的新用户名发给接收者，而且只有服务器知道这个随机用户名与真实用户名的对应关系<br><br>----聊天记录漫游交由网页处理<br><br>****接收消息(SC)<br>参数：发送者，来自的视图，消息内容<br>来自的视图：私聊即为用户名，群聊为群名或讨论小组名<br>如果消息中包含图片，客户端应该先在本地缓存中查找图片，如果找不到才向服务器请求下载<br><br>****上传图片(CS)<br>参数：图片的二进制数据<br>服务器收到这个消息之后应该讲图片缓存一段时间<br><br>****请求下载图片(CS)<br>参数：最长等待时间 图片的MD5值<br>如果服务器上并没有这个图片，服务器应该等待”最长等待时间“，如果在这期间有人上传了这张图片，也把图片发给他<br><br>****返回图片(SC)<br>参数：图片的二进制数据<br><br>****询问图片是否存在(CS)<br>参数：图片的MD5值<br>客户端向服务器询问这个图片是否存在在服务器上<br><br>****返回图片存在状态(SC)<br>参数：图片剩余的缓存时间<br>图片剩余的缓存时间：再过多长时间，这个图片缓存会被服务器删掉<br>如果服务器不存在这个图片，返回负值或0<br><br>----包含图片的消息的发送过程(经服务器中转的情况)<br>发送者向服务器发送一个带图片的文字消息给服务器<br>服务器中转给接受者<br>发送者询问服务器是否已经存在了这个图片<br>if(存在)<br>&nbsp;&nbsp;&nbsp;&nbsp;神马也不做<br>else<br>&nbsp;&nbsp;&nbsp;&nbsp;发送者向服务器上传图片<br><br>ps.其实也可以反过来，发送者先上传图片，再发送包含图片的文字消息<br><br>接收者那边：<br>收到了服务器发来的带图片的消息<br>在本地缓存里查找是否有这个图片<br>if(存在)<br>&nbsp;&nbsp;&nbsp;&nbsp;神马也不做<br>else<br>&nbsp;&nbsp;&nbsp;&nbsp;接收者向服务器请求这个图片<br>&nbsp;&nbsp;&nbsp;&nbsp;然后等待服务器把图片发过来<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>ps.其实也可以一直询问服务器是否有这个图片，直到有了再下载<br><br>----<br>其实可以随便与任何人聊天<br>好友申请只是请求对方把自己加入好友列表<br>例如黑名单等等的机制可以再客户端来实现<br><br>下面这些消息即适用于用户也适用于群和临时讨论小组<br><br>注意：服务器必须明确的收到了来自客户端的处理结果(同意或是拒绝)，否则在用户下次登录的时候再次发送<br><br>****请求对方添加我/请求加入群(CS)<br>参数：对方用户名、来自的视图，留言<br>来自的视图：用户即为用户，群为群名或临时讨论小组名；<br>如果是请求加群，对方用户名和来自的视图都是群名<br>支持发送离线请求<br><br>****新好友申请(SC)<br>参数：对方用户名、来自的视图、留言<br><br>****新 群申请(SC)<br>参数：对方用户名 留言<br>这条消息是服务器发给群主/管理员的<br>只有第一条被处理的才有效<br>例如，A和B都是这个群的管理员，C想加群，A先通过了加群请求，之后B无论做什么都没用了<br><br>****处理好友申请(CS)<br>参数：对方用户名 是否同意<br><br>****请求好友资料(CS)<br>参数：对方用户名、要请求的项目的名字<br>要请求的项目的名字：例如：头像MD5值、ip、p2p端口号、邮箱、个人介绍等等<br><br>ps.该消息同样适用于群<br><br>****返回好友资料(SC)<br>参数：用户名 被请求的信息名称和值的对应表(例如：时间:12345798;版本:V123;)<br>这个是对“请求对方信息”的回应，如果“请求好友资料”中有自己无法理解的消息名字，那么可以不返回，或者返回空值<br>但是这里协议要求服务器必须支持以下信息名称：头像MD5值、ip、p2p端口号、邮箱、个人介绍(ps.待补充)<br><br>----群系统<br>群分群和临时讨论小组<br>临时讨论小组会在最后一个成员下线时自动销毁<br><br>临时讨论小组自由进出、拉人不用邀请(而且这个讨论组会自动加入被邀请人的好友列表)<br>ps.不要说这里流氓，黑名单或者类似机制可以在客户端实现<br>而加群需要管理员认证，拉人也需要被拉人的认证<br><br>群/临时讨论小组的创建、销毁工作、管理员的授权和取消工作、群主的转让工作由网页完成<br>群共享文件功能由网页实现<br><br>****创建临时讨论小组(CS)<br>参数：无<br>客户端可以在发出这个消息后检查群列表里有没有新的讨论小组<br><br>----P2P(均为UDP协议)<br>****询问图片是否存在(CC)<br>参数：图片MD5<br><br>****上传图片(CC)<br>参数：图片二进制数据<br><br>****请求重传图片(CC)<br>参数：图片MD5<br><br>****请求发送文件(CC)<br>参数：文件MD5 文件名 文件总大小 每个分片的大小<br>接收者如果发现缓存中有这个文件即可以不传输<br>文件名用于提示用户<br><br>****同意/拒绝发送文件(CC)<br>参数：被处理文件MD5 是否同意 每个分片的大小<br>是否同意的取值：同意、拒绝、缓存中已存在(相当于拒绝)<br>每个分片的大小：可以直接重复“请求发送文件”中的那个值，也可以自己定一个，如果拒绝，则不发这个参数<br><br>****文件数据(CC)<br>参数：属于哪个文件MD5 这个分片的MD5 分片二进制数据<br>发送者可以将一个文件拆分成多个包来发送<br>这里没有差错重传，<br><br>****差错重传(CC)<br>参数：文件MD5 第几个分片(0开始)<br>UDP协议没有提供差错重传机制<br><br>----配置漫游<br>配置漫游信息是一组键/值(字符串的键/二进制的值)对应的信息，保存在服务器，用于客户端漫游一些设置<br>****请求配置信息键名<br>参数：无<br><br>****配置信息键名列表<br>参数：键名列表<br><br>****请求键内容<br>参数：键名<br><br>****键内容<br>参数：键名、二进制数据<br><br>****修改键值<br>参数：键名 二进制数据<br><br>****删除键<br>参数：键名<br> <br> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>kevin</b></td>
+<td align="right" class="smalltxt">2012-01-10 09:43</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+已阅</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zeroms</b></td>
+<td align="right" class="smalltxt">2012-01-10 10:23</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我是来看热闹的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxyscxy</b></td>
+<td align="right" class="smalltxt">2012-01-10 20:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+感觉好乱</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-01-10 21:16</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+话说手机版的phpwind怎么感觉这么白痴？<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-10 22:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=mason" target="_blank">mason</a><span style="color:gray ">:</span>话说手机版的phpwind怎么感觉这么白痴？<br>内容来自[手机版] <span style="color:gray "> (2012-01-10 21:16) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=779&amp;pid=3733" target="_blank" ></a><br></div></blockquote><br>何止白痴，根本就是2B<br>你看代码试试</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.051043 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

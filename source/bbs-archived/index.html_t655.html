@@ -1,0 +1,216 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>服务器再次内存爆满,已经撒网,静待上钩|管理 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="管理  如题改了debian后又爆了(早知道不换了)已经设置了一个监控....等爆满的时候就知道是哪个进程了地址:173.212.235.252/mem.php和173.212.235.252/mem.txt代码:pre&gt;?phpshell_exec(&quot;ps -xufwa &gt; /var/www/mem.txt;free  .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,服务器再次内存爆满,已经撒网,静待上钩,管理" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f6.html">管理</a> -&gt; <a href="index.html_t655.html">服务器再次内存爆满,已经撒网,静待上钩</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-01 21:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>服务器再次内存爆满,已经撒网,静待上钩</h1>
+如题<br>改了debian后又爆了(早知道不换了)<br>已经设置了一个监控....等爆满的时候就知道是哪个进程了<br>地址:173.212.235.252/mem.php和173.212.235.252/mem.txt<br><br>代码:<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>&lt;pre&gt;<br>&lt;?php<br>shell_exec(&quot;ps -xufwa &gt; /var/www/mem.txt;free -m&nbsp;&nbsp;&gt; /var/www/mem.txt&quot;);<br>echo shell_exec(&quot;ps -xufwa&quot;);<br>echo &quot;&lt;br /&gt;&lt;br /&gt;&quot;;<br>echo shell_exec(&quot;free -m&quot;);<br>?&gt;<br>&lt;/pre&gt;</li></ol></div><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-01 22:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+和我的方法一样嘛…脏活累活直接交给bash..<br>其实你直接cronjob就可以了啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-01 22:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+https://gist.github.com/1400098<br>我给你发过…就这么被你赤果果的无视了…就在那个py解决爆满的帖子里</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-01 22:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+这种系统维护类脚本交给apache？<br>直接php mem.php啊…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-01 23:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>这种系统维护类脚本交给apache？<br>直接php mem.php啊…<span style="color:gray "> (2011-12-01 22:39) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=655&amp;pid=2741" target="_blank" ></a><br></div></blockquote><br>因为在内存爆满的情况下,网站依旧可以访问,所以我想到了用php来搞<br>不知道php在执行shell的时候会不会创建进程,如果要创建进程的话,估计不行(内存不够)</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-01 23:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>https://gist.github.com/1400098<br>我给你发过…就这么被你赤果果的无视了…就在那个py解决爆满的帖子里<span style="color:gray "> (2011-12-01 22:35) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=655&amp;pid=2740" target="_blank" ></a><br></div></blockquote><br>好吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-01 23:56</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>https://gist.github.com/1400098<br>我给你发过…就这么被你赤果果的无视了…就在那个py解决爆满的帖子里<span style="color:gray "> (2011-12-01 22:35) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=655&amp;pid=2740" target="_blank" ></a><br></div></blockquote><br>你前面那个近百行的类是干什么的阿.....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-02 12:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第6楼jybox于2011-12-01 23:56发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>https://gist.github.com/1400098<br>我给你发过…就这么被你赤果果的无视了…就在那个py解决爆满的 ..</div></blockquote>守护进程，因为cronjob只能一分钟执行一次</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-02 21:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>守护进程，因为cronjob只能一分钟执行一次<span style="color:gray "> (2011-12-02 12:36) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=655&amp;pid=2745" target="_blank" ></a><br></div></blockquote><br>收网失败......爆满的时候,php的exec_shell运行失败<br>已经把你写的上传上去了......继续撒网</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-02 21:31</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>收网失败......爆满的时候,php的exec_shell运行失败<br>已经把你写的上传上去了......继续撒网<span style="color:gray "> (2011-12-02 21:13) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=655&amp;pid=2749" target="_blank" ></a><br></div></blockquote><br>运行失败是因为没内存了。。换那个都一样的。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-02 22:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>运行失败是因为没内存了。。换那个都一样的。。<span style="color:gray "> (2011-12-02 21:31) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=655&amp;pid=2752" target="_blank" ></a><br></div></blockquote><br>目前疑似解决</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.054377 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

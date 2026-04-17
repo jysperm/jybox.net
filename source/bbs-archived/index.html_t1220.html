@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>灰常冷门的跨端口窃取Cookie|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  大多数网站，在登陆后会通过Cookie来保存登陆状态如果你能够得到其他人的Cookie，你就可以以他的身份来访问网站如果你得到了管理员的Cookie，那么你就可以以管理员的身份来进入后台访问一 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,灰常冷门的跨端口窃取Cookie,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1220.html">灰常冷门的跨端口窃取Cookie</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-09-06 21:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>灰常冷门的跨端口窃取Cookie</h1>
+<span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">大多数网站，在登陆后会通过Cookie来保存登陆状态如果你能够得到其他人的Cookie，你就可以以他的身份来访问网站</font></span></span><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">如果你得到了管理员的Cookie，那么你就可以以管理员的身份来进入后台</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">访问一个网站时，当一条Cookie满足下面三个规则的时候，这个Cookie就会被发送</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">* 该网站的域名与Cookie要求的域名相同</font></span></span><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">* 该网页的路径与Cookie要求的路径相同</font></span></span><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">* 该网页的连接方式(HTTP/HTTPS)与Cookie的要求相同</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">注意！这其中没有与端口有关的要求！</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">也就是说，浏览器认为 </font></span></span><a href="http://xxoo.xo/" target="_blank" >http://xxoo.xo/</a><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif "> 和 </font></span></span><a href="http://xxoo.xo:1234/" target="_blank" >http://xxoo.xo:1234/</a><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif "> 是同一个网站</font></span></span><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">在 </font></span></span><a href="http://xxoo.xo/" target="_blank" >http://xxoo.xo/</a><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif "> 设置的Cookie，在访问 </font></span></span><a href="http://xxoo.xo:1234/" target="_blank" >http://xxoo.xo:1234/</a><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif "> 时也会被发送</font></span></span><br><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">这意味着，如果你能够在xxoo.xo对应的ip上的其他端口建立Web服务器，并欺骗xxoo.xo的管理员访问你的Web服务器，那么你就可以窃取到管理员的Cookie，进而以管理员的身份来访问网站，进入后台</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">如果xxoo.xo被托管在一个公用的虚拟主机服务器上，这会非常简单，你可以在相同的服务器上购买一份虚拟主机，甚至试用。然后在其他端口建立一个Web服务器。当然，国内的大多低端主机商恐怕不会提供这个功能。</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">所以我要给我的神马终端(</font></span></span><a href="http://what.jybox.net/" target="_blank" >http://what.jybox.net</a><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">)打个广告，这是一个权限非常灵活，而价格又非常低的虚拟主机</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">很好，现在你在 xxoo.xo 所在的服务器上的 1234 端口建立了一个Web服务器，并写了一个记录Cookie的脚本</font></span></span><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">下面你只需要欺骗 xxoo.xo 的管理员访问 </font></span></span><a href="http://xxoo.xo:1234/" target="_blank" >http://xxoo.xo:1234/</a><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif "> 即可</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">他会随便访问别人发来，而且看起来很奇怪的地址么？</font></span></span><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">其实你可以做得很隐蔽，你可以去他的网站，发表一个帖子(如果是论坛)或评论(如果是博客)，发一个地址为</font></span></span><a href="http://xxoo.xo:1234/xxoo.png" target="_blank" >http://xxoo.xo:1234/xxoo.png</a><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif "> 的图片，图片是会在网页打开的时候自动加载的，而xxoo.png是你写的记录Cookie的脚本</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">如此一来，竟做得神不知鬼不觉，没几个人会检查网页上每个图片的地址的...</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">-------------</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">我想我有必要再给xxoo.xo的管理员一点忠告，想避免这种攻击也并不是很困难</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">方案1.不要和别人共用服务器，自己购买独立的服务器，独立的IP</font></span></span><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">这一条是最简单的解决方案，只要你有钱</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">方案2. 整个网站都使用HTTPS协议，并设置Cookie仅通过HTTPS发送，不得不说，HTTPS是非常有效的，避免信息泄露的技术。不过SSL证书是非常贵的....</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">所以，我有必要在这里给JySSL(</font></span></span><a href="https://github.com/jybox/JySSL" target="_blank" >https://github.com/jybox/JySSL</a><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">)打一个广告,这是我创立的，(目前)免费的SSL证书颁发机构</font></span></span><br><br><span style="background-color:#ffffff "><span style="color:#444444 "><font face="Verdana, Helvetica, Arial, sans-serif ">方案3. 使用CDN，CDN相当于一个代理，你需要将你的域名指向CDN，而CDN一般只开放80端口，其他端口的通讯都会被丢弃.</font></span></span></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-09-06 21:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+今天我在jybox.net发现了这个漏洞，于是写了这篇文章<br><br>在神马终端上的其他站点可能也受这个漏洞影响，但目前来讲，还没什么太好的解决方案，只能希望站长能够注意我后面提出的三条解决方案了<br><br>我想，在神马终端，真正有效的方案，可能需要建立一个域名验证的系统，然后在内核级过滤不合法的数据包...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>1022</b></td>
+<td align="right" class="smalltxt">2012-09-06 21:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你平时干什么呀&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 厉害</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>scxy</b></td>
+<td align="right" class="smalltxt">2012-09-07 13:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+高级ad= =</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-09-08 10:48</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+cookie也可以跨端口？？<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-09-08 22:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>cookie也可以跨端口？？<br>内容来自[手机版] <span style="color:gray "> (2012-09-08 10:48) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=1220&amp;pid=7375" target="_blank" ></a><br></div></blockquote><br>当然，cookie只区分域名、路径、http/https，不区分端口...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.043359 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

@@ -1,0 +1,336 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>QT使用GET方式抓取网页源码-教程|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  现在嘛，网络的世界，在写出HostsEdit这样简单的程序之后，我就开始转战网络，第一步就是实现B/S结构先来个效果图： 然后上源码，源码其实很简单用QT Creator建立基于QWidget的程序，用UI编辑器 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,QT使用GET方式抓取网页源码-教程,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t127.html">QT使用GET方式抓取网页源码-教程</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-22 20:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>QT使用GET方式抓取网页源码-教程</h1>
+现在嘛，网络的世界，在写出HostsEdit这样简单的程序之后，我就开始转战网络，第一步就是实现B/S结构<br>先来个效果图：<br>[attachment=27]<br> <br>然后上源码，源码其实很简单<br>用QT Creator建立基于QWidget的程序，用UI编辑器放一个名为tB的QTextBrowser<br>main.cpp不用动<br>下面是widget.h和widget.cpp的内容<br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code1'));">复制代码</a></div><div class="blockquote2" id="code1"><ol><li>//widget.h<br><br>#ifndef WIDGET_H<br>#define WIDGET_H<br><br>#include &lt;QWidget&gt;<br>#include &lt;QUrl&gt;<br>#include &lt;QtNetwork/QNetworkAccessManager&gt;<br>#include &lt;QtNetwork/QNetworkRequest&gt;<br>#include &lt;QtNetwork/QNetworkReply&gt;<br><br>namespace Ui {<br>&nbsp;&nbsp;&nbsp;&nbsp;class Widget;<br>}<br><br>class Widget : public QWidget<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;Q_OBJECT<br><br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;explicit Widget(QWidget *parent = 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;~Widget();<br>public slots:<br>&nbsp;&nbsp;&nbsp;&nbsp;void ReadyRead();<br><br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;Ui::Widget *ui;<br>&nbsp;&nbsp;&nbsp;&nbsp;QNetworkAccessManager *manager ;<br>&nbsp;&nbsp;&nbsp;&nbsp;QNetworkReply *reply ;<br>};<br><br>#endif // WIDGET_H</li></ol></div><br> <br><div class="f12"><a href="javascript:"  onclick="CopyCode(document.getElementById('code2'));">复制代码</a></div><div class="blockquote2" id="code2"><ol><li>//widget.cpp<br><br>#include &quot;widget.h&quot;<br>#include &quot;ui_widget.h&quot;<br>#include &lt;QTextCodec&gt;<br>Widget::Widget(QWidget *parent):QWidget(parent),ui(new Ui::Widget)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ui-&gt;setupUi(this);<br>&nbsp;&nbsp;&nbsp;&nbsp;//字符集<br>&nbsp;&nbsp;&nbsp;&nbsp;QTextCodec::setCodecForTr(QTextCodec::codecForName(&quot;utf8&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;manager= new QNetworkAccessManager(this);<br>&nbsp;&nbsp;&nbsp;&nbsp;QNetworkRequest request ;<br>&nbsp;&nbsp;&nbsp;&nbsp;request.setUrl(QUrl(&quot;http://jybox.net/index.php&quot;));<br>&nbsp;&nbsp;&nbsp;&nbsp;reply = manager-&gt;get(request);<br>&nbsp;&nbsp;&nbsp;&nbsp;connect(reply, SIGNAL(finished()), this, SLOT(ReadyRead()));<br>}<br>Widget::~Widget()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;delete ui;<br>}<br>void Widget::ReadyRead()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;ui-&gt;tB-&gt;setText(QString::fromUtf8( reply-&gt;readAll()));<br>}</li></ol></div><br> <br> <br> <br> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-22 20:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  下一步是研究怎么用QT发post<br><br>再下一步就是C/S结构的程序了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-08-22 20:29</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ 来过，</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pcliker</b></td>
+<td align="right" class="smalltxt">2011-08-22 21:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+哇！完全看不懂啊！</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-08-22 22:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  你看不懂就对了&nbsp;&nbsp; 前面是html，后面是C++<br><br>话说你今天回了多少帖子啊...不过没关系&nbsp;&nbsp;明天继续</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2011-08-23 08:57</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+哇！楼主好厉害耶！楼主你写的不是英语吗？我怎么看不懂？还有这么多奇怪的符号！！难道这是外星文？膜拜楼主！！！连外星文都会！</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2011-08-23 09:38</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+膜拜膜拜！！<br>虽然我看不懂，但是我觉得他要表达的意思可能是办证，</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>编程土豆</b></td>
+<td align="right" class="smalltxt">2011-09-22 22:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-01-03 16:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  唔..不错..我来研究一下..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-03 20:51</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>[表情] 唔..不错..我来研究一下..<span style="color:gray "> (2012-01-03 16:05) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=127&amp;pid=3483" target="_blank" ></a><br></div></blockquote><br>你咋研究Qt了呢</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-01-04 22:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>你咋研究Qt了呢<span style="color:gray "> (2012-01-03 20:51) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=127&amp;pid=3484" target="_blank" ></a><br></div></blockquote><br>我一直在研究Qt阿..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-06-12 12:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我都用socket手动实现</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-12 18:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>我都用socket手动实现<span style="color:gray "> (2012-06-12 12:46) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=127&amp;pid=6461" target="_blank" ></a><br></div></blockquote><br>蛋痛，话说我想用Socket实现一个邮件发送类，SMTP协议，但是看了附件的编码方式，我蛋痛了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-06-12 18:44</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>蛋痛，话说我想用Socket实现一个邮件发送类，SMTP协议，但是看了附件的编码方式，我蛋痛了<span style="color:gray "> (2012-06-12 18:27) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=127&amp;pid=6463" target="_blank" ></a><br></div></blockquote><br>附件可以用现成程序，我就用纯socket实现了一个简易httpd(支持中文)</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-12 19:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>附件可以用现成程序，我就用纯socket实现了一个简易httpd(支持中文)<span style="color:gray "> (2012-06-12 18:44) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=127&amp;pid=6465" target="_blank" ></a><br></div></blockquote><br>什么现成程序...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>pdl</b></td>
+<td align="right" class="smalltxt">2012-06-12 20:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+uuencode</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-12 21:20</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=pdl" target="_blank">pdl</a><span style="color:gray ">:</span>uuencode<span style="color:gray "> (2012-06-12 20:28) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=127&amp;pid=6467" target="_blank" ></a><br></div></blockquote><br>依赖这个不太好...不完美，还是自己实现好点...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>zzh8829</b></td>
+<td align="right" class="smalltxt">2012-06-13 05:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+这个。。。<br>直接网页上右键 选view source code 不就完了..<br><br>你这个有什么优势...  &#39;;<br>}<br>window.onbeforeunload = function() {<br>saveData(&#39;msg&#39;, document.FORM.atc_content.value);<br>}<br>if (FetchCookie(&#39;ds&#39;) == 1) {<br>try{dataStorage.load();}catch(e){}<br>}<br>function showFace() {<br>var menus = getObj(&quot;face_tab&quot;).getElementsByTagName(&#39;li&#39;);<br>if(menus){<br>showTabBtn(menus.length);<br>}<br>}<br>function checkGDkey(e){<br>var e=e||window.event;<br>var keyCode=e.keyCode||e.which;<br>if(keyCode==13){<br>setFormChecked();<br>}<br>}<br>function setFormChecked() {<br>document.FORM.isformchecked.value = 2;<br>if (document.FORM.gdcode) document.FORM.gdcode.value = getObj(&#39;input_gdcode&#39;).value;<br>if (document.FORM.qanswer) document.FORM.qanswer.value = getObj(&#39;input_qanswer&#39;).value;<br>closep();<br>checkpost(document.FORM);<br>return true;<br>}<br>function changeHiddenGd(obj) {<br>if (obj.name != &#39;FORM&#39;) return false;<br>try {<br>var checks = getElementsByClassName(&#39;sitegdcheck&#39;, getObj(&#39;fpt_check&#39;));<br>for (var i=0; i &lt; checks.length; i++) {<br>if (checks<i>.src) checks<i>.src = checks<i>.src.replace(/t=\d+|nowtime=\d+/,&#39;t=&#39;+new Date().getTime());<br>if (typeof checks<i>.onclick == &#39;function&#39;) checks<i>.onclick();<br>}<br>} catch(e){}<br>return true;<br>}<br>function closePopGd() {<br>document.FORM.Submit.disabled = false;<br>closep();<br>}<br>function changeReplyRewardNum() {<br>var replyrewardnum = getObj(&#39;replyrewardnum&#39;),<br>leftreplyrewardnum = getObj(&#39;leftreplyrewardnum&#39;);<br>if (!replyrewardnum || !leftreplyrewardnum) return false;<br>var newnum = parseInt(leftreplyrewardnum.innerHTML) - parseInt(replyrewardnum.innerHTML);<br>if (newnum &gt;= 0) {<br>leftreplyrewardnum.innerHTML = newnum;<br>}<br>return true;<br>}<br>window.onReady(showFace);<br>&lt;/script&gt;<br>&lt;!--快速版块浏览--&gt;<br>&lt;div id=&quot;photo_pop_mask&quot; onclick=&quot;readImg.hidePhoto()&quot; class=&quot;pImg_bg&quot; style=&quot;display:none&quot;&gt;&lt;/div&gt;<br>&lt;div id=&quot;photo_pop&quot; class=&quot;pImg_wrap&quot; style=&quot;display:none&quot;&gt;&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;bcr1&quot;&gt;&lt;/td&gt;&lt;td class=&quot;pibg1&quot;&gt;&lt;/td&gt;&lt;td class=&quot;bcr2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=&quot;pibg4&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&quot;pImg tac&quot;&gt;<br>&lt;div id=&quot;imgLoading&quot; class=&quot;imgLoading&quot; style=&quot;margin:auto;&quot;&gt;<br>&lt;div class=&quot;aPre&quot; id=&quot;prephoto&quot; onclick=&quot;readImg.prevPhoto()&quot; title=&quot;上一张&quot;&gt;&lt;/div&gt;<br>&lt;div class=&quot;aNext&quot; id=&quot;nextphoto&quot; onclick=&quot;readImg.nextPhoto()&quot; title=&quot;下一张&quot;&gt;&lt;/div&gt;<br>&lt;img id=&quot;photo_path&quot;&nbsp;&nbsp;src=&quot;images/water/watermark.jpg&quot; align=&quot;absmiddle&quot; /&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;cc w&quot; style=&quot;padding:10px 5px 5px;&quot;&gt;<br>&lt;div class=&quot;fl mr10&quot; id=&quot;photo_pop_page&quot;&gt;&lt;/div&gt;&lt;!--a href=&quot;javascript:;&quot; class=&quot;fl mr20&quot; onclick=&quot;readImg.viewAll()&quot;&gt;原图&lt;/a--&gt;<br>&lt;a href=&quot;javascript://&quot; class=&quot;pImg_close&quot; onclick=&quot;readImg.hidePhoto()&quot;&gt;关闭&lt;/a&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;pibg2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=&quot;bcr4&quot;&gt;&lt;/td&gt;&lt;td class=&quot;pibg3&quot;&gt;&lt;/td&gt;&lt;td class=&quot;bcr3&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;<br>&lt;!--弹窗遮罩--&gt;<br>&lt;!-- //start reply管理弹出 --&gt;<br>&lt;div id=&quot;postbatch&quot; style=&quot;display:none&quot; class=&quot;popout&quot;&gt;<br>&lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;bgcorner1&quot;&gt;&lt;/td&gt;&lt;td class=&quot;pobg1&quot;&gt;&lt;/td&gt;&lt;td class=&quot;bgcorner2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=&quot;pobg4&quot;&gt;&lt;/td&gt;&lt;td&gt;<br>&lt;div class=&quot;popoutContent&quot;&gt;<br>&lt;div&gt;<br>&lt;div class=&quot;popTop&quot; style=&quot;cursor:move;&quot; onmousedown = &quot;read.move(event);&quot;&gt;<br>&lt;a href=&quot;javascript:void(0)&quot; class=&quot;adel&quot; onclick=&quot;closep()&quot;&gt;关闭&lt;/a&gt;<br>&lt;span class=&quot;mr20&quot;&gt;选中&lt;span class=&quot;b s2&quot; id=&quot;select_count&quot;&gt;1&lt;/span&gt;篇&lt;/span&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;p10 cc&quot;&gt;<br>&lt;a href=&quot;javascript:;&quot; onclick=&quot;formclick(document.delatc,&#39;operate.php?action=showping&amp;page=1&#39;,8);return false;&quot; class=&quot;mr5&quot;&gt;评分&lt;/a&gt;&lt;/div&gt;<br>&lt;div class=&quot;popBottom cc&quot;&gt;<br>&lt;label class=&quot;fl&quot;&gt;&lt;input type=&quot;checkbox&quot; onclick=&quot;replyManage.checkall(this);&quot; value=&quot;&quot; id=&quot;ajaxall&quot; name=&quot;ajaxall&quot;&gt;全选&lt;/label&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/td&gt;&lt;td class=&quot;pobg2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=&quot;bgcorner4&quot;&gt;&lt;/td&gt;&lt;td class=&quot;pobg3&quot;&gt;&lt;/td&gt;&lt;td class=&quot;bgcorner3&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;<br>&lt;/div&gt;<br>&lt;!-- //end reply管理弹出 --&gt;<br>&lt;/div&gt;&lt;/div&gt;&lt;!--.main-wrap,#main End--&gt;<br>&lt;div class=&quot;footer-wrap&quot;&gt;<br>&lt;div id=&quot;bottom&quot;&gt;&lt;/div&gt;<br>&lt;div id=&quot;footer&quot;&gt;<br>&lt;div class=&quot;mb5&quot;&gt;<br>&lt;div class=&quot;bottom tac&quot;&gt;<br>&lt;span class=&quot;mr10&quot;&gt;&lt;a id=&quot;nav_key_up_45&quot; href=&quot;http://jybox.net/jyblog/soft/lightphp/&quot; title=&quot;一个轻量级的PHP开发框架&quot; target=&quot;_blank&quot;&gt;伟大的LightPHP&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;gray mr10&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;mr10&quot;&gt;&lt;a id=&quot;nav_key_up_12&quot; href=&quot;sendemail.php&quot; title=&quot;&quot; &gt;联系我们&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;gray mr10&quot;&gt;|&lt;/span&gt;&lt;a href=&quot;job.php?action=erasecookie&amp;verify=2e8bbc6b&quot; rel=&quot;nofollow&quot;&gt;清除Cookies&lt;/a&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;f10 s6 tac&quot;&gt;<br>&lt;p class=&quot;mb5&quot;&gt;Powered by &lt;a href=&quot;http://www.phpwind.net/&quot; target=&quot;_blank&quot; class=&quot;s4&quot;&gt;phpwind v8.7&lt;/a&gt;&nbsp;&lt;a href=&quot;http://www.phpwind.com/certificate.php?host=jybox.net&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Certificate&lt;/a&gt; Copyright Time now is:06-13 05:00 &lt;br /&gt;&copy;2003-2011 &lt;a href=&quot;/&quot; target=&quot;_blank&quot;&gt;精英盒子&lt;/a&gt; 版权所有 Gzip enabled&nbsp;&nbsp;&lt;span id=&quot;windspend&quot;&gt;Total 0.249340(s) query 28,&lt;/span&gt; &lt;link href=&quot;http://jybox.net/bbs/highlight.css&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;<br>&lt;script type=&quot;text/javascript&quot;&gt;<br>var _bdhmProtocol = ((&quot;https:&quot; == document.location.protocol) ? &quot; https://&quot; : &quot; http://&quot;);<br>document.write(unescape(&quot;&lt;script src=&#39;&quot; + _bdhmProtocol + &quot;hm.baidu.com/h.js%3F77016691cd5a049005dba568b5164b59&#39; type=&#39;text/javascript&#39;&gt;&lt;/script&gt;&quot;));<br>&lt;/script&gt;<br><br> <br> &lt;span id=&quot;stats&quot;&gt;&lt;/span&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;http://js.tongji.linezing.com/2584023/tongji.js&quot;&gt;&lt;/script&gt;<br>&lt;noscript&gt;<br>&lt;a href=&quot;http://www.linezing.com&quot; target=&quot;_blank&quot;&gt;&lt;img alt=&quot;tongji&quot; src=&quot;http://img.tongji.linezing.com/2584023/tongji.gif&quot;/&gt;&lt;/a&gt;<br>&lt;/noscript&gt;<br>&lt;/p&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div style=&quot;height:25px;&quot;&gt;&nbsp;&lt;/div&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;images/toolbar.css?20111111&quot; /&gt;<br>&lt;div class=&quot;startbar-wrapper fixed&quot;&gt;<br>&lt;!--[if IE 6]&gt;<br>&lt;iframe frameborder=&quot;0&quot; style=&quot;position:absolute;width:98%;height:25px;filter:Alpha(opacity=0);&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;<br>&lt;![endif]--&gt;<br>&lt;div id=&quot;menu_forumlist&quot; style=&quot;display:none;&quot;&gt;<br>&lt;div class=&quot;sbar-box-a&quot; style=&quot;width:700px;&quot;&gt;<br>&lt;div class=&quot;sbar-title&quot; style=&quot;cursor:pointer&quot; onclick=&quot;try{pw_bottom.hiddenTab();read.close();}catch(e){read.close();}&quot;&gt;<br>&lt;span class=&quot;adel&quot;&gt;隐藏&lt;/span&gt;<br>&lt;span id=&quot;title_forumlist&quot; class=&quot;b&quot;&gt;快速跳转&lt;/span&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;sbar-box-b&quot;&gt;<br>&lt;div class=&quot;forum-list-popout&quot;&gt;<br>&lt;dl class=&quot;cc&quot;&gt;<br>&lt;dt&gt;<br>&lt;a href=&quot;index.php?cateid-1.html&quot;&gt;管理&lt;/a&gt;<br>&lt;/dt&gt;<br>&lt;dd class=&quot;cc&quot;&gt;<br>&lt;a href=&quot;thread.php?fid-6.html&quot; onclick=&quot;return pwForumList(true,gIsPost,6);&quot;&gt;管理&lt;/a&gt;<br>&lt;/dd&gt;<br>&lt;/dl&gt;<br>&lt;dl class=&quot;cc&quot;&gt;<br>&lt;dt&gt;<br>&lt;a href=&quot;index.php?cateid-16.html&quot;&gt;计算机技术&lt;/a&gt;<br>&lt;/dt&gt;<br>&lt;dd class=&quot;cc&quot;&gt;<br>&lt;a href=&quot;thread.php?fid-19.html&quot; onclick=&quot;return pwForumList(true,gIsPost,19);&quot;&gt;零毫秒&lt;/a&gt;<br>&lt;a href=&quot;thread.php?fid-3.html&quot; onclick=&quot;return pwForumList(true,gIsPost,3);&quot;&gt;程序设计&lt;/a&gt;<br>&lt;/dd&gt;<br>&lt;/dl&gt;<br>&lt;dl class=&quot;cc&quot;&gt;<br>&lt;dt&gt;<br>&lt;a href=&quot;index.php?cateid-17.html&quot;&gt;非技术区&lt;/a&gt;<br>&lt;/dt&gt;<br>&lt;dd class=&quot;cc&quot;&gt;<br>&lt;a href=&quot;thread.php?fid-18.html&quot; onclick=&quot;return pwForumList(true,gIsPost,18);&quot;&gt;生活&lt;/a&gt;<br>&lt;a href=&quot;thread.php?fid-21.html&quot; onclick=&quot;return pwForumList(true,gIsPost,21);&quot;&gt;超级水版&lt;/a&gt;<br>&lt;a href=&quot;thread.php?fid-5.html&quot; onclick=&quot;return pwForumList(true,gIsPost,5);&quot;&gt;垃圾桶&lt;/a&gt;<br>&lt;/dd&gt;<br>&lt;/dl&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;startbar-close fl&quot; id=&quot;startbar-open&quot; onclick=&quot;pw_bottom.showToolBar(&#39;open&#39;);&quot; style=&quot;display:none&quot; title=&quot;显示快捷栏&quot;&gt;&lt;/div&gt;<br>&lt;a class=&quot;startbar-open fl&quot; id=&quot;startbar-close&quot; onclick=&quot;pw_bottom.showToolBar(&#39;close&#39;);&quot;&nbsp;&nbsp;title=&quot;隐藏快捷栏&quot;&gt;&lt;/a&gt;<br>&lt;div class=&quot;startbar&quot; id=&quot;startbar&quot; &gt;<br>&lt;div class=&quot;startbar-ui cc&quot;&gt;<br>&lt;span class=&quot;fr&quot;&gt;<br>&lt;span class=&quot;fl&quot; style=&quot;display:none&quot;&gt;<br>&lt;span class=&quot;app-f app-current&quot; style=&quot;margin-right:-1px&quot; onclick=&quot;pw_bottom.hiddenTab(&#39;pwb_friend&#39;)&quot;&gt;在线好友&lt;/span&gt;<br>&lt;/span&gt;<br>&lt;span class=&quot;app-f fl&quot; id=&quot;pwb_friend&quot;&gt;在线好友&lt;/span&gt;<br>&lt;/span&gt;<br>&lt;span class=&quot;fr&quot;&gt;<br>&lt;span class=&quot;fl&quot; style=&quot;display:none&quot;&gt;<br>&lt;span class=&quot;app-m app-m-new app-current&quot; style=&quot;margin-left:-1px;&quot; onclick=&quot;pw_bottom.hiddenTab(&#39;pwb_message&#39;)&quot;&gt;消息&lt;/span&gt;<br>&lt;/span&gt;<br>&lt;span class=&quot;app-m app-m-new fl&quot; id=&quot;pwb_message&quot; title=&quot;查看最新未读消息&quot;&gt;消息&lt;/span&gt;<br>&lt;/span&gt;<br>&lt;span class=&quot;fl&quot;&gt;<br>&lt;span class=&quot;fl&quot; style=&quot;display:none&quot;&gt;<br>&lt;span class=&quot;app-butt app-current&quot; style=&quot;margin-left:-1px;&quot; onclick=&quot;pw_bottom.hiddenTab(&#39;pwb_app&#39;)&quot;&gt;我的菜单&lt;/span&gt;<br>&lt;/span&gt;<br>&lt;span class=&quot;app-butt fl&quot; id=&quot;pwb_app&quot;&gt;我的菜单&lt;/span&gt;<br>&lt;/span&gt;<br>&lt;div class=&quot;app-using&quot;&gt;<br>&lt;span&gt;<br>&lt;span style=&quot;display:none;float:left;margin-top:-1px;&quot;&gt;<br>&lt;a href=&quot;javascript:;&quot; class=&quot;app-forum app-us-current&quot; title=&quot;浏览版块&quot;&nbsp;&nbsp;onclick=&quot;pw_bottom.hiddenTab(&#39;pwb_forumlist&#39;)&quot; &gt;浏览&lt;/a&gt;<br>&lt;/span&gt;<br>&lt;span id=&quot;pwb_forumlist&quot;&gt;&lt;a href=&quot;javascript:;&quot; class=&quot;app-forum&quot; title=&quot;浏览版块&quot; style=&quot;cursor: pointer;&quot;&gt;浏览&lt;/a&gt;&lt;/span&gt;<br>&lt;/span&gt;<br>&lt;span&gt;<br>&lt;span style=&quot;display:none;float:left;margin-top:-1px;&quot;&gt;<br>&lt;a href=&quot;javascript:;&quot; class=&quot;app-thread app-us-current&quot; title=&quot;发帖&quot;&nbsp;&nbsp;onclick=&quot;pw_bottom.hiddenTab(&#39;pwb_postlist&#39;)&quot; &gt;发帖&lt;/a&gt;<br>&lt;/span&gt;<br>&lt;span id=&quot;pwb_postlist&quot;&gt;&lt;a href=&quot;javascript:;&quot; class=&quot;app-thread&quot; title=&quot;发帖&quot; style=&quot;cursor: pointer;&quot;&gt;发帖&lt;/a&gt;&lt;/span&gt;<br>&lt;/span&gt;<br> &lt;span&gt;<br>&lt;span style=&quot;display:none;float:left;margin-top:-1px;&quot;&gt;<br>&lt;a href=&quot;javascript:;&quot; class=&quot;app-diary app-us-current&quot; title=&quot;写日志&quot; onclick=&quot;pw_bottom.hiddenTab()&quot; &gt;写日志&lt;/a&gt;<br>&lt;/span&gt;<br>&lt;span id=&quot;pwb_diary&quot;&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;return false;&quot; title=&quot;日志&quot; class=&quot;app-diary&quot;&gt;写日志&lt;/a&gt;&lt;/span&gt;<br>&lt;/span&gt;<br><br>&nbsp;&nbsp;&lt;span&gt;<br>&lt;span style=&quot;display:none;float:left;margin-top:-1px;&quot;&gt;<br>&lt;a href=&quot;javascript:;&quot; class=&quot;app-blog app-us-current&quot; title=&quot;新鲜事&quot; onclick=&quot;pw_bottom.hiddenTab()&quot; &gt;新鲜事 &lt;br /&gt;&lt;/a&gt;<br>&lt;/span&gt;<br>&lt;span id=&quot;pwb_weibo&quot;&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;return false;&quot; title=&quot;新鲜事&quot; class=&quot;app-blog&quot;&gt;新鲜事&lt;/a&gt;&lt;/span&gt;<br>&lt;/span&gt;<br>&nbsp;&nbsp;&lt;span&gt;<br>&lt;span style=&quot;display:none;float:left;margin-top:-1px;&quot;&gt;<br>&lt;a href=&quot;javascript:;&quot; class=&quot;app-photo app-us-current&quot; title=&quot;传照片&quot; onclick=&quot;pw_bottom.hiddenTab()&quot; &gt;传照片&lt;/a&gt;<br>&lt;/span&gt;<br>&lt;span id=&quot;pwb_photo&quot;&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;return false;&quot; title=&quot;传照片&quot; class=&quot;app-photo&quot;&gt;传照片&lt;/a&gt;&lt;/span&gt;<br>&lt;/span&gt;<br>&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div id=&quot;pwd_app_hidden&quot; style=&quot;display:none;&quot;&gt;<br>&lt;div class=&quot;sbar-title cc&quot; style=&quot;cursor: pointer;padding:5px 10px;&quot; onclick = &quot;pw_bottom.hiddenTab();&quot;&gt;<br>&lt;span class=&quot;fr closeicon&quot;&gt;&lt;img src=&quot;images/wind/index/cate_open.gif&quot; alt=&quot;收起&quot; /&gt;&lt;/span&gt;<br>&lt;span class=&quot;b&quot;&gt;我的菜单&nbsp;&lt;/span&gt;<br>&lt;/div&gt;<br>&lt;h6 class=&quot;gray&quot;&gt;我的书签&lt;/h6&gt;<br>&lt;div class=&quot;listAppItem&quot;&gt;<br>&lt;ul class=&quot;cc&quot;&gt;<br>&lt;/ul&gt;<br>&lt;/div&gt;<br>&lt;h6 class=&quot;gray&quot; style=&quot;background:#faf6ff;&quot;&gt;快捷链接&lt;/h6&gt;<br>&lt;div class=&quot;listAppItem&quot;&gt;<br>&lt;ul class=&quot;cc&quot;&gt;<br>&lt;li&gt;&lt;img src=&quot;u/images/icon/posts.png&quot; align=&quot;absmiddle&quot; alt=&quot;posts&quot; /&gt; &lt;a href=&quot;apps.php?q=article&amp;&quot;&gt;我的帖子&lt;/a&gt;&lt;/li&gt;<br>&lt;/ul&gt;<br>&lt;/div&gt;<br>&lt;div style=&quot;padding:5px 10px;border-top:1px solid #dedede;&quot;&gt;&lt;a href=&quot;profile.php&quot; class=&quot;fr&quot; target=&quot;_blank&quot;&gt;我的设置&lt;/a&gt;&lt;a href=&quot;&quot;&gt;返回首页&lt;/a&gt;&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;script src=&quot;js/bottom.js&quot;&gt;&lt;/script&gt;<br>&lt;script&gt;<br>function submitwrite(o) {<br>if (getObj(&#39;writetext&#39;).value == &#39;&#39; || getObj(&#39;writetext&#39;).value == &#39;想说点什么?&#39;) {<br>showDialog(&#39;error&#39;,&#39;记录内容必须在3～255个字节之间&#39;);<br>return false;<br>}<br>ajax.submit(o);<br>return true;<br>}<br>var jypw_bottom = new app_bottom({app:&#39;pwb_app&#39;,friend:&#39;pwb_friend&#39;,message:&#39;pwb_message&#39;,postlist:&#39;pwb_postlist&#39;,forumlist:&#39;pwb_forumlist&#39;,diary:&#39;pwb_diary&#39;,weibo:&#39;pwb_weibo&#39;,photo:&#39;pwb_photo&#39;});<br>&lt;/script&gt;<br>&lt;/div&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;js/global.js&quot;&gt;&lt;/script&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;mode/area/js/adminview.js&quot;&gt;&lt;/script&gt;<br>&lt;/body&gt;&lt;/html&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;js/app_global.js&quot;&gt;&lt;/script&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;js/pw_jobcenter.js&quot;&gt;&lt;/script&gt;<br>&lt;script&gt;<br>var openmenu = {&#39;td_u&#39; : &#39;menu_u&#39;,&#39;td_sort&#39; : &#39;menu_sort&#39;,&#39;td_skin&#39; : &#39;menu_skin&#39;,&#39;nav_key_up_18&#39; : &#39;nav_key_sub_18&#39;,&#39;nav_key_up_26&#39; : &#39;nav_key_sub_26&#39;,&#39;td_userinfomore&#39; : &#39;menu_userinfomore&#39;,&#39;td_profile&#39; : &#39;menu_profile&#39;,&#39;td_mymenu&#39; : &#39;menu_mymenu&#39;,&#39;td_post&#39; : &#39;menu_post&#39;,&#39;td_post1&#39; : &#39;menu_post&#39;,&#39;td_admin&#39; : &#39;menu_admin&#39;};<br>var messagetip=null;<br>window.onReady(function(){<br>read.InitMenu();<br>//消息提示<br>messagetip=new messageTip(90);<br>messagetip.init();<br>});<br>WINDOW_LOADED=1;<br>&lt;/script&gt;<br>&lt;script&gt;<br>onReady(function(){<br>ajax.send(&quot;y.php?action=sync&quot;, &quot;&quot;);<br>})<br>&lt;/script&gt;<br>&lt;script src=&quot;http://cs10.phpwind.com/cloud.php?a=pop&amp;charset=utf-8&amp;bid=22062&amp;sid=22062&amp;fid=3&amp;uid=808&amp;tid=127&amp;title=QT使用GET方式抓取网页源码-教程&amp;v=1.1&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://cs10.phpwind.com/cloud.php?a=referer&amp;charset=utf-8&amp;bid=22062&amp;sid=22062&amp;fid=3&amp;uid=808&amp;referer=http%3A%2F%2Fjybox.net%2F&amp;&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://a.tbcdn.cn/s/kissy/1.2.0/??kissy-min.js,template-min.js,sizzle-min.js&quot; &gt;&lt;/script&gt;&lt;script src=&quot;http://cs10.phpwind.com/cloud.php?a=delimitjs&amp;charset=utf-8&amp;bid=22062&amp;sid=22062&quot;&gt;&lt;/script&gt;<br>&lt;script type=&quot;text/javascript&quot;&gt;(function(d,t){var url=&quot;http://app.open.phpwind.com/?src=read&amp;url=jybox.net%2Fbbs&amp;sn=jybox.net&amp;fid=3&amp;uid=808&amp;tid=127&amp;c26c87b5=6&amp;charset=utf-8&amp;username=zzh8829&amp;title=QT%E4%BD%BF%E7%94%A8GET%E6%96%B9%E5%BC%8F%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81-%E6%95%99%E7%A8%8B&amp;_ua=20b7b89ea162de6737&amp;_shr=aHR0cDovL2p5Ym94Lm5ldC8%3D&amp;_sqs=dGlkLTEyNy5odG1s&amp;_ssn=L2Jicy9yZWFkLnBocA%3D%3D&amp;_t=1339621205&amp;_v=5090&quot;;var g=d.createElement(t);g.async=1;g.src=url;d.body.insertBefore(g,d.body.firstChild);}(document,&quot;script&quot;));&lt;/script&gt;&lt;script type=&quot;text/javascript&quot;&gt;(function(d,t){<br><br>var url=&quot;http://init.phpwind.net/init.php?sitehash=10UVEBDQgAAAEIAFNVBwYECFtcUlQNVlZRBlgEU1NTCAU&amp;v=8.7&amp;c=0&quot;;<br><br>var g=d.createElement(t);g.async=1;g.src=url;d.body.insertBefore(g,d.body.firstChild);}(document,&quot;script&quot;));&lt;/script&gt;</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-06-13 18:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=zzh8829" target="_blank">zzh8829</a><span style="color:gray ">:</span>这个。。。<br>直接网页上右键 选view source code 不就完了..<br>你这个有什么优势... [表情] <br>.......<span style="color:gray "> (2012-06-13 05:01) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=127&amp;pid=6470" target="_blank" ></a><br></div></blockquote><br>我们讨论的不是编程么....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.090178 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

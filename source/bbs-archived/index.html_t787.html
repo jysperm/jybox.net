@@ -1,0 +1,456 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>经过重新设计和修订的消息列表(以及消息名的翻译)|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  消息类型推荐的常量名描述消息编号CSLogin登录SCLoginResult登录结果CS/SC/CCAskInfo请求对方信息CS/SC/CCInfo返回信息CSAskPublicKey请求公钥SCPublicKey公钥SC/CCUnknown无法理解消息CS/SC/CCHi空消息SCUserListChanged .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,经过重新设计和修订的消息列表(以及消息名的翻译),零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t787.html">经过重新设计和修订的消息列表(以及消息名的翻译)</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-12 00:35</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>经过重新设计和修订的消息列表(以及消息名的翻译)</h1>
+<table style="font-size:12px;">
+<tbody>
+<tr>
+<td>消息类型</td>
+<td>推荐的常量名</td>
+<td>描述</td>
+<td>消息编号</td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;Login</td>
+<td>&nbsp;登录</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;LoginResult</td>
+<td>&nbsp;登录结果</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS/SC/CC</td>
+<td>&nbsp;AskInfo</td>
+<td>&nbsp;请求对方信息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS/SC/CC</td>
+<td>&nbsp;Info</td>
+<td>&nbsp;返回信息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;AskPublicKey</td>
+<td>&nbsp;请求公钥</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;PublicKey</td>
+<td>&nbsp;公钥</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC/CC</td>
+<td>&nbsp;Unknown</td>
+<td>&nbsp;无法理解消息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS/SC/CC</td>
+<td>&nbsp;Hi</td>
+<td>&nbsp;空消息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;UserListChanged</td>
+<td>&nbsp;用户列表已变更</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;AskUserList</td>
+<td>&nbsp;请求用户列表</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;UserList</td>
+<td>&nbsp;用户列表</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;SystemMsg</td>
+<td>&nbsp;系统广播信息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;Logout</td>
+<td>&nbsp;注销登录</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;SendMsg</td>
+<td>&nbsp;发送信息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;NewMsg</td>
+<td>&nbsp;新信息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS/SC/CC</td>
+<td>&nbsp;ImageData</td>
+<td>&nbsp;图片数据</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS/CC</td>
+<td>&nbsp;AskImageData</td>
+<td>&nbsp;请求图片数据</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS/CC</td>
+<td>&nbsp;AskImageInfo</td>
+<td>&nbsp;请求图片信息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC/CC</td>
+<td>&nbsp;ImageInfo</td>
+<td>&nbsp;图片信息</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;UserRequest</td>
+<td>&nbsp;好友申请/邀请加群</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;NewRequest</td>
+<td>&nbsp;新好友申请/新加群邀请</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;NewGroupRequest</td>
+<td>&nbsp;新加群申请</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;RequestResult</td>
+<td>&nbsp;申请/邀请处理结果</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;AskUserInfo</td>
+<td>&nbsp;请求用户资料</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;UserInfo</td>
+<td>&nbsp;用户资料</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;CreateTempGroup</td>
+<td>&nbsp;创建临时讨论小组</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CC</td>
+<td>&nbsp;FileRequest</td>
+<td>&nbsp;邀请接收文件</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CC</td>
+<td>&nbsp;FileRequestResult</td>
+<td>&nbsp;接收文件邀请处理结果</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CC</td>
+<td>&nbsp;FilePartData</td>
+<td>&nbsp;文件分片数据</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CC</td>
+<td>&nbsp;AskFilePartData</td>
+<td>&nbsp;请求(重传)文件分片数据</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;AskConfigurationKeyList</td>
+<td>&nbsp;请求漫游配置信息键名列表</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;ConfigurationKeyList</td>
+<td>&nbsp;漫游配置信息键名列表</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;AskConfigurationData</td>
+<td>&nbsp;请求漫游配置信息数据</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;SC</td>
+<td>&nbsp;ConfigurationValue</td>
+<td>&nbsp;漫游配置信息数据</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;CreateConfigurationData</td>
+<td>&nbsp;新建/修改漫游配置信息数据</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;CS</td>
+<td>&nbsp;RemoveConfigurationKey</td>
+<td>&nbsp;删除漫游配置信息数据键名(以及数据)</td>
+<td></td>
+</tr>
+</tbody>
+</table><div><br /></div></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-12 00:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+目前36个(最开始设计的时候是50+)...精简了好多<br>这个.....应该叫多态？...反正就是类似的设计理念。消息根据参数的不同可能表示不同含义<br><br><br>感觉设计的不错的，倒不是我英语好，只是逻辑上不错。详见楼下</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-12 00:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<br>关于翻译<br>这是之前的草稿：大家可以去对比：<br>http://jybox.net/bbs/read.php?tid-779.html<br>http://jybox.net/bbs/read.php?tid-784.html<br><br>做了很大的改动，包括精简消息，更改翻译。<br>最重要的是，在中文描述上，仔细的斟酌了措辞<br><br>之前我和littlepig在翻译上有分歧，很可能是因为我的中文描述表示不当，导致他在理解和翻译上出现误差。当然这个是我的问题，对所有围观群众还是要表示感谢<br><br><span style="color:#ff0000 ">请注意，不要一味的追究中英文是否对应，因为有的时候是中文描述不恰当.........</span><br><br>在这里总结一下我所谓的一致性：<br>Result，对应中文“结果”或“处理结果”，必有一个消息与它对应，但消息名称可能不一样<br>Ask，对应中文“请求”或“请求(重新)”，必有一个消息与它对应，而且消息名称 一样<br>User，对应中文“用户”，SB2.x中其实不存在真正意义上的好友关系，所以一律称之为用户(当然，在客户端UI上不一定这么写)<br>Msg，对应中文“信息”，为了防止混淆，用“消息”表示一个包含头部的二进制消息数据包，聊天信息一律用“信息”来描述<br>Data，对应中文“数据”，而且一定是二进制数据<br>Info，对应中文“信息”或“资料”，指一些伴随的属性，而不是其本身<br>Request，对应中文“申请”或“邀请”，必有一个Result与它对应，但是消息名称的剩余部分可能不一样<br>Group，对应中文“群”或，但其实在SB2.x中，群和临时讨论小组是非常接近的概念(其实用户和群的概念也很接近)<br>Configuration，对应中文“漫游配置信息”，当然，因为长度太长了，英文没写全<br>Create，对应中文“创建”，它和New的概念有区别，New是重点在提醒对方有一个<span style="color:#ff0000 ">新</span>的XXX，而Create是在创建一个新XXX<br>New，对应中文”新“，详见上一条<br><br>所谓统一性，就是，上面这些元素，都出现了不止一次，大部分消息名称都是由他们组合构成的<br>意在通过”搭积木“的方式，迅速让阅读者了解一个消息的性质，以及抓住消息之间相通的地方<br>这样也是在提醒开发者，具有相同元素的消息，很可能有必要在一起实现，通过类似多态的方式来提高开发效率</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2012-01-12 12:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+考完试接着吐槽……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-12 16:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <br>把发送系统消息去了，统一规定由用户名为&#39;system&#39;发来的消息为系统消息</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-12 20:09</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情] <br>把发送系统消息去了，统一规定由用户名为&#39;system&#39;发来的消息为系统消息<span style="color:gray "> (2012-01-12 16:15) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=787&amp;pid=3774" target="_blank" ></a><br></div></blockquote><br>你同意搞个叫system的机器人了？...</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-12 20:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>[表情]你同意搞个叫system的机器人了？...<span style="color:gray "> (2012-01-12 20:09) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=787&amp;pid=3775" target="_blank" ></a><br></div></blockquote><br>我只是为了精简协议</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-12 20:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>[表情]我只是为了精简协议<span style="color:gray "> (2012-01-12 20:12) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=787&amp;pid=3776" target="_blank" ></a><br></div></blockquote><br>既然加了个system，不搞成机器人那不就太无趣了？...我还是觉得单独搞成消息好点</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-12 21:08</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>既然加了个system，不搞成机器人那不就太无趣了？...[表情]我还是觉得单独搞成消息好点<span style="color:gray "> (2012-01-12 20:37) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=787&amp;pid=3777" target="_blank" ></a><br></div></blockquote><br>机器人嘛。。什么的<br>系统消息不知道要拿来发什么。。<br>还是精简消息吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2012-01-15 13:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+没大问题。不吐槽了。jy加油……我直接等sb2协议了……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-01-16 22:19</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+尼玛。设计的时候要为我着想啊。 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-16 23:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=mason" target="_blank">mason</a><span style="color:gray ">:</span>尼玛。设计的时候要为我着想啊。[表情] <span style="color:gray "> (2012-01-16 22:19) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=787&amp;pid=3904" target="_blank" ></a><br></div></blockquote><br>坑的就是你，要注意的问题我会写的，怎么实现就是你的事了</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.157735 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

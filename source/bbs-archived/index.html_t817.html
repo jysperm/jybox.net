@@ -1,0 +1,351 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>零毫秒2.x 服务器端数据库设计|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  user用户表uid递增iduname 用户名pwd密码 SHA-256(用户名+密码)lastlogintime 上次登录时间戳lastloginip 上次登录ipregtime 注册时间onlinetime总在线时间(分钟)website 链接(用户自定义)info个人介绍(用户自定义)em .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,零毫秒2.x 服务器端数据库设计,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t817.html">零毫秒2.x 服务器端数据库设计</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-20 17:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>零毫秒2.x 服务器端数据库设计</h1>
+<br><br>user用户表<br><br>uid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>uname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用户名<br>pwd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码&nbsp;&nbsp; SHA-256(用户名+密码)<br>lastlogintime&nbsp;&nbsp; 上次登录时间戳<br>lastloginip&nbsp;&nbsp;&nbsp;&nbsp; 上次登录ip<br>regtime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注册时间<br>onlinetime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总在线时间(分钟)<br>website&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 链接(用户自定义)<br>info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人介绍(用户自定义)<br>email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邮箱<br>avater&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头像MD5值<br><br><br>group组群表<br><br>gid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 递增id<br>groupname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 组群名<br>master&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群主用户名<br>regtime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注册时间<br>website&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 链接(群主自定义)<br>info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人介绍(群主自定义)<br>avater&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头像MD5值<br><br>group_member组群成员表<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>groupname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 群名<br>uname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用户名<br>isadmin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是否管理员<br>isdeny&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否被禁言(此处和通讯协议中的字符串保持一致，上一条也是)<br>regtime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 进入时间<br><br>userlist好友列表<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>uanme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用户名(这条记录的主人)<br>user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目标用户(也就是表示user在uname的好友列表中)<br><br>userrequest用户请求表(未处理的请求暂存这里)<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发起时间<br>uanme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 请求发起者<br>user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目标用户名(详见通讯协议)<br>group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 组群名(详见通讯协议)<br>msg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 留言<br>ishandle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否处理<br><br>image_cache图片缓存表<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>imgmd5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图片md5<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上传时间<br>lasttime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上次被请求时间<br>isexist&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是否存在(不存在就是已经被删除了)<br><br>image_sign图片签收表<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>imgmd5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图片md5<br>user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需要签收的用户<br>issign&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否已经签收<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签收时间<br><br>msg_log聊天记录<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发送时间<br>uname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发送者<br>user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接受者<br>msg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 消息内容<br>issend&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否已经被发送(未被发送的就是未发送的离线消息)<br><br>error_log错误日志<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间<br>uanme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 相关联用户名<br>info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;详情<br><br>log一般事件日志<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间<br>uanme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 相关联用户名<br>info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;详情<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-20 18:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+userrequest用户请求表(未处理的请求暂存这里)<br>image_cache图片缓存表<br>image_sign图片签收表<br><br>这几个用memcached做不就好了。。又不是要一直持久化下去。。<br><br>user用户表<br><br>uid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>uname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用户名<br>pwd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码&nbsp;&nbsp; SHA-256(用户名+密码)<br>lastlogintime&nbsp;&nbsp; 上次登录时间戳<br>lastloginip&nbsp;&nbsp;&nbsp;&nbsp; 上次登录ip<br>regtime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注册时间<br>onlinetime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总在线时间(分钟)<br>website&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 链接(用户自定义)<br>info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人介绍(用户自定义)<br>email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邮箱<br>avater&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头像MD5值<br><br><br>group组群表<br><br>gid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 递增id<br>groupname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 组群名<br>master&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群主用户名<br>regtime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注册时间<br>website&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 链接(群主自定义)<br>info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人介绍(群主自定义)<br>avater&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头像MD5值<br><br>group_member组群成员表<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>groupname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 群名<br>uname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用户名<br>isadmin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是否管理员<br>isdeny&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否被禁言(此处和通讯协议中的字符串保持一致，上一条也是)<br>regtime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 进入时间<br><br>userlist好友列表<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>uanme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用户名(这条记录的主人)<br>user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目标用户(也就是表示user在uname的好友列表中)<br><br>msg_log聊天记录<br><br>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递增id<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发送时间<br>uname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发送者<br>user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接受者<br>msg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 消息内容<br>issend&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否已经被发送(未被发送的就是未发送的离线消息)<br><br>用MongoDB的话这些能放到两个集合里去。。<br><br>总结：完全滥用数据库<br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-20 18:11</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  我又没说都存mysql</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-20 18:15</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+那你想怎么存 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-20 18:24</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>那你想怎么存[表情] <span style="color:gray "> (2012-01-20 18:15) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=817&amp;pid=3954" target="_blank" ></a><br></div></blockquote><br>刚刚又瞧了mongodb.........没必要啊，根本称不上海量级数据..........瓶颈根本不在这里，其他地方浪漫的效率几倍(几十倍？)于数据库</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-01-20 19:27</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+头像MD5值是干啥玩意儿的？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-20 19:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=abreto" target="_blank">abreto</a><span style="color:gray ">:</span>头像MD5值是干啥玩意儿的？<span style="color:gray "> (2012-01-20 19:27) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=817&amp;pid=3956" target="_blank" ></a><br></div></blockquote><br>详见通讯协议，无论是头像还是聊天图片，都用MD5来做唯一标识</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-20 21:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第4楼jybox于2012-01-20 18:24发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>那你想怎么存[表情] <span style="color:gray "> (2012-01-20 18:15) </span>[url=http://jybox.net/bbs/job.php?action=topost&amp;am ..</div></blockquote>普通储存也比mysql效率高啊…而且自由啊，能把好多数据表整合到一块.<br>你真的用得到sql那些高级功能么？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-20 21:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>普通储存也比mysql效率高啊…而且自由啊，能把好多数据表整合到一块.<br>你真的用得到sql那些高级功能么？<span style="color:gray "> (2012-01-20 21:36) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=817&amp;pid=3963" target="_blank" ></a><br></div></blockquote><br>也用不到mongodb的高级功能啊，主要是Qt没封装.....调研起来太麻烦啊</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-20 22:00</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第8楼jybox于2012-01-20 21:40发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>普通储存也比mysql效率高啊…而且自由啊，能把好多数据表整合到一块.<br>你真的用得到sql那 ..</div></blockquote>mongodb没高级功能啊…保持kiss</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-20 22:04</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+mongodb安装完之后附带了一个js的cli，你可以用那个调研</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-21 00:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>mongodb安装完之后附带了一个js的cli，你可以用那个调研<span style="color:gray "> (2012-01-20 22:04) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=817&amp;pid=3968" target="_blank" ></a><br></div></blockquote><br>饶了我吧.....你不知道2.x的设计负荷才多少么....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-21 09:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+头像gravatar.com...数据库结构,看着真像坛子.<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-21 10:48</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第11楼jybox于2012-01-21 00:34发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>mongodb安装完之后附带了一个js的cli，你可以用那个调研<span style="color:gray "> (2012-01-20 22:04) </span>[url ..</div></blockquote>但是你这么搞是真蛋疼…<br>未处理的请求还是用memcache吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-21 10:48</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第11楼jybox于2012-01-21 00:34发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>mongodb安装完之后附带了一个js的cli，你可以用那个调研<span style="color:gray "> (2012-01-20 22:04) </span>[url ..</div></blockquote>phper应该不排斥memcache吧</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>墨阐</b></td>
+<td align="right" class="smalltxt">2012-01-21 10:59</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<a class=" _cardshow" href="http://jybox.net/bbs/u.php?uid=1" data-card-key="@jybox" data-card-url="pw_ajax.php?action=smallcard&type=showcard&uid=1" target="_blank" >@jybox</a>&nbsp;&nbsp;<a class=" _cardshow" href="http://jybox.net/bbs/u.php?uid=50" data-card-key="@whtsky" data-card-url="pw_ajax.php?action=smallcard&type=showcard&uid=50" target="_blank" >@whtsky</a>&nbsp;&nbsp; Berkeley DB?Hadoop?Tokyo Cabinet?<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-21 11:46</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第15楼墨阐于2012-01-21 10:59发表的:<br><a class=" _cardshow" href="http://jybox.net/bbs/u.php?uid=1" data-card-key="@jybox" data-card-url="pw_ajax.php?action=smallcard&type=showcard&uid=1" target="_blank" >@jybox</a>&nbsp;&nbsp;<a class=" _cardshow" href="http://jybox.net/bbs/u.php?uid=50" data-card-key="@whtsky" data-card-url="pw_ajax.php?action=smallcard&type=showcard&uid=50" target="_blank" >@whtsky</a>&nbsp;&nbsp; Berkeley DB?Hadoop?Tokyo Cabinet?<br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd ">[url=http://jybox.net ..</div></blockquote>bdb扩展性太差，hadoop不知道你想表达什么，第三个是什么…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-21 11:50</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第16楼whtsky于2012-01-21 11:46发表的 回&nbsp;&nbsp;15楼(墨阐)的帖子 的帖子<br>第15楼墨阐于2012-01-21 10:59发表的:<br><a class=" _cardshow" href="http://jybox.net/bbs/u.php?uid=1" data-card-key="@jybox" data-card-url="pw_ajax.php?action=smallcard&type=showcard&uid=1" target="_blank" >@jybox</a>&nbsp;&nbsp;<a class=" _cardshow" href="http://jybox.net/bbs/u.php?uid=50" data-card-key="@whtsky" data-card-url="pw_ajax.php?action=smallcard&type=showcard&uid=50" target="_blank" >@whtsky</a>&nbsp;&nbsp; Berkeley DB?Hadoop?Tokyo Cabinet?<br><font size="2"><span style="color:#a5a5a5 ">内容来 ..</div></blockquote>好吧，日本的一个kv数据库…<br>你扯hadoop干么…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-21 15:48</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-21 19:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<hr /><br><blockquote class="blockquote3"><div class="text" style="padding:15px;">CREATE TABLE IF NOT EXISTS `error_log` (<br>&nbsp;&nbsp;`id` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`time` int(10) unsigned NOT NULL,<br>&nbsp;&nbsp;`uname` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`info` text NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`id`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `group` (<br>&nbsp;&nbsp;`gid` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`groupname` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`caption` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`master` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`regtime` int(11) unsigned NOT NULL,<br>&nbsp;&nbsp;`website` text NOT NULL,<br>&nbsp;&nbsp;`info` text NOT NULL,<br>&nbsp;&nbsp;`avater` varchar(32) NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`gid`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `group_member` (<br>&nbsp;&nbsp;`id` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`groupname` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`uname` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`isadmin` tinyint(1) NOT NULL,<br>&nbsp;&nbsp;`isdeny` tinyint(1) NOT NULL,<br>&nbsp;&nbsp;`regtime` int(10) unsigned NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`id`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `image_cache` (<br>&nbsp;&nbsp;`id` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`md5` varchar(32) NOT NULL,<br>&nbsp;&nbsp;`user` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`lasttime` int(10) unsigned NOT NULL,<br>&nbsp;&nbsp;`isexist` tinyint(1) NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`id`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `image_sign` (<br>&nbsp;&nbsp;`id` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`md5` varchar(32) NOT NULL,<br>&nbsp;&nbsp;`user` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`time` int(10) unsigned NOT NULL,<br>&nbsp;&nbsp;`issign` tinyint(1) NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`id`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `log` (<br>&nbsp;&nbsp;`id` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`time` int(10) unsigned NOT NULL,<br>&nbsp;&nbsp;`uname` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`info` text NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`id`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `msg_log` (<br>&nbsp;&nbsp;`id` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`time` int(10) unsigned NOT NULL,<br>&nbsp;&nbsp;`uname` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`user` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`msg` text NOT NULL,<br>&nbsp;&nbsp;`issend` tinyint(1) NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`id`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `user` (<br>&nbsp;&nbsp;`uid` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`uname` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`pwd` text NOT NULL,<br>&nbsp;&nbsp;`lastlogintime` int(10) unsigned NOT NULL,<br>&nbsp;&nbsp;`lastloginip` text NOT NULL,<br>&nbsp;&nbsp;`regtime` int(11) unsigned NOT NULL,<br>&nbsp;&nbsp;`onlinetime` int(11) NOT NULL,<br>&nbsp;&nbsp;`website` text NOT NULL,<br>&nbsp;&nbsp;`info` text NOT NULL,<br>&nbsp;&nbsp;`email` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`avatar` varchar(32) NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`uid`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `userlist` (<br>&nbsp;&nbsp;`id` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`uanme` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`user` varchar(255) NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`id`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;<br>CREATE TABLE IF NOT EXISTS `userrequest` (<br>&nbsp;&nbsp;`id` int(11) NOT NULL AUTO_INCREMENT,<br>&nbsp;&nbsp;`time` int(11) unsigned NOT NULL,<br>&nbsp;&nbsp;`uname` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`user` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`group` varchar(255) NOT NULL,<br>&nbsp;&nbsp;`msg` text NOT NULL,<br>&nbsp;&nbsp;`ishandle` tinyint(1) NOT NULL,<br>&nbsp;&nbsp;PRIMARY KEY (`id`)<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;</div></blockquote><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.047830 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

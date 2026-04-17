@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>关于C++整型提升|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  为了防止精度损失,如果有必要的话,类型总是被提升为较宽的类型所有含有小于整数的有序类型的算术表达式在计算之前其类型都会被转换成整型规则的定义如上面所述,这些规则定义了一个类 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,关于C++整型提升,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t89.html">关于C++整型提升</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>iol</b></td>
+<td align="right" class="smalltxt">2011-08-17 17:03</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>关于C++整型提升</h1>
+<br><br>为了防止精度损失,如果有必要的话,类型总是被提升为较宽的类型<br>所有含有小于整数的有序类型的算术表达式在计算之前其类型都会被转换成整型<br>规则的定义如上面所述,这些规则定义了一个类型转换层次结构.我们从最宽的类型long double开始.<br>如果一个操作数的类型是long double , 那么另一个操作数无论是什么类型都将被转换成long double .<br>eg:<br>字符常量小写字母a将被提升为long double , 它的ASC码值为97,然后再被加到long double 类型的文字常量上:<br>3.14159 + &#39;a&#39;;<br>如果两个操作数都不是long double类型,那么若其中一个操作类型是double类型,则另一个就将被转换成double 类型 .<br>eg:<br>int ival;<br>float fval;<br>double dval;<br>//在计算加法前 fval 和 ival 都被转换成double<br>dval+fval+ival;<br>类似的,如果两个操作数都不是double 类型而其中一个操作数是float类型,则另一个被转换成float类型.<br>eg:<br>char cval;<br>int ival;<br>float fval;<br>//计算加法前 ival和cval 都被转换成double<br>cval+fval+ival;<br>否则如果两个操作数都不是3种浮点类型之一.他们一定是某种整值类型.在确定共同的目标提升类型之前, 编译器将在所有小于int 的整值类型上施加一个被称为整值提升的过程<br>在进行整值提升时类型char,signed char,unsigned char 和 short int 都被提升为整型int.如果机器上的类型空间足够表示所有unsigned short类型的值,这通常发生在short用半个字而int用一个字表示的情况下,则unsigned short int 也被转换成int ,否则它会被提升为unsigned int,wchar_t和枚举类型被提升为能够表示其底层类型所有值的最小整数类型,<br>eg:<br>enum status(bad ,ok);<br>相关联的值是0和1 .这两个值可以但不是必须存放在char类型的表示中.当这些值实际上被作为char类型来存储时,char代表了枚举的底层类型,然后status的整型提升将它的底层类型转换为int<br>eg:<br>char cval;<br>bool found;<br>enum numble{m1.m2,m3} mval;<br>unsigned long ulong;<br>cval + ulong;<br>ulong + found;<br>mval + ulong;<br>===============洗澡去 </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.041269 second(s),query:4 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

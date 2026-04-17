@@ -1,0 +1,171 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>法克啊~~精英出来~~有事~~Qt的|程序设计 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="程序设计  QNetworkCookie这个类怎么获取Cookie，为什么我怎么用都不对？@jybox" />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,法克啊~~精英出来~~有事~~Qt的,程序设计" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f3.html">程序设计</a> -&gt; <a href="index.html_t1060.html">法克啊~~精英出来~~有事~~Qt的</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-05-26 15:22</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>法克啊~~精英出来~~有事~~Qt的</h1>
+QNetworkCookie这个类怎么获取Cookie，为什么我怎么用都不对？<a class=" _cardshow" href="http://jybox.net/bbs/u.php?uid=1" data-card-key="@jybox" data-card-url="pw_ajax.php?action=smallcard&type=showcard&uid=1" target="_blank" >@jybox</a> <br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-05-26 15:36</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+重用networkmanager就可以保存cookies。<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-05-26 15:49</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+https://github.com/whtsky/3G-Fetion/blob/master/3gfetion.pyw&nbsp;&nbsp;这是我用QT的网络库写的...你把代码翻译成c++就可以了<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-26 16:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+访问jybox.net并显示得到的cookie：<br><br>QNetworkAccessManager *manager;<br>QNetworkReply *reply;<br><br>manager=new QNetworkAccessManager;<br>QNetworkRequest request;<br>request.setUrl(QUrl(&quot;http://jybox.net/bbs/&quot;));<br>reply=manager-&gt;get(request);<br><br>//等待下载完成<br>QEventLoop waitDownload;<br>QObject::connect(reply, SIGNAL(finished()), &amp;waitDownload, SLOT(quit()));<br>waitDownload.exec();<br><br>//得到Set-Cookie头的二进制数据<br>QByteArray byteCookies=reply-&gt;rawHeader(&quot;Set-Cookie&quot;);<br><br>//用QNetworkCookie来解析Cookie<br>QList&lt;QNetworkCookie&gt; cookieList = QNetworkCookie::parseCookies(byteCookies);<br><br>//显示所有Cookie：<br>QListIterator&lt;QNetworkCookie&gt; i(cookieList);<br>while(i.hasNext())<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;QNetworkCookie cookie=i.next();<br>&nbsp;&nbsp;&nbsp;&nbsp;qDebug()&lt;&lt;&quot;----------------&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;qDebug()&lt;&lt;&quot;Name:&quot;&lt;&lt;cookie.name();<br>&nbsp;&nbsp;&nbsp;&nbsp;qDebug()&lt;&lt;&quot;Domain:&quot;&lt;&lt;cookie.domain();<br>&nbsp;&nbsp;&nbsp;&nbsp;qDebug()&lt;&lt;&quot;Path:&quot;&lt;&lt;cookie.domain();<br>&nbsp;&nbsp;&nbsp;&nbsp;qDebug()&lt;&lt;&quot;Value:&quot;&lt;&lt;cookie.value();<br>}<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-26 16:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+运行结果：<br><br><blockquote class="blockquote3"><div class="text" style="padding:15px;">---------------- <br>Name: &quot;cf20e_lastvisit&quot; <br>Domain: &quot;&quot; <br>Path: &quot;&quot; <br>Value: &quot;0%091338019659%09%2Fbbs%2Findex.php&quot; <br>---------------- <br>Name: &quot;cf20e_lastpos&quot; <br>Domain: &quot;&quot; <br>Path: &quot;&quot; <br>Value: &quot;index&quot; <br>---------------- <br>Name: &quot;cf20e_lastvisit&quot; <br>Domain: &quot;&quot; <br>Path: &quot;&quot; <br>Value: &quot;0%091338019659%09%2Fbbs%2Findex.php&quot; <br>---------------- <br>Name: &quot;cf20e_oltoken&quot; <br>Domain: &quot;&quot; <br>Path: &quot;&quot; <br>Value: &quot;init&quot; <br>---------------- <br>Name: &quot;cf20e_online_info&quot; <br>Domain: &quot;&quot; <br>Path: &quot;&quot; <br>Value: &quot;1338019659%095%090&quot; <br>---------------- <br>Name: &quot;cf20e_ci&quot; <br>Domain: &quot;&quot; <br>Path: &quot;&quot; <br>Value: &quot;index%091338019659%09%09&quot; <br>---------------- <br>Name: &quot;_ac_app_ua&quot; <br>Domain: &quot;&quot; <br>Path: &quot;&quot; <br>Value: &quot;f19d4818ff5ba0a229&quot; <br>---------------- <br>Name: &quot;__cfduid&quot; <br>Domain: &quot;.jybox.net&quot; <br>Path: &quot;.jybox.net&quot; <br>Value: &quot;dded889b8ba0eba0206e929a23b7534c01338019659&quot; </div></blockquote><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-05-26 21:25</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+好吧。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-05-26 21:26</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+对了，怎么读取源文件？就是下载到本地的HTML文件。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-05-26 21:30</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+我们可以编写一个用来获取页面内容的函数：<br> <br>QString getHttpContent(QString url)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;//获得对应URL的内容为QString<br>&nbsp;&nbsp;&nbsp;&nbsp;QNetworkRequest request;<br>&nbsp;&nbsp;&nbsp;&nbsp;request.setUrl(QUrl(url));<br>&nbsp;&nbsp;&nbsp;&nbsp;reply=manager-&gt;get(request);<br> <br>&nbsp;&nbsp;&nbsp;&nbsp;QEventLoop waitDownload;<br>&nbsp;&nbsp;&nbsp;&nbsp;QObject::connect(reply, SIGNAL(finished()), &amp;waitDownload, SLOT(quit()));<br>&nbsp;&nbsp;&nbsp;&nbsp;waitDownload.exec();<br> <br>&nbsp;&nbsp;&nbsp;&nbsp;return QString::fromUtf8(reply-&gt;readAll());<br>}<br> <br>你可以这样用：<br>ui-&gt;textArea-&gt;setText(getHttpContent(&quot;http://jybox.net&quot;));<br> <br>效果：<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.036489 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

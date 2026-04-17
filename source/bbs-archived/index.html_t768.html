@@ -1,0 +1,201 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>SB2.x登陆部分协议设计|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  登陆请求：保留SB1.0原有的两种登陆请求新增：SHA-256(公钥+SHA-256(密码)) 并推荐这种新增的方式参数：p2p的端口号，p2p使用udp协议ps.因为udp对nat穿越效果比较好，可以应付恶劣的网络环境（此处 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,SB2.x登陆部分协议设计,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t768.html">SB2.x登陆部分协议设计</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-08 00:28</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>SB2.x登陆部分协议设计</h1>
+<br>登陆请求：<br>保留SB1.0原有的两种登陆请求<br>新增：SHA-256(公钥+SHA-256(密码))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> 并推荐这种新增的方式<br><br>参数：<br>p2p的端口号，p2p使用udp协议<br>ps.因为udp对nat穿越效果比较好，可以应付恶劣的网络环境（此处恶劣是指运营商的各种限制）<br><br>选项：<br>“非主连接”：同一个用户可以开多个连接，完成多线程的图片下载、上传。<br>“强制登陆”：如果已经有同名客户端在线，则需要这个选项才能登陆<br>“隐藏ip”：不向其他用户暴露ip，但是这样可能会无法使用一些p2p功能</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-08 00:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+补充，打算用户系统和论坛分离</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-08 00:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+公钥?</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-08 00:40</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+数据库：<br>SQL-<br>MySQL/PostgreSQL<br>NOSQL-<br>REDIS/MongoDB</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-08 00:42</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+选择哪个？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-08 00:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+公钥是服务器返回的一串随机数字<br><br>用Qt的数据库接口吧，支持这些，貌似其他的数据库也有非官方支持<br>QDB2&nbsp;&nbsp;&nbsp;&nbsp;IBM DB2<br>QIBASE&nbsp;&nbsp;&nbsp;&nbsp;Borland InterBase Driver<br>QMYSQL&nbsp;&nbsp;&nbsp;&nbsp;MySQL Driver<br>QOCI&nbsp;&nbsp;&nbsp;&nbsp;Oracle Call Interface Driver<br>QODBC&nbsp;&nbsp;&nbsp;&nbsp;ODBC Driver (includes Microsoft SQL Server)<br>QPSQL&nbsp;&nbsp;&nbsp;&nbsp;PostgreSQL Driver<br>QSQLITE&nbsp;&nbsp;&nbsp;&nbsp;SQLite version 3 or above<br>QSQLITE2&nbsp;&nbsp;&nbsp;&nbsp;SQLite version 2<br>QTDS&nbsp;&nbsp;&nbsp;&nbsp;Sybase Adaptive Server<br><br><br><br>另外数据库相关操作尽可能抽象出来，如果以后效率不行方便换</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-08 00:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>公钥是服务器返回的一串随机数字<br>用Qt的数据库接口吧，支持这些，貌似其他的数据库也有非官方支持<br>QDB2    IBM DB2<br>QIBASE    Borland InterBase Driver<br>.......<span style="color:gray "> (2012-01-08 00:45) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=768&amp;pid=3611" target="_blank" ></a><br></div></blockquote><br>清一色的SQL..<br>你不会又要非QT支持不用吧。。<br><br>如果要记录聊天记录的话肯定要用到内存数据库（REDIS）的。。<br><br>用户数据的话，SQL也可以，但K/V式的数据库可以做得更好。。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-08 02:10</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>清一色的SQL..<br>你不会又要非QT支持不用吧。。<br>如果要记录聊天记录的话肯定要用到内存数据库（REDIS）的。。<br>.......<span style="color:gray "> (2012-01-08 00:54) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=768&amp;pid=3612" target="_blank" ></a><br></div></blockquote><br>感觉数据库以后再换也不麻烦，到时候对比下，只要接口都抽象出来就行<br><br>聊天记录为啥要内存数据库？啥叫KV？....<br><br>既然用了Qt，那么尽可能还是要用Qt提供的东西的</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2012-01-08 02:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第7楼jybox于2012-01-08 02:10发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>清一色的SQL..<br>你不会又要非QT支持不用吧。。<br>如果要记录聊天记录的话肯定要用到内存数 ..</div></blockquote>key/value<br>聊天记录是高并发、大数据，redis这样的内存数据库能保证效率.</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>mason</b></td>
+<td align="right" class="smalltxt">2012-01-08 14:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.041998 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

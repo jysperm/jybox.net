@@ -1,0 +1,306 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>源代码的几个槽点|零毫秒 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="零毫秒  这里不提设计上的，只是编码/语用上的显著问题：命名空间污染：公共头文件里敢用using namespace……类型失当：该用bool的地方用int……童鞋难道你还打算源代码回去用纯C重写？冗余：if(n==1)ret .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,源代码的几个槽点,零毫秒" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f19.html">零毫秒</a> -&gt; <a href="index.html_t746.html">源代码的几个槽点</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-30 15:37</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>源代码的几个槽点</h1>
+这里不提设计上的，只是编码/语用上的显著问题：<br>命名空间污染：公共头文件里敢用using namespace……<br>类型失当：该用bool的地方用int……童鞋难道你还打算源代码回去用纯C重写？<br>冗余：<br>&nbsp;&nbsp;&nbsp;&nbsp;if(n==1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>这个要出现在谭X的书里倒好理解……实际代码中这种不必要的罗嗦只会让维护成本增加。<br>接口缺失：#define DELETE(p) {if(p)delete (p);(p)=0;};——数组类型的肿么办？<br>缺乏实现技巧：仍然是#define DELETE(p) {if(p)delete (p);(p)=0;};，后面分号干什么吃的？既然都敢用宏代替代码段了，do...while(0)没听说过？<br>……如果有其它的等有空看完代码再补…… <br>在线用户:共2人在线，2位会员(0位隐身)<br>幻の上帝&nbsp;&nbsp;&nbsp;&nbsp;幻の上帝<br><br><br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-30 19:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+其实写这个主要是为了练手，没必要斤斤计较…</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-30 20:02</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+最后那个在线人数问题请找phpwind反应，我们用的是最新版本<br><br>话说到目前为止，确实没用到过数组...<br> if(n==1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>这个是因为要强调1，因为这里的1是数字的意思，而不是“真”的意思<br><br>命名空间污染，感觉这个不算太严重似的........<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-30 20:33</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>最后那个在线人数问题请找phpwind反应，我们用的是最新版本<br>话说到目前为止，确实没用到过数组...<br> if(n==1)<br>        return 1;<br>.......<span style="color:gray "> (2011-12-30 20:02) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=746&amp;pid=3424" target="_blank" ></a><br></div></blockquote><br>那个命名空间是有关常量定义的<br>直接using应该没啥问题<br>因为考虑到以后可能多个版本协议并存，所以用命名空间，并始终引用最新版本的那个</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-30 20:55</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>最后那个在线人数问题请找phpwind反应，我们用的是最新版本<br>话说到目前为止，确实没用到过数组...<br> if(n==1)<br>        return 1;<br>.......<span style="color:gray "> (2011-12-30 20:02) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=746&amp;pid=3424" target="_blank" ></a><br></div></blockquote><br>n==1的1表示版本号这个容易理解。<br>但返回呢？<br>代码里写的可是：<br>//验证<b>是否</b>兼容该协议版本<br>inline int checkVer(int n)<br>……<br>直接这样<br>inline bool checkVer(int n)<br>{<br>&nbsp;&nbsp;return n == 1;<br>}<br>不是更清楚简单么。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-30 20:58</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>那个命名空间是有关常量定义的<br>直接using应该没啥问题<br>因为考虑到以后可能多个版本协议并存，所以用命名空间，并始终引用最新版本的那个<span style="color:gray "> (2011-12-30 20:33) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=746&amp;pid=3427" target="_blank" ></a><br></div></blockquote><br>这样倒是可以。但清楚起见请加入注释避免误用，而且最好不要在全局命名空间里直接using。<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-30 21:01</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=幻の上帝" target="_blank">幻の上帝</a><span style="color:gray ">:</span>n==1的1表示版本号这个容易理解。<br>但返回呢？<br>代码里写的可是：<br>//验证是否兼容该协议版本<br>.......<span style="color:gray "> (2011-12-30 20:55) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=746&amp;pid=3429" target="_blank" ></a><br></div></blockquote><br>改bool然后return ture？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-30 21:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>其实写这个主要是为了练手，没必要斤斤计较…<span style="color:gray "> (2011-12-30 19:54) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=746&amp;pid=3422" target="_blank" ></a><br></div></blockquote><br>珍惜每一个可以不写dirty code的机会吧……<br>其实这样比较节约时间。<br></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-30 21:05</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=jybox" target="_blank">jybox</a><span style="color:gray ">:</span>改bool然后return ture？<span style="color:gray "> (2011-12-30 21:01) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=746&amp;pid=3431" target="_blank" ></a><br></div></blockquote><br>你该不会是看成return n = 1;了吧？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-30 21:12</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第7楼幻の上帝于2011-12-30 21:05发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>其实写这个主要是为了练手，没必要斤斤计较…<span style="color:gray "> (2011-12-30 19:54) </span>[url=http://j ..</div></blockquote>我一向坚持kiss..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>幻の上帝</b></td>
+<td align="right" class="smalltxt">2011-12-31 09:13</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>我一向坚持kiss..<span style="color:gray "> (2011-12-30 21:12) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=746&amp;pid=3435" target="_blank" ></a><br></div></blockquote><br>我吐槽的就是不够KISS。</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>whtsky</b></td>
+<td align="right" class="smalltxt">2011-12-31 12:34</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;">第10楼幻の上帝于2011-12-31 09:13发表的 回 whtsky 的帖子 的帖子<br><a href="http://jybox.net/bbs/u.php?username=whtsky" target="_blank">whtsky</a><span style="color:gray ">:</span>我一向坚持kiss..<span style="color:gray "> (2011-12-30 21:12) </span>[url=http://jybox.net/bbs/job.php?action=topost&amp;tid ..</div></blockquote>零毫秒主体不是我写的，关于我的代码风格参考我git上其他项目</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-12-31 14:07</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+  </td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>littlepig</b></td>
+<td align="right" class="smalltxt">2012-01-01 02:21</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+tdb吐槽界面，现在幻の上帝吐槽代码……jy你完了……</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2012-01-01 15:32</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+<blockquote class="blockquote3"><div class="text" style="padding:15px;"><a href="http://jybox.net/bbs/u.php?username=littlepig" target="_blank">littlepig</a><span style="color:gray ">:</span>tdb吐槽界面，现在幻の上帝吐槽代码……jy你完了……<span style="color:gray "> (2012-01-01 02:21) </span><a href="http://jybox.net/bbs/job.php?action=topost&amp;tid=746&amp;pid=3458" target="_blank" ></a><br></div></blockquote><br>有人吐槽，才说明他有存在的价值</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>outman</b></td>
+<td align="right" class="smalltxt">2012-01-03 10:54</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+玩语言游戏没意思<br><br><font size="2"><span style="color:#a5a5a5 ">内容来自</span><span style="color:#4f81bd "><a href="http://jybox.net/bbs/m/index.php" target="_blank" >[手机版]</a></span> </font></td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>abreto</b></td>
+<td align="right" class="smalltxt">2012-01-03 14:06</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+大家都喜欢对看不惯的吐槽..</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.051760 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>

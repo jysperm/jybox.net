@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>我要吐槽|生活 - 精英盒子 - phpwind归档</title>
+<meta name="generator" content="phpwind 8.7" />
+<meta name="description" content="生活  在实际的应用程序中，控制扩展对话框的按钮通常会在只显示了基本对话框时显示为Advanced&gt;&gt;，而在显示了扩展对话框时才显示为Advanced。这在Qt 中非常容易实现，只需在单击这个按钮时调 .." />
+<meta name="keywords" content="C++,编程,源码,软件,零毫秒,我要吐槽,生活" />
+<style type="text/css">
+body {font-family: Verdana;font-size: 12px;margin: 0;color: #000000;background: #ffffff;}
+img {border:0;}
+td {font-size: 12px;}
+textarea,input,select {font-family: Verdana;font-size: 12px;background-color: #ffffff;}
+div.quote {margin:5px 5px;border:1px dashed #d5cce9;padding:5px;background:#FFFFFF;line-height:normal;}
+a {text-decoration: none;}
+a:hover {color:#ff0000;text-decoration:none;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;}
+.tpc_content {font-size: 13px;}
+.i_table {border: #E7E3E7 1px solid;}
+.head{background-color: #E7E3E7;}
+h1{ font-size:14px;margin:0 0 10px 0;}
+h2{ font-size:12px; margin:0;padding:0;}
+</style><!--css-->
+</head>
+<body vlink="#333333" link="#333333">
+<br />
+
+<br />
+<table cellspacing="1" cellpadding="0" width="960px" class=i_table align="center">
+<tr><td><table cellspacing="0" cellpadding="8" width="100%"><tr><td bgcolor="#FFFFFF">
+<b><a href="index.html">精英盒子</a> -&gt; <a href="index.html_f18.html">生活</a> -&gt; <a href="index.html_t592.html">我要吐槽</a> <a style="cursor:pointer;color:#f80" onclick="window.print();">[打印本页]</a></b>
+</td><td bgcolor="#FFFFFF" align="right"></td></tr>
+</table></td></tr>
+</table>
+<p><center></center></p>
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>490365333ibm</b></td>
+<td align="right" class="smalltxt">2011-11-19 11:45</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+ <h1>我要吐槽</h1>
+在实际的应用程序中，控制扩展对话框的按钮通常会在只显示了基本对话框时显示为Advanced&gt;&gt;，而在显示了扩展对话框时才显示为Advanced&lt;&lt;。这在Qt 中非常容易实现，只需在单击这个按钮时调用QPushButton 的setText()函数即可。<br><br><br>这个是《零基础学Qt4编程》第七章的一句话，等我动手实践的时候才发现setText根本不是槽，只是个普通成员函数.....<br>他怎么书上说的那么简单那！<br>connect(detailButton,SIGNAL(clicked()),detailButton,SLOT(setText(tr(&quot;Basic&quot;))));会提示QPushButton类没有这个槽函数！<br>难道要手动子类化QPushButton？这不蛋疼么？为什么setText不是公有槽呢？</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-19 13:39</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+等下，我去看看......<br><br>另外以后标题能不能反映一下内容</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<table cellspacing="1" cellpadding="1" width="960px" class="i_table" align="center">
+<tr>
+<td>
+<table cellspacing="0" cellpadding="5" width="100%">
+<tr class="head">
+<td><b>jybox</b></td>
+<td align="right" class="smalltxt">2011-11-19 13:47</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td colspan="2" class="tpc_content">
+话说我手里也有这书，是从图书馆借的，但是我个人感觉这本书不是太好，可以用来参考，但如果只看这一本就比较坑爹了<br><br>翻看了Qt 4.7.4的文档，setText是从QAbstractButton继承来的普通函数，不是槽...<br>你可以自己写一个槽函数，然后把信号绑定到自己的槽<br>然后在自己的槽中调用setText函数....</td>
+</tr>
+</table>
+</td></tr>
+</table><br />
+<br />
+
+
+
+<br /><br />
+<center><small><font color="#999999">Powered by <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <a href="http://www.phpwind.net/" target="_blank"><b style="color:#FF9900">v8.7</b></a> Code &copy;2003-2011 <a href="http://www.phpwind.net/" target="_blank"><b>phpwind</b></a> <br />
+Time 0.051982 second(s),query:5 Gzip enabled<br /><br /></font></small>
+</center><br /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49193300-6', 'auto');
+  ga('send', 'pageview');
+</script></body></html>
