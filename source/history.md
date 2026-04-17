@@ -1,6 +1,7 @@
 ---
 title: '黑历史'
 permalink: history
+layout: history
 ---
 
 ## 2009

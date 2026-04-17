@@ -8,8 +8,8 @@ block container
         h2 关于精子
         ul
           li 精子生于 1995 年
-          li 精子现居北京
-          li 精子目前工作于 LeanCloud
+          li 精子现居泰国清迈
+          li 前 LeanCloud 工程师
       .card.follow
         h2 关注精子
         ul
@@ -22,7 +22,7 @@ block container
           li
             a(href='https://twitter.com/jysperm') Twitter
       .card.follow
-        h2 
+        h2
           a(href='/join') 加入粉丝团
         ul
           li 请联系精子来加入 Telegram 群
@@ -30,7 +30,7 @@ block container
         h2 订阅推送
         p 通过邮件订阅精子的博客日志、产品和项目的最新动态，精子承诺每一封邮件都会认真撰写，且每周不会超过一封。有想和精子说的话可以直接回复邮件。
         #mc_embed_signup
-          form#mc-embedded-subscribe-form.validate(action='//jybox.us13.list-manage.com/subscribe/post?u=f4c7c26ec1a5dc400a7a7373e&id=e2136d8929', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='')
+          form#mc-embedded-subscribe-form.validate(action='https://jybox.us13.list-manage.com/subscribe/post?u=f4c7c26ec1a5dc400a7a7373e&id=e2136d8929', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='')
             #mc_embed_signup_scroll.input-group
               input#mce-EMAIL.form-control(type='email', value='', name='EMAIL', placeholder='email address', required='')
               input(type='hidden', name='b_f4c7c26ec1a5dc400a7a7373e_e2136d8929', value='')
@@ -56,7 +56,7 @@ block container
               for blog in site.blogs
                 li
                   a(target='_blank', href=blog.url).mini-repo-list-item= blog.title
-                  
+
       .columns
         .column.single-column
           a(href='/contributing').right.small 如何提交我的印象？

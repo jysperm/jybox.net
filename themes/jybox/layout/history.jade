@@ -1,0 +1,10 @@
+extends base
+
+prepend sidebar
+  .widget.toc
+    != toc(page.content)
+  .widget
+    p
+      a(href='/bbs-archived/') 精英盒子论坛归档
+      br
+      small(style='color:#888') PHPWind (2011 - 2012)

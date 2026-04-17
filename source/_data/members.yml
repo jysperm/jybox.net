@@ -25,7 +25,6 @@
     zhihu: 'jysperm'
     segmentfault: 'jysperm'
     twitter: 'jysperm'
-    bitcoin: '13v2BTCMZMHg5v87susgg86HFZqXERuwUd'
     keybase: 'jysperm'
 -
   name:
@@ -428,7 +427,6 @@
 -
   name:
     display: 'ray'
-  avatar: 'https://pbs.twimg.com/profile_images/505004462100852736/YBkK_pQW_400x400.jpeg'
   sns:
     twitter: 'RayTely'
 -
