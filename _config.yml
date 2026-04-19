@@ -56,11 +56,3 @@ pagination_dir: page
 
 # Extensions
 theme: jybox
-
-# Deployment
-## Docs: http://hexo.io/docs/deployment.html
-deploy:
-  type: rsync
-  host: ap-home
-  user: www-data
-  root: /home/www-data/jybox.net
